@@ -1,11 +1,15 @@
-\contentsline {section}{\numberline {1}Motivation}{3}
-\contentsline {section}{\numberline {2}Unit testing methods}{3}
-\contentsline {subsection}{\numberline {2.1}Testing for expected result}{3}
-\contentsline {subsection}{\numberline {2.2}Generating test parameters}{3}
-\contentsline {subsection}{\numberline {2.3}Testing for edge cases}{3}
-\contentsline {subsection}{\numberline {2.4}Test case selection}{3}
-\contentsline {section}{\numberline {3}Unit testing tools}{3}
-\contentsline {subsection}{\numberline {3.1}Test coverage}{3}
-\contentsline {subsection}{\numberline {3.2}Behaviour-driven development}{3}
-\contentsline {section}{\numberline {4}Modular coupling}{3}
-\contentsline {subsection}{\numberline {4.1}Dependency mocking}{3}
+\contentsline {section}{\numberline {1}What is unit testing?}{4}{section.1}
+\contentsline {section}{\numberline {2}Motivation}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}Discover bugs early}{4}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}As a method of specification}{4}{subsection.2.2}
+\contentsline {section}{\numberline {3}Unit testing methods}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}Testing for expected result}{4}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Generating test parameters}{4}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Testing for edge cases}{4}{subsubsection.3.2.1}
+\contentsline {subsection}{\numberline {3.3}Test case selection}{4}{subsection.3.3}
+\contentsline {section}{\numberline {4}Unit testing techniques}{5}{section.4}
+\contentsline {subsection}{\numberline {4.1}Test coverage}{5}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Test-driven development (TDD)}{5}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Behaviour-driven development (BDD)}{5}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Dependency mocking}{5}{subsection.4.4}
+\contentsline {section}{\numberline {5}Coupling between units}{5}{section.5}
