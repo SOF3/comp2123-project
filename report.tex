@@ -9,7 +9,7 @@ Unit testing}
 
 \maketitle
 \begin{abstract}
-	This report goes through the motivation, frameworks used and difficulties of unit testing.
+This report discusses the motivation, available techniques and difficulties of unit testing.
 \end{abstract}
 \newpage
 
@@ -32,9 +32,9 @@ Unit testing can also be used as a means of project requirement specification.
 
 \section{Unit testing methods}
 \subsection{Testing for expected result}
-The intuitive way is to write a test that tests each function.
+The intuitive way is to write a test that tests the output of each function.
 
-\begin{lstlisting}[style=CppStyle]
+\begin{lstlisting}[style=Cpp]
 class SimpleSpec {
 public:
 	void testFooBar() {
@@ -44,8 +44,31 @@ public:
 \end{lstlisting}
 
 The \texttt{ASSERT\_EQUAL} macro function would compare the result of \texttt{fooBar()} with \texttt{"qux"} and trigger an error if they are not equal.
+This macro function can be implemented very easily:
+
+\begin{lstlisting}[style=Cpp]
+#define ASSERT_EQUAL(actual, expect) if(actual != expect) \
+	throw sprintf("Test for %s failed: expected, %s, got %s", \
+	#actual, expect, actual);
+\end{lstlisting}
+
+Some other common assertions include:
+\begin{itemize}
+	\item Null checks
+	\item Arithmetic comparisons > >= < <=
+	\item That an exception must be gracefully thrown
+\end{itemize}
+
+By running a series of similar tests every time before moving to another project subcomponent,
+bugs can be identified before it spreads to other components.
+This is particularly helpful when certain bugfixes might result in prototype changes,
+resulting in incompatibility with other components during bugfixes.
 
 \subsection{Generating test parameters}
+If a function accepts a parameter, it is not possible to execute a test on every possible parameter value.
+Instead, the parameters can be generated randomly in every test.
+By supplying a test sample large enough, most bugs can be discovered quickly.
+
 \rem{Generate parameters randomly, possibly by reverse calculation}
 
 \subsubsection{Testing for edge cases}

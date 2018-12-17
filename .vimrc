@@ -1,2 +1,1 @@
-
-command! P w | !make
+command! P w | !make && make clean
