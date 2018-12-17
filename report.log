@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.17)  17 DEC 2018 08:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.17)  17 DEC 2018 08:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -472,28 +472,34 @@ LaTeX Font Info:    Font shape `T1/SourceCodePro-TLF/m/n' will be
 (Font)              scaled to size 8.0pt on input line 37.
 LaTeX Font Info:    Font shape `T1/SourceCodePro-TLF/m/n' will be
 (Font)              scaled to size 10.0pt on input line 46.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 57.
 
-[4]
-Overfull \hbox (23.10562pt too wide) in paragraph at lines 71--71
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 57.
+ [4]
+Overfull \hbox (23.10562pt too wide) in paragraph at lines 94--94
 []\T1/cmr/m/n/9 Remark: https://enterprisecraftsmanship.com/2016/06/09/styles-o
 f-unit-testing/
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 75.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 98.
 [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 75.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 98.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 75.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 75.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 98.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 98.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: F4D5E7254931FF599F6349511620B7FD;1016.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 75.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 98.
  ) 
 Here is how much of TeX's memory you used:
- 8493 strings out of 494586
- 123550 string characters out of 6177801
- 254917 words of memory out of 5000000
- 12007 multiletter control sequences out of 15000+600000
+ 8523 strings out of 494586
+ 123996 string characters out of 6177801
+ 270883 words of memory out of 5000000
+ 12030 multiletter control sequences out of 15000+600000
  17713 words of font info for 39 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  56i,6n,122p,248b,1355s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -507,11 +513,12 @@ ar/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </root/.texlive2018/texmf-var/fo
 nts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </root/.texlive2018/texmf-var/fonts/p
 k/ljfour/jknappen/ec/ecrm1000.600pk> </root/.texlive2018/texmf-var/fonts/pk/ljf
 our/jknappen/ec/ecrm0900.600pk></usr/share/texlive/texmf-dist/fonts/type1/adobe
-/sourcecodepro/SourceCodePro-Regular.pfb>
-Output written on report.pdf (5 pages, 110276 bytes).
+/sourcecodepro/SourceCodePro-Regular.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb>
+Output written on report.pdf (5 pages, 122451 bytes).
 PDF statistics:
- 397 PDF objects out of 1000 (max. 8388607)
- 150 compressed objects within 2 object streams
- 29 named destinations out of 1000 (max. 500000)
+ 413 PDF objects out of 1000 (max. 8388607)
+ 158 compressed objects within 2 object streams
+ 33 named destinations out of 1000 (max. 500000)
  121 words of extra memory for PDF output out of 10000 (max. 10000000)
 
