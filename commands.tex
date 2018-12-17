@@ -3,13 +3,18 @@
 \usepackage{xcolor}
 \usepackage{listings}
 \usepackage{cite}
-
-\def\rem #1 {\iffalse #1 \fi}
-
+\usepackage{scrextend}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	linktoc=page
+}
 \definecolor{mGreen}{rgb}{0,0.6,0}
 \definecolor{mGray}{rgb}{0.5,0.5,0.5}
 \definecolor{mPurple}{rgb}{0.58,0,0.82}
 \definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
+\definecolor{remColor}{rgb}{0.5,0.5,0.5}
 \lstdefinestyle{CppStyle}{
 	backgroundcolor=\color{backgroundColour},
 	commentstyle=\color{mGreen},
@@ -30,4 +35,9 @@
 	language=C++
 }
 
+\def\rem #1 {\textcolor{remColor}{
+	\begin{addmargin}{2em}
+	\small{Remark: #1}
+	\end{addmargin}
+}}
 

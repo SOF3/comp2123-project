@@ -1,0 +1,2 @@
+
+command! P w | !make

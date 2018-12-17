@@ -10,10 +10,17 @@ Unit testing}
 	This report goes through the motivation, frameworks used and difficulties of unit testing.
 \end{abstract}
 \newpage
-\tableofcontents
+
+{\hypersetup{hidelinks}
+	\tableofcontents
+}
 \newpage
 
+\section{What is unit testing?}
+Unit testing is the practice of testing every small unit of a large project instead of only testing the output.
+
 \section{Motivation}
+\subsection{}
 As the scale of a software project grows, debugging becomes more complicated.
 It may take a long time to discover edge case bugs in an old component, which is very difficult to debug after a long time.
 Unit testing allows identification of bugs as soon as possible with little impact.
@@ -39,16 +46,22 @@ The \texttt{ASSERT\_EQUAL} macro function would compare the result of \texttt{fo
 
 \subsection{Test case selection}
 
-\section{Unit testing tools}
+\section{Unit testing techniques}
 \subsection{Test coverage}
 Test coverage is a criterion to assess the representativeness of the unit tests of a project by counting the number of lines executed in the test.
 
-\subsection{Behaviour-driven development}
-\rem{Refer to cucumber}
+\rem{Talk about the integration of debuggers and how to interpret coverage}
 
-\section{Modular coupling}
+\subsection{Test-driven development (TDD)}
+As a consequence of unit testing, development flow becomes more fluent if each development subtask is based on certain test cases.
+
+\subsection{Behaviour-driven development (BDD)}
+
+\rem{Refer to cucumber}
 
 \subsection{Dependency mocking}
 \rem{https://enterprisecraftsmanship.com/2016/06/09/styles-of-unit-testing/ provides some insight on why mocking is bad}
+
+\section{Coupling between units}
 
 \end{document}
