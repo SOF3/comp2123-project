@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.17)  17 DEC 2018 09:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.17)  17 DEC 2018 09:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -433,11 +433,11 @@ LaTeX Info: Redefining \nameref on input line 7.
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 11.
+(Font)              <12> on input line 15.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 11.
+(Font)              <8> on input line 15.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 11.
+(Font)              <6> on input line 15.
 
 
 LaTeX Warning: No \author given.
@@ -486,15 +486,15 @@ f-unit-testing/
  []
 
 [5]) (./difficulties.tex)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 31.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 35.
  [6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 31.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 35.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 31.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 31.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 35.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 35.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 99D2C5CA8852E47086D1235543FA63B1;1064.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 31.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 35.
  ) 
 Here is how much of TeX's memory you used:
  8545 strings out of 494586
@@ -516,9 +516,9 @@ k/ljfour/jknappen/ec/ecrm1000.600pk> </root/.texlive2018/texmf-var/fonts/pk/ljf
 our/jknappen/ec/ecrm0900.600pk></usr/share/texlive/texmf-dist/fonts/type1/adobe
 /sourcecodepro/SourceCodePro-Regular.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (6 pages, 124919 bytes).
+Output written on report.pdf (6 pages, 125426 bytes).
 PDF statistics:
- 428 PDF objects out of 1000 (max. 8388607)
+ 429 PDF objects out of 1000 (max. 8388607)
  166 compressed objects within 2 object streams
  35 named destinations out of 1000 (max. 500000)
  129 words of extra memory for PDF output out of 10000 (max. 10000000)
