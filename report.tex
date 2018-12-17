@@ -1,0 +1,84 @@
+\documentclass{article}
+\title{COMP2123 self-learning report \\
+Unit testing}
+
+\usepackage{sourcecodepro}
+\usepackage{fontenc}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{cite}
+
+\def\rem #1 {\iffalse #1 \fi}
+
+\definecolor{mGreen}{rgb}{0,0.6,0}
+\definecolor{mGray}{rgb}{0.5,0.5,0.5}
+\definecolor{mPurple}{rgb}{0.58,0,0.82}
+\definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{CppStyle}{
+	backgroundcolor=\color{backgroundColour},
+	commentstyle=\color{mGreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{mGray},
+	stringstyle=\color{mPurple},
+	basicstyle=\footnotesize\ttfamily,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=4,
+	language=C++
+}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+	This report goes through the motivation, frameworks used and difficulties of unit testing.
+\end{abstract}
+\newpage
+\tableofcontents
+\newpage
+
+\section{Motivation}
+As the scale of a software project grows, debugging becomes more complicated.
+It may take a long time to discover edge case bugs in an old component, which is very difficult to debug after a long time.
+Unit testing allows identification of bugs as soon as possible with little impact.
+
+\section{Unit testing methods}
+\subsection{Testing for expected result}
+The intuitive way is to write a test that tests each function.
+
+\begin{lstlisting}[style=CppStyle]
+class SimpleSpec {
+public:
+	void testFooBar() {
+		ASSERT_EQUAL(fooBar(), "qux")
+	}
+}
+\end{lstlisting}
+
+The \texttt{ASSERT\_EQUAL} macro function would compare the result of \texttt{fooBar()} with \texttt{"qux"} and trigger an error if they are not equal.
+
+\subsection{Generating test parameters}
+
+\subsection{Testing for edge cases}
+
+\subsection{Test case selection}
+
+\section{Unit testing tools}
+\subsection{Test coverage}
+Test coverage is a criterion to assess the representativeness of the unit tests of a project by counting the number of lines executed in the test.
+
+\subsection{Behaviour-driven development}
+\rem{Refer to cucumber}
+
+\section{Modular coupling}
+
+\subsection{Dependency mocking}
+\rem{https://enterprisecraftsmanship.com/2016/06/09/styles-of-unit-testing/ provides some insight on why mocking is bad}
+
+\end{document}
