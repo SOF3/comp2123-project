@@ -5,6 +5,8 @@ Unit testing}
 \input{commands}
 
 \begin{document}
+\rem{TODO: Change \bs{}iftrue in commands.tex \bs{}def\bs{}rem to \bs{}iffalse in final copy}
+
 \maketitle
 \begin{abstract}
 	This report goes through the motivation, frameworks used and difficulties of unit testing.
@@ -20,10 +22,13 @@ Unit testing}
 Unit testing is the practice of testing every small unit of a large project instead of only testing the output.
 
 \section{Motivation}
-\subsection{}
+\subsection{Discover bugs early}
 As the scale of a software project grows, debugging becomes more complicated.
 It may take a long time to discover edge case bugs in an old component, which is very difficult to debug after a long time.
 Unit testing allows identification of bugs as soon as possible with little impact.
+
+\subsection{As a method of specification}
+Unit testing can also be used as a means of project requirement specification.
 
 \section{Unit testing methods}
 \subsection{Testing for expected result}
@@ -41,10 +46,13 @@ public:
 The \texttt{ASSERT\_EQUAL} macro function would compare the result of \texttt{fooBar()} with \texttt{"qux"} and trigger an error if they are not equal.
 
 \subsection{Generating test parameters}
+\rem{Generate parameters randomly, possibly by reverse calculation}
 
-\subsection{Testing for edge cases}
+\subsubsection{Testing for edge cases}
+\rem{E.g. test for empty strings, Float.INFINITY, 0, etc.}
 
 \subsection{Test case selection}
+As the number of variables to a feature increases, the number of test cases might increase exponentially.
 
 \section{Unit testing techniques}
 \subsection{Test coverage}
