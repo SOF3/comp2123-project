@@ -34,3 +34,10 @@ Only \*section are included in the ToC
 
 ## To write a literal backslash
 `\bs`, or `\bs{}`
+
+## Span formatting
+`\texttt{}` = `<code>`
+
+`\textit{}` = `<i>`, used when you explicitly want it to be italic (e.g. special names)
+
+`\emph{}` = `<em>`, also italic, but used when you want to emphasize
