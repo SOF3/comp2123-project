@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.17)  17 DEC 2018 09:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.17)  20 DEC 2018 19:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -483,14 +483,15 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.35 \subsection
-                {Generating test parameters} [1]) (./techniques.tex
-Overfull \hbox (23.10562pt too wide) in paragraph at lines 17--17
+l.27 	\item T
+             hat an exception must be gracefully thrown [1]) (./techniques.tex
+[2]
+Overfull \hbox (23.10562pt too wide) in paragraph at lines 33--33
 []\T1/cmr/m/n/9 Remark: https://enterprisecraftsmanship.com/2016/06/09/styles-o
 f-unit-testing/
  []
 
-[2]) (./difficulties.tex)
+) (./difficulties.tex)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 40.
  [3]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 40.
@@ -502,9 +503,9 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 40.
  ) 
 Here is how much of TeX's memory you used:
- 8544 strings out of 494586
- 124277 string characters out of 6177801
- 271004 words of memory out of 5000000
+ 8548 strings out of 494586
+ 124317 string characters out of 6177801
+ 271448 words of memory out of 5000000
  12036 multiletter control sequences out of 15000+600000
  17713 words of font info for 39 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -521,10 +522,10 @@ k/ljfour/jknappen/ec/ecrm1000.600pk> </root/.texlive2018/texmf-var/fonts/pk/ljf
 our/jknappen/ec/ecrm0900.600pk></usr/share/texlive/texmf-dist/fonts/type1/adobe
 /sourcecodepro/SourceCodePro-Regular.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (6 pages, 124810 bytes).
+Output written on report.pdf (6 pages, 127213 bytes).
 PDF statistics:
- 426 PDF objects out of 1000 (max. 8388607)
- 165 compressed objects within 2 object streams
- 34 named destinations out of 1000 (max. 500000)
+ 438 PDF objects out of 1000 (max. 8388607)
+ 172 compressed objects within 2 object streams
+ 38 named destinations out of 1000 (max. 500000)
  129 words of extra memory for PDF output out of 10000 (max. 10000000)
 

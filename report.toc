@@ -10,6 +10,10 @@
 \contentsline {subsection}{\numberline {4.1}Test coverage}{2}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Test-driven development (TDD)}{2}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}Behaviour-driven development (BDD)}{2}{subsection.4.3}
+\contentsline {paragraph}{Scenario}{3}{section*.2}
+\contentsline {paragraph}{Given}{3}{section*.3}
+\contentsline {paragraph}{When}{3}{section*.4}
+\contentsline {paragraph}{Then}{3}{section*.5}
 \contentsline {subsection}{\numberline {4.4}Dependency mocking}{3}{subsection.4.4}
 \contentsline {section}{\numberline {5}Difficulties}{3}{section.5}
 \contentsline {subsection}{\numberline {5.1}Coupling}{3}{subsection.5.1}

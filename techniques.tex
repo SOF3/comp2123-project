@@ -7,11 +7,28 @@ Test coverage is a criterion to assess the representativeness of the unit tests 
 \subsection{Test-driven development (TDD)}
 As a consequence of unit testing, development flow becomes more fluent if each development subtask is based on certain test cases.
 
+\rem{TODO: Add flowchart}
+
 \subsection{Behaviour-driven development (BDD)}
+While TDD provides a reliable method to test individual function executions,
+it cannot precisely and concisely define functions that depend on global/object states.
+BDD defines the behaviour of a function using some specific terms:
+
+\paragraph{Scenario}
+
+\paragraph{Given}
+
+\paragraph{When}
+
+\paragraph{Then}
+\rem{TODO: fill in the blanks}
+
+This framework also subclassifies a task into multiple components to identify the exact source of error.
 
 \rem{Refer to cucumber's framework}
 
-\rem{TDD and BDD are a bit different, but if we can't explain the difference, we can merge them together}
+\rem{To read: https://enterprisecraftsmanship.com/2016/06/09/styles-of-unit-testing/}
 
 \subsection{Dependency mocking}
 \rem{https://enterprisecraftsmanship.com/2016/06/09/styles-of-unit-testing/ provides some insight on why mocking is bad}
+\rem{Consider moving this to the part about coupling}
