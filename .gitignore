@@ -5,3 +5,6 @@
 *.out
 [._]*.sw[a-p]
 output
+/cpp/*
+!/cpp/*.*
+!/cpp/Makefile
