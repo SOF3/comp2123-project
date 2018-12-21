@@ -11,8 +11,6 @@ public:
 		digits(digits), exp(exp) {}
 
 	bool operator==(const SciNotation &that) const {
-		std::cout << (std::string("") + *this) << "==";
-		std::cout << (std::string("") + that) << std::endl;
 		return digits == that.digits && exp == that.exp;
 	}
 
