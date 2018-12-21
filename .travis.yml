@@ -7,7 +7,6 @@ env:
 script:
     - mkdir ../output
     - "docker run -v=$(pwd):/input -v=$(pwd)/../output:/output chankyin/texdock /pdf.sh report.tex"
-    - cd cpp && make test
 deploy:
     provider: pages
     skip-cleanup: true
