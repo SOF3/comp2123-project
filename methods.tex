@@ -14,11 +14,7 @@ public:
 The \texttt{ASSERT\_EQUAL} macro function would compare the result of \texttt{fooBar()} with \texttt{"qux"} and trigger an error if they are not equal.
 This macro function can be implemented very easily:
 
-\begin{lstlisting}[style=Cpp]
-#define ASSERT_EQUAL(actual, expect) if(actual != expect) \
-	throw sprintf("Test for %s failed: expected, %s, got %s", \
-	#actual, expect, actual);
-\end{lstlisting}
+\cpprng{assert.h}{2}{4}
 
 Some other common assertions include:
 \begin{itemize}
@@ -32,10 +28,42 @@ bugs can be identified before it spreads to other components.
 This is particularly helpful when certain bugfixes might result in prototype changes,
 resulting in incompatibility with other components during bugfixes.
 
+\subsection{Increasing the test size}
+If a function accepts parameters, multiple calls with different values should be passed to the function.
+
+Suppose we want to test a function that converts a number to scientific notation rounded to \textit{n} significant figures:
+
+\begin{lstlisting}
+#include <cmath>
+
+struct SciNotation {
+	int digits;
+	int exp;
+};
+
+SciNotation sn3(double number) {
+	int exp = (int) floor(log10(number)) - 2;
+	int digits = (int) round(number * pow(10.0, -exp));
+	return SciNotation{digits, exp}
+}
+\end{lstlisting}
+
+
+
 \subsection{Generating test parameters}
 If a function accepts a parameter, it is not possible to execute a test on every possible parameter value.
 Instead, the parameters can be generated randomly in every test.
-By supplying a test sample large enough, most bugs can be discovered quickly.
+By supplying a test sample large enough, most bugs can be discovered by the unit test.
+
+Suppose we want to test a function that rounds a number to 3 significant figures:
+
+\begin{lstlisting}[style=Cpp]
+#include <cmath>
+
+double sf3(double input) {
+	int  (int) floor(log10(input));
+}
+\end{lstlisting}
 
 \rem{Generate parameters randomly, possibly by reverse calculation}
 
