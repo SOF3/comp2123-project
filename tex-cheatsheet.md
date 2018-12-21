@@ -6,6 +6,19 @@
 \end{lstlisting}
 ```
 
+## Include a C++ file
+### Whole file
+```tex
+\cpp{fileNameInsideCppFolder.cpp}
+```
+
+### Range of lines in file
+```tex
+\cpprng{fileNameInsideCppFolder.cpp}{2}{5}
+```
+
+This includes 4 lines from line 2 to line 5.
+
 ## Unordered list
 ```tex
 \begin{itemize}

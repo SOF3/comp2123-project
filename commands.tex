@@ -35,9 +35,16 @@
 	language=C++
 }
 
-\def\bs {\textbackslash}
+\def \bs {\textbackslash}
 
-\def\rem #1 {\iftrue{
+\def \cpp #1 {
+	\lstinputlisting[style=Cpp]{cpp/#1}
+}
+\def \cpprng #1#2#3 {
+	\lstinputlisting[style=Cpp, firstline=#2, lastline=#3]{cpp/#1}
+}
+
+\def \rem #1 {\iftrue{
 	\textcolor{remColor}{
 		\begin{addmargin}{2em}
 			\small{Remark: #1}

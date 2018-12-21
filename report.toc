@@ -4,17 +4,18 @@
 \contentsline {subsection}{\numberline {2.2}As a method of specification}{1}{subsection.2.2}
 \contentsline {section}{\numberline {3}Unit testing methods}{1}{section.3}
 \contentsline {subsection}{\numberline {3.1}Testing for expected result}{1}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Generating test parameters}{2}{subsection.3.2}
-\contentsline {subsubsection}{\numberline {3.2.1}Testing for edge cases}{2}{subsubsection.3.2.1}
-\contentsline {section}{\numberline {4}Unit testing techniques}{2}{section.4}
-\contentsline {subsection}{\numberline {4.1}Test coverage}{2}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Test-driven development (TDD)}{2}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Behaviour-driven development (BDD)}{2}{subsection.4.3}
+\contentsline {subsection}{\numberline {3.2}Increasing the test size}{2}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Generating test parameters}{3}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Testing for edge cases}{3}{subsubsection.3.3.1}
+\contentsline {section}{\numberline {4}Unit testing techniques}{3}{section.4}
+\contentsline {subsection}{\numberline {4.1}Test coverage}{3}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Test-driven development (TDD)}{3}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Behaviour-driven development (BDD)}{3}{subsection.4.3}
 \contentsline {paragraph}{Scenario}{3}{section*.2}
 \contentsline {paragraph}{Given}{3}{section*.3}
 \contentsline {paragraph}{When}{3}{section*.4}
-\contentsline {paragraph}{Then}{3}{section*.5}
-\contentsline {subsection}{\numberline {4.4}Dependency mocking}{3}{subsection.4.4}
-\contentsline {section}{\numberline {5}Difficulties}{3}{section.5}
-\contentsline {subsection}{\numberline {5.1}Coupling}{3}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Test case selection}{3}{subsection.5.2}
+\contentsline {paragraph}{Then}{4}{section*.5}
+\contentsline {subsection}{\numberline {4.4}Dependency mocking}{4}{subsection.4.4}
+\contentsline {section}{\numberline {5}Difficulties}{4}{section.5}
+\contentsline {subsection}{\numberline {5.1}Coupling}{4}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Test case selection}{4}{subsection.5.2}
