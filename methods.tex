@@ -2,18 +2,28 @@
 \subsection{Testing for expected result}
 The intuitive way is to write a test that tests the output of each function.
 
+If we have a \texttt{fooBar.cpp} with the following definition:
+
+\cpp{fooBar.cpp}
+
+To ensure \texttt{fooBar()} always return \texttt{"qux"}, we can write a test to test this behaviour:
+
 \cpp{fooBar.test.cpp}
 
 The \texttt{ASSERT\_EQUAL} macro function would compare the result of \texttt{fooBar()} with \texttt{"qux"} and trigger an error if they are not equal.
 This macro function can be implemented very easily:
 
-\cpprng{assert.h}{2}{4}
+\cpp{assert.h}
+
+In this implementation, if the values are not equal, an exception string is thrown.
+
+Different unit testing frameworks may have different error behaviour, and some are able to integrate with IDEs for advanced analysis.
 
 Some other common assertions include:
 \begin{itemize}
 	\item Null checks
-	\item Arithmetic comparisons > >= < <=
-	\item That an exception must be gracefully thrown
+	\item Arithmetic comparisons $<$ $\leq$ $>$ $\geq$
+	\item That an expected exception must be thrown
 \end{itemize}
 
 By running a series of similar tests every time before moving to another project subcomponent,
@@ -24,7 +34,7 @@ resulting in incompatibility with other components during bugfixes.
 \subsection{Increasing the test size}
 If a function accepts parameters, multiple calls with different values should be passed to the function.
 
-Suppose we want to test a function that converts a number to scientific notation rounded to $$3$$ significant figures:
+Suppose we want to test a function that converts a number to scientific notation rounded to 3 significant figures:
 
 \cpp{sciNot.cpp}
 

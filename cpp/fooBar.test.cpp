@@ -2,5 +2,5 @@
 #include "assert.h"
 
 void testFooBar() {
-	ASSERT_EQUAL(fooBar(), "quxx");
+	ASSERT_EQUAL(fooBar(), "qux");
 }
