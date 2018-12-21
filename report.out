@@ -6,7 +6,7 @@
 \BOOKMARK [2][-]{subsection.3.1}{Testing for expected result}{section.3}% 6
 \BOOKMARK [2][-]{subsection.3.2}{Increasing the test size}{section.3}% 7
 \BOOKMARK [2][-]{subsection.3.3}{Generating test parameters}{section.3}% 8
-\BOOKMARK [3][-]{subsubsection.3.3.1}{Testing for edge cases}{subsection.3.3}% 9
+\BOOKMARK [2][-]{subsection.3.4}{Testing for edge cases}{section.3}% 9
 \BOOKMARK [1][-]{section.4}{Unit testing techniques}{}% 10
 \BOOKMARK [2][-]{subsection.4.1}{Test coverage}{section.4}% 11
 \BOOKMARK [2][-]{subsection.4.2}{Test-driven development \(TDD\)}{section.4}% 12

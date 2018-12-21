@@ -38,6 +38,12 @@ Suppose we want to test a function that converts a number to scientific notation
 
 \cpp{sciNot1.cpp}
 
+Testing the simple case of rounding $1235$ to $123e1$ is successful:
+
+\cpp{sciNot1.test.cpp}
+
+\cpp{sciNot1.stdout.log}
+
 \subsection{Generating test parameters}
 If a function accepts a parameter, it is not possible to execute a test on every possible parameter value.
 Instead, the parameters can be generated randomly in every test.
@@ -47,5 +53,5 @@ Suppose we want to test a function that rounds a number to 3 significant figures
 
 \rem{Generate parameters randomly, possibly by reverse calculation}
 
-\subsubsection{Testing for edge cases}
+\subsection{Testing for edge cases}
 \rem{E.g. test for empty strings, Float.INFINITY, 0, etc.}
