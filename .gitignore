@@ -7,4 +7,5 @@
 output
 /cpp/*
 !/cpp/*.*
+/cpp/*.log
 !/cpp/Makefile

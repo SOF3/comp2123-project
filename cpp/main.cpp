@@ -1,16 +1,17 @@
 #include <iostream>
 
-#define NAME2(x) #x
-#define NAME(x) NAME2(x)
+#define __MACRO_STR(x) #x
+#define MACRO_STR(x) __MACRO_STR(x)
 
 extern void TEST_FN();
 
 int main() {
+	std::cout << "Executing test " << MACRO_STR(TEST_FN) << std::endl;
 	try {
 		TEST_FN();
 		return 0;
 	} catch(std::string err) {
-		std::cerr << "Failed test for " << NAME(TEST_FN) << ": " << err << std::endl;
+		std::cerr << "Failed test for " << MACRO_STR(TEST_FN) << ": " << err << std::endl;
 		return 1;
 	}
 }

@@ -1,6 +1,10 @@
 services: docker
 language: cpp
 compiler: gcc
+addons:
+    apt:
+        update: true
+        packages: libstdc++6
 env:
     global:
         - secure: "MCm46M94tfdX3olezpVTtJCLnXdzya8XKhFqP+UUtonLW6QHkZszp6WBPQWO5n8p1qeTSwbIPp4lFQFlrnSg+9+IouOEwiISoyfk548szW9yvoZY2Zy9UP+nnYlGVI558SHTdWCf4Ts/S4ww7wE0Wu//APzj2/YBUeYP0aprR3rjG3nFNq5S7sK7ov/+IDTu1zX7RI0ZZ83V/Zrktfco12lRIF5R9Z9J/K6SCZlMk7qioNZV5iI58WyKKlxnFvmJUd3hwTJxYX3gMLUwaEGWEsTRB8LtqfTNqhSoOijD/rX5HcvBB6zrZsepyrA3nlWBSqhvh+fb5UoI8viL4HKHkHJ+Czj4GQ9lMPGwhyqndVW+4OVCn9ZWB0NfIEemvIrDByuJSl75Cf6Kd+Qk4anhiX++zfYkKeQ/4saaD0urQpxIvu3sHYGTJemAXb5R60bgsFcM8gTkQhpgU2IHKdnbwV1XOoutE85hgBt+9SwMc/d8ICJtvacbOYq2mc1f2ed6KtcmDVQyx0Q8eVCG/Ahqo3VP/zr5zZgvlclL157VsbbQJeH/w9QEyxjgUbjIkNROVISQZtA7wsJMwIiB6d3s42oztQShr7ondhbeIAxVJSCpymxFtTu8OtNTBv5cpqX9NypSbTH67X+YTomggR9z0zj56axHNgkqHTzOp8z7KHc="
