@@ -1,4 +1,13 @@
 # LaTeX cheatsheet
+My style convention: line break on every fullstop or long line.
+One line break is interpreted as one space;
+two line breaks is is interpreted as one paragraph;
+
+## Include another file
+```tex
+\input{fileNameWithoutExtension}
+```
+
 ## Add a C++ code block
 ```tex
 \begin{lstlisting}[style=Cpp]
