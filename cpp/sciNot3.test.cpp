@@ -1,4 +1,4 @@
-#include "sciNot2.cpp"
+#include "sciNot3.cpp"
 #include "assert.h"
 
 void testSciNot() {

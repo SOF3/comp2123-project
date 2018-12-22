@@ -48,6 +48,12 @@ However, adding more test parameters, such as negative inputs, would turn out th
 \cpp{sciNot2.test.cpp}
 \cpp{sciNot2.log}
 
+From this, we can identify that a negative input results in a negative value, apparently because of the \texttt{log10} function call.
+So a simple workaround of fixing the input to a positive number can be made:
+
+\cpp{sciNot3.cpp}
+\cpp{sciNot3.log}
+
 \subsection{Generating test parameters}
 Suppose we want to test a function that rounds a number to 3 significant figures:
 
