@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.21)  21 DEC 2018 18:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.21)  22 DEC 2018 15:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -536,33 +536,34 @@ LaTeX Font Info:    Font shape `T1/SourceCodePro-TLF/m/n' will be
 uplicate ignored
 <to be read again> 
                    \relax 
-l.22 S
-      ome other common assertions include: [1]
+l.21 
+      [1]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 24.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 24.
- (./cpp/sciNot1.cpp)
-(./cpp/sciNot1.test.cpp) (./cpp/sciNot1.stdout.log)) (./techniques.tex [2])
-(./difficulties.tex)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 41.
- [3] [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 41.
+
+(./cpp/sciNot1.cpp) (./cpp/sciNot1.test.cpp) (./cpp/sciNot1.log)
+(./cpp/sciNot2.test.cpp) (./cpp/sciNot2.log) (./cpp/sciNot3.cpp) [2]
+(./cpp/sciNot3.log)) (./techniques.tex [3]) (./difficulties.tex) (./ci.tex)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 43.
+
+[4]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 43.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 41.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 41.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 43.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 43.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: E6FAE861EFAF786941541DCEBE21B268;1128.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 41.
+(rerunfilecheck)             Checksum: C81E8121E72D1CB8616AFF830A168895;1186.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 43.
  ) 
 Here is how much of TeX's memory you used:
- 9111 strings out of 494586
- 132439 string characters out of 6177801
- 319819 words of memory out of 5000000
- 12533 multiletter control sequences out of 15000+600000
+ 9172 strings out of 494586
+ 133236 string characters out of 6177801
+ 350819 words of memory out of 5000000
+ 12552 multiletter control sequences out of 15000+600000
  17713 words of font info for 39 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  61i,6n,124p,248b,1349s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -579,11 +580,12 @@ our/jknappen/ec/ecrm0900.600pk></usr/share/texlive/texmf-dist/fonts/type1/adobe
 /sourcecodepro/SourceCodePro-Regular.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy10.pfb>
-Output written on report.pdf (7 pages, 149522 bytes).
+msfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb>
+Output written on report.pdf (7 pages, 161378 bytes).
 PDF statistics:
- 505 PDF objects out of 1000 (max. 8388607)
- 228 compressed objects within 3 object streams
- 73 named destinations out of 1000 (max. 500000)
- 137 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 552 PDF objects out of 1000 (max. 8388607)
+ 268 compressed objects within 3 object streams
+ 102 named destinations out of 1000 (max. 500000)
+ 145 words of extra memory for PDF output out of 10000 (max. 10000000)
 

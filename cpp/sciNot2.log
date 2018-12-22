@@ -1,0 +1,3 @@
+Executing test testSciNot
+Successful: sciNot(1235) = 124e1
+Failed test for testSciNot: Expected sciNot(-1234) to return -123e1, got 0e2147483646
