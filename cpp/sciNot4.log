@@ -1,0 +1,11 @@
+Executing test testSciNot
+Testing input = 4.785e+06
+Successful: sciNot(input) = 479e4
+Testing input = 4.786e-11
+Successful: sciNot(input) = 479e-13
+Testing input = 762200
+Successful: sciNot(input) = 762e3
+Testing input = 7.628e-06
+Successful: sciNot(input) = 763e-8
+Testing input = 8.71e+09
+Failed test for testSciNot: Expected sciNot(input) to return 87e8, got 871e7

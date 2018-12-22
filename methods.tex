@@ -54,10 +54,24 @@ So a simple workaround of fixing the input to a positive number can be made:
 \cpp{sciNot3.cpp}
 \cpp{sciNot3.log}
 
-\subsection{Generating test parameters}
-Suppose we want to test a function that rounds a number to 3 significant figures:
+\subsection{Generating test cases}
+Since a larger test size is more likely to catch bugs, it is a good idea to generate a large sample of test cases.
+This can be achieved through the \texttt{rand()} function:
 
-\rem{Generate parameters randomly, possibly by reverse calculation}
+\cpp{sample.h}
 
-\subsection{Testing for edge cases}
+Then tests can be generated using these functions.
+
+\subsubsection{Generating expected results: $f(x)$ vs $f^{-1}(y)$}
+
+\rem{Contradiction: write good tests vs write good code: is the function itself or the test more likely to have bugs?}
+
+\subsubsection{Filtering test cases}
+
+\cpp{sciNot4.test.cpp}
+\cpp{sciNot4.log}
+
+\rem{Need to filter test parameters because $087=87< 100$}
+
+\subsubsection{Testing for edge cases}
 \rem{E.g. test for empty strings, Float.INFINITY, 0, etc.}

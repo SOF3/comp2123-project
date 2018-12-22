@@ -5,18 +5,20 @@
 \contentsline {section}{\numberline {3}Unit testing methods}{1}{section.3}
 \contentsline {subsection}{\numberline {3.1}Testing for expected result}{1}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Increasing the test size}{2}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Generating test parameters}{3}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Testing for edge cases}{3}{subsection.3.4}
-\contentsline {section}{\numberline {4}Unit testing techniques}{3}{section.4}
-\contentsline {subsection}{\numberline {4.1}Test coverage}{3}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Test-driven development (TDD)}{3}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Behaviour-driven development (BDD)}{3}{subsection.4.3}
-\contentsline {paragraph}{Scenario}{3}{section*.2}
-\contentsline {paragraph}{Given}{3}{section*.3}
-\contentsline {paragraph}{When}{3}{section*.4}
-\contentsline {paragraph}{Then}{3}{section*.5}
+\contentsline {subsection}{\numberline {3.3}Generating test cases}{3}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Generating expected results: $f(x)$ vs $f^{-1}(y)$}{3}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Filtering test cases}{3}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.3}Testing for edge cases}{4}{subsubsection.3.3.3}
+\contentsline {section}{\numberline {4}Unit testing techniques}{4}{section.4}
+\contentsline {subsection}{\numberline {4.1}Test coverage}{4}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Test-driven development (TDD)}{4}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Behaviour-driven development (BDD)}{4}{subsection.4.3}
+\contentsline {paragraph}{Scenario}{4}{section*.2}
+\contentsline {paragraph}{Given}{4}{section*.3}
+\contentsline {paragraph}{When}{4}{section*.4}
+\contentsline {paragraph}{Then}{4}{section*.5}
 \contentsline {subsection}{\numberline {4.4}Dependency mocking}{4}{subsection.4.4}
-\contentsline {section}{\numberline {5}Difficulties}{4}{section.5}
-\contentsline {subsection}{\numberline {5.1}Coupling}{4}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Test case selection}{4}{subsection.5.2}
-\contentsline {section}{\numberline {6}Continuous integration}{4}{section.6}
+\contentsline {section}{\numberline {5}Difficulties}{5}{section.5}
+\contentsline {subsection}{\numberline {5.1}Coupling}{5}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Test case selection}{5}{subsection.5.2}
+\contentsline {section}{\numberline {6}Continuous integration}{5}{section.6}
