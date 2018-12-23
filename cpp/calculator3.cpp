@@ -1,7 +1,7 @@
 #include "Calculator.h"
 #include "BigInteger.h"
 
-int eval(int a, int b, char operation){
+int Calculator::eval(int a, int b, char operation){
 	BigInteger bigA(a), BigInteger bigB(b);
 	BigInteger result(0);
 
