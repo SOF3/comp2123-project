@@ -34,17 +34,20 @@
 	showspaces=false,
 	showstringspaces=false,
 	showtabs=false,
-	tabsize=4,
-	language=C++
+	tabsize=4
 }
 
 \def \bs {\textbackslash}
 
-\def \cpp #1 {
+\def \cod #1 {
 	\lstinputlisting[style=Cpp]{cpp/#1}
 }
+\def \cpp #1 {
+	\lstinputlisting[style=Cpp, language=C++]{cpp/#1}
+}
+
 \def \cpprng #1#2#3 {
-	\lstinputlisting[style=Cpp, firstline=#2, lastline=#3]{cpp/#1}
+	\lstinputlisting[style=Cpp, language=C++, firstline=#2, lastline=#3]{cpp/#1}
 }
 
 \def \rem #1 {\iftrue{
