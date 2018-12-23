@@ -1,5 +1,3 @@
-\usepackage{hyperref}
-
 \section{Unit testing techniques}
 \subsection{Test coverage}
 Test coverage is a criterion to assess the representativeness of the unit tests of a project by counting the number of lines executed in the test.
@@ -53,7 +51,7 @@ BDD defines the behaviour of a function using some specific terms or keywords. E
 
 The following is an example BDD of Cucumber:
 
-\texttt{
+\begin{lstlisting}
 \textbf{Feature}: Is it Friday yet?
   Everybody wants to know when it's Friday
 
@@ -61,7 +59,7 @@ The following is an example BDD of Cucumber:
     \textbf{Given} today is Sunday              # null
     \textbf{When} I ask whether it's Friday yet # null
     \textbf{Then} I should be told "Nope"       # null
-}
+\end{lstlisting}
 
 \paragraph{Feature}
 
