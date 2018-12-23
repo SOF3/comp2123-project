@@ -1,10 +1,21 @@
         -:    0:Source:fibo.test2.cpp
         -:    0:Programs:6
-        -:    1:#include "assert.h"
-        -:    2:#include "assert_int.h"
-        -:    3:#include "fibo2.h"
-        -:    4:
-        1:    5:void testFibo() {
-       1*:    6:	ASSERT_EQUAL(fibo(2), 1)
-       1*:    7:	ASSERT_EQUAL(fibo(3), 2)
-        1:    8:}
+        -:    1:#include <string>
+        -:    2:#include "assert.h"
+        -:    3:#include "assert_int.h"
+        -:    4:#include "fibo2.h"
+        -:    5:
+        1:    6:void testFibo() {
+        1:    7:	bool ok = false;
+        -:    8:	try {
+        1:    9:		fibo(-1);
+        2:   10:	} catch(std::string error) {
+        1:   11:		ok = true;
+        -:   12:	}
+        1:   13:	if(!ok) {
+    #####:   14:		std::cerr << "fibo(-1) does not throw an exception!" << std::endl;
+        -:   15:	}
+       1*:   16:	ASSERT_EQUAL(fibo(2), 1)
+       1*:   17:	ASSERT_EQUAL(fibo(3), 2)
+       1*:   18:	ASSERT_EQUAL(fibo(5), 5)
+        1:   19:}

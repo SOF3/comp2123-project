@@ -204,10 +204,14 @@
         -:  202:  template<typename _Iter>
         -:  203:    inline _GLIBCXX_CONSTEXPR
         -:  204:    typename iterator_traits<_Iter>::iterator_category
-    1072*:  205:    __iterator_category(const _Iter&)
-    1072*:  206:    { return typename iterator_traits<_Iter>::iterator_category(); }
+    1163*:  205:    __iterator_category(const _Iter&)
+    1163*:  206:    { return typename iterator_traits<_Iter>::iterator_category(); }
 ------------------
 _ZSt19__iterator_categoryIPKcENSt15iterator_traitsIT_E17iterator_categoryERKS3_:
+    #####:  205:    __iterator_category(const _Iter&)
+    #####:  206:    { return typename iterator_traits<_Iter>::iterator_category(); }
+------------------
+_ZSt19__iterator_categoryIPcENSt15iterator_traitsIT_E17iterator_categoryERKS2_:
     #####:  205:    __iterator_category(const _Iter&)
     #####:  206:    { return typename iterator_traits<_Iter>::iterator_category(); }
 ------------------
@@ -228,12 +232,12 @@ _ZSt19__iterator_categoryIPKcENSt15iterator_traitsIT_E17iterator_categoryERKS3_:
     #####:  206:    { return typename iterator_traits<_Iter>::iterator_category(); }
 ------------------
 _ZSt19__iterator_categoryIN9__gnu_cxx17__normal_iteratorIPN2rc10ShrinkableIdEESt6vectorIS4_SaIS4_EEEEENSt15iterator_traitsIT_E17iterator_categoryERKSB_:
-        4:  205:    __iterator_category(const _Iter&)
-        4:  206:    { return typename iterator_traits<_Iter>::iterator_category(); }
+       14:  205:    __iterator_category(const _Iter&)
+       14:  206:    { return typename iterator_traits<_Iter>::iterator_category(); }
 ------------------
 _ZSt19__iterator_categoryIPcENSt15iterator_traitsIT_E17iterator_categoryERKS2_:
-     1068:  205:    __iterator_category(const _Iter&)
-     1068:  206:    { return typename iterator_traits<_Iter>::iterator_category(); }
+     1149:  205:    __iterator_category(const _Iter&)
+     1149:  206:    { return typename iterator_traits<_Iter>::iterator_category(); }
 ------------------
 _ZSt19__iterator_categoryIPKcENSt15iterator_traitsIT_E17iterator_categoryERKS3_:
     #####:  205:    __iterator_category(const _Iter&)

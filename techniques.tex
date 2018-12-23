@@ -35,7 +35,19 @@ While this is obvious, coverage may be more useful when the file has multiple co
 \cpp{fibo.test1.cpp}
 \cpp{fibo1.cpp.gcov}
 
-Apparently, the error condition is never run. The init condition is run once, and the loop is only looped once.
+Apparently, the error condition is never run.
+The init condition is run once, and the loop is only looped once.
+
+This shows that some lines are not run yet. Let's add more test cases to cover everything!
+
+\cpp{fibo.test2.cpp}
+\cpp{fibo2.cpp.gcov}
+
+Now all lines are covered.
+
+While it is cool to have full code coverage, it is not always practical,
+especially when a test has to be written for a specific error condition that is very obvious.
+Always aiming for minimal code and full code coverage is called "extreme programming", which is usually not a feasible practice.
 
 \subsection{Test-driven development (TDD)}
 As a consequence of unit testing, development flow becomes more fluent if each development subtask is based on certain test cases. By using TDD, it ensures that every part of the program can be tested properly, as nearly all code is writen based on pre-written test cases. It also prevents writing duplicated code in large collaborative projects, and TDD can avoid waste of time for implmenting already done features/requirements. 

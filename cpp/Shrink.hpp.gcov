@@ -42,30 +42,30 @@
         -:   40:class RemoveChunksSeq {
         -:   41:public:
         -:   42:  template <typename ContainerArg>
-        2:   43:  explicit RemoveChunksSeq(ContainerArg &&elements)
+        3:   43:  explicit RemoveChunksSeq(ContainerArg &&elements)
         -:   44:      : m_elements(std::forward<Container>(elements))
         -:   45:      , m_start(0)
-        2:   46:      , m_size(m_elements.size()) {}
+        3:   46:      , m_size(m_elements.size()) {}
         -:   47:
-        4:   48:  Maybe<Container> operator()() {
-        4:   49:    if (m_size == 0) {
+        7:   48:  Maybe<Container> operator()() {
+        7:   49:    if (m_size == 0) {
         2:   50:      return Nothing;
         -:   51:    }
         -:   52:
-        4:   53:    Container elements;
-        2:   54:    elements.reserve(m_elements.size() - m_size);
-        2:   55:    const auto start = begin(m_elements);
-        2:   56:    const auto fin = end(m_elements);
-        2:   57:    elements.insert(end(elements), start, start + m_start);
-        2:   58:    elements.insert(end(elements), start + m_start + m_size, fin);
+       10:   53:    Container elements;
+        5:   54:    elements.reserve(m_elements.size() - m_size);
+        5:   55:    const auto start = begin(m_elements);
+        5:   56:    const auto fin = end(m_elements);
+        5:   57:    elements.insert(end(elements), start, start + m_start);
+        5:   58:    elements.insert(end(elements), start + m_start + m_size, fin);
         -:   59:
-        2:   60:    if ((m_size + m_start) >= m_elements.size()) {
-        2:   61:      m_size--;
-        2:   62:      m_start = 0;
+        5:   60:    if ((m_size + m_start) >= m_elements.size()) {
+        4:   61:      m_size--;
+        4:   62:      m_start = 0;
         -:   63:    } else {
-    #####:   64:      m_start++;
+        1:   64:      m_start++;
         -:   65:    }
-        2:   66:    return elements;
+        5:   66:    return elements;
         -:   67:  }
         -:   68:
         -:   69:private:
@@ -81,10 +81,10 @@
         -:   79:      typename Container::value_type)>::type::ValueType;
         -:   80:
         -:   81:  template <typename ContainerArg, typename ShrinkArg>
-        2:   82:  explicit EachElementSeq(ContainerArg &&elements, ShrinkArg &&shrink)
+        3:   82:  explicit EachElementSeq(ContainerArg &&elements, ShrinkArg &&shrink)
         -:   83:      : m_elements(std::forward<Container>(elements))
-        2:   84:      , m_shrink(std::forward<ShrinkArg>(shrink))
-        4:   85:      , m_i(0) {}
+        3:   84:      , m_shrink(std::forward<ShrinkArg>(shrink))
+        6:   85:      , m_i(0) {}
         -:   86:
         2:   87:  Maybe<Container> operator()() {
         4:   88:    auto value = next();
@@ -141,14 +141,14 @@
         -:  139:} // namespace detail
         -:  140:
         -:  141:template <typename Container>
-        2:  142:Seq<Container> removeChunks(Container elements) {
-        2:  143:  return makeSeq<detail::RemoveChunksSeq<Container>>(std::move(elements));
+        3:  142:Seq<Container> removeChunks(Container elements) {
+        3:  143:  return makeSeq<detail::RemoveChunksSeq<Container>>(std::move(elements));
         -:  144:}
         -:  145:
         -:  146:template <typename Container, typename Shrink>
-        2:  147:Seq<Container> eachElement(Container elements, Shrink shrink) {
-        2:  148:  return makeSeq<detail::EachElementSeq<Container, Shrink>>(std::move(elements),
-        4:  149:                                                            std::move(shrink));
+        3:  147:Seq<Container> eachElement(Container elements, Shrink shrink) {
+        3:  148:  return makeSeq<detail::EachElementSeq<Container, Shrink>>(std::move(elements),
+        6:  149:                                                            std::move(shrink));
         -:  150:}
         -:  151:
         -:  152:template <typename T>

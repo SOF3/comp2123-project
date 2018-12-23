@@ -12,15 +12,15 @@
 \contentsline {subsubsection}{\numberline {3.3.4}Testing for edge cases}{5}{subsubsection.3.3.4}
 \contentsline {section}{\numberline {4}Unit testing techniques}{5}{section.4}
 \contentsline {subsection}{\numberline {4.1}Code coverage}{5}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Test-driven development (TDD)}{6}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.2}Test-driven development (TDD)}{7}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}Behaviour-driven development (BDD)}{8}{subsection.4.3}
-\contentsline {paragraph}{Feature}{8}{section*.2}
-\contentsline {paragraph}{Scenario}{8}{section*.3}
-\contentsline {paragraph}{Given}{8}{section*.4}
-\contentsline {paragraph}{When}{8}{section*.5}
-\contentsline {paragraph}{Then}{8}{section*.6}
+\contentsline {paragraph}{Feature}{9}{section*.2}
+\contentsline {paragraph}{Scenario}{9}{section*.3}
+\contentsline {paragraph}{Given}{9}{section*.4}
+\contentsline {paragraph}{When}{9}{section*.5}
+\contentsline {paragraph}{Then}{9}{section*.6}
 \contentsline {subsection}{\numberline {4.4}Summary: TDD vs BDD}{9}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Dependency mocking}{9}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.5}Dependency mocking}{10}{subsection.4.5}
 \contentsline {section}{\numberline {5}Difficulties}{11}{section.5}
 \contentsline {subsection}{\numberline {5.1}Coupling}{11}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}Test case selection}{11}{subsection.5.2}

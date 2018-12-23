@@ -70,14 +70,14 @@ _ZNK2rc10shrinkable6detail16LambdaShrinkableIZNKS_3GenIdEclERKNS_6RandomEiEUlvE_
         -:   32:  using T = Decay<typename std::result_of<Value()>::type>;
         -:   33:
         -:   34:  template <typename ValueArg, typename ShrinkArg>
-      213:   35:  JustShrinkShrinkable(ValueArg &&value, ShrinkArg &&shrinks)
+      225:   35:  JustShrinkShrinkable(ValueArg &&value, ShrinkArg &&shrinks)
         -:   36:      : m_value(std::forward<ValueArg>(value))
-      213:   37:      , m_shrink(std::forward<ShrinkArg>(shrinks)) {}
+      225:   37:      , m_shrink(std::forward<ShrinkArg>(shrinks)) {}
 ------------------
 _ZN2rc10shrinkable6detail20JustShrinkShrinkableINS_2fn8ConstantISt6vectorINS_10ShrinkableIdEESaIS7_EEEEZNS0_11shrinkRecurIS9_ZNKS_3gen6detail15ContainerHelperIS5_IdSaIdEENSD_24GenericContainerStrategyISG_Lb0ELb0EEEE8generateIJdEEENS6_ISG_EERKNS_6RandomEiDpRKNS_3GenIT_EEEUlRKS9_E_EENS6_INSt5decayIT_E4typeEEEOSZ_RKT0_EUlOS9_E_EC2ISA_S18_EES13_OS14_:
-      107:   35:  JustShrinkShrinkable(ValueArg &&value, ShrinkArg &&shrinks)
+      113:   35:  JustShrinkShrinkable(ValueArg &&value, ShrinkArg &&shrinks)
         -:   36:      : m_value(std::forward<ValueArg>(value))
-      107:   37:      , m_shrink(std::forward<ShrinkArg>(shrinks)) {}
+      113:   37:      , m_shrink(std::forward<ShrinkArg>(shrinks)) {}
 ------------------
 _ZN2rc10shrinkable6detail20JustShrinkShrinkableIZNS_3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSC_EEEEENS_10ShrinkableISt4pairINS6_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS4_6RecipeEEEESK_SP_EUlvE_ZNS5_ISF_EESR_SK_SP_EUlOSH_INS6_12TaggedResultESP_EE0_EC2ISS_SW_EEOSK_OT0_:
       100:   35:  JustShrinkShrinkable(ValueArg &&value, ShrinkArg &&shrinks)
@@ -85,32 +85,32 @@ _ZN2rc10shrinkable6detail20JustShrinkShrinkableIZNS_3gen6detail20shrinkableWithR
       100:   37:      , m_shrink(std::forward<ShrinkArg>(shrinks)) {}
 ------------------
 _ZN2rc10shrinkable6detail20JustShrinkShrinkableIZNS_3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSC_EEEEENS_10ShrinkableISt4pairINS6_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS4_6RecipeEEEESK_SP_EUlvE_ZNS5_ISF_EESR_SK_SP_EUlOSH_INS6_12TaggedResultESP_EE0_EC2ISS_SW_EEOSK_OT0_:
-        6:   35:  JustShrinkShrinkable(ValueArg &&value, ShrinkArg &&shrinks)
+       12:   35:  JustShrinkShrinkable(ValueArg &&value, ShrinkArg &&shrinks)
         -:   36:      : m_value(std::forward<ValueArg>(value))
-        6:   37:      , m_shrink(std::forward<ShrinkArg>(shrinks)) {}
+       12:   37:      , m_shrink(std::forward<ShrinkArg>(shrinks)) {}
 ------------------
         -:   38:
-      217:   39:  T value() const { return m_value(); }
+      230:   39:  T value() const { return m_value(); }
 ------------------
 _ZNK2rc10shrinkable6detail20JustShrinkShrinkableIZNS_3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSC_EEEEENS_10ShrinkableISt4pairINS6_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS4_6RecipeEEEESK_SP_EUlvE_ZNS5_ISF_EESR_SK_SP_EUlOSH_INS6_12TaggedResultESP_EE0_E5valueEv:
-        7:   39:  T value() const { return m_value(); }
+       13:   39:  T value() const { return m_value(); }
 ------------------
 _ZNK2rc10shrinkable6detail20JustShrinkShrinkableIZNS_3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSC_EEEEENS_10ShrinkableISt4pairINS6_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS4_6RecipeEEEESK_SP_EUlvE_ZNS5_ISF_EESR_SK_SP_EUlOSH_INS6_12TaggedResultESP_EE0_E5valueEv:
       100:   39:  T value() const { return m_value(); }
 ------------------
 _ZNK2rc10shrinkable6detail20JustShrinkShrinkableINS_2fn8ConstantISt6vectorINS_10ShrinkableIdEESaIS7_EEEEZNS0_11shrinkRecurIS9_ZNKS_3gen6detail15ContainerHelperIS5_IdSaIdEENSD_24GenericContainerStrategyISG_Lb0ELb0EEEE8generateIJdEEENS6_ISG_EERKNS_6RandomEiDpRKNS_3GenIT_EEEUlRKS9_E_EENS6_INSt5decayIT_E4typeEEEOSZ_RKT0_EUlOS9_E_E5valueEv:
-      110:   39:  T value() const { return m_value(); }
+      117:   39:  T value() const { return m_value(); }
 ------------------
-       4*:   40:  Seq<Shrinkable<T>> shrinks() const { return m_shrink(m_value()); }
+       6*:   40:  Seq<Shrinkable<T>> shrinks() const { return m_shrink(m_value()); }
 ------------------
 _ZNK2rc10shrinkable6detail20JustShrinkShrinkableIZNS_3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSC_EEEEENS_10ShrinkableISt4pairINS6_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS4_6RecipeEEEESK_SP_EUlvE_ZNS5_ISF_EESR_SK_SP_EUlOSH_INS6_12TaggedResultESP_EE0_E7shrinksEv:
-        2:   40:  Seq<Shrinkable<T>> shrinks() const { return m_shrink(m_value()); }
+        3:   40:  Seq<Shrinkable<T>> shrinks() const { return m_shrink(m_value()); }
 ------------------
 _ZNK2rc10shrinkable6detail20JustShrinkShrinkableIZNS_3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSC_EEEEENS_10ShrinkableISt4pairINS6_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS4_6RecipeEEEESK_SP_EUlvE_ZNS5_ISF_EESR_SK_SP_EUlOSH_INS6_12TaggedResultESP_EE0_E7shrinksEv:
     #####:   40:  Seq<Shrinkable<T>> shrinks() const { return m_shrink(m_value()); }
 ------------------
 _ZNK2rc10shrinkable6detail20JustShrinkShrinkableINS_2fn8ConstantISt6vectorINS_10ShrinkableIdEESaIS7_EEEEZNS0_11shrinkRecurIS9_ZNKS_3gen6detail15ContainerHelperIS5_IdSaIdEENSD_24GenericContainerStrategyISG_Lb0ELb0EEEE8generateIJdEEENS6_ISG_EERKNS_6RandomEiDpRKNS_3GenIT_EEEUlRKS9_E_EENS6_INSt5decayIT_E4typeEEEOSZ_RKT0_EUlOS9_E_E7shrinksEv:
-        2:   40:  Seq<Shrinkable<T>> shrinks() const { return m_shrink(m_value()); }
+        3:   40:  Seq<Shrinkable<T>> shrinks() const { return m_shrink(m_value()); }
 ------------------
         -:   41:
         -:   42:private:
@@ -196,19 +196,19 @@ _ZN2rc10shrinkable6lambdaIZNKS_3GenIdEclERKNS_6RandomEiEUlvE_EENS_10ShrinkableIN
         -:   75:}
         -:   76:
         -:   77:template <typename Value, typename Shrink>
-      213:   78:Shrinkable<typename std::result_of<Value()>::type> shrink(Value &&value,
+      225:   78:Shrinkable<typename std::result_of<Value()>::type> shrink(Value &&value,
         -:   79:                                                          Shrink &&shrinkf) {
         -:   80:  using Impl = detail::JustShrinkShrinkable<Decay<Value>, Decay<Shrink>>;
         -:   81:  return makeShrinkable<Impl>(std::forward<Value>(value),
-      213:   82:                              std::forward<Shrink>(shrinkf));
+      225:   82:                              std::forward<Shrink>(shrinkf));
         -:   83:}
 ------------------
 _ZN2rc10shrinkable6shrinkINS_2fn8ConstantISt6vectorINS_10ShrinkableIdEESaIS6_EEEEZNS0_11shrinkRecurIS8_ZNKS_3gen6detail15ContainerHelperIS4_IdSaIdEENSC_24GenericContainerStrategyISF_Lb0ELb0EEEE8generateIJdEEENS5_ISF_EERKNS_6RandomEiDpRKNS_3GenIT_EEEUlRKS8_E_EENS5_INSt5decayIT_E4typeEEEOSY_RKT0_EUlOS8_E_EENS5_INSt9result_ofIFSY_vEE4typeEEES12_OS13_:
-      107:   78:Shrinkable<typename std::result_of<Value()>::type> shrink(Value &&value,
+      113:   78:Shrinkable<typename std::result_of<Value()>::type> shrink(Value &&value,
         -:   79:                                                          Shrink &&shrinkf) {
         -:   80:  using Impl = detail::JustShrinkShrinkable<Decay<Value>, Decay<Shrink>>;
         -:   81:  return makeShrinkable<Impl>(std::forward<Value>(value),
-      107:   82:                              std::forward<Shrink>(shrinkf));
+      113:   82:                              std::forward<Shrink>(shrinkf));
         -:   83:}
 ------------------
 _ZN2rc10shrinkable6shrinkIZNS_3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSB_EEEEENS_10ShrinkableISt4pairINS5_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS3_6RecipeEEEESJ_SO_EUlvE_ZNS4_ISE_EESQ_SJ_SO_EUlOSG_INS5_12TaggedResultESO_EE0_EENSF_INSt9result_ofIFSJ_vEE4typeEEEOSJ_OT0_:
@@ -220,16 +220,16 @@ _ZN2rc10shrinkable6shrinkIZNS_3gen6detail20shrinkableWithRecipeINS_6detail15Prop
         -:   83:}
 ------------------
 _ZN2rc10shrinkable6shrinkIZNS_3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSB_EEEEENS_10ShrinkableISt4pairINS5_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS3_6RecipeEEEESJ_SO_EUlvE_ZNS4_ISE_EESQ_SJ_SO_EUlOSG_INS5_12TaggedResultESO_EE0_EENSF_INSt9result_ofIFSJ_vEE4typeEEEOSJ_OT0_:
-        6:   78:Shrinkable<typename std::result_of<Value()>::type> shrink(Value &&value,
+       12:   78:Shrinkable<typename std::result_of<Value()>::type> shrink(Value &&value,
         -:   79:                                                          Shrink &&shrinkf) {
         -:   80:  using Impl = detail::JustShrinkShrinkable<Decay<Value>, Decay<Shrink>>;
         -:   81:  return makeShrinkable<Impl>(std::forward<Value>(value),
-        6:   82:                              std::forward<Shrink>(shrinkf));
+       12:   82:                              std::forward<Shrink>(shrinkf));
         -:   83:}
 ------------------
         -:   84:
         -:   85:template <typename T, typename Shrink>
-      107:   86:Shrinkable<Decay<T>> shrinkRecur(T &&value, const Shrink &shrinkf) {
+      113:   86:Shrinkable<Decay<T>> shrinkRecur(T &&value, const Shrink &shrinkf) {
         -:   87:  return shrinkable::shrink(fn::constant(std::forward<T>(value)),
         -:   88:                            [=](Decay<T> &&x) {
         -:   89:                              return seq::map(shrinkf(std::move(x)),
@@ -238,7 +238,7 @@ _ZN2rc10shrinkable6shrinkIZNS_3gen6detail20shrinkableWithRecipeINS_6detail15Prop
         -:   92:                                                    std::move(xshrink),
         -:   93:                                                    shrinkf);
         -:   94:                                              });
-      107:   95:                            });
+      113:   95:                            });
         -:   96:}
         -:   97:
         -:   98:} // namespace shrinkable
