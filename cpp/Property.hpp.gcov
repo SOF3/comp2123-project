@@ -46,9 +46,9 @@
         -:   44:template <>
         -:   45:struct CaseResultHelper<void> {
         -:   46:  template <typename Callable, typename... Args>
-      114:   47:  static CaseResult resultOf(const Callable &callable, Args &&... args) {
-      114:   48:    callable(std::forward<Args>(args)...);
-      107:   49:    return CaseResult(CaseResult::Type::Success, "no exceptions thrown");
+      113:   47:  static CaseResult resultOf(const Callable &callable, Args &&... args) {
+      113:   48:    callable(std::forward<Args>(args)...);
+      106:   49:    return CaseResult(CaseResult::Type::Success, "no exceptions thrown");
         -:   50:  }
 ------------------
 _ZN2rc6detail16CaseResultHelperIvE8resultOfIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_JS8_EEENS0_10CaseResultERKT_DpOT0_:
@@ -58,9 +58,9 @@ _ZN2rc6detail16CaseResultHelperIvE8resultOfIZ10testSciNotvEUlRKSt6vectorIdSaIdEE
         -:   50:  }
 ------------------
 _ZN2rc6detail16CaseResultHelperIvE8resultOfIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_JS8_EEENS0_10CaseResultERKT_DpOT0_:
-       14:   47:  static CaseResult resultOf(const Callable &callable, Args &&... args) {
-       14:   48:    callable(std::forward<Args>(args)...);
-        7:   49:    return CaseResult(CaseResult::Type::Success, "no exceptions thrown");
+       13:   47:  static CaseResult resultOf(const Callable &callable, Args &&... args) {
+       13:   48:    callable(std::forward<Args>(args)...);
+        6:   49:    return CaseResult(CaseResult::Type::Success, "no exceptions thrown");
         -:   50:  }
 ------------------
         -:   51:};
@@ -86,13 +86,13 @@ _ZN2rc6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvS6_EEC2IS
         1:   63:      : m_callable(std::forward<Arg>(callable)) {}
 ------------------
         -:   64:
-      114:   65:  TaggedResult operator()(Args &&... args) const {
-      228:   66:    AdapterContext context;
-      228:   67:    ImplicitParam<param::CurrentPropertyContext> letContext(&context);
+      113:   65:  TaggedResult operator()(Args &&... args) const {
+      226:   66:    AdapterContext context;
+      226:   67:    ImplicitParam<param::CurrentPropertyContext> letContext(&context);
         -:   68:
         -:   69:    try {
-      107:   70:      context.reportResult(CaseResultHelper<ReturnType>::resultOf(
-      114:   71:          m_callable, static_cast<Args &&>(args)...));
+      106:   70:      context.reportResult(CaseResultHelper<ReturnType>::resultOf(
+      113:   71:          m_callable, static_cast<Args &&>(args)...));
        14:   72:    } catch (const CaseResult &result) {
         7:   73:      context.reportResult(result);
     =====:   74:    } catch (const GenerationFailure &e) {
@@ -110,7 +110,7 @@ _ZN2rc6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvS6_EEC2IS
         -:   86:          CaseResult(CaseResult::Type::Failure, "Unknown object thrown"));
         -:   87:    }
         -:   88:
-      228:   89:    return context.result();
+      226:   89:    return context.result();
         -:   90:  }
 ------------------
 _ZNK2rc6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvS6_EEclES6_:
@@ -142,13 +142,13 @@ _ZNK2rc6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvS6_EEcl
         -:   90:  }
 ------------------
 _ZNK2rc6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvS6_EEclES6_:
-       14:   65:  TaggedResult operator()(Args &&... args) const {
-       28:   66:    AdapterContext context;
-       28:   67:    ImplicitParam<param::CurrentPropertyContext> letContext(&context);
+       13:   65:  TaggedResult operator()(Args &&... args) const {
+       26:   66:    AdapterContext context;
+       26:   67:    ImplicitParam<param::CurrentPropertyContext> letContext(&context);
         -:   68:
         -:   69:    try {
-        7:   70:      context.reportResult(CaseResultHelper<ReturnType>::resultOf(
-       14:   71:          m_callable, static_cast<Args &&>(args)...));
+        6:   70:      context.reportResult(CaseResultHelper<ReturnType>::resultOf(
+       13:   71:          m_callable, static_cast<Args &&>(args)...));
        14:   72:    } catch (const CaseResult &result) {
         7:   73:      context.reportResult(result);
     =====:   74:    } catch (const GenerationFailure &e) {
@@ -166,7 +166,7 @@ _ZNK2rc6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvS6_EEclE
         -:   86:          CaseResult(CaseResult::Type::Failure, "Unknown object thrown"));
         -:   87:    }
         -:   88:
-       28:   89:    return context.result();
+       26:   89:    return context.result();
         -:   90:  }
 ------------------
         -:   91:

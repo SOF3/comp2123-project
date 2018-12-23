@@ -97,13 +97,13 @@
         -:   95:  template<typename _RandomAccessIterator>
         -:   96:    inline _GLIBCXX14_CONSTEXPR
         -:   97:    typename iterator_traits<_RandomAccessIterator>::difference_type
-    1133*:   98:    __distance(_RandomAccessIterator __first, _RandomAccessIterator __last,
+    1124*:   98:    __distance(_RandomAccessIterator __first, _RandomAccessIterator __last,
         -:   99:               random_access_iterator_tag)
         -:  100:    {
         -:  101:      // concept requirements
         -:  102:      __glibcxx_function_requires(_RandomAccessIteratorConcept<
         -:  103:				  _RandomAccessIterator>)
-    1133*:  104:      return __last - __first;
+    1124*:  104:      return __last - __first;
         -:  105:    }
 ------------------
 _ZSt10__distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_St26random_access_iterator_tag:
@@ -157,13 +157,13 @@ _ZSt10__distanceIN9__gnu_cxx17__normal_iteratorIPN2rc10ShrinkableIdEESt6vectorIS
         -:  105:    }
 ------------------
 _ZSt10__distanceIPcENSt15iterator_traitsIT_E15difference_typeES2_S2_St26random_access_iterator_tag:
-     1131:   98:    __distance(_RandomAccessIterator __first, _RandomAccessIterator __last,
+     1122:   98:    __distance(_RandomAccessIterator __first, _RandomAccessIterator __last,
         -:   99:               random_access_iterator_tag)
         -:  100:    {
         -:  101:      // concept requirements
         -:  102:      __glibcxx_function_requires(_RandomAccessIteratorConcept<
         -:  103:				  _RandomAccessIterator>)
-     1131:  104:      return __last - __first;
+     1122:  104:      return __last - __first;
         -:  105:    }
 ------------------
 _ZSt10__distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_St26random_access_iterator_tag:
@@ -208,11 +208,11 @@ _ZSt10__distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_St26random_
         -:  135:  template<typename _InputIterator>
         -:  136:    inline _GLIBCXX17_CONSTEXPR
         -:  137:    typename iterator_traits<_InputIterator>::difference_type
-    1133*:  138:    distance(_InputIterator __first, _InputIterator __last)
+    1124*:  138:    distance(_InputIterator __first, _InputIterator __last)
         -:  139:    {
         -:  140:      // concept requirements -- taken care of in __distance
-    1133*:  141:      return std::__distance(__first, __last,
-    2266*:  142:			     std::__iterator_category(__first));
+    1124*:  141:      return std::__distance(__first, __last,
+    2248*:  142:			     std::__iterator_category(__first));
         -:  143:    }
 ------------------
 _ZSt8distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_:
@@ -256,11 +256,11 @@ _ZSt8distanceIN9__gnu_cxx17__normal_iteratorIPN2rc10ShrinkableIdEESt6vectorIS4_S
         -:  143:    }
 ------------------
 _ZSt8distanceIPcENSt15iterator_traitsIT_E15difference_typeES2_S2_:
-     1131:  138:    distance(_InputIterator __first, _InputIterator __last)
+     1122:  138:    distance(_InputIterator __first, _InputIterator __last)
         -:  139:    {
         -:  140:      // concept requirements -- taken care of in __distance
-     1131:  141:      return std::__distance(__first, __last,
-     2262:  142:			     std::__iterator_category(__first));
+     1122:  141:      return std::__distance(__first, __last,
+     2244:  142:			     std::__iterator_category(__first));
         -:  143:    }
 ------------------
 _ZSt8distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_:

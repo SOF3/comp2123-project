@@ -205,34 +205,34 @@
         -:  203:  template<typename _CharT, typename _Traits, typename _Alloc>
         -:  204:    template<typename _InIterator>
         -:  205:      void
-    1131*:  206:      basic_string<_CharT, _Traits, _Alloc>::
+    1122*:  206:      basic_string<_CharT, _Traits, _Alloc>::
         -:  207:      _M_construct(_InIterator __beg, _InIterator __end,
         -:  208:		   std::forward_iterator_tag)
         -:  209:      {
         -:  210:	// NB: Not required, but considered best practice.
-    1131*:  211:	if (__gnu_cxx::__is_null_pointer(__beg) && __beg != __end)
+    1122*:  211:	if (__gnu_cxx::__is_null_pointer(__beg) && __beg != __end)
     #####:  212:	  std::__throw_logic_error(__N("basic_string::"
         -:  213:				       "_M_construct null not valid"));
         -:  214:
-    1131*:  215:	size_type __dnew = static_cast<size_type>(std::distance(__beg, __end));
+    1122*:  215:	size_type __dnew = static_cast<size_type>(std::distance(__beg, __end));
         -:  216:
-    1131*:  217:	if (__dnew > size_type(_S_local_capacity))
+    1122*:  217:	if (__dnew > size_type(_S_local_capacity))
         -:  218:	  {
-     250*:  219:	    _M_data(_M_create(__dnew, size_type(0)));
-     250*:  220:	    _M_capacity(__dnew);
+     248*:  219:	    _M_data(_M_create(__dnew, size_type(0)));
+     248*:  220:	    _M_capacity(__dnew);
         -:  221:	  }
         -:  222:
         -:  223:	// Check for out_of_range and length_error exceptions.
         -:  224:	__try
-    1131*:  225:	  { this->_S_copy_chars(_M_data(), __beg, __end); }
+    1122*:  225:	  { this->_S_copy_chars(_M_data(), __beg, __end); }
     =====:  226:	__catch(...)
         -:  227:	  {
     =====:  228:	    _M_dispose();
     =====:  229:	    __throw_exception_again;
         -:  230:	  }
         -:  231:
-    1131*:  232:	_M_set_length(__dnew);
-    1131*:  233:      }
+    1122*:  232:	_M_set_length(__dnew);
+    1122*:  233:      }
 ------------------
 _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tag:
     #####:  206:      basic_string<_CharT, _Traits, _Alloc>::
@@ -355,34 +355,34 @@ _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_S
     #####:  233:      }
 ------------------
 _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPcEEvT_S7_St20forward_iterator_tag:
-     1131:  206:      basic_string<_CharT, _Traits, _Alloc>::
+     1122:  206:      basic_string<_CharT, _Traits, _Alloc>::
         -:  207:      _M_construct(_InIterator __beg, _InIterator __end,
         -:  208:		   std::forward_iterator_tag)
         -:  209:      {
         -:  210:	// NB: Not required, but considered best practice.
-    1131*:  211:	if (__gnu_cxx::__is_null_pointer(__beg) && __beg != __end)
+    1122*:  211:	if (__gnu_cxx::__is_null_pointer(__beg) && __beg != __end)
     #####:  212:	  std::__throw_logic_error(__N("basic_string::"
         -:  213:				       "_M_construct null not valid"));
         -:  214:
-     1131:  215:	size_type __dnew = static_cast<size_type>(std::distance(__beg, __end));
+     1122:  215:	size_type __dnew = static_cast<size_type>(std::distance(__beg, __end));
         -:  216:
-     1131:  217:	if (__dnew > size_type(_S_local_capacity))
+     1122:  217:	if (__dnew > size_type(_S_local_capacity))
         -:  218:	  {
-      250:  219:	    _M_data(_M_create(__dnew, size_type(0)));
-      250:  220:	    _M_capacity(__dnew);
+      248:  219:	    _M_data(_M_create(__dnew, size_type(0)));
+      248:  220:	    _M_capacity(__dnew);
         -:  221:	  }
         -:  222:
         -:  223:	// Check for out_of_range and length_error exceptions.
         -:  224:	__try
-     1131:  225:	  { this->_S_copy_chars(_M_data(), __beg, __end); }
+     1122:  225:	  { this->_S_copy_chars(_M_data(), __beg, __end); }
     =====:  226:	__catch(...)
         -:  227:	  {
     =====:  228:	    _M_dispose();
     =====:  229:	    __throw_exception_again;
         -:  230:	  }
         -:  231:
-     1131:  232:	_M_set_length(__dnew);
-     1131:  233:      }
+     1122:  232:	_M_set_length(__dnew);
+     1122:  233:      }
 ------------------
 _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_St20forward_iterator_tag:
     #####:  206:      basic_string<_CharT, _Traits, _Alloc>::

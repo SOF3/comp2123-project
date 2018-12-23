@@ -47,19 +47,19 @@
         -:   45:    return expr::Name<This, RHS>(*static_cast<const This *>(this), rhs);       \
         -:   46:  }
         -:   47:
-     5136:   48:  RC_FOREACH_OP(RC_OP_OVERLOAD)
+     5240:   48:  RC_FOREACH_OP(RC_OP_OVERLOAD)
 ------------------
 _ZNK2rc6detail4expr4ExprINS1_4LTEqINS1_5ValueIdEEdEEEaaIbEENS1_7BoolANDIS6_T_EERKSA_:
-     2557:   48:  RC_FOREACH_OP(RC_OP_OVERLOAD)
+     2612:   48:  RC_FOREACH_OP(RC_OP_OVERLOAD)
 ------------------
 _ZNK2rc6detail4expr4ExprINS1_5ValueIdEEEleIdEENS1_4LTEqIS4_T_EERKS8_:
-     2557:   48:  RC_FOREACH_OP(RC_OP_OVERLOAD)
+     2612:   48:  RC_FOREACH_OP(RC_OP_OVERLOAD)
 ------------------
 _ZNK2rc6detail4expr4ExprINS1_4LTEqINS1_5ValueIiEEiEEEaaIbEENS1_7BoolANDIS6_T_EERKSA_:
-       11:   48:  RC_FOREACH_OP(RC_OP_OVERLOAD)
+        8:   48:  RC_FOREACH_OP(RC_OP_OVERLOAD)
 ------------------
 _ZNK2rc6detail4expr4ExprINS1_5ValueIiEEEleIiEENS1_4LTEqIS4_T_EERKS8_:
-       11:   48:  RC_FOREACH_OP(RC_OP_OVERLOAD)
+        8:   48:  RC_FOREACH_OP(RC_OP_OVERLOAD)
 ------------------
         -:   49:
         -:   50:#undef RC_OP_OVERLOAD
@@ -70,25 +70,25 @@ _ZNK2rc6detail4expr4ExprINS1_5ValueIiEEEleIiEENS1_4LTEqIS4_T_EERKS8_:
         -:   55:public:
         -:   56:  using ValueType = T;
         -:   57:
-     2568:   58:  explicit Value(const T &value)
-     2568:   59:      : m_value(value) {}
+     2620:   58:  explicit Value(const T &value)
+     2620:   59:      : m_value(value) {}
 ------------------
 _ZN2rc6detail4expr5ValueIdEC2ERKd:
-     2557:   58:  explicit Value(const T &value)
-     2557:   59:      : m_value(value) {}
+     2612:   58:  explicit Value(const T &value)
+     2612:   59:      : m_value(value) {}
 ------------------
 _ZN2rc6detail4expr5ValueIiEC2ERKi:
-       11:   58:  explicit Value(const T &value)
-       11:   59:      : m_value(value) {}
+        8:   58:  explicit Value(const T &value)
+        8:   59:      : m_value(value) {}
 ------------------
         -:   60:
-     2568:   61:  const ValueType &value() const { return m_value; }
+     2620:   61:  const ValueType &value() const { return m_value; }
 ------------------
 _ZNK2rc6detail4expr5ValueIdE5valueEv:
-     2557:   61:  const ValueType &value() const { return m_value; }
+     2612:   61:  const ValueType &value() const { return m_value; }
 ------------------
 _ZNK2rc6detail4expr5ValueIiE5valueEv:
-       11:   61:  const ValueType &value() const { return m_value; }
+        8:   61:  const ValueType &value() const { return m_value; }
 ------------------
        7*:   62:  void show(std::ostream &os) const { ::rc::show(m_value, os); }
 ------------------
@@ -126,51 +126,51 @@ _ZNK2rc6detail4expr5ValueIiE4showERSo:
         -:   88:    const RHS &m_rhs;                                                          \
         -:   89:  };
         -:   90:
-   10286*:   91:RC_FOREACH_OP(RC_OP_CLASS)
+   10494*:   91:RC_FOREACH_OP(RC_OP_CLASS)
 ------------------
 _ZNK2rc6detail4expr4LTEqINS1_5ValueIdEEdE4showERSo:
     #####:   91:RC_FOREACH_OP(RC_OP_CLASS)
 ------------------
 _ZNK2rc6detail4expr4LTEqINS1_5ValueIdEEdE5valueEv:
-     2557:   91:RC_FOREACH_OP(RC_OP_CLASS)
+     2612:   91:RC_FOREACH_OP(RC_OP_CLASS)
 ------------------
 _ZNK2rc6detail4expr4LTEqINS1_5ValueIiEEiE4showERSo:
         7:   91:RC_FOREACH_OP(RC_OP_CLASS)
 ------------------
 _ZNK2rc6detail4expr4LTEqINS1_5ValueIiEEiE5valueEv:
-       11:   91:RC_FOREACH_OP(RC_OP_CLASS)
+        8:   91:RC_FOREACH_OP(RC_OP_CLASS)
 ------------------
 _ZNK2rc6detail4expr7BoolANDINS1_4LTEqINS1_5ValueIdEEdEEbE4showERSo:
     #####:   91:RC_FOREACH_OP(RC_OP_CLASS)
 ------------------
 _ZNK2rc6detail4expr7BoolANDINS1_4LTEqINS1_5ValueIdEEdEEbE5valueEv:
-    2557*:   91:RC_FOREACH_OP(RC_OP_CLASS)
+    2612*:   91:RC_FOREACH_OP(RC_OP_CLASS)
 ------------------
 _ZN2rc6detail4expr7BoolANDINS1_4LTEqINS1_5ValueIdEEdEEbEC2ERKS6_RKb:
-     2557:   91:RC_FOREACH_OP(RC_OP_CLASS)
+     2612:   91:RC_FOREACH_OP(RC_OP_CLASS)
 ------------------
 _ZN2rc6detail4expr4LTEqINS1_5ValueIdEEdEC2ERKS4_RKd:
-     2557:   91:RC_FOREACH_OP(RC_OP_CLASS)
+     2612:   91:RC_FOREACH_OP(RC_OP_CLASS)
 ------------------
 _ZNK2rc6detail4expr7BoolANDINS1_4LTEqINS1_5ValueIiEEiEEbE4showERSo:
         7:   91:RC_FOREACH_OP(RC_OP_CLASS)
 ------------------
 _ZNK2rc6detail4expr7BoolANDINS1_4LTEqINS1_5ValueIiEEiEEbE5valueEv:
-       11:   91:RC_FOREACH_OP(RC_OP_CLASS)
+        8:   91:RC_FOREACH_OP(RC_OP_CLASS)
 ------------------
 _ZN2rc6detail4expr7BoolANDINS1_4LTEqINS1_5ValueIiEEiEEbEC2ERKS6_RKb:
-       11:   91:RC_FOREACH_OP(RC_OP_CLASS)
+        8:   91:RC_FOREACH_OP(RC_OP_CLASS)
 ------------------
 _ZN2rc6detail4expr4LTEqINS1_5ValueIiEEiEC2ERKS4_RKi:
-       11:   91:RC_FOREACH_OP(RC_OP_CLASS)
+        8:   91:RC_FOREACH_OP(RC_OP_CLASS)
 ------------------
         -:   92:
         -:   93:#undef RC_OP_CLASS
         -:   94:
         -:   95:struct Seed {
         -:   96:  template <typename T>
-     2568:   97:  Value<T> operator->*(const T &value) const {
-     2568:   98:    return Value<T>(value);
+     2620:   97:  Value<T> operator->*(const T &value) const {
+     2620:   98:    return Value<T>(value);
         -:   99:  }
         -:  100:};
         -:  101:
