@@ -9,5 +9,8 @@ output
 !/cpp/libs
 !/cpp/*.*
 *.[ao]
+*.gcov
+*.gcno
+*.gcda
 /cpp/*.log
 !/cpp/Makefile
