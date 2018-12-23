@@ -1,0 +1,157 @@
+        -:    0:Source:libs/rapidcheck/include/rapidcheck/gen/Tuple.hpp
+        -:    0:Graph:sciNot5.gcno
+        -:    0:Data:sciNot5.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#pragma once
+        -:    2:
+        -:    3:#include "rapidcheck/shrinkable/Create.h"
+        -:    4:#include "rapidcheck/gen/Arbitrary.h"
+        -:    5:#include "rapidcheck/gen/Transform.h"
+        -:    6:#include "rapidcheck/Random.h"
+        -:    7:
+        -:    8:namespace rc {
+        -:    9:namespace gen {
+        -:   10:namespace detail {
+        -:   11:
+        -:   12:template <typename Indexes, typename... Ts>
+        -:   13:class TupleShrinkable;
+        -:   14:
+        -:   15:template <typename Indexes, typename... Ts>
+        -:   16:class TupleGen;
+        -:   17:
+        -:   18:template <std::size_t I, typename Indexes, typename... Ts>
+        -:   19:class TupleShrinkSeq;
+        -:   20:
+        -:   21:template <std::size_t I, typename... Ts, std::size_t... Indexes>
+        -:   22:class TupleShrinkSeq<I, rc::detail::IndexSequence<Indexes...>, Ts...> {
+        -:   23:public:
+        -:   24:  using Tuple = std::tuple<Ts...>;
+        -:   25:  using T = typename std::tuple_element<I, Tuple>::type;
+        -:   26:
+        -:   27:  template <typename... Args>
+        3:   28:  explicit TupleShrinkSeq(Args &&... args)
+        -:   29:      : m_original(std::forward<Args>(args)...)
+        3:   30:      , m_shrinks(std::get<I>(m_original).shrinks()) {}
+        -:   31:
+        7:   32:  Maybe<Shrinkable<Tuple>> operator()() {
+       14:   33:    auto value = m_shrinks.next();
+        7:   34:    if (!value) {
+        1:   35:      m_shrinks = Seq<Shrinkable<T>>();
+        1:   36:      return Nothing;
+        -:   37:    }
+        -:   38:
+       12:   39:    auto shrink = m_original;
+        6:   40:    std::get<I>(shrink) = std::move(*value);
+        -:   41:    using IndexSeq = rc::detail::MakeIndexSequence<sizeof...(Ts)>;
+        -:   42:    using ShrinkableImpl = TupleShrinkable<IndexSeq, Ts...>;
+       12:   43:    auto shrinkable =
+        6:   44:        makeShrinkable<ShrinkableImpl>(std::move(std::get<Indexes>(shrink))...);
+        6:   45:    return shrinkable;
+        -:   46:  }
+        -:   47:
+        -:   48:private:
+        -:   49:  std::tuple<Shrinkable<Ts>...> m_original;
+        -:   50:  Seq<Shrinkable<T>> m_shrinks;
+        -:   51:};
+        -:   52:
+        -:   53:template <typename... Ts, std::size_t... Indexes>
+        -:   54:class TupleShrinkable<rc::detail::IndexSequence<Indexes...>, Ts...> {
+        -:   55:public:
+        -:   56:  template <typename... Args>
+      114:   57:  explicit TupleShrinkable(Args &&... args)
+      114:   58:      : m_shrinkables(std::forward<Args>(args)...) {}
+        -:   59:
+      118:   60:  std::tuple<Ts...> value() const {
+      118:   61:    return std::make_tuple(std::get<Indexes>(m_shrinkables).value()...);
+        -:   62:  }
+        -:   63:
+        3:   64:  Seq<Shrinkable<std::tuple<Ts...>>> shrinks() const {
+        -:   65:    using IndexSeq = rc::detail::IndexSequence<Indexes...>;
+        -:   66:    return seq::concat(makeSeq<TupleShrinkSeq<Indexes, IndexSeq, Ts...>>(
+        3:   67:        std::get<Indexes>(m_shrinkables)...)...);
+        -:   68:  }
+        -:   69:
+        -:   70:private:
+        -:   71:  template <std::size_t N>
+        -:   72:  static Seq<std::tuple<Shrinkable<Ts>...>>
+        -:   73:  shrinkComponent(const std::tuple<Shrinkable<Ts>...> &tuple) {
+        -:   74:    using T = typename std::tuple_element<N, std::tuple<Ts...>>::type;
+        -:   75:    return seq::map(std::get<N>(tuple).shrinks(),
+        -:   76:                    [=](Shrinkable<T> &&cshrink) {
+        -:   77:                      auto shrink(tuple);
+        -:   78:                      std::get<N>(shrink) = cshrink;
+        -:   79:                      return shrink;
+        -:   80:                    });
+        -:   81:  }
+        -:   82:
+        -:   83:  std::tuple<Shrinkable<Ts>...> m_shrinkables;
+        -:   84:};
+        -:   85:
+        -:   86:template <typename... Ts, std::size_t... Indexes>
+        -:   87:class TupleGen<rc::detail::IndexSequence<Indexes...>, Ts...> {
+        -:   88:public:
+        -:   89:  template <typename... Args>
+        1:   90:  explicit TupleGen(Args &&... args)
+        1:   91:      : m_gens(std::forward<Args>(args)...) {}
+        -:   92:
+      108:   93:  Shrinkable<std::tuple<Ts...>> operator()(const Random &random,
+        -:   94:                                           int size) const {
+      108:   95:    auto r = random;
+      216:   96:    Random randoms[sizeof...(Ts)];
+      216:   97:    for (std::size_t i = 0; i < sizeof...(Ts); i++) {
+      108:   98:      randoms[i] = r.split();
+        -:   99:    }
+        -:  100:
+        -:  101:    using ShrinkableImpl =
+        -:  102:        TupleShrinkable<rc::detail::IndexSequence<Indexes...>, Ts...>;
+        -:  103:    return makeShrinkable<ShrinkableImpl>(
+      108:  104:        std::get<Indexes>(m_gens)(randoms[Indexes], size)...);
+        -:  105:  }
+        -:  106:
+        -:  107:private:
+        -:  108:  std::tuple<Gen<Ts>...> m_gens;
+        -:  109:};
+        -:  110:
+        -:  111:// Specialization for empty tuples.
+        -:  112:template <>
+        -:  113:class TupleGen<rc::detail::IndexSequence<>> {
+        -:  114:public:
+        -:  115:  Shrinkable<std::tuple<>> operator()(const Random &/*random*/, int /*size*/) const {
+        -:  116:    return shrinkable::just(std::tuple<>());
+        -:  117:  }
+        -:  118:};
+        -:  119:
+        -:  120:template <typename... Ts>
+        -:  121:struct DefaultArbitrary<std::tuple<Ts...>> {
+        1:  122:  static Gen<std::tuple<Decay<Ts>...>> arbitrary() {
+        1:  123:    return gen::tuple(gen::arbitrary<Decay<Ts>>()...);
+        -:  124:  }
+        -:  125:};
+        -:  126:
+        -:  127:template <typename T1, typename T2>
+        -:  128:struct DefaultArbitrary<std::pair<T1, T2>> {
+        -:  129:  static Gen<std::pair<Decay<T1>, Decay<T2>>> arbitrary() {
+        -:  130:    return gen::pair(gen::arbitrary<Decay<T1>>(), gen::arbitrary<Decay<T2>>());
+        -:  131:  }
+        -:  132:};
+        -:  133:
+        -:  134:} // namespace detail
+        -:  135:
+        -:  136:template <typename... Ts>
+        1:  137:Gen<std::tuple<Ts...>> tuple(Gen<Ts>... gens) {
+        -:  138:  return detail::TupleGen<rc::detail::MakeIndexSequence<sizeof...(Ts)>, Ts...>(
+        1:  139:      std::move(gens)...);
+        -:  140:}
+        -:  141:
+        -:  142:template <typename T1, typename T2>
+        -:  143:Gen<std::pair<T1, T2>> pair(Gen<T1> gen1, Gen<T2> gen2) {
+        -:  144:  return gen::map(gen::tuple(std::move(gen1), std::move(gen2)),
+        -:  145:                  [](std::tuple<T1, T2> &&t) {
+        -:  146:                    return std::make_pair(std::move(std::get<0>(t)),
+        -:  147:                                          std::move(std::get<1>(t)));
+        -:  148:                  });
+        -:  149:}
+        -:  150:
+        -:  151:} // namespace gen
+        -:  152:} // namespace rc

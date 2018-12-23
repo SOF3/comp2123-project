@@ -39,29 +39,49 @@ To verify our implementation, we run the test we have written in test 1:
 
 And we can continue with the next test. 
 
-\rem Exercise 1: Write the test and the code for the second test.
+\textbf{Exercise 1: Write the test and the code for the second test.}
 
 \subsection{Behaviour-driven development (BDD)}
 
 While TDD provides a reliable method to test individual function executions, it cannot precisely and concisely define functions that depend on global/object states.
 
-The main difference between TDD and BDD is that the BDD provides a more "high-level" view of what the entire software should provide to the user.
+The main difference between TDD and BDD is that while TDD ensures that every sub-component of the software is correct, BDD provides a more "high-level" view of what the entire software should provide to the user. It is often regarded as a "bridge" between product designers and developers, as through BDD, product designers can effectively communicate their needs to devlopers who specialize in implementing those requirements. 
 
-It is often regarded as a "bridge" between product designers and developers, as through BDD, product designers can effectively communicate their needs to devlopers who specialize in implementing those requirements. 
+BDD defines the behaviour of a function using some specific terms or keywords. Each of these is written in the format of a "user story", and follow special "syntax" via the usage of certain keywords. The usage of these keywords are important, as a user story can be automatically phrased into "testable" code with a framework (such as Cucumber, on next section), given that it is formatted correctly with those "grammar". Here we present some of the keywords, along with the syntax general to most BDD frameworks:
 
-BDD defines the behaviour of a function using some specific terms. Each of these is written in the format of a "user story", and follow special "syntax" or keywords. The usage of these keywords are important, as a user story can be automatically phrased into "testable" code with a framework (such as Cucumber, on next section), given that it is formatted correctlywith these specific terms:
+The following is an example BDD of Cucumber:
 
-\paragraph{Scenario}
+\begin{lstlisting}
+Scenario Outline: eating
+  Given there are <start> cucumbers
+  When I eat <eat> cucumbers
+  Then I should have <left> cucumbers
+
+  Examples:
+    | start | eat | left |
+    |    12 |   5 |    7 |
+    |    20 |   5 |   15 |
+\end{lstlisting}
+
+\paragraph{Scenario Outline}
+
+Describes a situation where that the software should be able to handle properly, defines the behavior of the program for a certain situation. 
 
 \paragraph{Given}
 
+The initial state of the program when this scenario takes place
+
 \paragraph{When}
+
+Similar to natural English, "When" implies that the following statement should be done "when" this statement is completed
 
 \paragraph{Then}
 
-This framework also subclassifies a task into multiple components to identify the exact source of error.
+Describes the expected output of the program after the preceeding "when" statement is fulfilled. 
 
-\rem{TODO: Insert example code here}
+The code above are extracted from the official Cucumber Documentation, which you can access at \url{https://docs.cucumber.io/gherkin/reference/}
+
+This framework also subclassifies a task into multiple components to identify the exact source of error.
 
 \rem{Refer to cucumber's framework}
 
@@ -70,3 +90,5 @@ This framework also subclassifies a task into multiple components to identify th
 \subsection{Dependency mocking}
 \rem{https://enterprisecraftsmanship.com/2016/06/09/styles-of-unit-testing/ provides some insight on why mocking is bad}
 \rem{Consider moving this to the part about coupling}
+
+

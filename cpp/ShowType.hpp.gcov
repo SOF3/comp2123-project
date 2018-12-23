@@ -1,0 +1,344 @@
+        -:    0:Source:libs/rapidcheck/include/rapidcheck/detail/ShowType.hpp
+        -:    0:Graph:sciNot5.gcno
+        -:    0:Data:sciNot5.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#pragma once
+        -:    2:
+        -:    3:#include <vector>
+        -:    4:#include <deque>
+        -:    5:#include <forward_list>
+        -:    6:#include <list>
+        -:    7:#include <set>
+        -:    8:#include <map>
+        -:    9:#include <unordered_set>
+        -:   10:#include <unordered_map>
+        -:   11:#include <stack>
+        -:   12:#include <sstream>
+        -:   13:
+        -:   14:#include "rapidcheck/detail/Platform.h"
+        -:   15:#include "rapidcheck/detail/Traits.h"
+        -:   16:
+        -:   17:namespace rc {
+        -:   18:namespace detail {
+        -:   19:
+        -:   20:template <typename... Types>
+        -:   21:struct ShowMultipleTypes;
+        -:   22:
+        -:   23:template <>
+        -:   24:struct ShowMultipleTypes<> {
+        -:   25:  static void showType(std::ostream &/*os*/) {}
+        -:   26:};
+        -:   27:
+        -:   28:template <typename Type>
+        -:   29:struct ShowMultipleTypes<Type> {
+        1:   30:  static void showType(std::ostream &os) { detail::showType<Type>(os); }
+        -:   31:};
+        -:   32:
+        -:   33:template <typename Type, typename... Types>
+        -:   34:struct ShowMultipleTypes<Type, Types...> {
+        -:   35:  static void showType(std::ostream &os) {
+        -:   36:    detail::showType<Type>(os);
+        -:   37:    os << ", ";
+        -:   38:    ShowMultipleTypes<Types...>::showType(os);
+        -:   39:  }
+        -:   40:};
+        -:   41:
+        -:   42:} // namespace detail
+        -:   43:
+        -:   44:template <typename T>
+        -:   45:struct ShowType {
+        1:   46:  static void showType(std::ostream &os) {
+        1:   47:    os << detail::demangle(typeid(T).name());
+        1:   48:  }
+        -:   49:};
+        -:   50:
+        -:   51:template <typename T>
+        -:   52:struct ShowType<const T> {
+        -:   53:  static void showType(std::ostream &os) {
+        -:   54:    os << "const ";
+        -:   55:    detail::showType<T>(os);
+        -:   56:  }
+        -:   57:};
+        -:   58:
+        -:   59:template <typename T>
+        -:   60:struct ShowType<volatile T> {
+        -:   61:  static void showType(std::ostream &os) {
+        -:   62:    os << "volatile ";
+        -:   63:    detail::showType<T>(os);
+        -:   64:  }
+        -:   65:};
+        -:   66:
+        -:   67:template <typename T>
+        -:   68:struct ShowType<const volatile T> {
+        -:   69:  static void showType(std::ostream &os) {
+        -:   70:    os << "const volatile ";
+        -:   71:    detail::showType<T>(os);
+        -:   72:  }
+        -:   73:};
+        -:   74:
+        -:   75:template <typename T>
+        -:   76:struct ShowType<T &> {
+        -:   77:  static void showType(std::ostream &os) {
+        -:   78:    detail::showType<T>(os);
+        -:   79:    os << " &";
+        -:   80:  }
+        -:   81:};
+        -:   82:
+        -:   83:template <typename T>
+        -:   84:struct ShowType<T &&> {
+        -:   85:  static void showType(std::ostream &os) {
+        -:   86:    detail::showType<T>(os);
+        -:   87:    os << " &&";
+        -:   88:  }
+        -:   89:};
+        -:   90:
+        -:   91:template <typename T>
+        -:   92:struct ShowType<T *> {
+        -:   93:  static void showType(std::ostream &os) {
+        -:   94:    detail::showType<T>(os);
+        -:   95:    os << " *";
+        -:   96:  }
+        -:   97:};
+        -:   98:
+        -:   99:// To avoid whitespace between asterisks
+        -:  100:template <typename T>
+        -:  101:struct ShowType<T **> {
+        -:  102:  static void showType(std::ostream &os) {
+        -:  103:    detail::showType<T *>(os);
+        -:  104:    os << "*";
+        -:  105:  }
+        -:  106:};
+        -:  107:
+        -:  108:template <typename Traits, typename Allocator>
+        -:  109:struct ShowType<std::basic_string<char, Traits, Allocator>> {
+        -:  110:  static void showType(std::ostream &os) { os << "std::string"; }
+        -:  111:};
+        -:  112:
+        -:  113:template <typename Traits, typename Allocator>
+        -:  114:struct ShowType<std::basic_string<wchar_t, Traits, Allocator>> {
+        -:  115:  static void showType(std::ostream &os) { os << "std::wstring"; }
+        -:  116:};
+        -:  117:
+        -:  118:template <typename Traits, typename Allocator>
+        -:  119:struct ShowType<std::basic_string<char16_t, Traits, Allocator>> {
+        -:  120:  static void showType(std::ostream &os) { os << "std::u16string"; }
+        -:  121:};
+        -:  122:
+        -:  123:template <typename Traits, typename Allocator>
+        -:  124:struct ShowType<std::basic_string<char32_t, Traits, Allocator>> {
+        -:  125:  static void showType(std::ostream &os) { os << "std::u32string"; }
+        -:  126:};
+        -:  127:
+        -:  128:template <typename T, typename Allocator>
+        -:  129:struct ShowType<std::vector<T, Allocator>> {
+        1:  130:  static void showType(std::ostream &os) {
+        1:  131:    os << "std::vector<";
+        1:  132:    detail::showType<T>(os);
+        1:  133:    os << ">";
+        1:  134:  }
+        -:  135:};
+        -:  136:
+        -:  137:template <typename T, typename Allocator>
+        -:  138:struct ShowType<std::deque<T, Allocator>> {
+        -:  139:  static void showType(std::ostream &os) {
+        -:  140:    os << "std::deque<";
+        -:  141:    detail::showType<T>(os);
+        -:  142:    os << ">";
+        -:  143:  }
+        -:  144:};
+        -:  145:
+        -:  146:template <typename T, typename Allocator>
+        -:  147:struct ShowType<std::forward_list<T, Allocator>> {
+        -:  148:  static void showType(std::ostream &os) {
+        -:  149:    os << "std::forward_list<";
+        -:  150:    detail::showType<T>(os);
+        -:  151:    os << ">";
+        -:  152:  }
+        -:  153:};
+        -:  154:
+        -:  155:template <typename T, typename Allocator>
+        -:  156:struct ShowType<std::list<T, Allocator>> {
+        -:  157:  static void showType(std::ostream &os) {
+        -:  158:    os << "std::list<";
+        -:  159:    detail::showType<T>(os);
+        -:  160:    os << ">";
+        -:  161:  }
+        -:  162:};
+        -:  163:
+        -:  164:template <typename Key, typename Compare, typename Allocator>
+        -:  165:struct ShowType<std::set<Key, Compare, Allocator>> {
+        -:  166:  static void showType(std::ostream &os) {
+        -:  167:    os << "std::set<";
+        -:  168:    detail::showType<Key>(os);
+        -:  169:    os << ">";
+        -:  170:  }
+        -:  171:};
+        -:  172:
+        -:  173:template <typename Key, typename T, typename Compare, typename Allocator>
+        -:  174:struct ShowType<std::map<Key, T, Compare, Allocator>> {
+        -:  175:  static void showType(std::ostream &os) {
+        -:  176:    os << "std::map<";
+        -:  177:    detail::showType<Key>(os);
+        -:  178:    os << ", ";
+        -:  179:    detail::showType<T>(os);
+        -:  180:    os << ">";
+        -:  181:  }
+        -:  182:};
+        -:  183:
+        -:  184:template <typename Key, typename Compare, typename Allocator>
+        -:  185:struct ShowType<std::multiset<Key, Compare, Allocator>> {
+        -:  186:  static void showType(std::ostream &os) {
+        -:  187:    os << "std::multiset<";
+        -:  188:    detail::showType<Key>(os);
+        -:  189:    os << ">";
+        -:  190:  }
+        -:  191:};
+        -:  192:
+        -:  193:template <typename Key, typename T, typename Compare, typename Allocator>
+        -:  194:struct ShowType<std::multimap<Key, T, Compare, Allocator>> {
+        -:  195:  static void showType(std::ostream &os) {
+        -:  196:    os << "std::multimap<";
+        -:  197:    detail::showType<Key>(os);
+        -:  198:    os << ", ";
+        -:  199:    detail::showType<T>(os);
+        -:  200:    os << ">";
+        -:  201:  }
+        -:  202:};
+        -:  203:
+        -:  204:template <typename Key, typename Hash, typename KeyEqual, typename Allocator>
+        -:  205:struct ShowType<std::unordered_set<Key, Hash, KeyEqual, Allocator>> {
+        -:  206:  static void showType(std::ostream &os) {
+        -:  207:    os << "std::unordered_set<";
+        -:  208:    detail::showType<Key>(os);
+        -:  209:    os << ">";
+        -:  210:  }
+        -:  211:};
+        -:  212:
+        -:  213:template <typename Key,
+        -:  214:          typename T,
+        -:  215:          typename Hash,
+        -:  216:          typename KeyEqual,
+        -:  217:          typename Allocator>
+        -:  218:struct ShowType<std::unordered_map<Key, T, Hash, KeyEqual, Allocator>> {
+        -:  219:  static void showType(std::ostream &os) {
+        -:  220:    os << "std::unordered_map<";
+        -:  221:    detail::showType<Key>(os);
+        -:  222:    os << ", ";
+        -:  223:    detail::showType<T>(os);
+        -:  224:    os << ">";
+        -:  225:  }
+        -:  226:};
+        -:  227:
+        -:  228:template <typename Key,
+        -:  229:          typename T,
+        -:  230:          typename Hash,
+        -:  231:          typename KeyEqual,
+        -:  232:          typename Allocator>
+        -:  233:struct ShowType<std::unordered_multimap<Key, T, Hash, KeyEqual, Allocator>> {
+        -:  234:  static void showType(std::ostream &os) {
+        -:  235:    os << "std::unordered_multimap<";
+        -:  236:    detail::showType<Key>(os);
+        -:  237:    os << ", ";
+        -:  238:    detail::showType<T>(os);
+        -:  239:    os << ">";
+        -:  240:  }
+        -:  241:};
+        -:  242:
+        -:  243:template <typename Key, typename Hash, typename KeyEqual, typename Allocator>
+        -:  244:struct ShowType<std::unordered_multiset<Key, Hash, KeyEqual, Allocator>> {
+        -:  245:  static void showType(std::ostream &os) {
+        -:  246:    os << "std::unordered_multiset<";
+        -:  247:    detail::showType<Key>(os);
+        -:  248:    os << ">";
+        -:  249:  }
+        -:  250:};
+        -:  251:
+        -:  252:template <typename T, std::size_t N>
+        -:  253:struct ShowType<std::array<T, N>> {
+        -:  254:  static void showType(std::ostream &os) {
+        -:  255:    os << "std::array<";
+        -:  256:    detail::showType<T>(os);
+        -:  257:    os << ", " << N << ">";
+        -:  258:  }
+        -:  259:};
+        -:  260:
+        -:  261:template <typename T, typename Container>
+        -:  262:struct ShowType<std::stack<T, Container>> {
+        -:  263:  static void showType(std::ostream &os) {
+        -:  264:    os << "std::stack<";
+        -:  265:    detail::showType<T>(os);
+        -:  266:    os << ">";
+        -:  267:  }
+        -:  268:};
+        -:  269:
+        -:  270:template <typename T1, typename T2>
+        -:  271:struct ShowType<std::pair<T1, T2>> {
+        -:  272:  static void showType(std::ostream &os) {
+        -:  273:    os << "std::pair<";
+        -:  274:    detail::showType<T1>(os);
+        -:  275:    os << ", ";
+        -:  276:    detail::showType<T2>(os);
+        -:  277:    os << ">";
+        -:  278:  }
+        -:  279:};
+        -:  280:
+        -:  281:template <typename... Types>
+        -:  282:struct ShowType<std::tuple<Types...>> {
+        1:  283:  static void showType(std::ostream &os) {
+        1:  284:    os << "std::tuple<";
+        1:  285:    detail::ShowMultipleTypes<Types...>::showType(os);
+        1:  286:    os << ">";
+        1:  287:  }
+        -:  288:};
+        -:  289:
+        -:  290:template <typename T, typename Deleter>
+        -:  291:struct ShowType<std::unique_ptr<T, Deleter>> {
+        -:  292:  static void showType(std::ostream &os) {
+        -:  293:    os << "std::unique_ptr<";
+        -:  294:    detail::showType<T>(os);
+        -:  295:    os << ">";
+        -:  296:  }
+        -:  297:};
+        -:  298:
+        -:  299:template <typename T>
+        -:  300:struct ShowType<std::shared_ptr<T>> {
+        -:  301:  static void showType(std::ostream &os) {
+        -:  302:    os << "std::shared_ptr<";
+        -:  303:    detail::showType<T>(os);
+        -:  304:    os << ">";
+        -:  305:  }
+        -:  306:};
+        -:  307:
+        -:  308:namespace detail {
+        -:  309:
+        -:  310:template <typename T>
+        3:  311:void showType(std::ostream &os) {
+        3:  312:  rc::ShowType<T>::showType(os);
+        3:  313:}
+------------------
+_ZN2rc6detail8showTypeIdEEvRSo:
+        1:  311:void showType(std::ostream &os) {
+        1:  312:  rc::ShowType<T>::showType(os);
+        1:  313:}
+------------------
+_ZN2rc6detail8showTypeISt6vectorIdSaIdEEEEvRSo:
+        1:  311:void showType(std::ostream &os) {
+        1:  312:  rc::ShowType<T>::showType(os);
+        1:  313:}
+------------------
+_ZN2rc6detail8showTypeISt5tupleIJSt6vectorIdSaIdEEEEEEvRSo:
+        1:  311:void showType(std::ostream &os) {
+        1:  312:  rc::ShowType<T>::showType(os);
+        1:  313:}
+------------------
+        -:  314:
+        -:  315:template <typename T>
+        -:  316:std::string typeToString() {
+        -:  317:  std::ostringstream ss;
+        -:  318:  showType<T>(ss);
+        -:  319:  return ss.str();
+        -:  320:}
+        -:  321:
+        -:  322:} // namespace detail
+        -:  323:} // namespace rc

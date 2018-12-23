@@ -1,0 +1,528 @@
+        -:    0:Source:libs/rapidcheck/include/rapidcheck/Shrinkable.hpp
+        -:    0:Graph:sciNot5.gcno
+        -:    0:Data:sciNot5.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#pragma once
+        -:    2:
+        -:    3:#include <atomic>
+        -:    4:
+        -:    5:namespace rc {
+        -:    6:
+        -:    7:template <typename T>
+        -:    8:class Shrinkable<T>::IShrinkableImpl {
+        -:    9:public:
+        -:   10:  virtual T value() const = 0;
+        -:   11:  virtual Seq<Shrinkable<T>> shrinks() const = 0;
+        -:   12:  virtual void retain() = 0;
+        -:   13:  virtual void release() = 0;
+    2981*:   14:  virtual ~IShrinkableImpl() = default;
+------------------
+_ZN2rc10ShrinkableINS_6detail3AnyEE15IShrinkableImplD0Ev:
+    #####:   14:  virtual ~IShrinkableImpl() = default;
+------------------
+_ZN2rc10ShrinkableINS_6detail3AnyEE15IShrinkableImplD2Ev:
+      114:   14:  virtual ~IShrinkableImpl() = default;
+------------------
+_ZN2rc10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEE15IShrinkableImplD0Ev:
+    #####:   14:  virtual ~IShrinkableImpl() = default;
+------------------
+_ZN2rc10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEE15IShrinkableImplD2Ev:
+      114:   14:  virtual ~IShrinkableImpl() = default;
+------------------
+_ZN2rc10ShrinkableIdE15IShrinkableImplD0Ev:
+    #####:   14:  virtual ~IShrinkableImpl() = default;
+------------------
+_ZN2rc10ShrinkableIdE15IShrinkableImplD2Ev:
+     2412:   14:  virtual ~IShrinkableImpl() = default;
+------------------
+_ZN2rc10ShrinkableISt6vectorINS0_IdEESaIS2_EEE15IShrinkableImplD0Ev:
+    #####:   14:  virtual ~IShrinkableImpl() = default;
+------------------
+_ZN2rc10ShrinkableISt6vectorINS0_IdEESaIS2_EEE15IShrinkableImplD2Ev:
+      114:   14:  virtual ~IShrinkableImpl() = default;
+------------------
+_ZN2rc10ShrinkableISt6vectorIdSaIdEEE15IShrinkableImplD0Ev:
+    #####:   14:  virtual ~IShrinkableImpl() = default;
+------------------
+_ZN2rc10ShrinkableISt6vectorIdSaIdEEE15IShrinkableImplD2Ev:
+      114:   14:  virtual ~IShrinkableImpl() = default;
+------------------
+_ZN2rc10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE15IShrinkableImplD0Ev:
+    #####:   14:  virtual ~IShrinkableImpl() = default;
+------------------
+_ZN2rc10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE15IShrinkableImplD2Ev:
+      113:   14:  virtual ~IShrinkableImpl() = default;
+------------------
+        -:   15:};
+        -:   16:
+        -:   17:template <typename T>
+        -:   18:template <typename Impl>
+        -:   19:class Shrinkable<T>::ShrinkableImpl : public IShrinkableImpl {
+        -:   20:public:
+        -:   21:  template <typename... Args>
+     569*:   22:  explicit ShrinkableImpl(Args &&... args)
+        -:   23:      : m_impl(std::forward<Args>(args)...)
+     569*:   24:      , m_count(1) {}
+------------------
+_ZN2rc10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEE14ShrinkableImplINS_10shrinkable6detail16LambdaShrinkableIZNKS_3GenIS5_EclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqIS6_EEEEEEEC2IJSG_SL_EEEDpOT_:
+    #####:   22:  explicit ShrinkableImpl(Args &&... args)
+        -:   23:      : m_impl(std::forward<Args>(args)...)
+    #####:   24:      , m_count(1) {}
+------------------
+_ZN2rc10ShrinkableISt6vectorIdSaIdEEE14ShrinkableImplINS_10shrinkable6detail16LambdaShrinkableIZNKS_3GenIS3_EclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqIS4_EEEEEEEC2IJSE_SJ_EEEDpOT_:
+    #####:   22:  explicit ShrinkableImpl(Args &&... args)
+        -:   23:      : m_impl(std::forward<Args>(args)...)
+    #####:   24:      , m_count(1) {}
+------------------
+_ZN2rc10ShrinkableINS_6detail3AnyEE14ShrinkableImplINS_10shrinkable6detail13MapShrinkableISt5tupleIJSt6vectorIdSaIdEEEEPFS2_OSC_EEEEC2IJNS0_ISC_EERKSF_EEEDpOT_:
+      114:   22:  explicit ShrinkableImpl(Args &&... args)
+        -:   23:      : m_impl(std::forward<Args>(args)...)
+      114:   24:      , m_count(1) {}
+------------------
+_ZN2rc10ShrinkableISt6vectorIdSaIdEEE14ShrinkableImplINS_10shrinkable6detail13MapShrinkableIS1_INS0_IdEESaIS9_EEPFS3_RKSB_EEEEC2IJNS0_ISB_EERKSF_EEEDpOT_:
+        6:   22:  explicit ShrinkableImpl(Args &&... args)
+        -:   23:      : m_impl(std::forward<Args>(args)...)
+        6:   24:      , m_count(1) {}
+------------------
+_ZN2rc10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEE14ShrinkableImplINS_3gen6detail15TupleShrinkableINS_6detail11IntSequenceImJLm0EEEEJS4_EEEEC2IJNS0_IS4_EEEEEDpOT_:
+      114:   22:  explicit ShrinkableImpl(Args &&... args)
+        -:   23:      : m_impl(std::forward<Args>(args)...)
+      114:   24:      , m_count(1) {}
+------------------
+_ZN2rc10ShrinkableIdE14ShrinkableImplINS_10shrinkable6detail16LambdaShrinkableIZNKS_3GenIdEclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqIS1_EEEEEEEC2IJSB_SG_EEEDpOT_:
+    #####:   22:  explicit ShrinkableImpl(Args &&... args)
+        -:   23:      : m_impl(std::forward<Args>(args)...)
+    #####:   24:      , m_count(1) {}
+------------------
+_ZN2rc10ShrinkableISt6vectorINS0_IdEESaIS2_EEE14ShrinkableImplINS_10shrinkable6detail20JustShrinkShrinkableINS_2fn8ConstantIS4_EEZNS7_11shrinkRecurIS4_ZNKS_3gen6detail15ContainerHelperIS1_IdSaIdEENSF_24GenericContainerStrategyISI_Lb0ELb0EEEE8generateIJdEEENS0_ISI_EERKNS_6RandomEiDpRKNS_3GenIT_EEEUlRKS4_E_EENS0_INSt5decayIT_E4typeEEEOS11_RKT0_EUlOS4_E_EEEC2IJSC_S1A_EEEDpOSS_:
+      114:   22:  explicit ShrinkableImpl(Args &&... args)
+        -:   23:      : m_impl(std::forward<Args>(args)...)
+      114:   24:      , m_count(1) {}
+------------------
+_ZN2rc10ShrinkableISt6vectorIdSaIdEEE14ShrinkableImplINS_10shrinkable6detail13MapShrinkableIS1_INS0_IdEESaIS9_EEPFS3_RKSB_EEEEC2IJNS0_ISB_EESF_EEEDpOT_:
+      108:   22:  explicit ShrinkableImpl(Args &&... args)
+        -:   23:      : m_impl(std::forward<Args>(args)...)
+      108:   24:      , m_count(1) {}
+------------------
+_ZN2rc10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE14ShrinkableImplINS_10shrinkable6detail20JustShrinkShrinkableIZNS5_20shrinkableWithRecipeINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSJ_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESP_S6_EUlvE_ZNSD_ISM_EESV_SP_S6_EUlOS7_E0_EEEC2IJSW_SY_EEEDpOT_:
+      100:   22:  explicit ShrinkableImpl(Args &&... args)
+        -:   23:      : m_impl(std::forward<Args>(args)...)
+      100:   24:      , m_count(1) {}
+------------------
+_ZN2rc10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE14ShrinkableImplINS_10shrinkable6detail20JustShrinkShrinkableIZNS5_20shrinkableWithRecipeINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSJ_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESP_S6_EUlvE_ZNSD_ISM_EESV_SP_S6_EUlOS7_E0_EEEC2IJSW_SY_EEEDpOT_:
+       13:   22:  explicit ShrinkableImpl(Args &&... args)
+        -:   23:      : m_impl(std::forward<Args>(args)...)
+       13:   24:      , m_count(1) {}
+------------------
+        -:   25:
+     586*:   26:  T value() const override { return m_impl.value(); }
+------------------
+_ZNK2rc10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEE14ShrinkableImplINS_3gen6detail15TupleShrinkableINS_6detail11IntSequenceImJLm0EEEEJS4_EEEE5valueEv:
+      118:   26:  T value() const override { return m_impl.value(); }
+------------------
+_ZNK2rc10ShrinkableINS_6detail3AnyEE14ShrinkableImplINS_10shrinkable6detail13MapShrinkableISt5tupleIJSt6vectorIdSaIdEEEEPFS2_OSC_EEEE5valueEv:
+      118:   26:  T value() const override { return m_impl.value(); }
+------------------
+_ZNK2rc10ShrinkableISt6vectorIdSaIdEEE14ShrinkableImplINS_10shrinkable6detail16LambdaShrinkableIZNKS_3GenIS3_EclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqIS4_EEEEEEE5valueEv:
+    #####:   26:  T value() const override { return m_impl.value(); }
+------------------
+_ZNK2rc10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEE14ShrinkableImplINS_10shrinkable6detail16LambdaShrinkableIZNKS_3GenIS5_EclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqIS6_EEEEEEE5valueEv:
+    #####:   26:  T value() const override { return m_impl.value(); }
+------------------
+_ZNK2rc10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE14ShrinkableImplINS_10shrinkable6detail20JustShrinkShrinkableIZNS5_20shrinkableWithRecipeINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSJ_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESP_S6_EUlvE_ZNSD_ISM_EESV_SP_S6_EUlOS7_E0_EEE5valueEv:
+       14:   26:  T value() const override { return m_impl.value(); }
+------------------
+_ZNK2rc10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE14ShrinkableImplINS_10shrinkable6detail20JustShrinkShrinkableIZNS5_20shrinkableWithRecipeINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSJ_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESP_S6_EUlvE_ZNSD_ISM_EESV_SP_S6_EUlOS7_E0_EEE5valueEv:
+      100:   26:  T value() const override { return m_impl.value(); }
+------------------
+_ZNK2rc10ShrinkableISt6vectorIdSaIdEEE14ShrinkableImplINS_10shrinkable6detail13MapShrinkableIS1_INS0_IdEESaIS9_EEPFS3_RKSB_EEEE5valueEv:
+      118:   26:  T value() const override { return m_impl.value(); }
+------------------
+_ZNK2rc10ShrinkableISt6vectorINS0_IdEESaIS2_EEE14ShrinkableImplINS_10shrinkable6detail20JustShrinkShrinkableINS_2fn8ConstantIS4_EEZNS7_11shrinkRecurIS4_ZNKS_3gen6detail15ContainerHelperIS1_IdSaIdEENSF_24GenericContainerStrategyISI_Lb0ELb0EEEE8generateIJdEEENS0_ISI_EERKNS_6RandomEiDpRKNS_3GenIT_EEEUlRKS4_E_EENS0_INSt5decayIT_E4typeEEEOS11_RKT0_EUlOS4_E_EEE5valueEv:
+      118:   26:  T value() const override { return m_impl.value(); }
+------------------
+_ZNK2rc10ShrinkableIdE14ShrinkableImplINS_10shrinkable6detail16LambdaShrinkableIZNKS_3GenIdEclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqIS1_EEEEEEE5valueEv:
+    #####:   26:  T value() const override { return m_impl.value(); }
+------------------
+      15*:   27:  Seq<Shrinkable<T>> shrinks() const override { return m_impl.shrinks(); }
+------------------
+_ZNK2rc10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEE14ShrinkableImplINS_3gen6detail15TupleShrinkableINS_6detail11IntSequenceImJLm0EEEEJS4_EEEE7shrinksEv:
+        3:   27:  Seq<Shrinkable<T>> shrinks() const override { return m_impl.shrinks(); }
+------------------
+_ZNK2rc10ShrinkableINS_6detail3AnyEE14ShrinkableImplINS_10shrinkable6detail13MapShrinkableISt5tupleIJSt6vectorIdSaIdEEEEPFS2_OSC_EEEE7shrinksEv:
+        3:   27:  Seq<Shrinkable<T>> shrinks() const override { return m_impl.shrinks(); }
+------------------
+_ZNK2rc10ShrinkableISt6vectorIdSaIdEEE14ShrinkableImplINS_10shrinkable6detail16LambdaShrinkableIZNKS_3GenIS3_EclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqIS4_EEEEEEE7shrinksEv:
+    #####:   27:  Seq<Shrinkable<T>> shrinks() const override { return m_impl.shrinks(); }
+------------------
+_ZNK2rc10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEE14ShrinkableImplINS_10shrinkable6detail16LambdaShrinkableIZNKS_3GenIS5_EclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqIS6_EEEEEEE7shrinksEv:
+    #####:   27:  Seq<Shrinkable<T>> shrinks() const override { return m_impl.shrinks(); }
+------------------
+_ZNK2rc10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE14ShrinkableImplINS_10shrinkable6detail20JustShrinkShrinkableIZNS5_20shrinkableWithRecipeINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSJ_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESP_S6_EUlvE_ZNSD_ISM_EESV_SP_S6_EUlOS7_E0_EEE7shrinksEv:
+        3:   27:  Seq<Shrinkable<T>> shrinks() const override { return m_impl.shrinks(); }
+------------------
+_ZNK2rc10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE14ShrinkableImplINS_10shrinkable6detail20JustShrinkShrinkableIZNS5_20shrinkableWithRecipeINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSJ_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESP_S6_EUlvE_ZNSD_ISM_EESV_SP_S6_EUlOS7_E0_EEE7shrinksEv:
+    #####:   27:  Seq<Shrinkable<T>> shrinks() const override { return m_impl.shrinks(); }
+------------------
+_ZNK2rc10ShrinkableISt6vectorIdSaIdEEE14ShrinkableImplINS_10shrinkable6detail13MapShrinkableIS1_INS0_IdEESaIS9_EEPFS3_RKSB_EEEE7shrinksEv:
+        3:   27:  Seq<Shrinkable<T>> shrinks() const override { return m_impl.shrinks(); }
+------------------
+_ZNK2rc10ShrinkableISt6vectorINS0_IdEESaIS2_EEE14ShrinkableImplINS_10shrinkable6detail20JustShrinkShrinkableINS_2fn8ConstantIS4_EEZNS7_11shrinkRecurIS4_ZNKS_3gen6detail15ContainerHelperIS1_IdSaIdEENSF_24GenericContainerStrategyISI_Lb0ELb0EEEE8generateIJdEEENS0_ISI_EERKNS_6RandomEiDpRKNS_3GenIT_EEEUlRKS4_E_EENS0_INSt5decayIT_E4typeEEEOS11_RKT0_EUlOS4_E_EEE7shrinksEv:
+        3:   27:  Seq<Shrinkable<T>> shrinks() const override { return m_impl.shrinks(); }
+------------------
+_ZNK2rc10ShrinkableIdE14ShrinkableImplINS_10shrinkable6detail16LambdaShrinkableIZNKS_3GenIdEclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqIS1_EEEEEEE7shrinksEv:
+    #####:   27:  Seq<Shrinkable<T>> shrinks() const override { return m_impl.shrinks(); }
+------------------
+        -:   28:
+     399*:   29:  void retain() override { m_count.fetch_add(1L); }
+------------------
+_ZN2rc10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEE14ShrinkableImplINS_3gen6detail15TupleShrinkableINS_6detail11IntSequenceImJLm0EEEEJS4_EEEE6retainEv:
+    #####:   29:  void retain() override { m_count.fetch_add(1L); }
+------------------
+_ZN2rc10ShrinkableINS_6detail3AnyEE14ShrinkableImplINS_10shrinkable6detail13MapShrinkableISt5tupleIJSt6vectorIdSaIdEEEEPFS2_OSC_EEEE6retainEv:
+      390:   29:  void retain() override { m_count.fetch_add(1L); }
+------------------
+_ZN2rc10ShrinkableISt6vectorIdSaIdEEE14ShrinkableImplINS_10shrinkable6detail16LambdaShrinkableIZNKS_3GenIS3_EclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqIS4_EEEEEEE6retainEv:
+    #####:   29:  void retain() override { m_count.fetch_add(1L); }
+------------------
+_ZN2rc10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEE14ShrinkableImplINS_10shrinkable6detail16LambdaShrinkableIZNKS_3GenIS5_EclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqIS6_EEEEEEE6retainEv:
+    #####:   29:  void retain() override { m_count.fetch_add(1L); }
+------------------
+_ZN2rc10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE14ShrinkableImplINS_10shrinkable6detail20JustShrinkShrinkableIZNS5_20shrinkableWithRecipeINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSJ_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESP_S6_EUlvE_ZNSD_ISM_EESV_SP_S6_EUlOS7_E0_EEE6retainEv:
+    #####:   29:  void retain() override { m_count.fetch_add(1L); }
+------------------
+_ZN2rc10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE14ShrinkableImplINS_10shrinkable6detail20JustShrinkShrinkableIZNS5_20shrinkableWithRecipeINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSJ_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESP_S6_EUlvE_ZNSD_ISM_EESV_SP_S6_EUlOS7_E0_EEE6retainEv:
+    #####:   29:  void retain() override { m_count.fetch_add(1L); }
+------------------
+_ZN2rc10ShrinkableISt6vectorIdSaIdEEE14ShrinkableImplINS_10shrinkable6detail13MapShrinkableIS1_INS0_IdEESaIS9_EEPFS3_RKSB_EEEE6retainEv:
+        9:   29:  void retain() override { m_count.fetch_add(1L); }
+------------------
+_ZN2rc10ShrinkableISt6vectorINS0_IdEESaIS2_EEE14ShrinkableImplINS_10shrinkable6detail20JustShrinkShrinkableINS_2fn8ConstantIS4_EEZNS7_11shrinkRecurIS4_ZNKS_3gen6detail15ContainerHelperIS1_IdSaIdEENSF_24GenericContainerStrategyISI_Lb0ELb0EEEE8generateIJdEEENS0_ISI_EERKNS_6RandomEiDpRKNS_3GenIT_EEEUlRKS4_E_EENS0_INSt5decayIT_E4typeEEEOS11_RKT0_EUlOS4_E_EEE6retainEv:
+    #####:   29:  void retain() override { m_count.fetch_add(1L); }
+------------------
+_ZN2rc10ShrinkableIdE14ShrinkableImplINS_10shrinkable6detail16LambdaShrinkableIZNKS_3GenIdEclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqIS1_EEEEEEE6retainEv:
+    #####:   29:  void retain() override { m_count.fetch_add(1L); }
+------------------
+        -:   30:
+     968*:   31:  void release() override {
+     968*:   32:    if (m_count.fetch_sub(1L) == 1L) {
+     569*:   33:      delete this;
+        -:   34:    }
+     968*:   35:  }
+------------------
+_ZN2rc10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEE14ShrinkableImplINS_3gen6detail15TupleShrinkableINS_6detail11IntSequenceImJLm0EEEEJS4_EEEE7releaseEv:
+      114:   31:  void release() override {
+      114:   32:    if (m_count.fetch_sub(1L) == 1L) {
+      114:   33:      delete this;
+        -:   34:    }
+      114:   35:  }
+------------------
+_ZN2rc10ShrinkableINS_6detail3AnyEE14ShrinkableImplINS_10shrinkable6detail13MapShrinkableISt5tupleIJSt6vectorIdSaIdEEEEPFS2_OSC_EEEE7releaseEv:
+      504:   31:  void release() override {
+      504:   32:    if (m_count.fetch_sub(1L) == 1L) {
+      114:   33:      delete this;
+        -:   34:    }
+      504:   35:  }
+------------------
+_ZN2rc10ShrinkableISt6vectorIdSaIdEEE14ShrinkableImplINS_10shrinkable6detail16LambdaShrinkableIZNKS_3GenIS3_EclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqIS4_EEEEEEE7releaseEv:
+    #####:   31:  void release() override {
+    #####:   32:    if (m_count.fetch_sub(1L) == 1L) {
+    #####:   33:      delete this;
+        -:   34:    }
+    #####:   35:  }
+------------------
+_ZN2rc10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEE14ShrinkableImplINS_10shrinkable6detail16LambdaShrinkableIZNKS_3GenIS5_EclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqIS6_EEEEEEE7releaseEv:
+    #####:   31:  void release() override {
+    #####:   32:    if (m_count.fetch_sub(1L) == 1L) {
+    #####:   33:      delete this;
+        -:   34:    }
+    #####:   35:  }
+------------------
+_ZN2rc10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE14ShrinkableImplINS_10shrinkable6detail20JustShrinkShrinkableIZNS5_20shrinkableWithRecipeINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSJ_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESP_S6_EUlvE_ZNSD_ISM_EESV_SP_S6_EUlOS7_E0_EEE7releaseEv:
+       13:   31:  void release() override {
+       13:   32:    if (m_count.fetch_sub(1L) == 1L) {
+       13:   33:      delete this;
+        -:   34:    }
+       13:   35:  }
+------------------
+_ZN2rc10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE14ShrinkableImplINS_10shrinkable6detail20JustShrinkShrinkableIZNS5_20shrinkableWithRecipeINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSJ_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESP_S6_EUlvE_ZNSD_ISM_EESV_SP_S6_EUlOS7_E0_EEE7releaseEv:
+      100:   31:  void release() override {
+      100:   32:    if (m_count.fetch_sub(1L) == 1L) {
+      100:   33:      delete this;
+        -:   34:    }
+      100:   35:  }
+------------------
+_ZN2rc10ShrinkableISt6vectorIdSaIdEEE14ShrinkableImplINS_10shrinkable6detail13MapShrinkableIS1_INS0_IdEESaIS9_EEPFS3_RKSB_EEEE7releaseEv:
+      123:   31:  void release() override {
+      123:   32:    if (m_count.fetch_sub(1L) == 1L) {
+      114:   33:      delete this;
+        -:   34:    }
+      123:   35:  }
+------------------
+_ZN2rc10ShrinkableISt6vectorINS0_IdEESaIS2_EEE14ShrinkableImplINS_10shrinkable6detail20JustShrinkShrinkableINS_2fn8ConstantIS4_EEZNS7_11shrinkRecurIS4_ZNKS_3gen6detail15ContainerHelperIS1_IdSaIdEENSF_24GenericContainerStrategyISI_Lb0ELb0EEEE8generateIJdEEENS0_ISI_EERKNS_6RandomEiDpRKNS_3GenIT_EEEUlRKS4_E_EENS0_INSt5decayIT_E4typeEEEOS11_RKT0_EUlOS4_E_EEE7releaseEv:
+      114:   31:  void release() override {
+      114:   32:    if (m_count.fetch_sub(1L) == 1L) {
+      114:   33:      delete this;
+        -:   34:    }
+      114:   35:  }
+------------------
+_ZN2rc10ShrinkableIdE14ShrinkableImplINS_10shrinkable6detail16LambdaShrinkableIZNKS_3GenIdEclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqIS1_EEEEEEE7releaseEv:
+    #####:   31:  void release() override {
+    #####:   32:    if (m_count.fetch_sub(1L) == 1L) {
+    #####:   33:      delete this;
+        -:   34:    }
+    #####:   35:  }
+------------------
+        -:   36:
+        -:   37:private:
+        -:   38:  const Impl m_impl;
+        -:   39:  std::atomic<long> m_count;
+        -:   40:};
+        -:   41:
+        -:   42:template <typename T>
+     2772:   43:T Shrinkable<T>::value() const {
+     2772:   44:  return m_impl->value();
+        -:   45:}
+------------------
+_ZNK2rc10ShrinkableISt6vectorIdSaIdEEE5valueEv:
+      118:   43:T Shrinkable<T>::value() const {
+      118:   44:  return m_impl->value();
+        -:   45:}
+------------------
+_ZNK2rc10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEE5valueEv:
+      118:   43:T Shrinkable<T>::value() const {
+      118:   44:  return m_impl->value();
+        -:   45:}
+------------------
+_ZNK2rc10ShrinkableISt6vectorINS0_IdEESaIS2_EEE5valueEv:
+      118:   43:T Shrinkable<T>::value() const {
+      118:   44:  return m_impl->value();
+        -:   45:}
+------------------
+_ZNK2rc10ShrinkableIdE5valueEv:
+     2418:   43:T Shrinkable<T>::value() const {
+     2418:   44:  return m_impl->value();
+        -:   45:}
+------------------
+        -:   46:
+        -:   47:template <typename T>
+       11:   48:Seq<Shrinkable<T>> Shrinkable<T>::shrinks() const noexcept {
+        -:   49:  try {
+       11:   50:    return m_impl->shrinks();
+    =====:   51:  } catch (...) {
+    =====:   52:    return Seq<Shrinkable<T>>();
+        -:   53:  }
+        -:   54:}
+------------------
+_ZNK2rc10ShrinkableISt6vectorIdSaIdEEE7shrinksEv:
+        3:   48:Seq<Shrinkable<T>> Shrinkable<T>::shrinks() const noexcept {
+        -:   49:  try {
+        3:   50:    return m_impl->shrinks();
+    =====:   51:  } catch (...) {
+    =====:   52:    return Seq<Shrinkable<T>>();
+        -:   53:  }
+        -:   54:}
+------------------
+_ZNK2rc10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEE7shrinksEv:
+        3:   48:Seq<Shrinkable<T>> Shrinkable<T>::shrinks() const noexcept {
+        -:   49:  try {
+        3:   50:    return m_impl->shrinks();
+    =====:   51:  } catch (...) {
+    =====:   52:    return Seq<Shrinkable<T>>();
+        -:   53:  }
+        -:   54:}
+------------------
+_ZNK2rc10ShrinkableISt6vectorINS0_IdEESaIS2_EEE7shrinksEv:
+        3:   48:Seq<Shrinkable<T>> Shrinkable<T>::shrinks() const noexcept {
+        -:   49:  try {
+        3:   50:    return m_impl->shrinks();
+    =====:   51:  } catch (...) {
+    =====:   52:    return Seq<Shrinkable<T>>();
+        -:   53:  }
+        -:   54:}
+------------------
+_ZNK2rc10ShrinkableIdE7shrinksEv:
+        2:   48:Seq<Shrinkable<T>> Shrinkable<T>::shrinks() const noexcept {
+        -:   49:  try {
+        2:   50:    return m_impl->shrinks();
+    =====:   51:  } catch (...) {
+    =====:   52:    return Seq<Shrinkable<T>>();
+        -:   53:  }
+        -:   54:}
+------------------
+        -:   55:
+        -:   56:template <typename T>
+     2832:   57:Shrinkable<T>::Shrinkable(const Shrinkable &other) noexcept
+     2832:   58:    : m_impl(other.m_impl) {
+     2832:   59:  m_impl->retain();
+     2832:   60:}
+------------------
+_ZN2rc10ShrinkableISt6vectorIdSaIdEEEC2ERKS4_:
+        9:   57:Shrinkable<T>::Shrinkable(const Shrinkable &other) noexcept
+        9:   58:    : m_impl(other.m_impl) {
+        9:   59:  m_impl->retain();
+        9:   60:}
+------------------
+_ZN2rc10ShrinkableIdEC2ERKS1_:
+     2433:   57:Shrinkable<T>::Shrinkable(const Shrinkable &other) noexcept
+     2433:   58:    : m_impl(other.m_impl) {
+     2433:   59:  m_impl->retain();
+     2433:   60:}
+------------------
+_ZN2rc10ShrinkableINS_6detail3AnyEEC2ERKS3_:
+      390:   57:Shrinkable<T>::Shrinkable(const Shrinkable &other) noexcept
+      390:   58:    : m_impl(other.m_impl) {
+      390:   59:  m_impl->retain();
+      390:   60:}
+------------------
+        -:   61:
+        -:   62:template <typename T>
+     3371:   63:Shrinkable<T>::Shrinkable(Shrinkable &&other) noexcept : m_impl(other.m_impl) {
+     3371:   64:  other.m_impl = nullptr;
+     3371:   65:}
+------------------
+_ZN2rc10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEC2EOS6_:
+      246:   63:Shrinkable<T>::Shrinkable(Shrinkable &&other) noexcept : m_impl(other.m_impl) {
+      246:   64:  other.m_impl = nullptr;
+      246:   65:}
+------------------
+_ZN2rc10ShrinkableIdEC2EOS1_:
+     2413:   63:Shrinkable<T>::Shrinkable(Shrinkable &&other) noexcept : m_impl(other.m_impl) {
+     2413:   64:  other.m_impl = nullptr;
+     2413:   65:}
+------------------
+_ZN2rc10ShrinkableISt6vectorINS0_IdEESaIS2_EEEC2EOS5_:
+      240:   63:Shrinkable<T>::Shrinkable(Shrinkable &&other) noexcept : m_impl(other.m_impl) {
+      240:   64:  other.m_impl = nullptr;
+      240:   65:}
+------------------
+_ZN2rc10ShrinkableISt6vectorIdSaIdEEEC2EOS4_:
+      120:   63:Shrinkable<T>::Shrinkable(Shrinkable &&other) noexcept : m_impl(other.m_impl) {
+      120:   64:  other.m_impl = nullptr;
+      120:   65:}
+------------------
+_ZN2rc10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEEC2EOS8_:
+      238:   63:Shrinkable<T>::Shrinkable(Shrinkable &&other) noexcept : m_impl(other.m_impl) {
+      238:   64:  other.m_impl = nullptr;
+      238:   65:}
+------------------
+_ZN2rc10ShrinkableINS_6detail3AnyEEC2EOS3_:
+      114:   63:Shrinkable<T>::Shrinkable(Shrinkable &&other) noexcept : m_impl(other.m_impl) {
+      114:   64:  other.m_impl = nullptr;
+      114:   65:}
+------------------
+        -:   66:
+        -:   67:template <typename T>
+    #####:   68:Shrinkable<T> &Shrinkable<T>::operator=(const Shrinkable &other) noexcept {
+    #####:   69:  other.m_impl->retain();
+    #####:   70:  if (m_impl) {
+    #####:   71:    m_impl->release();
+        -:   72:  }
+    #####:   73:  m_impl = other.m_impl;
+    #####:   74:  return *this;
+        -:   75:}
+        -:   76:
+        -:   77:template <typename T>
+        7:   78:Shrinkable<T> &Shrinkable<T>::operator=(Shrinkable &&other) noexcept {
+        7:   79:  if (m_impl) {
+        7:   80:    m_impl->release();
+        -:   81:  }
+        7:   82:  m_impl = other.m_impl;
+        7:   83:  other.m_impl = nullptr;
+        7:   84:  return *this;
+        -:   85:}
+------------------
+_ZN2rc10ShrinkableISt6vectorIdSaIdEEEaSEOS4_:
+        6:   78:Shrinkable<T> &Shrinkable<T>::operator=(Shrinkable &&other) noexcept {
+        6:   79:  if (m_impl) {
+        6:   80:    m_impl->release();
+        -:   81:  }
+        6:   82:  m_impl = other.m_impl;
+        6:   83:  other.m_impl = nullptr;
+        6:   84:  return *this;
+        -:   85:}
+------------------
+_ZN2rc10ShrinkableIdEaSEOS1_:
+        1:   78:Shrinkable<T> &Shrinkable<T>::operator=(Shrinkable &&other) noexcept {
+        1:   79:  if (m_impl) {
+        1:   80:    m_impl->release();
+        -:   81:  }
+        1:   82:  m_impl = other.m_impl;
+        1:   83:  other.m_impl = nullptr;
+        1:   84:  return *this;
+        -:   85:}
+------------------
+        -:   86:
+        -:   87:template <typename T>
+     9184:   88:Shrinkable<T>::~Shrinkable() noexcept {
+     9184:   89:  if (m_impl) {
+     5800:   90:    m_impl->release();
+        -:   91:  }
+     9184:   92:}
+------------------
+_ZN2rc10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEED2Ev:
+      360:   88:Shrinkable<T>::~Shrinkable() noexcept {
+      360:   89:  if (m_impl) {
+      114:   90:    m_impl->release();
+        -:   91:  }
+      360:   92:}
+------------------
+_ZN2rc10ShrinkableIdED2Ev:
+     7258:   88:Shrinkable<T>::~Shrinkable() noexcept {
+     7258:   89:  if (m_impl) {
+     4844:   90:    m_impl->release();
+        -:   91:  }
+     7258:   92:}
+------------------
+_ZN2rc10ShrinkableISt6vectorINS0_IdEESaIS2_EEED2Ev:
+      354:   88:Shrinkable<T>::~Shrinkable() noexcept {
+      354:   89:  if (m_impl) {
+      114:   90:    m_impl->release();
+        -:   91:  }
+      354:   92:}
+------------------
+_ZN2rc10ShrinkableISt6vectorIdSaIdEEED2Ev:
+      243:   88:Shrinkable<T>::~Shrinkable() noexcept {
+      243:   89:  if (m_impl) {
+      117:   90:    m_impl->release();
+        -:   91:  }
+      243:   92:}
+------------------
+_ZN2rc10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEED2Ev:
+      351:   88:Shrinkable<T>::~Shrinkable() noexcept {
+      351:   89:  if (m_impl) {
+      113:   90:    m_impl->release();
+        -:   91:  }
+      351:   92:}
+------------------
+_ZN2rc10ShrinkableINS_6detail3AnyEED2Ev:
+      618:   88:Shrinkable<T>::~Shrinkable() noexcept {
+      618:   89:  if (m_impl) {
+      498:   90:    m_impl->release();
+        -:   91:  }
+      618:   92:}
+------------------
+        -:   93:
+        -:   94:template <typename Impl, typename... Args>
+        -:   95:Shrinkable<Decay<decltype(std::declval<Impl>().value())>>
+     569*:   96:makeShrinkable(Args &&... args) {
+        -:   97:  using T = decltype(std::declval<Impl>().value());
+        -:   98:  using ShrinkableImpl = typename Shrinkable<T>::template ShrinkableImpl<Impl>;
+        -:   99:
+     569*:  100:  Shrinkable<T> shrinkable;
+     569*:  101:  shrinkable.m_impl = new ShrinkableImpl(std::forward<Args>(args)...);
+     569*:  102:  return shrinkable;
+        -:  103:}
+        -:  104:
+        -:  105:template <typename T>
+        -:  106:bool operator==(const Shrinkable<T> &lhs, const Shrinkable<T> &rhs) {
+        -:  107:  return (lhs.value() == rhs.value()) && (lhs.shrinks() == rhs.shrinks());
+        -:  108:}
+        -:  109:
+        -:  110:template <typename T>
+        -:  111:bool operator!=(const Shrinkable<T> &lhs, const Shrinkable<T> &rhs) {
+        -:  112:  return !(lhs == rhs);
+        -:  113:}
+        -:  114:
+        -:  115:} // namespace rc

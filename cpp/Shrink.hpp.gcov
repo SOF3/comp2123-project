@@ -1,0 +1,207 @@
+        -:    0:Source:libs/rapidcheck/include/rapidcheck/shrink/Shrink.hpp
+        -:    0:Graph:sciNot5.gcno
+        -:    0:Data:sciNot5.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#pragma once
+        -:    2:
+        -:    3:#include <cmath>
+        -:    4:#include <locale>
+        -:    5:
+        -:    6:#include "rapidcheck/seq/Transform.h"
+        -:    7:#include "rapidcheck/seq/Create.h"
+        -:    8:
+        -:    9:namespace rc {
+        -:   10:namespace shrink {
+        -:   11:namespace detail {
+        -:   12:
+        -:   13:template <typename T>
+        -:   14:class TowardsSeq {
+        -:   15:public:
+        -:   16:  using UInt = typename std::make_unsigned<T>::type;
+        -:   17:
+        -:   18:  TowardsSeq(T value, T target)
+        -:   19:      : m_value(value)
+        -:   20:      , m_diff((target < value) ? (value - target) : (target - value))
+        -:   21:      , m_down(target < value) {}
+        -:   22:
+        -:   23:  Maybe<T> operator()() {
+        -:   24:    if (m_diff == 0) {
+        -:   25:      return Nothing;
+        -:   26:    }
+        -:   27:
+        -:   28:    T ret = m_down ? (m_value - m_diff) : (m_value + m_diff);
+        -:   29:    m_diff /= 2;
+        -:   30:    return ret;
+        -:   31:  }
+        -:   32:
+        -:   33:private:
+        -:   34:  T m_value;
+        -:   35:  UInt m_diff;
+        -:   36:  bool m_down;
+        -:   37:};
+        -:   38:
+        -:   39:template <typename Container>
+        -:   40:class RemoveChunksSeq {
+        -:   41:public:
+        -:   42:  template <typename ContainerArg>
+        3:   43:  explicit RemoveChunksSeq(ContainerArg &&elements)
+        -:   44:      : m_elements(std::forward<Container>(elements))
+        -:   45:      , m_start(0)
+        3:   46:      , m_size(m_elements.size()) {}
+        -:   47:
+        7:   48:  Maybe<Container> operator()() {
+        7:   49:    if (m_size == 0) {
+        2:   50:      return Nothing;
+        -:   51:    }
+        -:   52:
+       10:   53:    Container elements;
+        5:   54:    elements.reserve(m_elements.size() - m_size);
+        5:   55:    const auto start = begin(m_elements);
+        5:   56:    const auto fin = end(m_elements);
+        5:   57:    elements.insert(end(elements), start, start + m_start);
+        5:   58:    elements.insert(end(elements), start + m_start + m_size, fin);
+        -:   59:
+        5:   60:    if ((m_size + m_start) >= m_elements.size()) {
+        4:   61:      m_size--;
+        4:   62:      m_start = 0;
+        -:   63:    } else {
+        1:   64:      m_start++;
+        -:   65:    }
+        5:   66:    return elements;
+        -:   67:  }
+        -:   68:
+        -:   69:private:
+        -:   70:  Container m_elements;
+        -:   71:  std::size_t m_start;
+        -:   72:  std::size_t m_size;
+        -:   73:};
+        -:   74:
+        -:   75:template <typename Container, typename Shrink>
+        -:   76:class EachElementSeq {
+        -:   77:public:
+        -:   78:  using T = typename std::result_of<Shrink(
+        -:   79:      typename Container::value_type)>::type::ValueType;
+        -:   80:
+        -:   81:  template <typename ContainerArg, typename ShrinkArg>
+        3:   82:  explicit EachElementSeq(ContainerArg &&elements, ShrinkArg &&shrink)
+        -:   83:      : m_elements(std::forward<Container>(elements))
+        3:   84:      , m_shrink(std::forward<ShrinkArg>(shrink))
+        6:   85:      , m_i(0) {}
+        -:   86:
+        2:   87:  Maybe<Container> operator()() {
+        4:   88:    auto value = next();
+        2:   89:    if (!value) {
+        1:   90:      return Nothing;
+        -:   91:    }
+        -:   92:
+        2:   93:    auto elements = m_elements;
+        1:   94:    elements[m_i - 1] = std::move(*value);
+        1:   95:    return elements;
+        -:   96:  }
+        -:   97:
+        -:   98:private:
+        4:   99:  Maybe<T> next() {
+        2:  100:    while (true) {
+        4:  101:      auto value = m_shrinks.next();
+        4:  102:      if (value) {
+        1:  103:        return value;
+        -:  104:      }
+        -:  105:
+        3:  106:      if (m_i >= m_elements.size()) {
+        1:  107:        return Nothing;
+        -:  108:      }
+        -:  109:
+        2:  110:      m_shrinks = m_shrink(m_elements[m_i++]);
+        -:  111:    }
+        -:  112:  }
+        -:  113:
+        -:  114:  Container m_elements;
+        -:  115:  Shrink m_shrink;
+        -:  116:  Seq<T> m_shrinks;
+        -:  117:  std::size_t m_i;
+        -:  118:};
+        -:  119:
+        -:  120:template <typename T>
+        -:  121:Seq<T> integral(T value, std::true_type) {
+        -:  122:  // The check for > min() is important since -min() == min() and we never
+        -:  123:  // want to include self
+        -:  124:  if ((value < 0) && (value > std::numeric_limits<T>::min())) {
+        -:  125:    // Drop the zero from towards and put that before the negation value
+        -:  126:    // so we don't have duplicate zeroes
+        -:  127:    return seq::concat(seq::just<T>(static_cast<T>(0), static_cast<T>(-value)),
+        -:  128:                       seq::drop(1, shrink::towards<T>(value, 0)));
+        -:  129:  }
+        -:  130:
+        -:  131:  return shrink::towards<T>(value, 0);
+        -:  132:}
+        -:  133:
+        -:  134:template <typename T>
+        -:  135:Seq<T> integral(T value, std::false_type) {
+        -:  136:  return shrink::towards<T>(value, 0);
+        -:  137:}
+        -:  138:
+        -:  139:} // namespace detail
+        -:  140:
+        -:  141:template <typename Container>
+        3:  142:Seq<Container> removeChunks(Container elements) {
+        3:  143:  return makeSeq<detail::RemoveChunksSeq<Container>>(std::move(elements));
+        -:  144:}
+        -:  145:
+        -:  146:template <typename Container, typename Shrink>
+        3:  147:Seq<Container> eachElement(Container elements, Shrink shrink) {
+        3:  148:  return makeSeq<detail::EachElementSeq<Container, Shrink>>(std::move(elements),
+        6:  149:                                                            std::move(shrink));
+        -:  150:}
+        -:  151:
+        -:  152:template <typename T>
+        -:  153:Seq<T> towards(T value, T target) {
+        -:  154:  return makeSeq<detail::TowardsSeq<T>>(value, target);
+        -:  155:}
+        -:  156:
+        -:  157:template <typename T>
+        -:  158:Seq<T> integral(T value) {
+        -:  159:  return detail::integral(value, std::is_signed<T>());
+        -:  160:}
+        -:  161:
+        -:  162:template <typename T, typename>
+        -:  163:Seq<T> integral(T value);
+        -:  164:
+        -:  165:template <typename T>
+        -:  166:Seq<T> real(T value) {
+        -:  167:  std::vector<T> shrinks;
+        -:  168:
+        -:  169:  if (std::abs(value) > 0) {
+        -:  170:    shrinks.push_back(T(0.0));
+        -:  171:  }
+        -:  172:
+        -:  173:  if (value < 0) {
+        -:  174:    shrinks.push_back(-value);
+        -:  175:  }
+        -:  176:
+        -:  177:  T truncated = std::trunc(value);
+        -:  178:  if (std::abs(truncated) < std::abs(value)) {
+        -:  179:    shrinks.push_back(truncated);
+        -:  180:  }
+        -:  181:
+        -:  182:  return seq::fromContainer(shrinks);
+        -:  183:}
+        -:  184:
+        -:  185:Seq<bool> boolean(bool value) { return value ? seq::just(false) : Seq<bool>(); }
+        -:  186:
+        -:  187:template <typename T>
+        -:  188:Seq<T> character(T value) {
+        -:  189:  const auto &locale = std::locale::classic();
+        -:  190:  auto shrinks = seq::cast<T>(seq::concat(
+        -:  191:      seq::fromContainer(std::string("abc")),
+        -:  192:      // TODO this seems a bit hacky
+        -:  193:      std::islower(static_cast<char>(value), locale)
+        -:  194:          ? Seq<char>()
+        -:  195:          : seq::just(static_cast<char>(std::tolower(value, locale))),
+        -:  196:      seq::fromContainer(std::string("ABC123 \n"))));
+        -:  197:
+        -:  198:  return seq::takeWhile(std::move(shrinks), [=](T x) { return x != value; });
+        -:  199:}
+        -:  200:
+        -:  201:} // namespace shrink
+        -:  202:} // namespace rc

@@ -1,0 +1,16 @@
+        -:    0:Source:sciNot4.cpp
+        -:    0:Graph:sciNot5.gcno
+        -:    0:Data:sciNot5.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <cmath>
+        -:    2:#include "SciNotation.h"
+        -:    3:
+     2415:    4:SciNotation sciNot(double number) {
+     2415:    5:	int sign = number >= 0 ? 1 : -1;
+     2415:    6:	number *= sign;
+     2415:    7:	int exp = (int) floor(log10(number)) - 2;
+     2415:    8:	int digits = (int) round(number * pow(10.0, -exp));
+     2415:    9:	return SciNotation{digits * sign, exp};
+        -:   10:}
+        -:   11:

@@ -1,0 +1,30 @@
+        -:    0:Source:sciNot5.test.cpp
+        -:    0:Graph:sciNot5.gcno
+        -:    0:Data:sciNot5.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <cmath>
+        -:    2:#include <vector>
+        -:    3:#include <rapidcheck.h>
+        -:    4:#include "sciNot4.cpp"
+        -:    5:
+        -:    6:using namespace std;
+        -:    7:using namespace rc;
+        -:    8:
+        1:    9:void testSciNot() {
+        1:   10:	check("requirement 2: 3 significant figures", [](const vector<double> &vec) {
+        -:   11:		for(double input : vec) {
+        -:   12:			SciNotation sci = sciNot(input);
+        -:   13:			int digits = sci.getDigits();
+        -:   14:			RC_ASSERT(100 <= digits && digits < 999);
+        -:   15:		}
+        -:   16:	});
+        1:   17:	check("requirement 3: error within bounds", [](const vector<double> &vec) {
+        -:   18:		for(double input : vec) {
+        -:   19:			SciNotation sci = sciNot(input);
+        -:   20:			double error = sci.toDouble() - input;
+        -:   21:			error /= pow(10, sci.getExp());
+        -:   22:			RC_ASSERT(-0.5 <= error && error < 0.5);
+        -:   23:		}
+        -:   24:	});
+        1:   25:}

@@ -1,8 +1,8 @@
 Executing test testSciNot
-Using configuration: seed=10795753769136765967
+Using configuration: seed=14108553352369218528
 
 - requirement 2: 3 significant figures
-Falsifiable after 4 tests and 2 shrinks
+Falsifiable after 7 tests and 2 shrinks
 
 std::tuple<std::vector<double>>:
 ([0])
@@ -16,4 +16,4 @@ Expands to:
 - requirement 3: error within bounds
 OK, passed 100 tests
 Some of your RapidCheck properties had failures. To reproduce these, run with:
-RC_PARAMS="reproduce=BQiclFXdpJXZtVmb0BiM6AyMgMXan5Waml2Yh5GdgYWanVnclN3D8s_yajj0V+AP7vs24IdlPwz+LrNOSX5D8s_yajj0ViAAEMAAAAgACEA"
+RC_PARAMS="reproduce=BQiclFXdpJXZtVmb0BiM6AyMgMXan5Waml2Yh5GdgYWanVnclNH4j0pDGa6yDD+Id6ghmu8wgPSnOYopLPM4j0pDGa6yDDEAHYAAAAgACEA"

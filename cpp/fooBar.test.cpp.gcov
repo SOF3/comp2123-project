@@ -1,0 +1,11 @@
+        -:    0:Source:fooBar.test.cpp
+        -:    0:Graph:fooBar.gcno
+        -:    0:Data:fooBar.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include "fooBar.cpp"
+        -:    2:#include "assert.h"
+        -:    3:
+        1:    4:void testFooBar() {
+       1*:    5:	ASSERT_EQUAL(fooBar(), "qux");
+        1:    6:}

@@ -1,0 +1,70 @@
+        -:    0:Source:libs/rapidcheck/include/rapidcheck/detail/ApplyTuple.h
+        -:    0:Graph:sciNot5.gcno
+        -:    0:Data:sciNot5.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#pragma once
+        -:    2:
+        -:    3:#include "rapidcheck/detail/IntSequence.h"
+        -:    4:
+        -:    5:namespace rc {
+        -:    6:namespace detail {
+        -:    7:
+        -:    8:template <typename TupleT,
+        -:    9:          typename Callable,
+        -:   10:          typename Indexes =
+        -:   11:              MakeIndexSequence<std::tuple_size<Decay<TupleT>>::value>>
+        -:   12:struct ApplyTupleImpl;
+        -:   13:
+        -:   14:template <typename... Ts, std::size_t... Indexes, typename Callable>
+        -:   15:struct ApplyTupleImpl<std::tuple<Ts...>, Callable, IndexSequence<Indexes...>> {
+        -:   16:  using ReturnType = typename std::result_of<Callable(Ts &&...)>::type;
+        -:   17:
+      117:   18:  static ReturnType apply(std::tuple<Ts...> &&tuple, Callable &&callable) {
+      117:   19:    return callable(std::move(std::get<Indexes>(tuple))...);
+        -:   20:  }
+------------------
+_ZN2rc6detail14ApplyTupleImplISt5tupleIJSt6vectorIdSaIdEEEERKNS0_15PropertyAdapterIZ10testSciNotvEUlRKS5_E0_FvS9_EEENS0_11IntSequenceImJLm0EEEEE5applyEOS6_SE_:
+      100:   18:  static ReturnType apply(std::tuple<Ts...> &&tuple, Callable &&callable) {
+      100:   19:    return callable(std::move(std::get<Indexes>(tuple))...);
+        -:   20:  }
+------------------
+_ZN2rc6detail14ApplyTupleImplISt5tupleIJSt6vectorIdSaIdEEEERKNS0_15PropertyAdapterIZ10testSciNotvEUlRKS5_E_FvS9_EEENS0_11IntSequenceImJLm0EEEEE5applyEOS6_SE_:
+       17:   18:  static ReturnType apply(std::tuple<Ts...> &&tuple, Callable &&callable) {
+       17:   19:    return callable(std::move(std::get<Indexes>(tuple))...);
+        -:   20:  }
+------------------
+        -:   21:};
+        -:   22:
+        -:   23:template <typename... Ts, std::size_t... Indexes, typename Callable>
+        -:   24:struct ApplyTupleImpl<std::tuple<Ts...> &,
+        -:   25:                      Callable,
+        -:   26:                      IndexSequence<Indexes...>> {
+        -:   27:  using ReturnType = typename std::result_of<Callable(Ts &...)>::type;
+        -:   28:
+        -:   29:  static ReturnType apply(std::tuple<Ts...> &tuple, Callable &&callable) {
+        -:   30:    return callable(std::get<Indexes>(tuple)...);
+        -:   31:  }
+        -:   32:};
+        -:   33:
+        -:   34:template <typename... Ts, std::size_t... Indexes, typename Callable>
+        -:   35:struct ApplyTupleImpl<const std::tuple<Ts...> &,
+        -:   36:                      Callable,
+        -:   37:                      IndexSequence<Indexes...>> {
+        -:   38:  using ReturnType = typename std::result_of<Callable(const Ts &...)>::type;
+        -:   39:
+        -:   40:  static ReturnType apply(const std::tuple<Ts...> &tuple, Callable &&callable) {
+        -:   41:    return callable(std::get<Indexes>(tuple)...);
+        -:   42:  }
+        -:   43:};
+        -:   44:
+        -:   45:/// Applies the given tuple as arguments to the given callable.
+        -:   46:template <typename TupleT, typename Callable>
+        -:   47:typename ApplyTupleImpl<TupleT, Callable>::ReturnType
+      117:   48:applyTuple(TupleT &&tuple, Callable &&callable) {
+        -:   49:  return ApplyTupleImpl<TupleT, Callable>::apply(
+      117:   50:      std::forward<TupleT>(tuple), std::forward<Callable>(callable));
+        -:   51:}
+        -:   52:
+        -:   53:} // namespace detail
+        -:   54:} // namespace rc

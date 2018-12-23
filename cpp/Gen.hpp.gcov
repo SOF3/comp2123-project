@@ -1,0 +1,447 @@
+        -:    0:Source:libs/rapidcheck/include/rapidcheck/Gen.hpp
+        -:    0:Graph:sciNot5.gcno
+        -:    0:Data:sciNot5.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#pragma once
+        -:    2:
+        -:    3:#include <cassert>
+        -:    4:
+        -:    5:#include "rapidcheck/detail/Any.h"
+        -:    6:#include "rapidcheck/detail/ImplicitParam.h"
+        -:    7:#include "rapidcheck/gen/detail/GenerationHandler.h"
+        -:    8:#include "rapidcheck/shrinkable/Create.h"
+        -:    9:
+        -:   10:namespace rc {
+        -:   11:namespace gen {
+        -:   12:
+        -:   13:// Forward declare this so we don't need to include Transform.h
+        -:   14:template <typename T, typename Mapper>
+        -:   15:Gen<Decay<typename std::result_of<Mapper(T)>::type>> map(Gen<T> gen,
+        -:   16:                                                         Mapper &&mapper);
+        -:   17:
+        -:   18:} // namespace gen
+        -:   19:
+        -:   20:template <typename T>
+        -:   21:class Gen<T>::IGenImpl {
+        -:   22:public:
+        -:   23:  virtual Shrinkable<T> generate(const Random &random, int size) const = 0;
+        -:   24:  virtual void retain() = 0;
+        -:   25:  virtual void release() = 0;
+     122*:   26:  virtual ~IGenImpl() = default;
+------------------
+_ZN2rc3GenISt6vectorIdSaIdEEE8IGenImplD0Ev:
+    #####:   26:  virtual ~IGenImpl() = default;
+------------------
+_ZN2rc3GenISt6vectorIdSaIdEEE8IGenImplD2Ev:
+        1:   26:  virtual ~IGenImpl() = default;
+------------------
+_ZN2rc3GenISt5tupleIJSt6vectorIdSaIdEEEEE8IGenImplD0Ev:
+    #####:   26:  virtual ~IGenImpl() = default;
+------------------
+_ZN2rc3GenISt5tupleIJSt6vectorIdSaIdEEEEE8IGenImplD2Ev:
+        1:   26:  virtual ~IGenImpl() = default;
+------------------
+_ZN2rc3GenINS_6detail3AnyEE8IGenImplD0Ev:
+    #####:   26:  virtual ~IGenImpl() = default;
+------------------
+_ZN2rc3GenINS_6detail3AnyEE8IGenImplD2Ev:
+      117:   26:  virtual ~IGenImpl() = default;
+------------------
+_ZN2rc3GenISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE8IGenImplD0Ev:
+    #####:   26:  virtual ~IGenImpl() = default;
+------------------
+_ZN2rc3GenISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE8IGenImplD2Ev:
+        2:   26:  virtual ~IGenImpl() = default;
+------------------
+_ZN2rc3GenIdE8IGenImplD0Ev:
+    #####:   26:  virtual ~IGenImpl() = default;
+------------------
+_ZN2rc3GenIdE8IGenImplD2Ev:
+        1:   26:  virtual ~IGenImpl() = default;
+------------------
+        -:   27:};
+        -:   28:
+        -:   29:template <typename T>
+        -:   30:template <typename Impl>
+        -:   31:class Gen<T>::GenImpl : public IGenImpl {
+        -:   32:public:
+        -:   33:  template <typename... Args>
+      122:   34:  GenImpl(Args &&... args)
+        3:   35:      : m_impl(std::forward<Args>(args)...)
+      122:   36:      , m_count(1) {}
+------------------
+_ZN2rc3GenISt6vectorIdSaIdEEE7GenImplIZNS_3gen9containerIS3_JdEEENS0_IT_EEDpNS0_IT0_EEEUlRKNS_6RandomEiE_EC2IJSG_EEEDpOT_:
+        1:   34:  GenImpl(Args &&... args)
+        -:   35:      : m_impl(std::forward<Args>(args)...)
+        1:   36:      , m_count(1) {}
+------------------
+_ZN2rc3GenISt5tupleIJSt6vectorIdSaIdEEEEE7GenImplINS_3gen6detail8TupleGenINS_6detail11IntSequenceImJLm0EEEEJS4_EEEEC2IJSE_EEEDpOT_:
+        1:   34:  GenImpl(Args &&... args)
+        -:   35:      : m_impl(std::forward<Args>(args)...)
+        1:   36:      , m_count(1) {}
+------------------
+_ZN2rc3GenINS_6detail3AnyEE7GenImplINS_3gen6detail6MapGenISt5tupleIJSt6vectorIdSaIdEEEEPFS2_OSC_EEEEC2IJSG_EEEDpOT_:
+      117:   34:  GenImpl(Args &&... args)
+        -:   35:      : m_impl(std::forward<Args>(args)...)
+      117:   36:      , m_count(1) {}
+------------------
+_ZN2rc3GenISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE7GenImplIZNS5_7execRawINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSG_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESM_EUlRKNS_6RandomEiE_EC2IJSW_EEEDpOT_:
+        1:   34:  GenImpl(Args &&... args)
+        1:   35:      : m_impl(std::forward<Args>(args)...)
+        1:   36:      , m_count(1) {}
+------------------
+_ZN2rc3GenISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE7GenImplIZNS5_7execRawINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSG_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESM_EUlRKNS_6RandomEiE_EC2IJSW_EEEDpOT_:
+        1:   34:  GenImpl(Args &&... args)
+        1:   35:      : m_impl(std::forward<Args>(args)...)
+        1:   36:      , m_count(1) {}
+------------------
+_ZN2rc3GenIdE7GenImplIPFNS_10ShrinkableIdEERKNS_6RandomEiEEC2IJRS8_EEEDpOT_:
+        1:   34:  GenImpl(Args &&... args)
+        1:   35:      : m_impl(std::forward<Args>(args)...)
+        1:   36:      , m_count(1) {}
+------------------
+        -:   37:
+     2842:   38:  Shrinkable<T> generate(const Random &random, int size) const override {
+     2842:   39:    return m_impl(random, size);
+        -:   40:  }
+------------------
+_ZNK2rc3GenIdE7GenImplIPFNS_10ShrinkableIdEERKNS_6RandomEiEE8generateES7_i:
+     2411:   38:  Shrinkable<T> generate(const Random &random, int size) const override {
+     2411:   39:    return m_impl(random, size);
+        -:   40:  }
+------------------
+_ZNK2rc3GenISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE7GenImplIZNS5_7execRawINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSG_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESM_EUlRKNS_6RandomEiE_E8generateESV_i:
+        7:   38:  Shrinkable<T> generate(const Random &random, int size) const override {
+        7:   39:    return m_impl(random, size);
+        -:   40:  }
+------------------
+_ZNK2rc3GenISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE7GenImplIZNS5_7execRawINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSG_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESM_EUlRKNS_6RandomEiE_E8generateESV_i:
+      100:   38:  Shrinkable<T> generate(const Random &random, int size) const override {
+      100:   39:    return m_impl(random, size);
+        -:   40:  }
+------------------
+_ZNK2rc3GenINS_6detail3AnyEE7GenImplINS_3gen6detail6MapGenISt5tupleIJSt6vectorIdSaIdEEEEPFS2_OSC_EEEE8generateERKNS_6RandomEi:
+      108:   38:  Shrinkable<T> generate(const Random &random, int size) const override {
+      108:   39:    return m_impl(random, size);
+        -:   40:  }
+------------------
+_ZNK2rc3GenISt5tupleIJSt6vectorIdSaIdEEEEE7GenImplINS_3gen6detail8TupleGenINS_6detail11IntSequenceImJLm0EEEEJS4_EEEE8generateERKNS_6RandomEi:
+      108:   38:  Shrinkable<T> generate(const Random &random, int size) const override {
+      108:   39:    return m_impl(random, size);
+        -:   40:  }
+------------------
+_ZNK2rc3GenISt6vectorIdSaIdEEE7GenImplIZNS_3gen9containerIS3_JdEEENS0_IT_EEDpNS0_IT0_EEEUlRKNS_6RandomEiE_E8generateESF_i:
+      108:   38:  Shrinkable<T> generate(const Random &random, int size) const override {
+      108:   39:    return m_impl(random, size);
+        -:   40:  }
+------------------
+        -:   41:
+     354*:   42:  void retain() override { m_count.fetch_add(1L); }
+------------------
+_ZN2rc3GenIdE7GenImplIPFNS_10ShrinkableIdEERKNS_6RandomEiEE6retainEv:
+        2:   42:  void retain() override { m_count.fetch_add(1L); }
+------------------
+_ZN2rc3GenISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE7GenImplIZNS5_7execRawINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSG_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESM_EUlRKNS_6RandomEiE_E6retainEv:
+    #####:   42:  void retain() override { m_count.fetch_add(1L); }
+------------------
+_ZN2rc3GenISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE7GenImplIZNS5_7execRawINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSG_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESM_EUlRKNS_6RandomEiE_E6retainEv:
+    #####:   42:  void retain() override { m_count.fetch_add(1L); }
+------------------
+_ZN2rc3GenINS_6detail3AnyEE7GenImplINS_3gen6detail6MapGenISt5tupleIJSt6vectorIdSaIdEEEEPFS2_OSC_EEEE6retainEv:
+      117:   42:  void retain() override { m_count.fetch_add(1L); }
+------------------
+_ZN2rc3GenISt5tupleIJSt6vectorIdSaIdEEEEE7GenImplINS_3gen6detail8TupleGenINS_6detail11IntSequenceImJLm0EEEEJS4_EEEE6retainEv:
+      234:   42:  void retain() override { m_count.fetch_add(1L); }
+------------------
+_ZN2rc3GenISt6vectorIdSaIdEEE7GenImplIZNS_3gen9containerIS3_JdEEENS0_IT_EEDpNS0_IT0_EEEUlRKNS_6RandomEiE_E6retainEv:
+        1:   42:  void retain() override { m_count.fetch_add(1L); }
+------------------
+        -:   43:
+      476:   44:  void release() override {
+      476:   45:    if (m_count.fetch_sub(1L) == 1L) {
+      122:   46:      delete this;
+        -:   47:    }
+      476:   48:  }
+------------------
+_ZN2rc3GenIdE7GenImplIPFNS_10ShrinkableIdEERKNS_6RandomEiEE7releaseEv:
+        3:   44:  void release() override {
+        3:   45:    if (m_count.fetch_sub(1L) == 1L) {
+        1:   46:      delete this;
+        -:   47:    }
+        3:   48:  }
+------------------
+_ZN2rc3GenISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE7GenImplIZNS5_7execRawINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSG_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESM_EUlRKNS_6RandomEiE_E7releaseEv:
+        1:   44:  void release() override {
+        1:   45:    if (m_count.fetch_sub(1L) == 1L) {
+        1:   46:      delete this;
+        -:   47:    }
+        1:   48:  }
+------------------
+_ZN2rc3GenISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEE7GenImplIZNS5_7execRawINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSG_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESM_EUlRKNS_6RandomEiE_E7releaseEv:
+        1:   44:  void release() override {
+        1:   45:    if (m_count.fetch_sub(1L) == 1L) {
+        1:   46:      delete this;
+        -:   47:    }
+        1:   48:  }
+------------------
+_ZN2rc3GenINS_6detail3AnyEE7GenImplINS_3gen6detail6MapGenISt5tupleIJSt6vectorIdSaIdEEEEPFS2_OSC_EEEE7releaseEv:
+      234:   44:  void release() override {
+      234:   45:    if (m_count.fetch_sub(1L) == 1L) {
+      117:   46:      delete this;
+        -:   47:    }
+      234:   48:  }
+------------------
+_ZN2rc3GenISt5tupleIJSt6vectorIdSaIdEEEEE7GenImplINS_3gen6detail8TupleGenINS_6detail11IntSequenceImJLm0EEEEJS4_EEEE7releaseEv:
+      235:   44:  void release() override {
+      235:   45:    if (m_count.fetch_sub(1L) == 1L) {
+        1:   46:      delete this;
+        -:   47:    }
+      235:   48:  }
+------------------
+_ZN2rc3GenISt6vectorIdSaIdEEE7GenImplIZNS_3gen9containerIS3_JdEEENS0_IT_EEDpNS0_IT0_EEEUlRKNS_6RandomEiE_E7releaseEv:
+        2:   44:  void release() override {
+        2:   45:    if (m_count.fetch_sub(1L) == 1L) {
+        1:   46:      delete this;
+        -:   47:    }
+        2:   48:  }
+------------------
+        -:   49:
+        -:   50:private:
+        -:   51:  const Impl m_impl;
+        -:   52:  std::atomic<long> m_count;
+        -:   53:};
+        -:   54:
+        -:   55:template <typename T>
+        -:   56:template <typename Impl, typename>
+      122:   57:Gen<T>::Gen(Impl &&impl)
+      122:   58:    : m_impl(new GenImpl<Decay<Impl>>(std::forward<Impl>(impl))) {}
+------------------
+_ZN2rc3GenISt6vectorIdSaIdEEEC2IZNS_3gen9containerIS3_JdEEENS0_IT_EEDpNS0_IT0_EEEUlRKNS_6RandomEiE_vEEOS8_:
+        1:   57:Gen<T>::Gen(Impl &&impl)
+        1:   58:    : m_impl(new GenImpl<Decay<Impl>>(std::forward<Impl>(impl))) {}
+------------------
+_ZN2rc3GenISt5tupleIJSt6vectorIdSaIdEEEEEC2INS_3gen6detail8TupleGenINS_6detail11IntSequenceImJLm0EEEEJS4_EEEvEEOT_:
+        1:   57:Gen<T>::Gen(Impl &&impl)
+        1:   58:    : m_impl(new GenImpl<Decay<Impl>>(std::forward<Impl>(impl))) {}
+------------------
+_ZN2rc3GenINS_6detail3AnyEEC2INS_3gen6detail6MapGenISt5tupleIJSt6vectorIdSaIdEEEEPFS2_OSC_EEEvEEOT_:
+      117:   57:Gen<T>::Gen(Impl &&impl)
+      117:   58:    : m_impl(new GenImpl<Decay<Impl>>(std::forward<Impl>(impl))) {}
+------------------
+_ZN2rc3GenISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEEC2IZNS5_7execRawINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSG_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESM_EUlRKNS_6RandomEiE_vEEOSM_:
+        1:   57:Gen<T>::Gen(Impl &&impl)
+        1:   58:    : m_impl(new GenImpl<Decay<Impl>>(std::forward<Impl>(impl))) {}
+------------------
+_ZN2rc3GenISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEEC2IZNS5_7execRawINS2_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSG_EEEEENS0_IS1_INS2_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES6_EEESM_EUlRKNS_6RandomEiE_vEEOSM_:
+        1:   57:Gen<T>::Gen(Impl &&impl)
+        1:   58:    : m_impl(new GenImpl<Decay<Impl>>(std::forward<Impl>(impl))) {}
+------------------
+_ZN2rc3GenIdEC2IRFNS_10ShrinkableIdEERKNS_6RandomEiEvEEOT_:
+        1:   57:Gen<T>::Gen(Impl &&impl)
+        1:   58:    : m_impl(new GenImpl<Decay<Impl>>(std::forward<Impl>(impl))) {}
+------------------
+        -:   59:
+        -:   60:template <typename T>
+        -:   61:std::string Gen<T>::name() const {
+        -:   62:  return m_name;
+        -:   63:}
+        -:   64:
+        -:   65:template <typename T>
+     2627:   66:Shrinkable<T> Gen<T>::operator()(const Random &random, int size) const
+        -:   67:    noexcept {
+        -:   68:  try {
+     2627:   69:    return m_impl->generate(random, size);
+    =====:   70:  } catch (...) {
+    =====:   71:    auto exception = std::current_exception();
+        -:   72:    return shrinkable::lambda([=]() -> T {
+        -:   73:      std::rethrow_exception(exception);
+    =====:   74:    });
+        -:   75:  }
+        -:   76:}
+------------------
+_ZNK2rc3GenISt5tupleIJSt6vectorIdSaIdEEEEEclERKNS_6RandomEi:
+      108:   66:Shrinkable<T> Gen<T>::operator()(const Random &random, int size) const
+        -:   67:    noexcept {
+        -:   68:  try {
+      108:   69:    return m_impl->generate(random, size);
+    =====:   70:  } catch (...) {
+    =====:   71:    auto exception = std::current_exception();
+        -:   72:    return shrinkable::lambda([=]() -> T {
+        -:   73:      std::rethrow_exception(exception);
+    =====:   74:    });
+        -:   75:  }
+        -:   76:}
+------------------
+_ZNK2rc3GenISt6vectorIdSaIdEEEclERKNS_6RandomEi:
+      108:   66:Shrinkable<T> Gen<T>::operator()(const Random &random, int size) const
+        -:   67:    noexcept {
+        -:   68:  try {
+      108:   69:    return m_impl->generate(random, size);
+    =====:   70:  } catch (...) {
+    =====:   71:    auto exception = std::current_exception();
+        -:   72:    return shrinkable::lambda([=]() -> T {
+        -:   73:      std::rethrow_exception(exception);
+    =====:   74:    });
+        -:   75:  }
+        -:   76:}
+------------------
+_ZNK2rc3GenIdEclERKNS_6RandomEi:
+     2411:   66:Shrinkable<T> Gen<T>::operator()(const Random &random, int size) const
+        -:   67:    noexcept {
+        -:   68:  try {
+     2411:   69:    return m_impl->generate(random, size);
+    =====:   70:  } catch (...) {
+    =====:   71:    auto exception = std::current_exception();
+        -:   72:    return shrinkable::lambda([=]() -> T {
+        -:   73:      std::rethrow_exception(exception);
+    =====:   74:    });
+        -:   75:  }
+        -:   76:}
+------------------
+        -:   77:
+        -:   78:template <typename T>
+      117:   79:T Gen<T>::operator*() const {
+        -:   80:  using namespace detail;
+        -:   81:  using rc::gen::detail::param::CurrentHandler;
+      117:   82:  const auto handler = ImplicitParam<CurrentHandler>::value();
+      234:   83:  return std::move(handler->onGenerate(gen::map(*this, &Any::of<T>).as(m_name))
+      351:   84:                       .template get<T>());
+        -:   85:}
+        -:   86:
+        -:   87:template <typename T>
+      117:   88:Gen<T> Gen<T>::as(const std::string &name) const {
+      117:   89:  auto gen = *this;
+      117:   90:  gen.m_name = name;
+      117:   91:  return gen;
+        -:   92:}
+        -:   93:
+        -:   94:template <typename T>
+      354:   95:Gen<T>::Gen(const Gen &other) noexcept : m_impl(other.m_impl),
+      354:   96:                                         m_name(other.m_name) {
+      354:   97:  m_impl->retain();
+      354:   98:}
+------------------
+_ZN2rc3GenIdEC2ERKS1_:
+        2:   95:Gen<T>::Gen(const Gen &other) noexcept : m_impl(other.m_impl),
+        2:   96:                                         m_name(other.m_name) {
+        2:   97:  m_impl->retain();
+        2:   98:}
+------------------
+_ZN2rc3GenISt6vectorIdSaIdEEEC2ERKS4_:
+        1:   95:Gen<T>::Gen(const Gen &other) noexcept : m_impl(other.m_impl),
+        1:   96:                                         m_name(other.m_name) {
+        1:   97:  m_impl->retain();
+        1:   98:}
+------------------
+_ZN2rc3GenINS_6detail3AnyEEC2ERKS3_:
+      117:   95:Gen<T>::Gen(const Gen &other) noexcept : m_impl(other.m_impl),
+      117:   96:                                         m_name(other.m_name) {
+      117:   97:  m_impl->retain();
+      117:   98:}
+------------------
+_ZN2rc3GenISt5tupleIJSt6vectorIdSaIdEEEEEC2ERKS6_:
+      234:   95:Gen<T>::Gen(const Gen &other) noexcept : m_impl(other.m_impl),
+      234:   96:                                         m_name(other.m_name) {
+      234:   97:  m_impl->retain();
+      234:   98:}
+------------------
+        -:   99:
+        -:  100:template <typename T>
+        -:  101:Gen<T> &Gen<T>::operator=(const Gen &rhs) noexcept {
+        -:  102:  rhs.m_impl->retain();
+        -:  103:  if (m_impl) {
+        -:  104:    m_impl->release();
+        -:  105:  }
+        -:  106:  m_impl = rhs.m_impl;
+        -:  107:  m_name = rhs.m_name;
+        -:  108:  return *this;
+        -:  109:}
+        -:  110:
+        -:  111:template <typename T>
+      354:  112:Gen<T>::Gen(Gen &&other) noexcept : m_impl(other.m_impl),
+      354:  113:                                    m_name(std::move(other.m_name)) {
+      354:  114:  other.m_impl = nullptr;
+      354:  115:}
+------------------
+_ZN2rc3GenISt6vectorIdSaIdEEEC2EOS4_:
+        2:  112:Gen<T>::Gen(Gen &&other) noexcept : m_impl(other.m_impl),
+        2:  113:                                    m_name(std::move(other.m_name)) {
+        2:  114:  other.m_impl = nullptr;
+        2:  115:}
+------------------
+_ZN2rc3GenISt5tupleIJSt6vectorIdSaIdEEEEEC2EOS6_:
+      351:  112:Gen<T>::Gen(Gen &&other) noexcept : m_impl(other.m_impl),
+      351:  113:                                    m_name(std::move(other.m_name)) {
+      351:  114:  other.m_impl = nullptr;
+      351:  115:}
+------------------
+_ZN2rc3GenIdEC2EOS1_:
+        1:  112:Gen<T>::Gen(Gen &&other) noexcept : m_impl(other.m_impl),
+        1:  113:                                    m_name(std::move(other.m_name)) {
+        1:  114:  other.m_impl = nullptr;
+        1:  115:}
+------------------
+        -:  116:
+        -:  117:template <typename T>
+        -:  118:Gen<T> &Gen<T>::operator=(Gen &&rhs) noexcept {
+        -:  119:  if (m_impl) {
+        -:  120:    m_impl->release();
+        -:  121:  }
+        -:  122:  m_impl = rhs.m_impl;
+        -:  123:  rhs.m_impl = nullptr;
+        -:  124:  m_name = std::move(rhs.m_name);
+        -:  125:  return *this;
+        -:  126:}
+        -:  127:
+        -:  128:template <typename T>
+      840:  129:Gen<T>::~Gen() noexcept {
+      840:  130:  if (m_impl) {
+      478:  131:    m_impl->release();
+        -:  132:  }
+      840:  133:}
+------------------
+_ZN2rc3GenISt6vectorIdSaIdEEED2Ev:
+        4:  129:Gen<T>::~Gen() noexcept {
+        4:  130:  if (m_impl) {
+        2:  131:    m_impl->release();
+        -:  132:  }
+        4:  133:}
+------------------
+_ZN2rc3GenINS_6detail3AnyEED2Ev:
+      234:  129:Gen<T>::~Gen() noexcept {
+      234:  130:  if (m_impl) {
+      234:  131:    m_impl->release();
+        -:  132:  }
+      234:  133:}
+------------------
+_ZN2rc3GenISt5tupleIJSt6vectorIdSaIdEEEEED2Ev:
+      586:  129:Gen<T>::~Gen() noexcept {
+      586:  130:  if (m_impl) {
+      235:  131:    m_impl->release();
+        -:  132:  }
+      586:  133:}
+------------------
+_ZN2rc3GenISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEED2Ev:
+       10:  129:Gen<T>::~Gen() noexcept {
+       10:  130:  if (m_impl) {
+        2:  131:    m_impl->release();
+        -:  132:  }
+       10:  133:}
+------------------
+_ZN2rc3GenINS_6detail15CaseDescriptionEED2Ev:
+        2:  129:Gen<T>::~Gen() noexcept {
+        2:  130:  if (m_impl) {
+        2:  131:    m_impl->release();
+        -:  132:  }
+        2:  133:}
+------------------
+_ZN2rc3GenIdED2Ev:
+        4:  129:Gen<T>::~Gen() noexcept {
+        4:  130:  if (m_impl) {
+        3:  131:    m_impl->release();
+        -:  132:  }
+        4:  133:}
+------------------
+        -:  134:
+        -:  135:} // namespace rc

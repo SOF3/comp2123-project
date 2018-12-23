@@ -1,0 +1,90 @@
+        -:    0:Source:libs/rapidcheck/include/rapidcheck/Check.hpp
+        -:    0:Graph:sciNot5.gcno
+        -:    0:Data:sciNot5.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#pragma once
+        -:    2:
+        -:    3:#include <iostream>
+        -:    4:
+        -:    5:#include "rapidcheck/detail/Configuration.h"
+        -:    6:#include "rapidcheck/detail/Results.h"
+        -:    7:#include "rapidcheck/detail/Property.h"
+        -:    8:#include "rapidcheck/detail/TestListener.h"
+        -:    9:
+        -:   10:namespace rc {
+        -:   11:namespace detail {
+        -:   12:
+        -:   13:TestResult
+        -:   14:checkProperty(const Property &property,
+        -:   15:              const TestMetadata &metadata,
+        -:   16:              const TestParams &params,
+        -:   17:              TestListener &listener,
+        -:   18:              const std::unordered_map<std::string, Reproduce> &reproduceMap);
+        -:   19:
+        -:   20:TestResult checkProperty(const Property &property,
+        -:   21:                         const TestMetadata &metadata,
+        -:   22:                         const TestParams &params,
+        -:   23:                         TestListener &listener);
+        -:   24:
+        -:   25:TestResult checkProperty(const Property &property,
+        -:   26:                         const TestMetadata &metadata,
+        -:   27:                         const TestParams &params);
+        -:   28:
+        -:   29:TestResult checkProperty(const Property &property,
+        -:   30:                         const TestMetadata &metadata);
+        -:   31:
+        -:   32:// Uses defaults from configuration
+        -:   33:TestResult checkProperty(const Property &property);
+        -:   34:
+        -:   35:template <typename Testable, typename... Args>
+        2:   36:TestResult checkTestable(Testable &&testable, Args &&... args) {
+        -:   37:  return checkProperty(toProperty(std::forward<Testable>(testable)),
+        2:   38:                       std::forward<Args>(args)...);
+        -:   39:}
+------------------
+_ZN2rc6detail13checkTestableIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_JRNS0_12TestMetadataEEEENS0_7VariantINS0_13SuccessResultEJNS0_13FailureResultENS0_12GaveUpResultENS0_5ErrorEEEEOT_DpOT0_:
+        1:   36:TestResult checkTestable(Testable &&testable, Args &&... args) {
+        -:   37:  return checkProperty(toProperty(std::forward<Testable>(testable)),
+        1:   38:                       std::forward<Args>(args)...);
+        -:   39:}
+------------------
+_ZN2rc6detail13checkTestableIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_JRNS0_12TestMetadataEEEENS0_7VariantINS0_13SuccessResultEJNS0_13FailureResultENS0_12GaveUpResultENS0_5ErrorEEEEOT_DpOT0_:
+        1:   36:TestResult checkTestable(Testable &&testable, Args &&... args) {
+        -:   37:  return checkProperty(toProperty(std::forward<Testable>(testable)),
+        1:   38:                       std::forward<Args>(args)...);
+        -:   39:}
+------------------
+        -:   40:
+        -:   41:} // namespace detail
+        -:   42:
+        -:   43:template <typename Testable>
+        -:   44:bool check(Testable &&testable) {
+        -:   45:  return check(std::string(), std::forward<Testable>(testable));
+        -:   46:}
+        -:   47:
+        -:   48:template <typename Testable>
+        2:   49:bool check(const std::string &description, Testable &&testable) {
+        -:   50:  using namespace rc::detail;
+        -:   51:
+        -:   52:  // Force loading of the configuration so that message comes _before_ the
+        -:   53:  // description
+        2:   54:  configuration();
+        -:   55:
+        2:   56:  if (!description.empty()) {
+        2:   57:    std::cerr << std::endl << "- " << description << std::endl;
+        -:   58:  }
+        -:   59:
+        4:   60:  TestMetadata metadata;
+        2:   61:  metadata.id = description;
+        2:   62:  metadata.description = description;
+        2:   63:  const auto result =
+        -:   64:      detail::checkTestable(std::forward<Testable>(testable), metadata);
+        -:   65:
+        2:   66:  printResultMessage(result, std::cerr);
+        2:   67:  std::cerr << std::endl;
+        -:   68:
+        4:   69:  return result.template is<detail::SuccessResult>();
+        -:   70:}
+        -:   71:
+        -:   72:} // namespace rc

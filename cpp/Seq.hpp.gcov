@@ -1,0 +1,369 @@
+        -:    0:Source:libs/rapidcheck/include/rapidcheck/Seq.hpp
+        -:    0:Graph:sciNot5.gcno
+        -:    0:Data:sciNot5.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#pragma once
+        -:    2:
+        -:    3:#include "rapidcheck/Show.h"
+        -:    4:
+        -:    5:namespace rc {
+        -:    6:
+        -:    7:template <typename T>
+        -:    8:class Seq<T>::ISeqImpl {
+        -:    9:public:
+        -:   10:  virtual Maybe<T> next() = 0;
+        -:   11:  virtual std::unique_ptr<ISeqImpl> copy() const = 0;
+      27*:   12:  virtual ~ISeqImpl() = default;
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE8ISeqImplD0Ev:
+    #####:   12:  virtual ~ISeqImpl() = default;
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE8ISeqImplD2Ev:
+        6:   12:  virtual ~ISeqImpl() = default;
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt6vectorIdSaIdEEEEE8ISeqImplD0Ev:
+    #####:   12:  virtual ~ISeqImpl() = default;
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt6vectorIdSaIdEEEEE8ISeqImplD2Ev:
+        3:   12:  virtual ~ISeqImpl() = default;
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEE8ISeqImplD0Ev:
+    #####:   12:  virtual ~ISeqImpl() = default;
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEE8ISeqImplD2Ev:
+        3:   12:  virtual ~ISeqImpl() = default;
+------------------
+_ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEE8ISeqImplD0Ev:
+    #####:   12:  virtual ~ISeqImpl() = default;
+------------------
+_ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEE8ISeqImplD2Ev:
+        9:   12:  virtual ~ISeqImpl() = default;
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEEEE8ISeqImplD0Ev:
+    #####:   12:  virtual ~ISeqImpl() = default;
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEEEE8ISeqImplD2Ev:
+        3:   12:  virtual ~ISeqImpl() = default;
+------------------
+_ZN2rc3SeqINS_10ShrinkableINS_6detail3AnyEEEE8ISeqImplD0Ev:
+    #####:   12:  virtual ~ISeqImpl() = default;
+------------------
+_ZN2rc3SeqINS_10ShrinkableINS_6detail3AnyEEEE8ISeqImplD2Ev:
+        3:   12:  virtual ~ISeqImpl() = default;
+------------------
+        -:   13:};
+        -:   14:
+        -:   15:template <typename T>
+        -:   16:template <typename Impl>
+        -:   17:class Seq<T>::SeqImpl : public Seq<T>::ISeqImpl {
+        -:   18:public:
+        -:   19:  template <typename... Args>
+      27*:   20:  SeqImpl(Args &&... args)
+      27*:   21:      : m_impl(std::forward<Args>(args)...) {}
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE7SeqImplINS_3seq6detail9ConcatSeqIS7_Lm1EEEEC2IJS8_EEEDpOT_:
+        3:   20:  SeqImpl(Args &&... args)
+        3:   21:      : m_impl(std::forward<Args>(args)...) {}
+------------------
+_ZN2rc3SeqINS_10ShrinkableINS_6detail3AnyEEEE7SeqImplINS_3seq6detail6MapSeqIZNKS_10shrinkable6detail13MapShrinkableISt5tupleIJSt6vectorIdSaIdEEEEPFS3_OSH_EE7shrinksEvEUlONS1_ISH_EEE_SM_EEEC2IJNS0_ISM_EESO_EEEDpOT_:
+        3:   20:  SeqImpl(Args &&... args)
+        3:   21:      : m_impl(std::forward<Args>(args)...) {}
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE7SeqImplINS_3gen6detail14TupleShrinkSeqILm0ENS_6detail11IntSequenceImJLm0EEEEJS5_EEEEC2IJRKNS1_IS5_EEEEEDpOT_:
+        3:   20:  SeqImpl(Args &&... args)
+        3:   21:      : m_impl(std::forward<Args>(args)...) {}
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt6vectorIdSaIdEEEEE7SeqImplINS_3seq6detail6MapSeqIZNKS_10shrinkable6detail13MapShrinkableIS2_INS1_IdEESaISE_EEPFS4_RKSG_EE7shrinksEvEUlONS1_ISG_EEE_SM_EEEC2IJNS0_ISM_EESO_EEEDpOT_:
+        3:   20:  SeqImpl(Args &&... args)
+        3:   21:      : m_impl(std::forward<Args>(args)...) {}
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEE7SeqImplINS_3seq6detail6MapSeqIZZNS_10shrinkable11shrinkRecurIS5_ZNKS_3gen6detail15ContainerHelperIS2_IdSaIdEENSF_24GenericContainerStrategyISI_Lb0ELb0EEEE8generateIJdEEENS1_ISI_EERKNS_6RandomEiDpRKNS_3GenIT_EEEUlRKS5_E_EENS1_INSt5decayIT_E4typeEEEOS11_RKT0_ENKUlOS5_E_clES19_EUlS19_E_S5_EEEC2IJNS0_IS5_EES1B_EEEDpOSS_:
+        3:   20:  SeqImpl(Args &&... args)
+        3:   21:      : m_impl(std::forward<Args>(args)...) {}
+------------------
+_ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEE7SeqImplINS_6shrink6detail14EachElementSeqIS5_ZNKS_3gen6detail18CollectionStrategyIS1_IdSaIdEEE14shrinkElementsIdEENS0_IS1_INS2_IT_EESaISJ_EEEERKSL_EUlRKS3_E_EEEC2IJS5_SR_EEEDpOT_:
+        3:   20:  SeqImpl(Args &&... args)
+        3:   21:      : m_impl(std::forward<Args>(args)...) {}
+------------------
+_ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEE7SeqImplINS_3seq6detail9ConcatSeqIS5_Lm2EEEEC2IJS6_S6_EEEDpOT_:
+        3:   20:  SeqImpl(Args &&... args)
+        3:   21:      : m_impl(std::forward<Args>(args)...) {}
+------------------
+_ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEE7SeqImplINS_6shrink6detail15RemoveChunksSeqIS5_EEEC2IJS5_EEEDpOT_:
+        3:   20:  SeqImpl(Args &&... args)
+        3:   21:      : m_impl(std::forward<Args>(args)...) {}
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEEEE7SeqImplINS_3seq6detail6MapSeqIZNS6_15shrinksOfRecipeINS3_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSL_EEEEENS0_INS1_IS2_INS3_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES7_EEEEESR_S7_EUlOS7_E_S7_EEEC2IJNS0_IS7_EES10_EEEDpOT_:
+    #####:   20:  SeqImpl(Args &&... args)
+    #####:   21:      : m_impl(std::forward<Args>(args)...) {}
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEEEE7SeqImplINS_3seq6detail6MapSeqIZNS6_15shrinksOfRecipeINS3_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSL_EEEEENS0_INS1_IS2_INS3_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES7_EEEEESR_S7_EUlOS7_E_S7_EEEC2IJNS0_IS7_EES10_EEEDpOT_:
+        3:   20:  SeqImpl(Args &&... args)
+        3:   21:      : m_impl(std::forward<Args>(args)...) {}
+------------------
+        -:   22:
+      58*:   23:  Maybe<T> next() override { return m_impl(); }
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE7SeqImplINS_3gen6detail14TupleShrinkSeqILm0ENS_6detail11IntSequenceImJLm0EEEEJS5_EEEE4nextEv:
+        7:   23:  Maybe<T> next() override { return m_impl(); }
+------------------
+_ZN2rc3SeqINS_10ShrinkableINS_6detail3AnyEEEE7SeqImplINS_3seq6detail6MapSeqIZNKS_10shrinkable6detail13MapShrinkableISt5tupleIJSt6vectorIdSaIdEEEEPFS3_OSH_EE7shrinksEvEUlONS1_ISH_EEE_SM_EEE4nextEv:
+        7:   23:  Maybe<T> next() override { return m_impl(); }
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE7SeqImplINS_3seq6detail9ConcatSeqIS7_Lm1EEEE4nextEv:
+        7:   23:  Maybe<T> next() override { return m_impl(); }
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt6vectorIdSaIdEEEEE7SeqImplINS_3seq6detail6MapSeqIZNKS_10shrinkable6detail13MapShrinkableIS2_INS1_IdEESaISE_EEPFS4_RKSG_EE7shrinksEvEUlONS1_ISG_EEE_SM_EEE4nextEv:
+        7:   23:  Maybe<T> next() override { return m_impl(); }
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEEEE7SeqImplINS_3seq6detail6MapSeqIZNS6_15shrinksOfRecipeINS3_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSL_EEEEENS0_INS1_IS2_INS3_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES7_EEEEESR_S7_EUlOS7_E_S7_EEE4nextEv:
+        7:   23:  Maybe<T> next() override { return m_impl(); }
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEEEE7SeqImplINS_3seq6detail6MapSeqIZNS6_15shrinksOfRecipeINS3_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSL_EEEEENS0_INS1_IS2_INS3_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES7_EEEEESR_S7_EUlOS7_E_S7_EEE4nextEv:
+    #####:   23:  Maybe<T> next() override { return m_impl(); }
+------------------
+_ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEE7SeqImplINS_6shrink6detail15RemoveChunksSeqIS5_EEE4nextEv:
+        7:   23:  Maybe<T> next() override { return m_impl(); }
+------------------
+_ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEE7SeqImplINS_3seq6detail9ConcatSeqIS5_Lm2EEEE4nextEv:
+        7:   23:  Maybe<T> next() override { return m_impl(); }
+------------------
+_ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEE7SeqImplINS_6shrink6detail14EachElementSeqIS5_ZNKS_3gen6detail18CollectionStrategyIS1_IdSaIdEEE14shrinkElementsIdEENS0_IS1_INS2_IT_EESaISJ_EEEERKSL_EUlRKS3_E_EEE4nextEv:
+        2:   23:  Maybe<T> next() override { return m_impl(); }
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEE7SeqImplINS_3seq6detail6MapSeqIZZNS_10shrinkable11shrinkRecurIS5_ZNKS_3gen6detail15ContainerHelperIS2_IdSaIdEENSF_24GenericContainerStrategyISI_Lb0ELb0EEEE8generateIJdEEENS1_ISI_EERKNS_6RandomEiDpRKNS_3GenIT_EEEUlRKS5_E_EENS1_INSt5decayIT_E4typeEEEOS11_RKT0_ENKUlOS5_E_clES19_EUlS19_E_S5_EEE4nextEv:
+        7:   23:  Maybe<T> next() override { return m_impl(); }
+------------------
+        -:   24:
+    #####:   25:  std::unique_ptr<ISeqImpl> copy() const override {
+    #####:   26:    return std::unique_ptr<ISeqImpl>(new SeqImpl(*this));
+        -:   27:  }
+------------------
+_ZNK2rc3SeqINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE7SeqImplINS_3gen6detail14TupleShrinkSeqILm0ENS_6detail11IntSequenceImJLm0EEEEJS5_EEEE4copyEv:
+    #####:   25:  std::unique_ptr<ISeqImpl> copy() const override {
+    #####:   26:    return std::unique_ptr<ISeqImpl>(new SeqImpl(*this));
+        -:   27:  }
+------------------
+_ZNK2rc3SeqINS_10ShrinkableINS_6detail3AnyEEEE7SeqImplINS_3seq6detail6MapSeqIZNKS_10shrinkable6detail13MapShrinkableISt5tupleIJSt6vectorIdSaIdEEEEPFS3_OSH_EE7shrinksEvEUlONS1_ISH_EEE_SM_EEE4copyEv:
+    #####:   25:  std::unique_ptr<ISeqImpl> copy() const override {
+    #####:   26:    return std::unique_ptr<ISeqImpl>(new SeqImpl(*this));
+        -:   27:  }
+------------------
+_ZNK2rc3SeqINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE7SeqImplINS_3seq6detail9ConcatSeqIS7_Lm1EEEE4copyEv:
+    #####:   25:  std::unique_ptr<ISeqImpl> copy() const override {
+    #####:   26:    return std::unique_ptr<ISeqImpl>(new SeqImpl(*this));
+        -:   27:  }
+------------------
+_ZNK2rc3SeqINS_10ShrinkableISt6vectorIdSaIdEEEEE7SeqImplINS_3seq6detail6MapSeqIZNKS_10shrinkable6detail13MapShrinkableIS2_INS1_IdEESaISE_EEPFS4_RKSG_EE7shrinksEvEUlONS1_ISG_EEE_SM_EEE4copyEv:
+    #####:   25:  std::unique_ptr<ISeqImpl> copy() const override {
+    #####:   26:    return std::unique_ptr<ISeqImpl>(new SeqImpl(*this));
+        -:   27:  }
+------------------
+_ZNK2rc3SeqINS_10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEEEE7SeqImplINS_3seq6detail6MapSeqIZNS6_15shrinksOfRecipeINS3_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSL_EEEEENS0_INS1_IS2_INS3_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES7_EEEEESR_S7_EUlOS7_E_S7_EEE4copyEv:
+    #####:   25:  std::unique_ptr<ISeqImpl> copy() const override {
+    #####:   26:    return std::unique_ptr<ISeqImpl>(new SeqImpl(*this));
+        -:   27:  }
+------------------
+_ZNK2rc3SeqINS_10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEEEE7SeqImplINS_3seq6detail6MapSeqIZNS6_15shrinksOfRecipeINS3_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSL_EEEEENS0_INS1_IS2_INS3_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES7_EEEEESR_S7_EUlOS7_E_S7_EEE4copyEv:
+    #####:   25:  std::unique_ptr<ISeqImpl> copy() const override {
+    #####:   26:    return std::unique_ptr<ISeqImpl>(new SeqImpl(*this));
+        -:   27:  }
+------------------
+_ZNK2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEE7SeqImplINS_6shrink6detail15RemoveChunksSeqIS5_EEE4copyEv:
+    #####:   25:  std::unique_ptr<ISeqImpl> copy() const override {
+    #####:   26:    return std::unique_ptr<ISeqImpl>(new SeqImpl(*this));
+        -:   27:  }
+------------------
+_ZNK2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEE7SeqImplINS_3seq6detail9ConcatSeqIS5_Lm2EEEE4copyEv:
+    #####:   25:  std::unique_ptr<ISeqImpl> copy() const override {
+    #####:   26:    return std::unique_ptr<ISeqImpl>(new SeqImpl(*this));
+        -:   27:  }
+------------------
+_ZNK2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEE7SeqImplINS_6shrink6detail14EachElementSeqIS5_ZNKS_3gen6detail18CollectionStrategyIS1_IdSaIdEEE14shrinkElementsIdEENS0_IS1_INS2_IT_EESaISJ_EEEERKSL_EUlRKS3_E_EEE4copyEv:
+    #####:   25:  std::unique_ptr<ISeqImpl> copy() const override {
+    #####:   26:    return std::unique_ptr<ISeqImpl>(new SeqImpl(*this));
+        -:   27:  }
+------------------
+_ZNK2rc3SeqINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEE7SeqImplINS_3seq6detail6MapSeqIZZNS_10shrinkable11shrinkRecurIS5_ZNKS_3gen6detail15ContainerHelperIS2_IdSaIdEENSF_24GenericContainerStrategyISI_Lb0ELb0EEEE8generateIJdEEENS1_ISI_EERKNS_6RandomEiDpRKNS_3GenIT_EEEUlRKS5_E_EENS1_INSt5decayIT_E4typeEEEOS11_RKT0_ENKUlOS5_E_clES19_EUlS19_E_S5_EEE4copyEv:
+    #####:   25:  std::unique_ptr<ISeqImpl> copy() const override {
+    #####:   26:    return std::unique_ptr<ISeqImpl>(new SeqImpl(*this));
+        -:   27:  }
+------------------
+        -:   28:
+        -:   29:private:
+        -:   30:  Impl m_impl;
+        -:   31:};
+        -:   32:
+        -:   33:template <typename T>
+        -:   34:Seq<T>::Seq(NothingType) noexcept {}
+        -:   35:
+        -:   36:template <typename T>
+        -:   37:template <typename Impl, typename>
+        -:   38:Seq<T>::Seq(Impl &&impl)
+        -:   39:    : m_impl(new SeqImpl<Decay<Impl>>(std::forward<Impl>(impl))) {}
+        -:   40:
+        -:   41:template <typename T>
+       65:   42:Maybe<T> Seq<T>::next() noexcept {
+        -:   43:  try {
+     125*:   44:    return m_impl ? m_impl->next() : Nothing;
+    =====:   45:  } catch (...) {
+    =====:   46:    m_impl.reset();
+    =====:   47:    return Nothing;
+        -:   48:  }
+        -:   49:}
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt6vectorIdSaIdEEEEE4nextEv:
+        7:   42:Maybe<T> Seq<T>::next() noexcept {
+        -:   43:  try {
+      14*:   44:    return m_impl ? m_impl->next() : Nothing;
+    =====:   45:  } catch (...) {
+    =====:   46:    m_impl.reset();
+    =====:   47:    return Nothing;
+        -:   48:  }
+        -:   49:}
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE4nextEv:
+       14:   42:Maybe<T> Seq<T>::next() noexcept {
+        -:   43:  try {
+      28*:   44:    return m_impl ? m_impl->next() : Nothing;
+    =====:   45:  } catch (...) {
+    =====:   46:    m_impl.reset();
+    =====:   47:    return Nothing;
+        -:   48:  }
+        -:   49:}
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEE4nextEv:
+        7:   42:Maybe<T> Seq<T>::next() noexcept {
+        -:   43:  try {
+      14*:   44:    return m_impl ? m_impl->next() : Nothing;
+    =====:   45:  } catch (...) {
+    =====:   46:    m_impl.reset();
+    =====:   47:    return Nothing;
+        -:   48:  }
+        -:   49:}
+------------------
+_ZN2rc3SeqINS_10ShrinkableIdEEE4nextEv:
+        4:   42:Maybe<T> Seq<T>::next() noexcept {
+        -:   43:  try {
+        6:   44:    return m_impl ? m_impl->next() : Nothing;
+    =====:   45:  } catch (...) {
+    =====:   46:    m_impl.reset();
+    =====:   47:    return Nothing;
+        -:   48:  }
+        -:   49:}
+------------------
+_ZN2rc3SeqINS_3gen6detail6RecipeEE4nextEv:
+       17:   42:Maybe<T> Seq<T>::next() noexcept {
+        -:   43:  try {
+       31:   44:    return m_impl ? m_impl->next() : Nothing;
+    =====:   45:  } catch (...) {
+    =====:   46:    m_impl.reset();
+    =====:   47:    return Nothing;
+        -:   48:  }
+        -:   49:}
+------------------
+_ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEE4nextEv:
+       16:   42:Maybe<T> Seq<T>::next() noexcept {
+        -:   43:  try {
+      32*:   44:    return m_impl ? m_impl->next() : Nothing;
+    =====:   45:  } catch (...) {
+    =====:   46:    m_impl.reset();
+    =====:   47:    return Nothing;
+        -:   48:  }
+        -:   49:}
+------------------
+        -:   50:
+        -:   51:template <typename T>
+    #####:   52:Seq<T>::Seq(const Seq &other)
+    #####:   53:    : m_impl(other.m_impl ? other.m_impl->copy() : nullptr) {}
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt6vectorIdSaIdEEEEEC2ERKS6_:
+    #####:   52:Seq<T>::Seq(const Seq &other)
+    #####:   53:    : m_impl(other.m_impl ? other.m_impl->copy() : nullptr) {}
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEEC2ERKS8_:
+    #####:   52:Seq<T>::Seq(const Seq &other)
+    #####:   53:    : m_impl(other.m_impl ? other.m_impl->copy() : nullptr) {}
+------------------
+_ZN2rc3SeqINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEEC2ERKS7_:
+    #####:   52:Seq<T>::Seq(const Seq &other)
+    #####:   53:    : m_impl(other.m_impl ? other.m_impl->copy() : nullptr) {}
+------------------
+_ZN2rc3SeqINS_3gen6detail6RecipeEEC2ERKS4_:
+    #####:   52:Seq<T>::Seq(const Seq &other)
+    #####:   53:    : m_impl(other.m_impl ? other.m_impl->copy() : nullptr) {}
+------------------
+_ZN2rc3SeqINS_10ShrinkableIdEEEC2ERKS3_:
+    #####:   52:Seq<T>::Seq(const Seq &other)
+    #####:   53:    : m_impl(other.m_impl ? other.m_impl->copy() : nullptr) {}
+------------------
+_ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEEC2ERKS6_:
+    #####:   52:Seq<T>::Seq(const Seq &other)
+    #####:   53:    : m_impl(other.m_impl ? other.m_impl->copy() : nullptr) {}
+------------------
+        -:   54:
+        -:   55:template <typename T>
+        -:   56:Seq<T> &Seq<T>::operator=(const Seq &rhs) {
+        -:   57:  m_impl = rhs.m_impl->copy();
+        -:   58:  return *this;
+        -:   59:}
+        -:   60:
+        -:   61:template <typename Impl, typename... Args>
+      27*:   62:Seq<typename std::result_of<Impl(void)>::type::ValueType> makeSeq(Args &&... args) {
+        -:   63:  using SeqT = Seq<typename std::result_of<Impl(void)>::type::ValueType>;
+        -:   64:  using ImplT = typename SeqT::template SeqImpl<Impl>;
+        -:   65:
+      27*:   66:  SeqT seq;
+      27*:   67:  seq.m_impl.reset(new ImplT(std::forward<Args>(args)...));
+      27*:   68:  return seq;
+        -:   69:}
+        -:   70:
+        -:   71:template <typename T>
+        -:   72:bool operator==(Seq<T> lhs, Seq<T> rhs) {
+        -:   73:  while (true) {
+        -:   74:    Maybe<T> a(lhs.next());
+        -:   75:    Maybe<T> b(rhs.next());
+        -:   76:    if (a != b) {
+        -:   77:      return false;
+        -:   78:    }
+        -:   79:
+        -:   80:    if (!a && !b) {
+        -:   81:      return true;
+        -:   82:    }
+        -:   83:  }
+        -:   84:}
+        -:   85:
+        -:   86:template <typename T>
+        -:   87:bool operator!=(Seq<T> lhs, Seq<T> rhs) {
+        -:   88:  return !(std::move(lhs) == std::move(rhs));
+        -:   89:}
+        -:   90:
+        -:   91:template <typename T>
+        -:   92:std::ostream &operator<<(std::ostream &os, Seq<T> seq) {
+        -:   93:  os << "[";
+        -:   94:  int n = 1;
+        -:   95:  auto first = seq.next();
+        -:   96:  if (first) {
+        -:   97:    show(*first, os);
+        -:   98:    while (true) {
+        -:   99:      const auto value = seq.next();
+        -:  100:      if (!value) {
+        -:  101:        break;
+        -:  102:      }
+        -:  103:
+        -:  104:      os << ", ";
+        -:  105:      // Don't print infinite sequences...
+        -:  106:      if (n++ >= 1000) {
+        -:  107:        os << "...";
+        -:  108:        break;
+        -:  109:      }
+        -:  110:
+        -:  111:      show(*value, os);
+        -:  112:    }
+        -:  113:  }
+        -:  114:  os << "]";
+        -:  115:  return os;
+        -:  116:}
+        -:  117:
+        -:  118:} // namespace rc

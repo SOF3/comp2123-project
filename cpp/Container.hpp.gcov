@@ -1,0 +1,528 @@
+        -:    0:Source:libs/rapidcheck/include/rapidcheck/gen/Container.hpp
+        -:    0:Graph:sciNot5.gcno
+        -:    0:Data:sciNot5.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#pragma once
+        -:    2:
+        -:    3:#include "rapidcheck/gen/Arbitrary.h"
+        -:    4:#include "rapidcheck/gen/Tuple.h"
+        -:    5:#include "rapidcheck/gen/detail/ShrinkValueIterator.h"
+        -:    6:#include "rapidcheck/shrink/Shrink.h"
+        -:    7:#include "rapidcheck/shrinkable/Create.h"
+        -:    8:
+        -:    9:namespace rc {
+        -:   10:namespace gen {
+        -:   11:namespace detail {
+        -:   12:
+        -:   13:RC_SFINAE_TRAIT(IsAssociativeContainer, typename T::key_type)
+        -:   14:RC_SFINAE_TRAIT(IsMapContainer, typename T::mapped_type)
+        -:   15:
+        -:   16:template <typename T>
+        -:   17:using Shrinkables = std::vector<Shrinkable<T>>;
+        -:   18:
+        -:   19:template <typename K, typename V>
+        -:   20:using ShrinkablePairs = std::vector<Shrinkable<std::pair<K, V>>>;
+        -:   21:
+        -:   22:template <typename Container, typename T>
+      118:   23:Container toContainer(const Shrinkables<T> &shrinkables) {
+        -:   24:  return Container(makeShrinkValueIterator(begin(shrinkables)),
+      118:   25:                   makeShrinkValueIterator(end(shrinkables)));
+        -:   26:}
+        -:   27:
+        -:   28:template <typename T, typename Predicate>
+      108:   29:Shrinkables<T> generateShrinkables(const Random &random,
+        -:   30:                                   int size,
+        -:   31:                                   std::size_t count,
+        -:   32:                                   const Gen<T> &gen,
+        -:   33:                                   Predicate predicate) {
+      108:   34:  Random r(random);
+      108:   35:  Shrinkables<T> shrinkables;
+      108:   36:  shrinkables.reserve(count);
+        -:   37:
+      108:   38:  auto currentSize = size;
+      108:   39:  int tries = 0;
+     2519:   40:  while (shrinkables.size() < count) {
+     4822:   41:    auto shrinkable = gen(r.split(), currentSize);
+     2411:   42:    if (predicate(shrinkable)) {
+     2411:   43:      shrinkables.push_back(std::move(shrinkable));
+     2411:   44:      tries = 0;
+        -:   45:    } else {
+    #####:   46:      tries++;
+    #####:   47:      if (tries >= 100) {
+        -:   48:        // TODO magic constant!
+        -:   49:        throw GenerationFailure("Gave up trying to generate " +
+        -:   50:                                std::to_string(count) +
+    #####:   51:                                " values for container");
+        -:   52:      }
+    #####:   53:      currentSize++;
+        -:   54:    }
+        -:   55:  }
+        -:   56:
+      216:   57:  return shrinkables;
+        -:   58:}
+        -:   59:
+        -:   60:template <typename Container>
+        -:   61:class CollectionStrategy {
+        -:   62:public:
+        -:   63:  template <typename T>
+      108:   64:  Shrinkables<T> generateElements(const Random &random,
+        -:   65:                                  int size,
+        -:   66:                                  std::size_t count,
+        -:   67:                                  const Gen<T> &gen) const {
+      108:   68:    return generateShrinkables(random, size, count, gen, fn::constant(true));
+        -:   69:  }
+        -:   70:
+        -:   71:  template <typename T>
+        3:   72:  Seq<Shrinkables<T>> shrinkElements(const Shrinkables<T> &shrinkables) const {
+        -:   73:    return shrink::eachElement(
+        3:   74:        shrinkables, [](const Shrinkable<T> &s) { return s.shrinks(); });
+        -:   75:  }
+        -:   76:};
+        -:   77:
+        -:   78:template <typename Container,
+        -:   79:          bool = IsAssociativeContainer<Container>::value,
+        -:   80:          bool = IsMapContainer<Container>::value>
+        -:   81:class GenericContainerStrategy : public CollectionStrategy<Container> {};
+        -:   82:
+        -:   83:template <typename Set>
+        -:   84:class GenericContainerStrategy<Set, true, false> {
+        -:   85:public:
+        -:   86:  template <typename T>
+        -:   87:  Shrinkables<T> generateElements(const Random &random,
+        -:   88:                                  int size,
+        -:   89:                                  std::size_t count,
+        -:   90:                                  const Gen<T> &gen) const {
+        -:   91:    Set set;
+        -:   92:    return generateShrinkables(random,
+        -:   93:                               size,
+        -:   94:                               count,
+        -:   95:                               gen,
+        -:   96:                               [&](const Shrinkable<T> &s) {
+        -:   97:                                 // We want only values that can be inserted
+        -:   98:                                 return set.insert(s.value()).second;
+        -:   99:                               });
+        -:  100:  }
+        -:  101:
+        -:  102:  template <typename T>
+        -:  103:  Seq<Shrinkables<T>> shrinkElements(const Shrinkables<T> &shrinkables) const {
+        -:  104:    // We use a shared_ptr here both because T might not be copyable and
+        -:  105:    // because we don't really need to copy it since we don't modify it.
+        -:  106:    std::shared_ptr<const Set> set =
+        -:  107:        std::make_shared<Set>(toContainer<Set>(shrinkables));
+        -:  108:    return shrink::eachElement(
+        -:  109:        shrinkables,
+        -:  110:        [=](const Shrinkable<T> &s) {
+        -:  111:          return seq::filter(s.shrinks(),
+        -:  112:                             [=](const Shrinkable<T> &x) {
+        -:  113:                               // Here we filter out shrinks that collide with
+        -:  114:                               // another value in the set because that would
+        -:  115:                               // produce an identical set.
+        -:  116:                               return set->find(x.value()) == set->end();
+        -:  117:                             });
+        -:  118:        });
+        -:  119:  }
+        -:  120:};
+        -:  121:
+        -:  122:template <typename Map>
+        -:  123:class GenericContainerStrategy<Map, true, true> {
+        -:  124:public:
+        -:  125:  template <typename K, typename V>
+        -:  126:  ShrinkablePairs<K, V> generateElements(const Random &random,
+        -:  127:                                         int size,
+        -:  128:                                         std::size_t count,
+        -:  129:                                         const Gen<K> &keyGen,
+        -:  130:                                         const Gen<V> &valueGen) const {
+        -:  131:    Random r(random);
+        -:  132:    Map map;
+        -:  133:    auto dummyValue = valueGen(Random(), 0);
+        -:  134:    auto keyShrinkables = generateShrinkables(
+        -:  135:        r.split(),
+        -:  136:        size,
+        -:  137:        count,
+        -:  138:        keyGen,
+        -:  139:        [&](const Shrinkable<K> &s) {
+        -:  140:          // We want only keys that can be inserted
+        -:  141:          return map.insert(std::make_pair(s.value(), dummyValue.value()))
+        -:  142:              .second;
+        -:  143:        });
+        -:  144:
+        -:  145:    auto valueShrinkables =
+        -:  146:        generateShrinkables(r, size, count, valueGen, fn::constant(true));
+        -:  147:
+        -:  148:    ShrinkablePairs<K, V> shrinkablePairs;
+        -:  149:    shrinkablePairs.reserve(count);
+        -:  150:    for (std::size_t i = 0; i < count; i++) {
+        -:  151:      shrinkablePairs.push_back(shrinkable::pair(
+        -:  152:          std::move(keyShrinkables[i]), std::move(valueShrinkables[i])));
+        -:  153:    }
+        -:  154:
+        -:  155:    return shrinkablePairs;
+        -:  156:  }
+        -:  157:
+        -:  158:  template <typename K, typename V>
+        -:  159:  Seq<ShrinkablePairs<K, V>>
+        -:  160:  shrinkElements(const ShrinkablePairs<K, V> &shrinkablePairs) const {
+        -:  161:    // We use a shared_ptr here both because K and V might not be copyable
+        -:  162:    // and because we don't really need to copy it since we don't modify it.
+        -:  163:    std::shared_ptr<const Map> map =
+        -:  164:        std::make_shared<Map>(toContainer<Map>(shrinkablePairs));
+        -:  165:    return shrink::eachElement(
+        -:  166:        shrinkablePairs,
+        -:  167:        [=](const Shrinkable<std::pair<K, V>> &elem) {
+        -:  168:          return seq::filter(
+        -:  169:              elem.shrinks(),
+        -:  170:              [=](const Shrinkable<std::pair<K, V>> &elemShrink) {
+        -:  171:                // Here we filter out values with keys that collide
+        -:  172:                // with other keys of the map. However, if the key
+        -:  173:                // is the same, that means that something else
+        -:  174:                // in this shrink since we expect shrinks to not
+        -:  175:                // equal the original.
+        -:  176:                // NOTE: This places the restriction that the key must
+        -:  177:                // have an equality operator that works but that's
+        -:  178:                // usually true for types used as keys anyway.
+        -:  179:                const auto shrinkValue = elemShrink.value();
+        -:  180:                return (map->find(shrinkValue.first) == map->end()) ||
+        -:  181:                    (shrinkValue.first == elem.value().first);
+        -:  182:              });
+        -:  183:        });
+        -:  184:  }
+        -:  185:};
+        -:  186:
+        -:  187:template <typename MultiMap>
+        -:  188:class MultiMapStrategy : public CollectionStrategy<MultiMap> {
+        -:  189:public:
+        -:  190:  template <typename K, typename V>
+        -:  191:  ShrinkablePairs<K, V> generateElements(const Random &random,
+        -:  192:                                         int size,
+        -:  193:                                         std::size_t count,
+        -:  194:                                         const Gen<K> &keyGen,
+        -:  195:                                         const Gen<V> &valueGen) const {
+        -:  196:    // We treat this as a normal collection since we don't need to worry
+        -:  197:    // about duplicate keys et.c.
+        -:  198:    return CollectionStrategy<MultiMap>::generateElements(
+        -:  199:        random, size, count, gen::pair(keyGen, valueGen));
+        -:  200:  }
+        -:  201:};
+        -:  202:
+        -:  203:template <typename Key, typename Compare, typename Allocator>
+        -:  204:class GenericContainerStrategy<std::multiset<Key, Compare, Allocator>,
+        -:  205:                               true,
+        -:  206:                               false>
+        -:  207:    : public CollectionStrategy<std::multiset<Key, Compare, Allocator>> {};
+        -:  208:
+        -:  209:template <typename Key, typename Hash, typename KeyEqual, typename Allocator>
+        -:  210:class GenericContainerStrategy<
+        -:  211:    std::unordered_multiset<Key, Hash, KeyEqual, Allocator>,
+        -:  212:    true,
+        -:  213:    false>
+        -:  214:    : public CollectionStrategy<
+        -:  215:          std::unordered_multiset<Key, Hash, KeyEqual, Allocator>> {};
+        -:  216:
+        -:  217:template <typename Key, typename T, typename Compare, typename Allocator>
+        -:  218:class GenericContainerStrategy<std::multimap<Key, T, Compare, Allocator>,
+        -:  219:                               true,
+        -:  220:                               true>
+        -:  221:    : public MultiMapStrategy<std::multimap<Key, T, Compare, Allocator>> {};
+        -:  222:
+        -:  223:template <typename Key,
+        -:  224:          typename T,
+        -:  225:          typename Hash,
+        -:  226:          typename KeyEqual,
+        -:  227:          typename Allocator>
+        -:  228:class GenericContainerStrategy<
+        -:  229:    std::unordered_multimap<Key, T, Hash, KeyEqual, Allocator>,
+        -:  230:    true,
+        -:  231:    true>
+        -:  232:    : public MultiMapStrategy<
+        -:  233:          std::unordered_multimap<Key, T, Hash, KeyEqual, Allocator>> {};
+        -:  234:
+        -:  235:template <typename F>
+        -:  236:class UniqueContainerStrategy {
+        -:  237:public:
+        -:  238:  template <typename Arg>
+        -:  239:  explicit UniqueContainerStrategy(Arg &&arg)
+        -:  240:      : m_f(std::move(arg)) {}
+        -:  241:
+        -:  242:  template <typename T>
+        -:  243:  Shrinkables<T> generateElements(const Random &random,
+        -:  244:                                  int size,
+        -:  245:                                  std::size_t count,
+        -:  246:                                  const Gen<T> &gen) const {
+        -:  247:    using Key = Decay<typename std::result_of<F(T)>::type>;
+        -:  248:    std::set<Key> values;
+        -:  249:    return detail::generateShrinkables(random,
+        -:  250:                                       size,
+        -:  251:                                       count,
+        -:  252:                                       gen,
+        -:  253:                                       [&](const Shrinkable<T> &s) {
+        -:  254:                                         return values.insert(m_f(s.value()))
+        -:  255:                                             .second;
+        -:  256:                                       });
+        -:  257:  }
+        -:  258:
+        -:  259:  template <typename T>
+        -:  260:  Seq<Shrinkables<T>>
+        -:  261:  shrinkElements(const Shrinkables<T> &shrinkables) const {
+        -:  262:    using Key = Decay<typename std::result_of<F(T)>::type>;
+        -:  263:    const auto keys = std::make_shared<std::set<Key>>();
+        -:  264:    for (const auto &shrinkable : shrinkables) {
+        -:  265:      keys->insert(m_f(shrinkable.value()));
+        -:  266:    }
+        -:  267:
+        -:  268:    return shrink::eachElement(shrinkables,
+        -:  269:                               [=](const Shrinkable<T> &s) {
+        -:  270:                                 const auto valueKey = m_f(s.value());
+        -:  271:                                 return seq::filter(
+        -:  272:                                     s.shrinks(),
+        -:  273:                                     [=](const Shrinkable<T> &shrink) {
+        -:  274:                                       const auto shrinkKey = m_f(shrink.value());
+        -:  275:                                       return (!(valueKey < shrinkKey) &&
+        -:  276:                                               !(shrinkKey < valueKey)) ||
+        -:  277:                                           keys->count(shrinkKey) == 0;
+        -:  278:                                     });
+        -:  279:                               });
+        -:  280:  }
+        -:  281:
+        -:  282:private:
+        -:  283:  F m_f;
+        -:  284:};
+        -:  285:
+        -:  286:template <typename Container, typename Strategy>
+        -:  287:class ContainerHelper {
+        -:  288:public:
+        1:  289:  explicit ContainerHelper(Strategy &&strategy)
+        1:  290:      : m_strategy(std::move(strategy)) {}
+        -:  291:
+        -:  292:  template <typename... Ts>
+        -:  293:  Shrinkable<Container>
+      108:  294:  generate(const Random &random, int size, const Gen<Ts> &... gens) const {
+        -:  295:    const auto strategy = m_strategy;
+      108:  296:    auto r = random;
+      108:  297:    std::size_t count = r.split().next() % (size + 1);
+      108:  298:    auto shrinkables = strategy.generateElements(r, size, count, gens...);
+        -:  299:
+        -:  300:    using Elements = decltype(shrinkables);
+        -:  301:    return shrinkable::map(
+      108:  302:        shrinkable::shrinkRecur(std::move(shrinkables),
+        -:  303:                                [=](const Elements &elements) {
+        -:  304:                                  return seq::concat(
+        -:  305:                                      shrink::removeChunks(elements),
+        -:  306:                                      strategy.shrinkElements(elements));
+        -:  307:                                }),
+      216:  308:        &toContainer<Container, typename Elements::value_type::ValueType>);
+        -:  309:  }
+        -:  310:
+        -:  311:  template <typename... Ts>
+        -:  312:  Shrinkable<Container> generate(std::size_t count,
+        -:  313:                                 const Random &random,
+        -:  314:                                 int size,
+        -:  315:                                 const Gen<Ts> &... gens) const {
+        -:  316:    const auto strategy = m_strategy;
+        -:  317:    auto shrinkables = strategy.generateElements(random, size, count, gens...);
+        -:  318:
+        -:  319:    using Elements = decltype(shrinkables);
+        -:  320:    return shrinkable::map(
+        -:  321:        shrinkable::shrinkRecur(std::move(shrinkables),
+        -:  322:                                [=](const Elements &elements) {
+        -:  323:                                  return strategy.shrinkElements(elements);
+        -:  324:                                }),
+        -:  325:        &toContainer<Container, typename Elements::value_type::ValueType>);
+        -:  326:  }
+        -:  327:
+        -:  328:private:
+        -:  329:  Strategy m_strategy;
+        -:  330:};
+        -:  331:
+        -:  332:template <typename T, std::size_t N, typename Strategy>
+        -:  333:class ContainerHelper<std::array<T, N>, Strategy> {
+        -:  334:public:
+        -:  335:  using Array = std::array<T, N>;
+        -:  336:
+        -:  337:  explicit ContainerHelper(Strategy &&strategy)
+        -:  338:      : m_strategy(std::move(strategy)) {}
+        -:  339:
+        -:  340:  template <typename U>
+        -:  341:  Shrinkable<Array>
+        -:  342:  generate(const Random &random, int size, const Gen<U> &gen) const {
+        -:  343:    const auto strategy = m_strategy;
+        -:  344:    auto shrinkables = strategy.generateElements(random, size, N, gen);
+        -:  345:
+        -:  346:    return shrinkable::map(
+        -:  347:        shrinkable::shrinkRecur(std::move(shrinkables),
+        -:  348:                                [=](const Shrinkables<U> &elements) {
+        -:  349:                                  return strategy.shrinkElements(elements);
+        -:  350:                                }),
+        -:  351:        [](const Shrinkables<U> &elements) {
+        -:  352:          Array array;
+        -:  353:          for (std::size_t i = 0; i < N; i++) {
+        -:  354:            array[i] = elements[i].value();
+        -:  355:          }
+        -:  356:          return array;
+        -:  357:        });
+        -:  358:  }
+        -:  359:
+        -:  360:  template <typename U>
+        -:  361:  Shrinkable<Array> generate(std::size_t count,
+        -:  362:                             const Random &random,
+        -:  363:                             int size,
+        -:  364:                             const Gen<U> &gen) const {
+        -:  365:    if (count != N) {
+        -:  366:      throw GenerationFailure(
+        -:  367:          "Count must be equal to length of array for std::array");
+        -:  368:    }
+        -:  369:    return generate(random, size, gen);
+        -:  370:  }
+        -:  371:
+        -:  372:private:
+        -:  373:  Strategy m_strategy;
+        -:  374:};
+        -:  375:
+        -:  376:// MSVC HACK: there used to be a really nice macro and template solution here
+        -:  377:// that doesn't work with MSVC
+        -:  378:
+        -:  379:template <typename T, typename Allocator>
+        -:  380:struct DefaultArbitrary<std::vector<T, Allocator>> {
+        1:  381:  static Gen<std::vector<T, Allocator>> arbitrary() {
+        -:  382:    return gen::container<std::vector<T, Allocator>>(
+        1:  383:        gen::arbitrary<T>());
+        -:  384:  }
+        -:  385:};
+        -:  386:
+        -:  387:template <typename T, typename Allocator>
+        -:  388:struct DefaultArbitrary<std::deque<T, Allocator>> {
+        -:  389:  static Gen<std::deque<T, Allocator>> arbitrary() {
+        -:  390:    return gen::container<std::deque<T, Allocator>>(
+        -:  391:        gen::arbitrary<T>());
+        -:  392:  }
+        -:  393:};
+        -:  394:
+        -:  395:template <typename T, typename Allocator>
+        -:  396:struct DefaultArbitrary<std::forward_list<T, Allocator>> {
+        -:  397:  static Gen<std::forward_list<T, Allocator>> arbitrary() {
+        -:  398:    return gen::container<std::forward_list<T, Allocator>>(
+        -:  399:        gen::arbitrary<T>());
+        -:  400:  }
+        -:  401:};
+        -:  402:
+        -:  403:template <typename T, typename Allocator>
+        -:  404:struct DefaultArbitrary<std::list<T, Allocator>> {
+        -:  405:  static Gen<std::list<T, Allocator>> arbitrary() {
+        -:  406:    return gen::container<std::list<T, Allocator>>(
+        -:  407:        gen::arbitrary<T>());
+        -:  408:  }
+        -:  409:};
+        -:  410:
+        -:  411:template <typename Key, typename Compare, typename Allocator>
+        -:  412:struct DefaultArbitrary<std::set<Key, Compare, Allocator>> {
+        -:  413:  static Gen<std::set<Key, Compare, Allocator>> arbitrary() {
+        -:  414:    return gen::container<std::set<Key, Compare, Allocator>>(
+        -:  415:        gen::arbitrary<Key>());
+        -:  416:  }
+        -:  417:};
+        -:  418:
+        -:  419:template <typename Key, typename Compare, typename Allocator>
+        -:  420:struct DefaultArbitrary<std::multiset<Key, Compare, Allocator>> {
+        -:  421:  static Gen<std::multiset<Key, Compare, Allocator>> arbitrary() {
+        -:  422:    return gen::container<std::multiset<Key, Compare, Allocator>>(
+        -:  423:        gen::arbitrary<Key>());
+        -:  424:  }
+        -:  425:};
+        -:  426:
+        -:  427:template <typename Key, typename Hash, typename KeyEqual, typename Allocator>
+        -:  428:struct DefaultArbitrary<std::unordered_set<Key, Hash, KeyEqual, Allocator>> {
+        -:  429:  static Gen<std::unordered_set<Key, Hash, KeyEqual, Allocator>> arbitrary() {
+        -:  430:    return gen::container<std::unordered_set<Key, Hash, KeyEqual, Allocator>>(
+        -:  431:        gen::arbitrary<Key>());
+        -:  432:  }
+        -:  433:};
+        -:  434:
+        -:  435:template <typename Key, typename Hash, typename KeyEqual, typename Allocator>
+        -:  436:struct DefaultArbitrary<std::unordered_multiset<Key, Hash, KeyEqual, Allocator>> {
+        -:  437:  static Gen<std::unordered_multiset<Key, Hash, KeyEqual, Allocator>> arbitrary() {
+        -:  438:    return gen::container<std::unordered_multiset<Key, Hash, KeyEqual, Allocator>>(
+        -:  439:        gen::arbitrary<Key>());
+        -:  440:  }
+        -:  441:};
+        -:  442:
+        -:  443:template <typename Key, typename T, typename Compare, typename Allocator>
+        -:  444:struct DefaultArbitrary<std::map<Key, T, Compare, Allocator>> {
+        -:  445:  static Gen<std::map<Key, T, Compare, Allocator>> arbitrary() {
+        -:  446:    return gen::container<std::map<Key, T, Compare, Allocator>>(
+        -:  447:      gen::arbitrary<Key>(), gen::arbitrary<T>());
+        -:  448:  }
+        -:  449:};
+        -:  450:
+        -:  451:template <typename Key, typename T, typename Compare, typename Allocator>
+        -:  452:struct DefaultArbitrary<std::multimap<Key, T, Compare, Allocator>> {
+        -:  453:  static Gen<std::multimap<Key, T, Compare, Allocator>> arbitrary() {
+        -:  454:    return gen::container<std::multimap<Key, T, Compare, Allocator>>(
+        -:  455:      gen::arbitrary<Key>(), gen::arbitrary<T>());
+        -:  456:  }
+        -:  457:};
+        -:  458:
+        -:  459:template <typename Key, typename T, typename Hash, typename KeyEqual, typename Allocator>
+        -:  460:struct DefaultArbitrary<std::unordered_map<Key, T, Hash, KeyEqual, Allocator>> {
+        -:  461:  static Gen<std::unordered_map<Key, T, Hash, KeyEqual, Allocator>> arbitrary() {
+        -:  462:    return gen::container<std::unordered_map<Key, T, Hash, KeyEqual, Allocator>>(
+        -:  463:      gen::arbitrary<Key>(), gen::arbitrary<T>());
+        -:  464:  }
+        -:  465:};
+        -:  466:
+        -:  467:template <typename Key, typename T, typename Hash, typename KeyEqual, typename Allocator>
+        -:  468:struct DefaultArbitrary<std::unordered_multimap<Key, T, Hash, KeyEqual, Allocator>> {
+        -:  469:  static Gen<std::unordered_multimap<Key, T, Hash, KeyEqual, Allocator>> arbitrary() {
+        -:  470:    return gen::container<std::unordered_multimap<Key, T, Hash, KeyEqual, Allocator>>(
+        -:  471:      gen::arbitrary<Key>(), gen::arbitrary<T>());
+        -:  472:  }
+        -:  473:};
+        -:  474:
+        -:  475:// std::array is a bit special since it has non-type template params
+        -:  476:template <typename T, std::size_t N>
+        -:  477:struct DefaultArbitrary<std::array<T, N>> {
+        -:  478:  static Gen<std::array<T, N>> arbitrary() {
+        -:  479:    return gen::container<std::array<T, N>>(gen::arbitrary<T>());
+        -:  480:  }
+        -:  481:};
+        -:  482:
+        -:  483:} // namespace detail
+        -:  484:
+        -:  485:template <typename Container, typename... Ts>
+        1:  486:Gen<Container> container(Gen<Ts>... gens) {
+        -:  487:  using Strategy = detail::GenericContainerStrategy<Container>;
+        1:  488:  detail::ContainerHelper<Container, Strategy> helper{Strategy()};
+        -:  489:
+        -:  490:  return [=](const Random &random, int size) {
+        -:  491:    return helper.generate(random, size, gens...);
+        1:  492:  };
+        -:  493:}
+        -:  494:
+        -:  495:template <typename Container, typename... Ts>
+        -:  496:Gen<Container> container(std::size_t count, Gen<Ts>... gens) {
+        -:  497:  using Strategy = detail::GenericContainerStrategy<Container>;
+        -:  498:  detail::ContainerHelper<Container, Strategy> helper{Strategy()};
+        -:  499:
+        -:  500:  return [=](const Random &random, int size) {
+        -:  501:    return helper.generate(count, random, size, gens...);
+        -:  502:  };
+        -:  503:}
+        -:  504:
+        -:  505:template <typename Container, typename T>
+        -:  506:Gen<Container> unique(Gen<T> gen) {
+        -:  507:  return gen::uniqueBy<Container>(std::move(gen),
+        -:  508:                                  [](const T &x) -> const T & { return x; });
+        -:  509:}
+        -:  510:
+        -:  511:template <typename Container, typename T, typename F>
+        -:  512:Gen<Container> uniqueBy(Gen<T> gen, F &&f) {
+        -:  513:  using Strategy = detail::UniqueContainerStrategy<Decay<F>>;
+        -:  514:  detail::ContainerHelper<Container, Strategy> helper(
+        -:  515:      Strategy(std::forward<F>(f)));
+        -:  516:
+        -:  517:  return [=](const Random &random, int size) {
+        -:  518:    return helper.generate(random, size, gen);
+        -:  519:  };
+        -:  520:}
+        -:  521:
+        -:  522:} // namespace gen
+        -:  523:} // namespace rc

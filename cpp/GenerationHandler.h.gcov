@@ -1,0 +1,57 @@
+        -:    0:Source:libs/rapidcheck/include/rapidcheck/gen/detail/GenerationHandler.h
+        -:    0:Graph:sciNot5.gcno
+        -:    0:Data:sciNot5.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#pragma once
+        -:    2:
+        -:    3:namespace rc {
+        -:    4:
+        -:    5:template <typename T>
+        -:    6:class Gen;
+        -:    7:
+        -:    8:namespace detail {
+        -:    9:
+        -:   10:class Any;
+        -:   11:
+        -:   12:} // namespace detail
+        -:   13:
+        -:   14:namespace gen {
+        -:   15:namespace detail {
+        -:   16:
+        -:   17:/// Implementations of this class receive callbacks when `operator*` of `Gen` is
+        -:   18:/// invoked.
+        -:   19:class GenerationHandler {
+        -:   20:public:
+        -:   21:  /// Invoked in response to a call to `operator*` in `Gen`.
+        -:   22:  ///
+        -:   23:  /// @param gen  A type erased version (erased to `Any`) of the generator
+        -:   24:  ///             that was dereferenced.
+        -:   25:  ///
+        -:   26:  /// @return An `Any` that will be extracted and returned from the generator.
+        -:   27:  ///         The underlying value must (obviously) have the same type as the
+        -:   28:  ///         underlying generator.
+        -:   29:  virtual rc::detail::Any onGenerate(const Gen<rc::detail::Any> &gen) = 0;
+        -:   30:
+     117*:   31:  virtual ~GenerationHandler() = default;
+------------------
+_ZN2rc3gen6detail17GenerationHandlerD0Ev:
+    #####:   31:  virtual ~GenerationHandler() = default;
+------------------
+_ZN2rc3gen6detail17GenerationHandlerD2Ev:
+      117:   31:  virtual ~GenerationHandler() = default;
+------------------
+        -:   32:};
+        -:   33:
+        -:   34:namespace param {
+        -:   35:
+        -:   36:/// Current GenerationHandler implicit parameter.
+        -:   37:struct CurrentHandler {
+        -:   38:  using ValueType = GenerationHandler *;
+        -:   39:  static GenerationHandler *defaultValue();
+        -:   40:};
+        -:   41:
+        -:   42:} // namespace param
+        -:   43:} // namespace detail
+        -:   44:} // namespace gen
+        -:   45:} // namespace rc

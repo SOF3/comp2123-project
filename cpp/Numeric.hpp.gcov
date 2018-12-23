@@ -1,0 +1,119 @@
+        -:    0:Source:libs/rapidcheck/include/rapidcheck/gen/Numeric.hpp
+        -:    0:Graph:sciNot5.gcno
+        -:    0:Data:sciNot5.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#pragma once
+        -:    2:
+        -:    3:#include "rapidcheck/detail/BitStream.h"
+        -:    4:#include "rapidcheck/shrinkable/Create.h"
+        -:    5:#include "rapidcheck/shrink/Shrink.h"
+        -:    6:#include "rapidcheck/gen/Transform.h"
+        -:    7:#include "rapidcheck/gen/detail/ScaleInteger.h"
+        -:    8:
+        -:    9:namespace rc {
+        -:   10:namespace gen {
+        -:   11:namespace detail {
+        -:   12:
+        -:   13:template <typename T>
+        -:   14:Shrinkable<T> integral(const Random &random, int size) {
+        -:   15:  return shrinkable::shrinkRecur(
+        -:   16:      rc::detail::bitStreamOf(random).nextWithSize<T>(size),
+        -:   17:      &shrink::integral<T>);
+        -:   18:}
+        -:   19:
+        -:   20:extern template Shrinkable<char> integral<char>(const Random &random, int size);
+        -:   21:extern template Shrinkable<unsigned char>
+        -:   22:integral<unsigned char>(const Random &random, int size);
+        -:   23:extern template Shrinkable<short> integral<short>(const Random &random,
+        -:   24:                                                  int size);
+        -:   25:extern template Shrinkable<unsigned short>
+        -:   26:integral<unsigned short>(const Random &random, int size);
+        -:   27:extern template Shrinkable<int> integral<int>(const Random &random, int size);
+        -:   28:extern template Shrinkable<unsigned int>
+        -:   29:integral<unsigned int>(const Random &random, int size);
+        -:   30:extern template Shrinkable<long> integral<long>(const Random &random, int size);
+        -:   31:extern template Shrinkable<unsigned long>
+        -:   32:integral<unsigned long>(const Random &random, int size);
+        -:   33:extern template Shrinkable<long long> integral<long long>(const Random &random,
+        -:   34:                                                          int size);
+        -:   35:extern template Shrinkable<unsigned long long>
+        -:   36:integral<unsigned long long>(const Random &random, int size);
+        -:   37:
+        -:   38:template <typename T>
+        -:   39:Shrinkable<T> real(const Random &random, int size) {
+        -:   40:  // TODO this implementation sucks
+        -:   41:  auto stream = rc::detail::bitStreamOf(random);
+        -:   42:  const double scale =
+        -:   43:      std::min(size, kNominalSize) / static_cast<double>(kNominalSize);
+        -:   44:  const double a = static_cast<double>(stream.nextWithSize<int64_t>(size));
+        -:   45:  const double b =
+        -:   46:      (stream.next<uint64_t>() * scale) / std::numeric_limits<uint64_t>::max();
+        -:   47:  const T value = static_cast<T>(a + b);
+        -:   48:  return shrinkable::shrinkRecur(value, &shrink::real<T>);
+        -:   49:}
+        -:   50:
+        -:   51:extern template Shrinkable<float> real<float>(const Random &random, int size);
+        -:   52:extern template Shrinkable<double> real<double>(const Random &random, int size);
+        -:   53:
+        -:   54:Shrinkable<bool> boolean(const Random &random, int size);
+        -:   55:
+        -:   56:template <typename T>
+        -:   57:struct DefaultArbitrary {
+        -:   58:  // If you ended up here, it means that RapidCheck wanted to generate an
+        -:   59:  // arbitrary value of some type but you haven't declared a specialization of
+        -:   60:  // Arbitrary for your type. Check the template stack trace to see which type
+        -:   61:  // it is.
+        -:   62:  static_assert(std::is_integral<T>::value,
+        -:   63:                "No Arbitrary specialization for type T");
+        -:   64:
+        -:   65:  static Gen<T> arbitrary() { return integral<T>; }
+        -:   66:};
+        -:   67:
+        -:   68:template <>
+        -:   69:struct DefaultArbitrary<float> {
+        -:   70:  static Gen<float> arbitrary() { return real<float>; }
+        -:   71:};
+        -:   72:
+        -:   73:template <>
+        -:   74:struct DefaultArbitrary<double> {
+        1:   75:  static Gen<double> arbitrary() { return real<double>; }
+        -:   76:};
+        -:   77:
+        -:   78:template <>
+        -:   79:struct DefaultArbitrary<long double> {
+        -:   80:  static Gen<long double> arbitrary() { return real<long double>; }
+        -:   81:};
+        -:   82:
+        -:   83:template <>
+        -:   84:struct DefaultArbitrary<bool> {
+        -:   85:  static Gen<bool> arbitrary() { return boolean; }
+        -:   86:};
+        -:   87:
+        -:   88:} // namespace detail
+        -:   89:
+        -:   90:template <typename T>
+        -:   91:Gen<T> inRange(T min, T max) {
+        -:   92:  return [=](const Random &random, int size) {
+        -:   93:    if (max <= min) {
+        -:   94:      std::string msg;
+        -:   95:      msg += "Invalid range [" + std::to_string(min);
+        -:   96:      msg += ", " + std::to_string(max) + ")";
+        -:   97:      throw GenerationFailure(msg);
+        -:   98:    }
+        -:   99:
+        -:  100:    const auto rangeSize =
+        -:  101:        detail::scaleInteger(static_cast<Random::Number>(max) -
+        -:  102:                                 static_cast<Random::Number>(min) - 1,
+        -:  103:                             size) +
+        -:  104:        1;
+        -:  105:    const auto value =
+        -:  106:        static_cast<T>((Random(random).next() % rangeSize) + min);
+        -:  107:    assert(value >= min && value < max);
+        -:  108:    return shrinkable::shrinkRecur(
+        -:  109:        value, [=](T x) { return shrink::towards<T>(x, min); });
+        -:  110:  };
+        -:  111:}
+        -:  112:
+        -:  113:} // namespace gen
+        -:  114:} // namespace rc

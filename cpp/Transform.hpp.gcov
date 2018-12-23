@@ -1,0 +1,155 @@
+        -:    0:Source:libs/rapidcheck/include/rapidcheck/gen/Transform.hpp
+        -:    0:Graph:sciNot5.gcno
+        -:    0:Data:sciNot5.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#pragma once
+        -:    2:
+        -:    3:#include "rapidcheck/shrinkable/Transform.h"
+        -:    4:#include "rapidcheck/gen/Arbitrary.h"
+        -:    5:#include "rapidcheck/gen/Tuple.h"
+        -:    6:#include "rapidcheck/GenerationFailure.h"
+        -:    7:#include "rapidcheck/Random.h"
+        -:    8:
+        -:    9:namespace rc {
+        -:   10:namespace gen {
+        -:   11:namespace detail {
+        -:   12:
+        -:   13:template <typename T, typename Mapper>
+        -:   14:class MapGen {
+        -:   15:public:
+        -:   16:  using U = Decay<typename std::result_of<Mapper(T)>::type>;
+        -:   17:
+        -:   18:  template <typename MapperArg>
+      117:   19:  MapGen(Gen<T> gen, MapperArg &&mapper)
+      117:   20:      : m_mapper(std::forward<MapperArg>(mapper))
+      117:   21:      , m_gen(std::move(gen)) {}
+        -:   22:
+      108:   23:  Shrinkable<U> operator()(const Random &random, int size) const {
+      108:   24:    return shrinkable::map(m_gen(random, size), m_mapper);
+        -:   25:  }
+        -:   26:
+        -:   27:private:
+        -:   28:  Mapper m_mapper;
+        -:   29:  Gen<T> m_gen;
+        -:   30:};
+        -:   31:
+        -:   32:template <typename T, typename Mapper>
+        -:   33:class MapcatGen {
+        -:   34:public:
+        -:   35:  using U = typename std::result_of<Mapper(T)>::type::ValueType;
+        -:   36:
+        -:   37:  template <typename MapperArg>
+        -:   38:  explicit MapcatGen(Gen<T> gen, MapperArg &&mapper)
+        -:   39:      : m_gen(std::move(gen))
+        -:   40:      , m_mapper(std::forward<MapperArg>(mapper)) {}
+        -:   41:
+        -:   42:  Shrinkable<U> operator()(const Random &random, int size) const {
+        -:   43:    auto r1 = random;
+        -:   44:    auto r2 = r1.split();
+        -:   45:    const auto mapper = m_mapper;
+        -:   46:    return shrinkable::mapcat(
+        -:   47:        m_gen(r1, size), [=](T &&x) { return mapper(std::move(x))(r2, size); });
+        -:   48:  }
+        -:   49:
+        -:   50:private:
+        -:   51:  Gen<T> m_gen;
+        -:   52:  Mapper m_mapper;
+        -:   53:};
+        -:   54:
+        -:   55:template <typename T>
+        -:   56:class JoinGen {
+        -:   57:public:
+        -:   58:  explicit JoinGen(Gen<Gen<T>> gen)
+        -:   59:      : m_gen(std::move(gen)) {}
+        -:   60:
+        -:   61:  Shrinkable<T> operator()(const Random &random, int size) const {
+        -:   62:    auto r1 = random;
+        -:   63:    auto r2 = r1.split();
+        -:   64:    return shrinkable::mapcat(
+        -:   65:        m_gen(r1, size),
+        -:   66:        [=](const Gen<T> &innerGen) { return innerGen(r2, size); });
+        -:   67:  }
+        -:   68:
+        -:   69:private:
+        -:   70:  Gen<Gen<T>> m_gen;
+        -:   71:};
+        -:   72:
+        -:   73:} // namespace detail
+        -:   74:
+        -:   75:template <typename T, typename Mapper>
+      117:   76:Gen<Decay<typename std::result_of<Mapper(T)>::type>> map(Gen<T> gen,
+        -:   77:                                                         Mapper &&mapper) {
+      117:   78:  return detail::MapGen<T, Decay<Mapper>>(std::move(gen),
+      234:   79:                                          std::forward<Mapper>(mapper));
+        -:   80:}
+        -:   81:
+        -:   82:template <typename T, typename Mapper>
+        -:   83:Gen<Decay<typename std::result_of<Mapper(T)>::type>> map(Mapper &&mapper) {
+        -:   84:  return gen::map(gen::arbitrary<T>(), std::forward<Mapper>(mapper));
+        -:   85:}
+        -:   86:
+        -:   87:template <typename T, typename Mapper>
+        -:   88:Gen<typename std::result_of<Mapper(T)>::type::ValueType>
+        -:   89:mapcat(Gen<T> gen, Mapper &&mapper) {
+        -:   90:  return detail::MapcatGen<T, Decay<Mapper>>(std::move(gen),
+        -:   91:                                             std::forward<Mapper>(mapper));
+        -:   92:}
+        -:   93:
+        -:   94:template <typename T>
+        -:   95:Gen<T> join(Gen<Gen<T>> gen) {
+        -:   96:  return detail::JoinGen<T>(std::move(gen));
+        -:   97:}
+        -:   98:
+        -:   99:template <typename Callable, typename... Ts>
+        -:  100:Gen<typename std::result_of<Callable(Ts...)>::type> apply(Callable &&callable,
+        -:  101:                                                          Gen<Ts>... gens) {
+        -:  102:  return gen::map(gen::tuple(std::move(gens)...),
+        -:  103:                  [=](std::tuple<Ts...> &&tuple) {
+        -:  104:                    return rc::detail::applyTuple(std::move(tuple), callable);
+        -:  105:                  });
+        -:  106:}
+        -:  107:
+        -:  108:template <typename T, typename U>
+        -:  109:Gen<T> cast(Gen<U> gen) {
+        -:  110:  return gen::map(std::move(gen),
+        -:  111:                  [](U &&x) { return static_cast<T>(std::move(x)); });
+        -:  112:}
+        -:  113:
+        -:  114:template <typename T>
+        -:  115:Gen<T> resize(int size, Gen<T> gen) {
+        -:  116:  return [=](const Random &random, int) { return gen(random, size); };
+        -:  117:}
+        -:  118:
+        -:  119:template <typename T>
+        -:  120:Gen<T> scale(double scale, Gen<T> gen) {
+        -:  121:  return [=](const Random &random, int size) {
+        -:  122:    return gen(random, static_cast<int>(size * scale));
+        -:  123:  };
+        -:  124:}
+        -:  125:
+        -:  126:template <typename Callable>
+        -:  127:Gen<typename std::result_of<Callable(int)>::type::ValueType>
+        -:  128:withSize(Callable &&callable) {
+        -:  129:  return [=](const Random &random, int size) {
+        -:  130:    return callable(size)(random, size);
+        -:  131:  };
+        -:  132:}
+        -:  133:
+        -:  134:template <typename T>
+        -:  135:Gen<T> noShrink(Gen<T> gen) {
+        -:  136:  return [=](const Random &random, int size) {
+        -:  137:    return shrinkable::mapShrinks(gen(random, size),
+        -:  138:                                  fn::constant(Seq<Shrinkable<T>>()));
+        -:  139:  };
+        -:  140:}
+        -:  141:
+        -:  142:template <typename T, typename Shrink>
+        -:  143:Gen<T> shrink(Gen<T> gen, Shrink &&shrink) {
+        -:  144:  return [=](const Random &random, int size) {
+        -:  145:    return shrinkable::postShrink(gen(random, size), shrink);
+        -:  146:  };
+        -:  147:}
+        -:  148:
+        -:  149:} // namespace gen
+        -:  150:} // namespace rc

@@ -1,0 +1,248 @@
+        -:    0:Source:libs/rapidcheck/include/rapidcheck/shrinkable/Create.hpp
+        -:    0:Graph:sciNot5.gcno
+        -:    0:Data:sciNot5.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#pragma once
+        -:    2:
+        -:    3:#include "rapidcheck/fn/Common.h"
+        -:    4:#include "rapidcheck/seq/Transform.h"
+        -:    5:
+        -:    6:namespace rc {
+        -:    7:namespace shrinkable {
+        -:    8:namespace detail {
+        -:    9:
+        -:   10:template <typename Value, typename Shrink>
+        -:   11:class LambdaShrinkable {
+        -:   12:public:
+        -:   13:  using T = Decay<typename std::result_of<Value()>::type>;
+        -:   14:
+        -:   15:  template <typename ValueArg, typename ShrinkArg>
+    #####:   16:  LambdaShrinkable(ValueArg &&value, ShrinkArg &&shrinks)
+        -:   17:      : m_value(std::forward<ValueArg>(value))
+    #####:   18:      , m_shrinks(std::forward<ShrinkArg>(shrinks)) {}
+------------------
+_ZN2rc10shrinkable6detail16LambdaShrinkableIZNKS_3GenISt5tupleIJSt6vectorIdSaIdEEEEEclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqINS_10ShrinkableIS8_EEEEEEEC2ISD_SK_EEOT_OT0_:
+    #####:   16:  LambdaShrinkable(ValueArg &&value, ShrinkArg &&shrinks)
+        -:   17:      : m_value(std::forward<ValueArg>(value))
+    #####:   18:      , m_shrinks(std::forward<ShrinkArg>(shrinks)) {}
+------------------
+_ZN2rc10shrinkable6detail16LambdaShrinkableIZNKS_3GenISt6vectorIdSaIdEEEclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqINS_10ShrinkableIS6_EEEEEEEC2ISB_SI_EEOT_OT0_:
+    #####:   16:  LambdaShrinkable(ValueArg &&value, ShrinkArg &&shrinks)
+        -:   17:      : m_value(std::forward<ValueArg>(value))
+    #####:   18:      , m_shrinks(std::forward<ShrinkArg>(shrinks)) {}
+------------------
+_ZN2rc10shrinkable6detail16LambdaShrinkableIZNKS_3GenIdEclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqINS_10ShrinkableIdEEEEEEEC2IS8_SF_EEOT_OT0_:
+    #####:   16:  LambdaShrinkable(ValueArg &&value, ShrinkArg &&shrinks)
+        -:   17:      : m_value(std::forward<ValueArg>(value))
+    #####:   18:      , m_shrinks(std::forward<ShrinkArg>(shrinks)) {}
+------------------
+        -:   19:
+    #####:   20:  T value() const { return m_value(); }
+------------------
+_ZNK2rc10shrinkable6detail16LambdaShrinkableIZNKS_3GenISt6vectorIdSaIdEEEclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqINS_10ShrinkableIS6_EEEEEEE5valueEv:
+    #####:   20:  T value() const { return m_value(); }
+------------------
+_ZNK2rc10shrinkable6detail16LambdaShrinkableIZNKS_3GenISt5tupleIJSt6vectorIdSaIdEEEEEclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqINS_10ShrinkableIS8_EEEEEEE5valueEv:
+    #####:   20:  T value() const { return m_value(); }
+------------------
+_ZNK2rc10shrinkable6detail16LambdaShrinkableIZNKS_3GenIdEclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqINS_10ShrinkableIdEEEEEEE5valueEv:
+    #####:   20:  T value() const { return m_value(); }
+------------------
+    #####:   21:  Seq<Shrinkable<T>> shrinks() const { return m_shrinks(); }
+------------------
+_ZNK2rc10shrinkable6detail16LambdaShrinkableIZNKS_3GenISt6vectorIdSaIdEEEclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqINS_10ShrinkableIS6_EEEEEEE7shrinksEv:
+    #####:   21:  Seq<Shrinkable<T>> shrinks() const { return m_shrinks(); }
+------------------
+_ZNK2rc10shrinkable6detail16LambdaShrinkableIZNKS_3GenISt5tupleIJSt6vectorIdSaIdEEEEEclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqINS_10ShrinkableIS8_EEEEEEE7shrinksEv:
+    #####:   21:  Seq<Shrinkable<T>> shrinks() const { return m_shrinks(); }
+------------------
+_ZNK2rc10shrinkable6detail16LambdaShrinkableIZNKS_3GenIdEclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqINS_10ShrinkableIdEEEEEEE7shrinksEv:
+    #####:   21:  Seq<Shrinkable<T>> shrinks() const { return m_shrinks(); }
+------------------
+        -:   22:
+        -:   23:private:
+        -:   24:  Value m_value;
+        -:   25:  Shrink m_shrinks;
+        -:   26:};
+        -:   27:
+        -:   28:template <typename Value, typename Shrink>
+        -:   29:class JustShrinkShrinkable // Yeah I know, weird name
+        -:   30:    {
+        -:   31:public:
+        -:   32:  using T = Decay<typename std::result_of<Value()>::type>;
+        -:   33:
+        -:   34:  template <typename ValueArg, typename ShrinkArg>
+      227:   35:  JustShrinkShrinkable(ValueArg &&value, ShrinkArg &&shrinks)
+        -:   36:      : m_value(std::forward<ValueArg>(value))
+      227:   37:      , m_shrink(std::forward<ShrinkArg>(shrinks)) {}
+------------------
+_ZN2rc10shrinkable6detail20JustShrinkShrinkableINS_2fn8ConstantISt6vectorINS_10ShrinkableIdEESaIS7_EEEEZNS0_11shrinkRecurIS9_ZNKS_3gen6detail15ContainerHelperIS5_IdSaIdEENSD_24GenericContainerStrategyISG_Lb0ELb0EEEE8generateIJdEEENS6_ISG_EERKNS_6RandomEiDpRKNS_3GenIT_EEEUlRKS9_E_EENS6_INSt5decayIT_E4typeEEEOSZ_RKT0_EUlOS9_E_EC2ISA_S18_EES13_OS14_:
+      114:   35:  JustShrinkShrinkable(ValueArg &&value, ShrinkArg &&shrinks)
+        -:   36:      : m_value(std::forward<ValueArg>(value))
+      114:   37:      , m_shrink(std::forward<ShrinkArg>(shrinks)) {}
+------------------
+_ZN2rc10shrinkable6detail20JustShrinkShrinkableIZNS_3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSC_EEEEENS_10ShrinkableISt4pairINS6_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS4_6RecipeEEEESK_SP_EUlvE_ZNS5_ISF_EESR_SK_SP_EUlOSH_INS6_12TaggedResultESP_EE0_EC2ISS_SW_EEOSK_OT0_:
+      100:   35:  JustShrinkShrinkable(ValueArg &&value, ShrinkArg &&shrinks)
+        -:   36:      : m_value(std::forward<ValueArg>(value))
+      100:   37:      , m_shrink(std::forward<ShrinkArg>(shrinks)) {}
+------------------
+_ZN2rc10shrinkable6detail20JustShrinkShrinkableIZNS_3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSC_EEEEENS_10ShrinkableISt4pairINS6_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS4_6RecipeEEEESK_SP_EUlvE_ZNS5_ISF_EESR_SK_SP_EUlOSH_INS6_12TaggedResultESP_EE0_EC2ISS_SW_EEOSK_OT0_:
+       13:   35:  JustShrinkShrinkable(ValueArg &&value, ShrinkArg &&shrinks)
+        -:   36:      : m_value(std::forward<ValueArg>(value))
+       13:   37:      , m_shrink(std::forward<ShrinkArg>(shrinks)) {}
+------------------
+        -:   38:
+      232:   39:  T value() const { return m_value(); }
+------------------
+_ZNK2rc10shrinkable6detail20JustShrinkShrinkableIZNS_3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSC_EEEEENS_10ShrinkableISt4pairINS6_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS4_6RecipeEEEESK_SP_EUlvE_ZNS5_ISF_EESR_SK_SP_EUlOSH_INS6_12TaggedResultESP_EE0_E5valueEv:
+       14:   39:  T value() const { return m_value(); }
+------------------
+_ZNK2rc10shrinkable6detail20JustShrinkShrinkableIZNS_3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSC_EEEEENS_10ShrinkableISt4pairINS6_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS4_6RecipeEEEESK_SP_EUlvE_ZNS5_ISF_EESR_SK_SP_EUlOSH_INS6_12TaggedResultESP_EE0_E5valueEv:
+      100:   39:  T value() const { return m_value(); }
+------------------
+_ZNK2rc10shrinkable6detail20JustShrinkShrinkableINS_2fn8ConstantISt6vectorINS_10ShrinkableIdEESaIS7_EEEEZNS0_11shrinkRecurIS9_ZNKS_3gen6detail15ContainerHelperIS5_IdSaIdEENSD_24GenericContainerStrategyISG_Lb0ELb0EEEE8generateIJdEEENS6_ISG_EERKNS_6RandomEiDpRKNS_3GenIT_EEEUlRKS9_E_EENS6_INSt5decayIT_E4typeEEEOSZ_RKT0_EUlOS9_E_E5valueEv:
+      118:   39:  T value() const { return m_value(); }
+------------------
+       6*:   40:  Seq<Shrinkable<T>> shrinks() const { return m_shrink(m_value()); }
+------------------
+_ZNK2rc10shrinkable6detail20JustShrinkShrinkableIZNS_3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSC_EEEEENS_10ShrinkableISt4pairINS6_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS4_6RecipeEEEESK_SP_EUlvE_ZNS5_ISF_EESR_SK_SP_EUlOSH_INS6_12TaggedResultESP_EE0_E7shrinksEv:
+        3:   40:  Seq<Shrinkable<T>> shrinks() const { return m_shrink(m_value()); }
+------------------
+_ZNK2rc10shrinkable6detail20JustShrinkShrinkableIZNS_3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSC_EEEEENS_10ShrinkableISt4pairINS6_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS4_6RecipeEEEESK_SP_EUlvE_ZNS5_ISF_EESR_SK_SP_EUlOSH_INS6_12TaggedResultESP_EE0_E7shrinksEv:
+    #####:   40:  Seq<Shrinkable<T>> shrinks() const { return m_shrink(m_value()); }
+------------------
+_ZNK2rc10shrinkable6detail20JustShrinkShrinkableINS_2fn8ConstantISt6vectorINS_10ShrinkableIdEESaIS7_EEEEZNS0_11shrinkRecurIS9_ZNKS_3gen6detail15ContainerHelperIS5_IdSaIdEENSD_24GenericContainerStrategyISG_Lb0ELb0EEEE8generateIJdEEENS6_ISG_EERKNS_6RandomEiDpRKNS_3GenIT_EEEUlRKS9_E_EENS6_INSt5decayIT_E4typeEEEOSZ_RKT0_EUlOS9_E_E7shrinksEv:
+        3:   40:  Seq<Shrinkable<T>> shrinks() const { return m_shrink(m_value()); }
+------------------
+        -:   41:
+        -:   42:private:
+        -:   43:  Value m_value;
+        -:   44:  Shrink m_shrink;
+        -:   45:};
+        -:   46:
+        -:   47:} // namespace detail
+        -:   48:
+        -:   49:// TODO test _all_ of these?
+        -:   50:
+        -:   51:template <typename Value, typename Shrink>
+    #####:   52:Shrinkable<typename std::result_of<Value()>::type> lambda(Value &&value,
+        -:   53:                                                          Shrink &&shrinks) {
+        -:   54:  using Impl = detail::LambdaShrinkable<Decay<Value>, Decay<Shrink>>;
+        -:   55:  return makeShrinkable<Impl>(std::forward<Value>(value),
+    #####:   56:                              std::forward<Shrink>(shrinks));
+        -:   57:}
+------------------
+_ZN2rc10shrinkable6lambdaIZNKS_3GenISt5tupleIJSt6vectorIdSaIdEEEEEclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqINS_10ShrinkableIS7_EEEEEEEENSG_INSt9result_ofIFT_vEE4typeEEEOSL_OT0_:
+    #####:   52:Shrinkable<typename std::result_of<Value()>::type> lambda(Value &&value,
+        -:   53:                                                          Shrink &&shrinks) {
+        -:   54:  using Impl = detail::LambdaShrinkable<Decay<Value>, Decay<Shrink>>;
+        -:   55:  return makeShrinkable<Impl>(std::forward<Value>(value),
+    #####:   56:                              std::forward<Shrink>(shrinks));
+        -:   57:}
+------------------
+_ZN2rc10shrinkable6lambdaIZNKS_3GenISt6vectorIdSaIdEEEclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqINS_10ShrinkableIS5_EEEEEEEENSE_INSt9result_ofIFT_vEE4typeEEEOSJ_OT0_:
+    #####:   52:Shrinkable<typename std::result_of<Value()>::type> lambda(Value &&value,
+        -:   53:                                                          Shrink &&shrinks) {
+        -:   54:  using Impl = detail::LambdaShrinkable<Decay<Value>, Decay<Shrink>>;
+        -:   55:  return makeShrinkable<Impl>(std::forward<Value>(value),
+    #####:   56:                              std::forward<Shrink>(shrinks));
+        -:   57:}
+------------------
+_ZN2rc10shrinkable6lambdaIZNKS_3GenIdEclERKNS_6RandomEiEUlvE_NS_2fn8ConstantINS_3SeqINS_10ShrinkableIdEEEEEEEENSB_INSt9result_ofIFT_vEE4typeEEEOSG_OT0_:
+    #####:   52:Shrinkable<typename std::result_of<Value()>::type> lambda(Value &&value,
+        -:   53:                                                          Shrink &&shrinks) {
+        -:   54:  using Impl = detail::LambdaShrinkable<Decay<Value>, Decay<Shrink>>;
+        -:   55:  return makeShrinkable<Impl>(std::forward<Value>(value),
+    #####:   56:                              std::forward<Shrink>(shrinks));
+        -:   57:}
+------------------
+        -:   58:
+        -:   59:template <typename Value>
+    #####:   60:Shrinkable<typename std::result_of<Value()>::type> lambda(Value &&value) {
+        -:   61:  using T = typename std::result_of<Value()>::type;
+        -:   62:  return shrinkable::lambda(std::forward<Value>(value),
+    #####:   63:                            fn::constant(Seq<Shrinkable<T>>()));
+        -:   64:}
+------------------
+_ZN2rc10shrinkable6lambdaIZNKS_3GenISt5tupleIJSt6vectorIdSaIdEEEEEclERKNS_6RandomEiEUlvE_EENS_10ShrinkableINSt9result_ofIFT_vEE4typeEEEOSF_:
+    #####:   60:Shrinkable<typename std::result_of<Value()>::type> lambda(Value &&value) {
+        -:   61:  using T = typename std::result_of<Value()>::type;
+        -:   62:  return shrinkable::lambda(std::forward<Value>(value),
+    #####:   63:                            fn::constant(Seq<Shrinkable<T>>()));
+        -:   64:}
+------------------
+_ZN2rc10shrinkable6lambdaIZNKS_3GenISt6vectorIdSaIdEEEclERKNS_6RandomEiEUlvE_EENS_10ShrinkableINSt9result_ofIFT_vEE4typeEEEOSD_:
+    #####:   60:Shrinkable<typename std::result_of<Value()>::type> lambda(Value &&value) {
+        -:   61:  using T = typename std::result_of<Value()>::type;
+        -:   62:  return shrinkable::lambda(std::forward<Value>(value),
+    #####:   63:                            fn::constant(Seq<Shrinkable<T>>()));
+        -:   64:}
+------------------
+_ZN2rc10shrinkable6lambdaIZNKS_3GenIdEclERKNS_6RandomEiEUlvE_EENS_10ShrinkableINSt9result_ofIFT_vEE4typeEEEOSA_:
+    #####:   60:Shrinkable<typename std::result_of<Value()>::type> lambda(Value &&value) {
+        -:   61:  using T = typename std::result_of<Value()>::type;
+        -:   62:  return shrinkable::lambda(std::forward<Value>(value),
+    #####:   63:                            fn::constant(Seq<Shrinkable<T>>()));
+        -:   64:}
+------------------
+        -:   65:
+        -:   66:template <typename T, typename Value, typename>
+        -:   67:Shrinkable<T> just(Value &&value, Seq<Shrinkable<T>> shrinks) {
+        -:   68:  return shrinkable::lambda(fn::constant(std::forward<Value>(value)),
+        -:   69:                            fn::constant(std::move(shrinks)));
+        -:   70:}
+        -:   71:
+        -:   72:template <typename T>
+        -:   73:Shrinkable<Decay<T>> just(T &&value) {
+        -:   74:  return shrinkable::just(std::forward<T>(value), Seq<Shrinkable<Decay<T>>>());
+        -:   75:}
+        -:   76:
+        -:   77:template <typename Value, typename Shrink>
+      227:   78:Shrinkable<typename std::result_of<Value()>::type> shrink(Value &&value,
+        -:   79:                                                          Shrink &&shrinkf) {
+        -:   80:  using Impl = detail::JustShrinkShrinkable<Decay<Value>, Decay<Shrink>>;
+        -:   81:  return makeShrinkable<Impl>(std::forward<Value>(value),
+      227:   82:                              std::forward<Shrink>(shrinkf));
+        -:   83:}
+------------------
+_ZN2rc10shrinkable6shrinkINS_2fn8ConstantISt6vectorINS_10ShrinkableIdEESaIS6_EEEEZNS0_11shrinkRecurIS8_ZNKS_3gen6detail15ContainerHelperIS4_IdSaIdEENSC_24GenericContainerStrategyISF_Lb0ELb0EEEE8generateIJdEEENS5_ISF_EERKNS_6RandomEiDpRKNS_3GenIT_EEEUlRKS8_E_EENS5_INSt5decayIT_E4typeEEEOSY_RKT0_EUlOS8_E_EENS5_INSt9result_ofIFSY_vEE4typeEEES12_OS13_:
+      114:   78:Shrinkable<typename std::result_of<Value()>::type> shrink(Value &&value,
+        -:   79:                                                          Shrink &&shrinkf) {
+        -:   80:  using Impl = detail::JustShrinkShrinkable<Decay<Value>, Decay<Shrink>>;
+        -:   81:  return makeShrinkable<Impl>(std::forward<Value>(value),
+      114:   82:                              std::forward<Shrink>(shrinkf));
+        -:   83:}
+------------------
+_ZN2rc10shrinkable6shrinkIZNS_3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSB_EEEEENS_10ShrinkableISt4pairINS5_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS3_6RecipeEEEESJ_SO_EUlvE_ZNS4_ISE_EESQ_SJ_SO_EUlOSG_INS5_12TaggedResultESO_EE0_EENSF_INSt9result_ofIFSJ_vEE4typeEEEOSJ_OT0_:
+      100:   78:Shrinkable<typename std::result_of<Value()>::type> shrink(Value &&value,
+        -:   79:                                                          Shrink &&shrinkf) {
+        -:   80:  using Impl = detail::JustShrinkShrinkable<Decay<Value>, Decay<Shrink>>;
+        -:   81:  return makeShrinkable<Impl>(std::forward<Value>(value),
+      100:   82:                              std::forward<Shrink>(shrinkf));
+        -:   83:}
+------------------
+_ZN2rc10shrinkable6shrinkIZNS_3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSB_EEEEENS_10ShrinkableISt4pairINS5_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS3_6RecipeEEEESJ_SO_EUlvE_ZNS4_ISE_EESQ_SJ_SO_EUlOSG_INS5_12TaggedResultESO_EE0_EENSF_INSt9result_ofIFSJ_vEE4typeEEEOSJ_OT0_:
+       13:   78:Shrinkable<typename std::result_of<Value()>::type> shrink(Value &&value,
+        -:   79:                                                          Shrink &&shrinkf) {
+        -:   80:  using Impl = detail::JustShrinkShrinkable<Decay<Value>, Decay<Shrink>>;
+        -:   81:  return makeShrinkable<Impl>(std::forward<Value>(value),
+       13:   82:                              std::forward<Shrink>(shrinkf));
+        -:   83:}
+------------------
+        -:   84:
+        -:   85:template <typename T, typename Shrink>
+      114:   86:Shrinkable<Decay<T>> shrinkRecur(T &&value, const Shrink &shrinkf) {
+        -:   87:  return shrinkable::shrink(fn::constant(std::forward<T>(value)),
+        -:   88:                            [=](Decay<T> &&x) {
+        -:   89:                              return seq::map(shrinkf(std::move(x)),
+        -:   90:                                              [=](Decay<T> &&xshrink) {
+        -:   91:                                                return shrinkable::shrinkRecur(
+        -:   92:                                                    std::move(xshrink),
+        -:   93:                                                    shrinkf);
+        -:   94:                                              });
+      114:   95:                            });
+        -:   96:}
+        -:   97:
+        -:   98:} // namespace shrinkable
+        -:   99:} // namespace rc

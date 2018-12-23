@@ -1,0 +1,10 @@
+        -:    0:Source:fooBar.cpp
+        -:    0:Graph:fooBar.gcno
+        -:    0:Data:fooBar.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include <string>
+        -:    2:
+        1:    3:std::string fooBar() {
+        1:    4:	return "qux";
+        -:    5:}

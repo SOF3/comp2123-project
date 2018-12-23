@@ -1,0 +1,77 @@
+        -:    0:Source:libs/rapidcheck/include/rapidcheck/Assertions.hpp
+        -:    0:Graph:sciNot5.gcno
+        -:    0:Data:sciNot5.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#pragma once
+        -:    2:
+        -:    3:namespace rc {
+        -:    4:namespace detail {
+        -:    5:
+        -:    6:std::string makeMessage(const std::string &file,
+        -:    7:                        int line,
+        -:    8:                        const std::string &assertion,
+        -:    9:                        const std::string &extra = "");
+        -:   10:
+        -:   11:std::string makeExpressionMessage(const std::string &file,
+        -:   12:                                  int line,
+        -:   13:                                  const std::string &assertion,
+        -:   14:                                  const std::string &expansion);
+        -:   15:
+        -:   16:std::string makeUnthrownExceptionMessage(const std::string &file,
+        -:   17:                                         int line,
+        -:   18:                                         const std::string &assertion);
+        -:   19:
+        -:   20:std::string makeWrongExceptionMessage(const std::string &file,
+        -:   21:                                      int line,
+        -:   22:                                      const std::string &assertion,
+        -:   23:                                      const std::string &expected);
+        -:   24:
+        -:   25:template <typename Expression>
+     2415:   26:void doAssert(const Expression &expression,
+        -:   27:              bool expectedResult,
+        -:   28:              CaseResult::Type type,
+        -:   29:              const std::string &file,
+        -:   30:              int line,
+        -:   31:              const std::string &assertion) {
+     2415:   32:  if (static_cast<bool>(expression.value()) != expectedResult) {
+      14*:   33:    std::ostringstream ss;
+       7*:   34:    expression.show(ss);
+        -:   35:    throw CaseResult(type,
+       7*:   36:                     makeExpressionMessage(file, line, assertion, ss.str()));
+        -:   37:  }
+     2408:   38:}
+------------------
+_ZN2rc6detail8doAssertINS0_4expr7BoolANDINS2_4LTEqINS2_5ValueIdEEdEEbEEEEvRKT_bNS0_10CaseResult4TypeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiSL_:
+     2404:   26:void doAssert(const Expression &expression,
+        -:   27:              bool expectedResult,
+        -:   28:              CaseResult::Type type,
+        -:   29:              const std::string &file,
+        -:   30:              int line,
+        -:   31:              const std::string &assertion) {
+     2404:   32:  if (static_cast<bool>(expression.value()) != expectedResult) {
+    #####:   33:    std::ostringstream ss;
+    #####:   34:    expression.show(ss);
+        -:   35:    throw CaseResult(type,
+    #####:   36:                     makeExpressionMessage(file, line, assertion, ss.str()));
+        -:   37:  }
+     2404:   38:}
+------------------
+_ZN2rc6detail8doAssertINS0_4expr7BoolANDINS2_4LTEqINS2_5ValueIiEEiEEbEEEEvRKT_bNS0_10CaseResult4TypeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiSL_:
+       11:   26:void doAssert(const Expression &expression,
+        -:   27:              bool expectedResult,
+        -:   28:              CaseResult::Type type,
+        -:   29:              const std::string &file,
+        -:   30:              int line,
+        -:   31:              const std::string &assertion) {
+       11:   32:  if (static_cast<bool>(expression.value()) != expectedResult) {
+       14:   33:    std::ostringstream ss;
+        7:   34:    expression.show(ss);
+        -:   35:    throw CaseResult(type,
+        7:   36:                     makeExpressionMessage(file, line, assertion, ss.str()));
+        -:   37:  }
+        4:   38:}
+------------------
+        -:   39:
+        -:   40:} // namespace detail
+        -:   41:} // namespace rc

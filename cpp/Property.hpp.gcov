@@ -1,0 +1,193 @@
+        -:    0:Source:libs/rapidcheck/include/rapidcheck/detail/Property.hpp
+        -:    0:Graph:sciNot5.gcno
+        -:    0:Data:sciNot5.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#pragma once
+        -:    2:
+        -:    3:#include "rapidcheck/detail/FunctionTraits.h"
+        -:    4:#include "rapidcheck/gen/detail/ExecRaw.h"
+        -:    5:#include "rapidcheck/detail/PropertyContext.h"
+        -:    6:
+        -:    7:namespace rc {
+        -:    8:namespace detail {
+        -:    9:
+        -:   10:struct TaggedResult {
+        -:   11:  CaseResult result;
+        -:   12:  Tags tags;
+        -:   13:};
+        -:   14:
+        -:   15:class AdapterContext : public PropertyContext {
+        -:   16:public:
+        -:   17:  AdapterContext();
+        -:   18:
+        -:   19:  bool reportResult(const CaseResult &result) override;
+        -:   20:  std::ostream &logStream() override;
+        -:   21:  void addTag(std::string str) override;
+        -:   22:  TaggedResult result() const;
+        -:   23:
+        -:   24:private:
+        -:   25:  CaseResult::Type m_resultType;
+        -:   26:  std::vector<std::string> m_messages;
+        -:   27:  std::ostringstream m_logStream;
+        -:   28:  Tags m_tags;
+        -:   29:};
+        -:   30:
+        -:   31:CaseResult toCaseResult(bool value);
+        -:   32:CaseResult toCaseResult(std::string value);
+        -:   33:CaseResult toCaseResult(CaseResult caseResult);
+        -:   34:
+        -:   35:/// Helper class to convert different return types to `CaseResult`.
+        -:   36:template <typename ReturnType>
+        -:   37:struct CaseResultHelper {
+        -:   38:  template <typename Callable, typename... Args>
+        -:   39:  static CaseResult resultOf(const Callable &callable, Args &&... args) {
+        -:   40:    return toCaseResult(callable(std::forward<Args>(args)...));
+        -:   41:  }
+        -:   42:};
+        -:   43:
+        -:   44:template <>
+        -:   45:struct CaseResultHelper<void> {
+        -:   46:  template <typename Callable, typename... Args>
+      117:   47:  static CaseResult resultOf(const Callable &callable, Args &&... args) {
+      117:   48:    callable(std::forward<Args>(args)...);
+      110:   49:    return CaseResult(CaseResult::Type::Success, "no exceptions thrown");
+        -:   50:  }
+------------------
+_ZN2rc6detail16CaseResultHelperIvE8resultOfIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_JS8_EEENS0_10CaseResultERKT_DpOT0_:
+      100:   47:  static CaseResult resultOf(const Callable &callable, Args &&... args) {
+      100:   48:    callable(std::forward<Args>(args)...);
+      100:   49:    return CaseResult(CaseResult::Type::Success, "no exceptions thrown");
+        -:   50:  }
+------------------
+_ZN2rc6detail16CaseResultHelperIvE8resultOfIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_JS8_EEENS0_10CaseResultERKT_DpOT0_:
+       17:   47:  static CaseResult resultOf(const Callable &callable, Args &&... args) {
+       17:   48:    callable(std::forward<Args>(args)...);
+       10:   49:    return CaseResult(CaseResult::Type::Success, "no exceptions thrown");
+        -:   50:  }
+------------------
+        -:   51:};
+        -:   52:
+        -:   53:template <typename Callable, typename Type = FunctionType<Callable>>
+        -:   54:class PropertyAdapter;
+        -:   55:
+        -:   56:template <typename Callable, typename ReturnType, typename... Args>
+        -:   57:class PropertyAdapter<Callable, ReturnType(Args...)> {
+        -:   58:public:
+        -:   59:  template <typename Arg,
+        -:   60:            typename = typename std::enable_if<
+        -:   61:                !std::is_same<Decay<Arg>, PropertyAdapter>::value>::type>
+        2:   62:  PropertyAdapter(Arg &&callable)
+        2:   63:      : m_callable(std::forward<Arg>(callable)) {}
+------------------
+_ZN2rc6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvS6_EEC2IS7_vEEOT_:
+        1:   62:  PropertyAdapter(Arg &&callable)
+        1:   63:      : m_callable(std::forward<Arg>(callable)) {}
+------------------
+_ZN2rc6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvS6_EEC2IS7_vEEOT_:
+        1:   62:  PropertyAdapter(Arg &&callable)
+        1:   63:      : m_callable(std::forward<Arg>(callable)) {}
+------------------
+        -:   64:
+      117:   65:  TaggedResult operator()(Args &&... args) const {
+      234:   66:    AdapterContext context;
+      234:   67:    ImplicitParam<param::CurrentPropertyContext> letContext(&context);
+        -:   68:
+        -:   69:    try {
+      110:   70:      context.reportResult(CaseResultHelper<ReturnType>::resultOf(
+      117:   71:          m_callable, static_cast<Args &&>(args)...));
+       14:   72:    } catch (const CaseResult &result) {
+        7:   73:      context.reportResult(result);
+    =====:   74:    } catch (const GenerationFailure &e) {
+    =====:   75:      context.reportResult(CaseResult(
+        -:   76:          CaseResult::Type::Discard,
+    =====:   77:          std::string("Generation failed with message:\n") + e.what()));
+    =====:   78:    } catch (const std::exception &e) {
+    =====:   79:      context.reportResult(CaseResult(
+        -:   80:          CaseResult::Type::Failure,
+    =====:   81:          std::string("Exception thrown with message:\n") + e.what()));
+    =====:   82:    } catch (const std::string &str) {
+    =====:   83:      context.reportResult(CaseResult(CaseResult::Type::Failure, str));
+    =====:   84:    } catch (...) {
+    =====:   85:      context.reportResult(
+        -:   86:          CaseResult(CaseResult::Type::Failure, "Unknown object thrown"));
+        -:   87:    }
+        -:   88:
+      234:   89:    return context.result();
+        -:   90:  }
+------------------
+_ZNK2rc6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvS6_EEclES6_:
+      100:   65:  TaggedResult operator()(Args &&... args) const {
+      200:   66:    AdapterContext context;
+      200:   67:    ImplicitParam<param::CurrentPropertyContext> letContext(&context);
+        -:   68:
+        -:   69:    try {
+      100:   70:      context.reportResult(CaseResultHelper<ReturnType>::resultOf(
+      100:   71:          m_callable, static_cast<Args &&>(args)...));
+    =====:   72:    } catch (const CaseResult &result) {
+    =====:   73:      context.reportResult(result);
+    =====:   74:    } catch (const GenerationFailure &e) {
+    =====:   75:      context.reportResult(CaseResult(
+        -:   76:          CaseResult::Type::Discard,
+    =====:   77:          std::string("Generation failed with message:\n") + e.what()));
+    =====:   78:    } catch (const std::exception &e) {
+    =====:   79:      context.reportResult(CaseResult(
+        -:   80:          CaseResult::Type::Failure,
+    =====:   81:          std::string("Exception thrown with message:\n") + e.what()));
+    =====:   82:    } catch (const std::string &str) {
+    =====:   83:      context.reportResult(CaseResult(CaseResult::Type::Failure, str));
+    =====:   84:    } catch (...) {
+    =====:   85:      context.reportResult(
+        -:   86:          CaseResult(CaseResult::Type::Failure, "Unknown object thrown"));
+        -:   87:    }
+        -:   88:
+      200:   89:    return context.result();
+        -:   90:  }
+------------------
+_ZNK2rc6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvS6_EEclES6_:
+       17:   65:  TaggedResult operator()(Args &&... args) const {
+       34:   66:    AdapterContext context;
+       34:   67:    ImplicitParam<param::CurrentPropertyContext> letContext(&context);
+        -:   68:
+        -:   69:    try {
+       10:   70:      context.reportResult(CaseResultHelper<ReturnType>::resultOf(
+       17:   71:          m_callable, static_cast<Args &&>(args)...));
+       14:   72:    } catch (const CaseResult &result) {
+        7:   73:      context.reportResult(result);
+    =====:   74:    } catch (const GenerationFailure &e) {
+    =====:   75:      context.reportResult(CaseResult(
+        -:   76:          CaseResult::Type::Discard,
+    =====:   77:          std::string("Generation failed with message:\n") + e.what()));
+    =====:   78:    } catch (const std::exception &e) {
+    =====:   79:      context.reportResult(CaseResult(
+        -:   80:          CaseResult::Type::Failure,
+    =====:   81:          std::string("Exception thrown with message:\n") + e.what()));
+    =====:   82:    } catch (const std::string &str) {
+    =====:   83:      context.reportResult(CaseResult(CaseResult::Type::Failure, str));
+    =====:   84:    } catch (...) {
+    =====:   85:      context.reportResult(
+        -:   86:          CaseResult(CaseResult::Type::Failure, "Unknown object thrown"));
+        -:   87:    }
+        -:   88:
+       34:   89:    return context.result();
+        -:   90:  }
+------------------
+        -:   91:
+        -:   92:private:
+        -:   93:  Callable m_callable;
+        -:   94:};
+        -:   95:
+        -:   96:Gen<CaseDescription>
+        -:   97:mapToCaseDescription(Gen<std::pair<TaggedResult, gen::detail::Recipe>> gen);
+        -:   98:
+        -:   99:template <typename Callable>
+        2:  100:Property toProperty(Callable &&callable) {
+        -:  101:  using Adapter = PropertyAdapter<Decay<Callable>>;
+        -:  102:  return mapToCaseDescription(
+        2:  103:      gen::detail::execRaw(Adapter(std::forward<Callable>(callable))));
+        -:  104:}
+        -:  105:
+        -:  106:} // namespace detail
+        -:  107:} // namespace rc
+        -:  108:
+        -:  109:#include "Property.hpp"
