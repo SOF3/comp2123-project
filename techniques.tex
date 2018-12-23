@@ -5,14 +5,51 @@ Test coverage is a criterion to assess the representativeness of the unit tests 
 \rem{Talk about the integration of debuggers and how to interpret coverage (codecov.io)}
 
 \subsection{Test-driven development (TDD)}
-As a consequence of unit testing, development flow becomes more fluent if each development subtask is based on certain test cases.
+As a consequence of unit testing, development flow becomes more fluent if each development subtask is based on certain test cases. By using TDD, it ensures that every part of the program can be tested properly, as nearly all code is writen based on pre-written test cases. It also prevents writing duplicated code in large collaborative projects, and TDD can avoid waste of time for implmenting already done features/requirements. 
 
-\rem{TODO: Add flowchart}
+The workflow of TDD is as follows:
+
+\begin{enumerate}
+	\item Create a new unit test for the software for a requirement that has not yet been implemented. 
+	\item Run the unit test. If the unit test passes, this means the new test overlaps with previously written tests, and that a new test should be written to cover the new requirement
+	\item Write code to pass (only) the newly added test, while ensuring previous tests also pass
+	\item Run the tests
+	\item Repeat the above process for every requirement
+\end{enumerate}
+
+Suppose we want to write a calulator with a fucntion \texttt{int add(string numbers)} that has the following requirements:
+
+\begin{enumerate}
+	\item The method can take in any amount of space-separated integers as an input, and return their sum.
+	\item If the string is empty, the method should return \texttt{0}.
+	\item If non-space-and-digit characters are passed within the string, the method throw an "Invalid character" exception. 
+\end{enumerate}
+
+We begin the development process by writing the test for the first requirement as follows:
+
+\rem C++ test
+
+As the \textttt{sum} method is currently empty, the test fails as expected. So we can proceed to write the code which solves this test:
+
+\rem C++ Calculator, with sum function
+
+To verify our implementation, we run the test we have written in test 1:
+
+\rem Run test, success
+
+And we can continue with the next test. 
+
+\rem Exercise 1: Write the test and the code for the second test.
 
 \subsection{Behaviour-driven development (BDD)}
-While TDD provides a reliable method to test individual function executions,
-it cannot precisely and concisely define functions that depend on global/object states.
-BDD defines the behaviour of a function using some specific terms:
+
+While TDD provides a reliable method to test individual function executions, it cannot precisely and concisely define functions that depend on global/object states.
+
+The main difference between TDD and BDD is that the BDD provides a more "high-level" view of what the entire software should provide to the user.
+
+It is often regarded as a "bridge" between product designers and developers, as through BDD, product designers can effectively communicate their needs to devlopers who specialize in implementing those requirements. 
+
+BDD defines the behaviour of a function using some specific terms. Each of these is written in the format of a "user story", and follow special "syntax" or keywords. The usage of these keywords are important, as a user story can be automatically phrased into "testable" code with a framework (such as Cucumber, on next section), given that it is formatted correctlywith these specific terms:
 
 \paragraph{Scenario}
 
@@ -21,7 +58,6 @@ BDD defines the behaviour of a function using some specific terms:
 \paragraph{When}
 
 \paragraph{Then}
-\rem{TODO: fill in the blanks}
 
 This framework also subclassifies a task into multiple components to identify the exact source of error.
 
