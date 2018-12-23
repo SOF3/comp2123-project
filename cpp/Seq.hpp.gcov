@@ -100,37 +100,37 @@ _ZN2rc3SeqINS_10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6Recip
         3:   21:      : m_impl(std::forward<Args>(args)...) {}
 ------------------
         -:   22:
-      58*:   23:  Maybe<T> next() override { return m_impl(); }
+      50*:   23:  Maybe<T> next() override { return m_impl(); }
 ------------------
 _ZN2rc3SeqINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE7SeqImplINS_3gen6detail14TupleShrinkSeqILm0ENS_6detail11IntSequenceImJLm0EEEEJS5_EEEE4nextEv:
-        7:   23:  Maybe<T> next() override { return m_impl(); }
+        6:   23:  Maybe<T> next() override { return m_impl(); }
 ------------------
 _ZN2rc3SeqINS_10ShrinkableINS_6detail3AnyEEEE7SeqImplINS_3seq6detail6MapSeqIZNKS_10shrinkable6detail13MapShrinkableISt5tupleIJSt6vectorIdSaIdEEEEPFS3_OSH_EE7shrinksEvEUlONS1_ISH_EEE_SM_EEE4nextEv:
-        7:   23:  Maybe<T> next() override { return m_impl(); }
+        6:   23:  Maybe<T> next() override { return m_impl(); }
 ------------------
 _ZN2rc3SeqINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE7SeqImplINS_3seq6detail9ConcatSeqIS7_Lm1EEEE4nextEv:
-        7:   23:  Maybe<T> next() override { return m_impl(); }
+        6:   23:  Maybe<T> next() override { return m_impl(); }
 ------------------
 _ZN2rc3SeqINS_10ShrinkableISt6vectorIdSaIdEEEEE7SeqImplINS_3seq6detail6MapSeqIZNKS_10shrinkable6detail13MapShrinkableIS2_INS1_IdEESaISE_EEPFS4_RKSG_EE7shrinksEvEUlONS1_ISG_EEE_SM_EEE4nextEv:
-        7:   23:  Maybe<T> next() override { return m_impl(); }
+        6:   23:  Maybe<T> next() override { return m_impl(); }
 ------------------
 _ZN2rc3SeqINS_10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEEEE7SeqImplINS_3seq6detail6MapSeqIZNS6_15shrinksOfRecipeINS3_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvSL_EEEEENS0_INS1_IS2_INS3_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES7_EEEEESR_S7_EUlOS7_E_S7_EEE4nextEv:
-        7:   23:  Maybe<T> next() override { return m_impl(); }
+        6:   23:  Maybe<T> next() override { return m_impl(); }
 ------------------
 _ZN2rc3SeqINS_10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEEEE7SeqImplINS_3seq6detail6MapSeqIZNS6_15shrinksOfRecipeINS3_15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvSL_EEEEENS0_INS1_IS2_INS3_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeES7_EEEEESR_S7_EUlOS7_E_S7_EEE4nextEv:
     #####:   23:  Maybe<T> next() override { return m_impl(); }
 ------------------
 _ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEE7SeqImplINS_6shrink6detail15RemoveChunksSeqIS5_EEE4nextEv:
-        7:   23:  Maybe<T> next() override { return m_impl(); }
+        6:   23:  Maybe<T> next() override { return m_impl(); }
 ------------------
 _ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEE7SeqImplINS_3seq6detail9ConcatSeqIS5_Lm2EEEE4nextEv:
-        7:   23:  Maybe<T> next() override { return m_impl(); }
+        6:   23:  Maybe<T> next() override { return m_impl(); }
 ------------------
 _ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEE7SeqImplINS_6shrink6detail14EachElementSeqIS5_ZNKS_3gen6detail18CollectionStrategyIS1_IdSaIdEEE14shrinkElementsIdEENS0_IS1_INS2_IT_EESaISJ_EEEERKSL_EUlRKS3_E_EEE4nextEv:
         2:   23:  Maybe<T> next() override { return m_impl(); }
 ------------------
 _ZN2rc3SeqINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEE7SeqImplINS_3seq6detail6MapSeqIZZNS_10shrinkable11shrinkRecurIS5_ZNKS_3gen6detail15ContainerHelperIS2_IdSaIdEENSF_24GenericContainerStrategyISI_Lb0ELb0EEEE8generateIJdEEENS1_ISI_EERKNS_6RandomEiDpRKNS_3GenIT_EEEUlRKS5_E_EENS1_INSt5decayIT_E4typeEEEOS11_RKT0_ENKUlOS5_E_clES19_EUlS19_E_S5_EEE4nextEv:
-        7:   23:  Maybe<T> next() override { return m_impl(); }
+        6:   23:  Maybe<T> next() override { return m_impl(); }
 ------------------
         -:   24:
     #####:   25:  std::unique_ptr<ISeqImpl> copy() const override {
@@ -201,9 +201,9 @@ _ZNK2rc3SeqINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEE7SeqImplINS_3seq6detail
         -:   39:    : m_impl(new SeqImpl<Decay<Impl>>(std::forward<Impl>(impl))) {}
         -:   40:
         -:   41:template <typename T>
-       65:   42:Maybe<T> Seq<T>::next() noexcept {
+       57:   42:Maybe<T> Seq<T>::next() noexcept {
         -:   43:  try {
-     125*:   44:    return m_impl ? m_impl->next() : Nothing;
+     109*:   44:    return m_impl ? m_impl->next() : Nothing;
     =====:   45:  } catch (...) {
     =====:   46:    m_impl.reset();
     =====:   47:    return Nothing;
@@ -211,9 +211,9 @@ _ZNK2rc3SeqINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEE7SeqImplINS_3seq6detail
         -:   49:}
 ------------------
 _ZN2rc3SeqINS_10ShrinkableISt6vectorIdSaIdEEEEE4nextEv:
-        7:   42:Maybe<T> Seq<T>::next() noexcept {
+        6:   42:Maybe<T> Seq<T>::next() noexcept {
         -:   43:  try {
-      14*:   44:    return m_impl ? m_impl->next() : Nothing;
+      12*:   44:    return m_impl ? m_impl->next() : Nothing;
     =====:   45:  } catch (...) {
     =====:   46:    m_impl.reset();
     =====:   47:    return Nothing;
@@ -221,9 +221,9 @@ _ZN2rc3SeqINS_10ShrinkableISt6vectorIdSaIdEEEEE4nextEv:
         -:   49:}
 ------------------
 _ZN2rc3SeqINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE4nextEv:
-       14:   42:Maybe<T> Seq<T>::next() noexcept {
+       12:   42:Maybe<T> Seq<T>::next() noexcept {
         -:   43:  try {
-      28*:   44:    return m_impl ? m_impl->next() : Nothing;
+      24*:   44:    return m_impl ? m_impl->next() : Nothing;
     =====:   45:  } catch (...) {
     =====:   46:    m_impl.reset();
     =====:   47:    return Nothing;
@@ -231,9 +231,9 @@ _ZN2rc3SeqINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE4nextEv:
         -:   49:}
 ------------------
 _ZN2rc3SeqINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEE4nextEv:
-        7:   42:Maybe<T> Seq<T>::next() noexcept {
+        6:   42:Maybe<T> Seq<T>::next() noexcept {
         -:   43:  try {
-      14*:   44:    return m_impl ? m_impl->next() : Nothing;
+      12*:   44:    return m_impl ? m_impl->next() : Nothing;
     =====:   45:  } catch (...) {
     =====:   46:    m_impl.reset();
     =====:   47:    return Nothing;
@@ -251,9 +251,9 @@ _ZN2rc3SeqINS_10ShrinkableIdEEE4nextEv:
         -:   49:}
 ------------------
 _ZN2rc3SeqINS_3gen6detail6RecipeEE4nextEv:
-       17:   42:Maybe<T> Seq<T>::next() noexcept {
+       15:   42:Maybe<T> Seq<T>::next() noexcept {
         -:   43:  try {
-       31:   44:    return m_impl ? m_impl->next() : Nothing;
+       27:   44:    return m_impl ? m_impl->next() : Nothing;
     =====:   45:  } catch (...) {
     =====:   46:    m_impl.reset();
     =====:   47:    return Nothing;
@@ -261,9 +261,9 @@ _ZN2rc3SeqINS_3gen6detail6RecipeEE4nextEv:
         -:   49:}
 ------------------
 _ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEE4nextEv:
-       16:   42:Maybe<T> Seq<T>::next() noexcept {
+       14:   42:Maybe<T> Seq<T>::next() noexcept {
         -:   43:  try {
-      32*:   44:    return m_impl ? m_impl->next() : Nothing;
+      28*:   44:    return m_impl ? m_impl->next() : Nothing;
     =====:   45:  } catch (...) {
     =====:   46:    m_impl.reset();
     =====:   47:    return Nothing;

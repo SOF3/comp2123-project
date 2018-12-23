@@ -47,25 +47,25 @@
         -:   45:      , m_start(0)
         3:   46:      , m_size(m_elements.size()) {}
         -:   47:
-        7:   48:  Maybe<Container> operator()() {
-        7:   49:    if (m_size == 0) {
+        6:   48:  Maybe<Container> operator()() {
+        6:   49:    if (m_size == 0) {
         2:   50:      return Nothing;
         -:   51:    }
         -:   52:
-       10:   53:    Container elements;
-        5:   54:    elements.reserve(m_elements.size() - m_size);
-        5:   55:    const auto start = begin(m_elements);
-        5:   56:    const auto fin = end(m_elements);
-        5:   57:    elements.insert(end(elements), start, start + m_start);
-        5:   58:    elements.insert(end(elements), start + m_start + m_size, fin);
+        8:   53:    Container elements;
+        4:   54:    elements.reserve(m_elements.size() - m_size);
+        4:   55:    const auto start = begin(m_elements);
+        4:   56:    const auto fin = end(m_elements);
+        4:   57:    elements.insert(end(elements), start, start + m_start);
+        4:   58:    elements.insert(end(elements), start + m_start + m_size, fin);
         -:   59:
-        5:   60:    if ((m_size + m_start) >= m_elements.size()) {
-        4:   61:      m_size--;
-        4:   62:      m_start = 0;
+        4:   60:    if ((m_size + m_start) >= m_elements.size()) {
+        3:   61:      m_size--;
+        3:   62:      m_start = 0;
         -:   63:    } else {
         1:   64:      m_start++;
         -:   65:    }
-        5:   66:    return elements;
+        4:   66:    return elements;
         -:   67:  }
         -:   68:
         -:   69:private:

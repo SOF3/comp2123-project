@@ -1,0 +1,9 @@
+digraph ExampleDeps {
+	"web frontend" -> "database"
+	"web backend" -> "database"
+	"web backend" -> "logging"
+	"web frontend" -> "i18n"
+	"database" -> "logging"
+	"logging" -> "i18n"
+	"i18n" -> "logging"
+}

@@ -12,9 +12,9 @@
         -:   10:} // namespace detail
         -:   11:
         -:   12:template <typename T>
-      118:   13:decltype(Arbitrary<T>::arbitrary()) arbitrary() {
-      118:   14:  static const auto instance = rc::Arbitrary<T>::arbitrary();
-      118:   15:  return instance;
+      115:   13:decltype(Arbitrary<T>::arbitrary()) arbitrary() {
+      115:   14:  static const auto instance = rc::Arbitrary<T>::arbitrary();
+      115:   15:  return instance;
         -:   16:}
 ------------------
 _ZN2rc3gen9arbitraryIdEEDTclsrNS_9ArbitraryIT_EE9arbitraryEEv:
@@ -30,9 +30,9 @@ _ZN2rc3gen9arbitraryISt6vectorIdSaIdEEEEDTclsrNS_9ArbitraryIT_EE9arbitraryEEv:
         -:   16:}
 ------------------
 _ZN2rc3gen9arbitraryISt5tupleIJSt6vectorIdSaIdEEEEEEDTclsrNS_9ArbitraryIT_EE9arbitraryEEv:
-      116:   13:decltype(Arbitrary<T>::arbitrary()) arbitrary() {
-      116:   14:  static const auto instance = rc::Arbitrary<T>::arbitrary();
-      116:   15:  return instance;
+      113:   13:decltype(Arbitrary<T>::arbitrary()) arbitrary() {
+      113:   14:  static const auto instance = rc::Arbitrary<T>::arbitrary();
+      113:   15:  return instance;
         -:   16:}
 ------------------
         -:   17:

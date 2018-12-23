@@ -25,49 +25,49 @@
         -:   23:                                      const std::string &expected);
         -:   24:
         -:   25:template <typename Expression>
-     2464:   26:void doAssert(const Expression &expression,
+     2606:   26:void doAssert(const Expression &expression,
         -:   27:              bool expectedResult,
         -:   28:              CaseResult::Type type,
         -:   29:              const std::string &file,
         -:   30:              int line,
         -:   31:              const std::string &assertion) {
-     2464:   32:  if (static_cast<bool>(expression.value()) != expectedResult) {
+     2606:   32:  if (static_cast<bool>(expression.value()) != expectedResult) {
       14*:   33:    std::ostringstream ss;
        7*:   34:    expression.show(ss);
         -:   35:    throw CaseResult(type,
        7*:   36:                     makeExpressionMessage(file, line, assertion, ss.str()));
         -:   37:  }
-     2457:   38:}
+     2599:   38:}
 ------------------
 _ZN2rc6detail8doAssertINS0_4expr7BoolANDINS2_4LTEqINS2_5ValueIdEEdEEbEEEEvRKT_bNS0_10CaseResult4TypeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiSL_:
-     2453:   26:void doAssert(const Expression &expression,
+     2598:   26:void doAssert(const Expression &expression,
         -:   27:              bool expectedResult,
         -:   28:              CaseResult::Type type,
         -:   29:              const std::string &file,
         -:   30:              int line,
         -:   31:              const std::string &assertion) {
-     2453:   32:  if (static_cast<bool>(expression.value()) != expectedResult) {
+     2598:   32:  if (static_cast<bool>(expression.value()) != expectedResult) {
     #####:   33:    std::ostringstream ss;
     #####:   34:    expression.show(ss);
         -:   35:    throw CaseResult(type,
     #####:   36:                     makeExpressionMessage(file, line, assertion, ss.str()));
         -:   37:  }
-     2453:   38:}
+     2598:   38:}
 ------------------
 _ZN2rc6detail8doAssertINS0_4expr7BoolANDINS2_4LTEqINS2_5ValueIiEEiEEbEEEEvRKT_bNS0_10CaseResult4TypeERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiSL_:
-       11:   26:void doAssert(const Expression &expression,
+        8:   26:void doAssert(const Expression &expression,
         -:   27:              bool expectedResult,
         -:   28:              CaseResult::Type type,
         -:   29:              const std::string &file,
         -:   30:              int line,
         -:   31:              const std::string &assertion) {
-       11:   32:  if (static_cast<bool>(expression.value()) != expectedResult) {
+        8:   32:  if (static_cast<bool>(expression.value()) != expectedResult) {
        14:   33:    std::ostringstream ss;
         7:   34:    expression.show(ss);
         -:   35:    throw CaseResult(type,
         7:   36:                     makeExpressionMessage(file, line, assertion, ss.str()));
         -:   37:  }
-        4:   38:}
+        1:   38:}
 ------------------
         -:   39:
         -:   40:} // namespace detail

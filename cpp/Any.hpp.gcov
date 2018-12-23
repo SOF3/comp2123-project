@@ -18,13 +18,13 @@
         -:   16:  virtual void showType(std::ostream &os) const = 0;
         -:   17:  virtual void showValue(std::ostream &os) const = 0;
         -:   18:  virtual const std::type_info &typeInfo() const = 0;
-     117*:   19:  virtual ~IAnyImpl() = default;
+     114*:   19:  virtual ~IAnyImpl() = default;
 ------------------
 _ZN2rc6detail3Any8IAnyImplD0Ev:
     #####:   19:  virtual ~IAnyImpl() = default;
 ------------------
 _ZN2rc6detail3Any8IAnyImplD2Ev:
-      117:   19:  virtual ~IAnyImpl() = default;
+      114:   19:  virtual ~IAnyImpl() = default;
 ------------------
         -:   20:};
         -:   21:
@@ -32,16 +32,16 @@ _ZN2rc6detail3Any8IAnyImplD2Ev:
         -:   23:class Any::AnyImpl : public Any::IAnyImpl {
         -:   24:public:
         -:   25:  template <typename ValueT>
-      117:   26:  AnyImpl(ValueT &&value)
-      117:   27:      : m_value(std::forward<ValueT>(value)) {}
+      114:   26:  AnyImpl(ValueT &&value)
+      114:   27:      : m_value(std::forward<ValueT>(value)) {}
         -:   28:
-      116:   29:  void *get() override { return &m_value; }
+      113:   29:  void *get() override { return &m_value; }
         -:   30:
         1:   31:  void showType(std::ostream &os) const override { rc::detail::showType<T>(os); }
         -:   32:
         1:   33:  void showValue(std::ostream &os) const override { show(m_value, os); }
         -:   34:
-      116:   35:  const std::type_info &typeInfo() const override { return typeid(T); }
+      113:   35:  const std::type_info &typeInfo() const override { return typeid(T); }
         -:   36:
         -:   37:private:
         -:   38:  T m_value;
@@ -49,10 +49,10 @@ _ZN2rc6detail3Any8IAnyImplD2Ev:
         -:   40:
         -:   41:/// Constructs a new `Any` with the given value.
         -:   42:template <typename T>
-      117:   43:Any Any::of(T &&value) {
-      117:   44:  Any any;
-      117:   45:  any.m_impl.reset(new AnyImpl<Decay<T>>(std::forward<T>(value)));
-      117:   46:  return any;
+      114:   43:Any Any::of(T &&value) {
+      114:   44:  Any any;
+      114:   45:  any.m_impl.reset(new AnyImpl<Decay<T>>(std::forward<T>(value)));
+      114:   46:  return any;
         -:   47:}
         -:   48:
         -:   49:template <typename T>
@@ -63,10 +63,10 @@ _ZN2rc6detail3Any8IAnyImplD2Ev:
         -:   54:}
         -:   55:
         -:   56:template <typename T>
-      116:   57:T &Any::get() {
-     116*:   58:  assert(m_impl);
-     116*:   59:  assert(m_impl->typeInfo() == typeid(T));
-      116:   60:  return *static_cast<T *>(m_impl->get());
+      113:   57:T &Any::get() {
+     113*:   58:  assert(m_impl);
+     113*:   59:  assert(m_impl->typeInfo() == typeid(T));
+      113:   60:  return *static_cast<T *>(m_impl->get());
         -:   61:}
         -:   62:
         -:   63:} // namespace detail
