@@ -66,11 +66,11 @@ As the \texttt{sum} method is currently empty, the test fails as expected. So we
 
 To verify our implementation, we run the test we have written in test 1:
 
-\rem Run test, success
+\rem{Run test, success}
 
-And we can continue with the next test. 
+And we can continue with implementing the next requirement. 
 
-\textbf{Exercise 1: Write the test and the code for the second test.}
+\textbf{Exercise: Write the test and implementation for the second test.}
 
 \subsection{Behaviour-driven development (BDD)}
 
@@ -83,13 +83,13 @@ BDD defines the behaviour of a function using some specific terms or keywords. E
 The following is an example BDD of Cucumber:
 
 \begin{lstlisting}
-\textbf{Feature}: Is it Friday yet?
+Feature: Is it Friday yet?
   Everybody wants to know when it's Friday
 
-  \textbf{Scenario}: Sunday isn't Friday        # hellocucumber/is_it_friday_yet.feature:4
-    \textbf{Given} today is Sunday              # null
-    \textbf{When} I ask whether it's Friday yet # null
-    \textbf{Then} I should be told "Nope"       # null
+  Scenario: Sunday isn't Friday
+    Given today is Sunday
+    When I ask whether it's Friday yet
+    Then I should be told "Nope"
 \end{lstlisting}
 
 \paragraph{Feature}
@@ -112,7 +112,7 @@ Similar to natural English, "When" implies that the following statement should b
 
 Describes the expected output of the program after the preceeding "when" statement is fulfilled. 
 
-Why is such grammar important? As a software developer, we may often find it difficult to translate requirements given by product designers/users into code. By having the product designers write their requirements in such a fashion which is both "human readable" and "machine prasable", it is possible to translate those requirements in to unit tests \textbf{automatically}. For example, in Cucumber, the following can be generated automatically from the above BDD, which can be further manipulated to contain actual machine-runnable tests:
+Why is such grammar important? As a software developer, we may often find it difficult to translate requirements given by product designers/users into code. By having the product designers write their requirements in such a fashion which is both "human readable" and "machine prasable", it is possible to translate those requirements in to unit tests \textbf{automatically}. For example, in Cucumber, the following can be generated automatically from the above BDD, which can be further manipulated to contain actual machine-runnable tests (in fact a BDD is just a combination of multiple unit tests, but written in a high-level manner):
 
 \java{cucumber_unit_test.java}
 
@@ -122,12 +122,30 @@ If you are interested to learn more, head over to \url{http://docs.cucumber.io/g
 
 As you can see, the description of the program behavior in BDD is more "high level" compared to TDD. The person writing BDDs ususally writes them from a user's perspective, where they might not have full knowledge on the internals of the software. On the other hand, TDDs focus more on the internal working on the software, and whether each part functions correctly. 
 
-This framework also subclassifies a task into multiple components to identify the exact source of error.
+Often in BDD, when a test fails, it is difficult to locate the root cause of the error, as the BDD usually involves the whole piece of software instead of a single modular component and it is difficult to locate a bug in the whole program as opposed to a single function. (in Cucumber, the framework subclassifies a task into multiple components to help to identify the exact source of error, but the subclassification is not as small as those in TDD). Furthermore, as BDD involves running the whole software to conduct behavior tests, it takes much longer to conduct a single test (a BDD test can take up to a minute, while a TDD test may only take a few seconds). 
 
-\rem{Refer to cucumber's framework}
+The existence of BDDs is to keep developers on track on building products that directly address the user's requirements, instead of building functions that satisfy a low-level requirement. This means, that in BDD the software development is driven by how the user will use the software, and the program is built accordingly, while for TDD, it involves the concept where the correctness of a software implies that all sub-components are correctly writen, meaning that code is built according to the feature of a certain component, but not the whole picture. 
 
-\rem{To read: https://enterprisecraftsmanship.com/2016/06/09/styles-of-unit-testing/}
+This means if a BDD test fails, it implies that there is a use case that the software will have a bug in regular use, and should not be released. On the other hand, if BDD passes and a TDD fails, this implies that although some components may contain bugs, in regular usage, they will not affect the running of the whole software, and the software can continue with its release, leaving the bug fix for later. 
 
 \subsection{Dependency mocking}
-\rem{https://enterprisecraftsmanship.com/2016/06/09/styles-of-unit-testing/ provides some insight on why mocking is bad}
-\rem{Consider moving this to the part about coupling}
+
+Often (if not always), sub-components in a software will have other components as dependencies. Take our calculator class as an example. Suppose we want to write a function \texttt{int eval(int a, int b, char operation)}
+
+\cpp{calculator2.cpp}
+
+The implementation is done, and we have unit tests for this code. Now lets say that there is a new requirement, that if the result of the calculation exceeds the value of \texttt{int} (2^{31}-1), it should throw an OverflowException. A trivial idea for implementation would be to implement the internal calcualtion of the operation via another data type that supports larger range (e.g. \texttt{long long}, \texttt{BigInteger}), and compare this value with 2^{31}-1. In other words, we can write the following instead:
+
+\cpp{calculator3.cpp}
+
+The \texttt{Calculator} now depends on \texttt{BigInteger}. Assume that we have not implemented or tested our implementation of \texttt{BigInteger} yet, how are we going to test the component of \texttt{Calculator}? One of the ways is to substitute \texttt{BigInteger} with another "fake" BigInteger, which for the purpose of explanation, we assume the implementation is correct.
+
+\cpp{Fake_BigInteger.h}
+
+Now our \texttt{Calculator} class can compile successfully, and we can test the implementation of \texttt{Calculator} without caring about the correctness of \texttt{BigInteger}. 
+
+This is exactly what "Dependency mocking" is. If inside the target we want to perform unit tests on, has a function call which either is untested, or we do not want to call (due to lack of resources, take long time to run), we can essentially substitute that function with another one which produces the "expected result" of the original function, assuming that the implementation of the original function was correct. Mocking is useful when it is impractical to call a function many time during the testing stage of development, such as those which consume a lot of time like database calls. 
+
+However, although mocking effectively isolates the target component from other components, making unit testing relevant to the implementation of only the target, mocking has several disadvantages for software development. By essentially "negelecting" the implementation of other components, it makes the target component prone to unexpected behavior of the target component. For instance, if there were any updates to the dependencies, such as a new exception being thrown, the current unit tests would not be aware of such new behavior, and the tests may not be accurate. For example, the unit test may run successfully with mocks, but with the actual "unmocked" implementation, it has a runtime error, and the developer may be unaware to this. This is particularly important in large projects with many dependencies, perhaps with dependencies not being written by the in-house developers, and it is difficult to update mocks to fully reflect the current behavior of the dependencies. 
+
+If you want to know more about mocking and its advantages/disadvantages, check out \url{https://enterprisecraftsmanship.com/2016/06/09/styles-of-unit-testing/}. 
