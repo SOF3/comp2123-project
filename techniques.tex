@@ -134,7 +134,7 @@ Often (if not always), sub-components in a software will have other components a
 
 \cpp{calculator2.cpp}
 
-The implementation is done, and we have unit tests for this code. Now lets say that there is a new requirement, that if the result of the calculation exceeds the value of \texttt{int} (2^{31}-1), it should throw an OverflowException. A trivial idea for implementation would be to implement the internal calcualtion of the operation via another data type that supports larger range (e.g. \texttt{long long}, \texttt{BigInteger}), and compare this value with 2^{31}-1. In other words, we can write the following instead:
+The implementation is done, and we have unit tests for this code. Now lets say that there is a new requirement, that if the result of the calculation exceeds the value of \texttt{int} ($2^{31}-1$), it should throw an OverflowException. A trivial idea for implementation would be to implement the internal calcualtion of the operation via another data type that supports larger range (e.g. \texttt{long long}, \texttt{BigInteger}), and compare this value with $2^{31}-1$. In other words, we can write the following instead:
 
 \cpp{calculator3.cpp}
 
