@@ -21,7 +21,7 @@ class BigInteger {
 		BigInteger operator/(BigInteger rhs){
 			return val / rhs.val;
 		}
-		BigInteger operator>(BigInteger rhs){
+		bool operator>(BigInteger rhs){
 			// implementation omitted
 		}
 		int value(){
