@@ -54,17 +54,46 @@ So a simple workaround of fixing the input to a positive number can be made:
 \cpp{sciNot3.cpp}
 \cpp{sciNot3.log}
 
-\subsection{Generating test cases}
+\subsection{Generating test cases randomly}
 Since a larger test size is more likely to catch bugs, it is a good idea to generate a large sample of test cases.
-This can be achieved through the \texttt{rand()} function:
 
-\cpp{sample.h}
+Generating random test cases also avoids the case where a developer is writing specific test cases (e.g. only multiples of 7)
+to avoid unit tests from reflecting a known bug in the code.
 
-Then tests can be generated using these functions.
+\subsubsection{Random output, inverse-evaluated input}
+But a contradictory condition arises: If the test cases are generated, how to test if the result is correct?
+It is not possible to calculate the value in the test generator, because that would involve reimplementing the tested function.
 
-\subsubsection{Generating expected results: $f(x)$ vs $f^{-1}(y)$}
+Instead, if an inverse of the tested function can be written
+(or to generate any of the possible inverse values if the function is not an injection),
+the random generator can be used to generate random results instead.
 
-\rem{Contradiction: write good tests vs write good code: is the function itself or the test more likely to have bugs?}
+Nevertheless, the inverse function is often harder to write and likely to have bugs than the function to test for,
+and is usually unintuitive to be used as a way of software specification.
+A better approach is to use property-based testing.
+
+\subsubsection{Property-based testing}
+Instead of comparing if the output is equal to an expected result,
+property-based testing compares the characteristics of the output to determine if it is reasonable.
+
+In C++, the \href{https://github.com/emil-e/rapidcheck}{rapidcheck} library
+provides a property-based testing framework that generates a random sequence of data by type for assertion.
+
+For example, in the 3-sigifnicant-figure example above, the requirements are:
+
+\begin{enumerate}
+	\item Given an input $n$, the output $\hat{n} = d \times 10^{x}$ is returned.
+	\item The result significand $d$ must have exactly 3 significant figures, i.e. $d \in [100, 999]$
+	\item The error must be correct to the \nth{3} significant figure: $\hat{n} - n \in [-0.5 \times 10^{x}, 0.5 \times 10^{x})$
+\end{enumerate}
+
+The \nth{1} requirement is defined through the function prototype,
+and the \nth{2} and \nth{3} requirements can be specified by the following test:
+
+\cpp{sciNot5.test.cpp}
+\cpp{sciNot5.log}
+
+\subsubsection{Reimplement algorithm in NP}
 
 \subsubsection{Filtering test cases}
 

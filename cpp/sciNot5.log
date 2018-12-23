@@ -1,0 +1,19 @@
+Executing test testSciNot
+Using configuration: seed=14734778662146612402
+
+- requirement 2: 3 significant figures
+Falsifiable after 3 tests and 2 shrinks
+
+std::tuple<std::vector<double>>:
+([0])
+
+sciNot5.test.cpp:14:
+RC_ASSERT(100 <= digits && digits < 999)
+
+Expands to:
+100 <= 0 && true
+
+- requirement 3: error within bounds
+OK, passed 100 tests
+Some of your RapidCheck properties had failures. To reproduce these, run with:
+RC_PARAMS="reproduce=BQiclFXdpJXZtVmb0BiM6AyMgMXan5Waml2Yh5GdgYWanVnclNnscEUAgMHfMLLHBFAIzxHzyyRQBAyc8xsscEUAgMHfMTAADIAAAAgABEA"

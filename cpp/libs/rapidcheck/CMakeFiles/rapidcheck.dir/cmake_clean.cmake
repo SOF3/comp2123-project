@@ -1,0 +1,43 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/rapidcheck.dir/src/BeforeMinimalTestCase.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/Check.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/Classify.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/GenerationFailure.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/Log.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/Random.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/Show.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/Any.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/Assertions.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/Base64.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/Configuration.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/DefaultTestListener.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/FrequencyMap.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/ImplicitParam.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/LogTestListener.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/MapParser.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/MulticastTestListener.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/ParseException.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/Platform.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/Property.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/PropertyContext.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/ReproduceListener.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/Results.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/Serialization.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/StringSerialization.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/TestMetadata.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/TestParams.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/detail/Testing.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/gen/Numeric.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/gen/Text.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/gen/detail/ExecHandler.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/gen/detail/GenerationHandler.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/gen/detail/Recipe.cpp.o"
+  "CMakeFiles/rapidcheck.dir/src/gen/detail/ScaleInteger.cpp.o"
+  "librapidcheck.pdb"
+  "librapidcheck.a"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/rapidcheck.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
