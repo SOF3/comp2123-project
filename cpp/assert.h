@@ -1,3 +1,6 @@
+#ifndef ASSERT_H
+#define ASSERT_H
+
 #include <iostream>
 
 #define ASSERT_EQUAL(actual, expect) {\
@@ -10,3 +13,5 @@
 		throw std::string("Expected ") + #actual + " to return " + expectValue + ", got " + actualValue; \
 	} \
 }
+
+#endif

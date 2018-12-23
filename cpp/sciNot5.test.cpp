@@ -1,7 +1,7 @@
 #include <cmath>
 #include <vector>
 #include <rapidcheck.h>
-#include "sciNot4.cpp"
+#include "sciNot5.cpp"
 
 using namespace std;
 using namespace rc;

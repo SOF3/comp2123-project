@@ -1,8 +1,39 @@
 \section{Unit testing techniques}
-\subsection{Test coverage}
+\subsection{Code coverage}
 Test coverage is a criterion to assess the representativeness of the unit tests of a project by counting the number of lines executed in the test.
 
-\rem{Talk about the integration of debuggers and how to interpret coverage (codecov.io)}
+In GNU C++, code coverage is supported by the \texttt{gcov} utility.
+First, the \texttt{-fprofile-arcs -ftest-coverage} flag should be provided both
+when compiling source files of interest into intermediate object files
+and when compiling the object files into final executable files.
+
+\begin{lstlisting}[style=Cpp, language=bash]
+g++ -c -o fooBar.a -fprofile-arcs -ftest-coverage fooBar.cpp
+g++ -o fooBar fooBar.a qux.a -fprofile-arcs -ftest-coverage
+\end{lstlisting}
+
+When the executable \texttt{fooBar} is executed, the file \texttt{fooBar.gcda} is also generated,
+containing the statistics during the execution. Coverage reports can hence be generated:
+
+\begin{lstlisting}[style=Cpp, language=bash]
+gcov fooBar
+\end{lstlisting}
+
+Applying code coverage into \texttt{sciNot5} from the previous section, 70 gcov reports are generated:
+
+\lstinputlisting[style=Cpp, firstline=1, lastline=10]{cpp/sciNot5.gcov.ls}
+
+And way more. This is because every header or source file included in the compilation of \texttt{sciNot5.a}
+is flagged for coverage reporting. The file \texttt{sciNot5.cpp.gcov} might be of more interest:
+
+\cpp{sciNot5.cpp.gcov}
+
+All lines in \texttt{sciNot(double)} got called 2629 times, and the file has been tested with full coverage.
+While this is obvious, coverage may be more useful when the file has multiple conditions, loops or even error conditions:
+
+\cpp{fibo.cpp}
+\cpp{fibo.test1.cpp}
+\cpp{fibo.cpp.gcov}
 
 \subsection{Test-driven development (TDD)}
 As a consequence of unit testing, development flow becomes more fluent if each development subtask is based on certain test cases. By using TDD, it ensures that every part of the program can be tested properly, as nearly all code is writen based on pre-written test cases. It also prevents writing duplicated code in large collaborative projects, and TDD can avoid waste of time for implmenting already done features/requirements. 
