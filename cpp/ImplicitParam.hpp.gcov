@@ -12,22 +12,22 @@
         -:    7:namespace detail {
         -:    8:
         -:    9:template <typename Param>
-      234:   10:ImplicitParam<Param>::ImplicitParam(ValueType value) {
-      234:   11:  m_stack.push(
-      234:   12:      std::make_pair(std::move(value), ImplicitScope::m_scopes.size()));
-      234:   13:}
+      230:   10:ImplicitParam<Param>::ImplicitParam(ValueType value) {
+      230:   11:  m_stack.push(
+      230:   12:      std::make_pair(std::move(value), ImplicitScope::m_scopes.size()));
+      230:   13:}
 ------------------
 _ZN2rc6detail13ImplicitParamINS0_5param22CurrentPropertyContextEEC2EPNS0_15PropertyContextE:
-      117:   10:ImplicitParam<Param>::ImplicitParam(ValueType value) {
-      117:   11:  m_stack.push(
-      117:   12:      std::make_pair(std::move(value), ImplicitScope::m_scopes.size()));
-      117:   13:}
+      115:   10:ImplicitParam<Param>::ImplicitParam(ValueType value) {
+      115:   11:  m_stack.push(
+      115:   12:      std::make_pair(std::move(value), ImplicitScope::m_scopes.size()));
+      115:   13:}
 ------------------
 _ZN2rc6detail13ImplicitParamINS_3gen6detail5param14CurrentHandlerEEC2EPNS3_17GenerationHandlerE:
-      117:   10:ImplicitParam<Param>::ImplicitParam(ValueType value) {
-      117:   11:  m_stack.push(
-      117:   12:      std::make_pair(std::move(value), ImplicitScope::m_scopes.size()));
-      117:   13:}
+      115:   10:ImplicitParam<Param>::ImplicitParam(ValueType value) {
+      115:   11:  m_stack.push(
+      115:   12:      std::make_pair(std::move(value), ImplicitScope::m_scopes.size()));
+      115:   13:}
 ------------------
         -:   14:
         -:   15:template <typename StackT, StackT *stack>
@@ -36,9 +36,9 @@ _ZN2rc6detail13ImplicitParamINS_3gen6detail5param14CurrentHandlerEEC2EPNS3_17Gen
     #####:   18:}
         -:   19:
         -:   20:template <typename Param>
-      117:   21:typename ImplicitParam<Param>::ValueType &ImplicitParam<Param>::value() {
-      117:   22:  const auto scopeLevel = ImplicitScope::m_scopes.size();
-     117*:   23:  if (m_stack.empty() || (m_stack.top().second < scopeLevel)) {
+      115:   21:typename ImplicitParam<Param>::ValueType &ImplicitParam<Param>::value() {
+      115:   22:  const auto scopeLevel = ImplicitScope::m_scopes.size();
+     115*:   23:  if (m_stack.empty() || (m_stack.top().second < scopeLevel)) {
     #####:   24:    m_stack.push(
     #####:   25:        std::make_pair(Param::defaultValue(), ImplicitScope::m_scopes.size()));
     #####:   26:    if (!ImplicitScope::m_scopes.empty()) {
@@ -47,23 +47,23 @@ _ZN2rc6detail13ImplicitParamINS_3gen6detail5param14CurrentHandlerEEC2EPNS3_17Gen
         -:   29:    }
         -:   30:  }
         -:   31:
-      117:   32:  return m_stack.top().first;
+      115:   32:  return m_stack.top().first;
         -:   33:}
         -:   34:
         -:   35:template <typename Param>
-      234:   36:ImplicitParam<Param>::~ImplicitParam() {
-      234:   37:  m_stack.pop();
-      234:   38:}
+      230:   36:ImplicitParam<Param>::~ImplicitParam() {
+      230:   37:  m_stack.pop();
+      230:   38:}
 ------------------
 _ZN2rc6detail13ImplicitParamINS0_5param22CurrentPropertyContextEED2Ev:
-      117:   36:ImplicitParam<Param>::~ImplicitParam() {
-      117:   37:  m_stack.pop();
-      117:   38:}
+      115:   36:ImplicitParam<Param>::~ImplicitParam() {
+      115:   37:  m_stack.pop();
+      115:   38:}
 ------------------
 _ZN2rc6detail13ImplicitParamINS_3gen6detail5param14CurrentHandlerEED2Ev:
-      117:   36:ImplicitParam<Param>::~ImplicitParam() {
-      117:   37:  m_stack.pop();
-      117:   38:}
+      115:   36:ImplicitParam<Param>::~ImplicitParam() {
+      115:   37:  m_stack.pop();
+      115:   38:}
 ------------------
         -:   39:
         -:   40:template <typename Param>

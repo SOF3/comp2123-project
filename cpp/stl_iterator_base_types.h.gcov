@@ -207,16 +207,16 @@
         -:  202:  template<typename _Iter>
         -:  203:    inline _GLIBCXX_CONSTEXPR
         -:  204:    typename iterator_traits<_Iter>::iterator_category
-    1172*:  205:    __iterator_category(const _Iter&)
-    1172*:  206:    { return typename iterator_traits<_Iter>::iterator_category(); }
+    1154*:  205:    __iterator_category(const _Iter&)
+    1154*:  206:    { return typename iterator_traits<_Iter>::iterator_category(); }
 ------------------
 _ZSt19__iterator_categoryIN9__gnu_cxx17__normal_iteratorIPN2rc10ShrinkableIdEESt6vectorIS4_SaIS4_EEEEENSt15iterator_traitsIT_E17iterator_categoryERKSB_:
        14:  205:    __iterator_category(const _Iter&)
        14:  206:    { return typename iterator_traits<_Iter>::iterator_category(); }
 ------------------
 _ZSt19__iterator_categoryIPcENSt15iterator_traitsIT_E17iterator_categoryERKS2_:
-     1158:  205:    __iterator_category(const _Iter&)
-     1158:  206:    { return typename iterator_traits<_Iter>::iterator_category(); }
+     1140:  205:    __iterator_category(const _Iter&)
+     1140:  206:    { return typename iterator_traits<_Iter>::iterator_category(); }
 ------------------
 _ZSt19__iterator_categoryIPKcENSt15iterator_traitsIT_E17iterator_categoryERKS3_:
     #####:  205:    __iterator_category(const _Iter&)

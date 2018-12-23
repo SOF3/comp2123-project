@@ -196,46 +196,46 @@ _ZNSt5stackISt4pairIPN2rc3gen6detail17GenerationHandlerEmESt6vectorIS6_SaIS6_EEE
         -:  182:       *  Returns true if the %stack is empty.
         -:  183:       */
         -:  184:      bool
-     117*:  185:      empty() const
-     117*:  186:      { return c.empty(); }
+     115*:  185:      empty() const
+     115*:  186:      { return c.empty(); }
 ------------------
 _ZNKSt5stackISt6vectorIPFvvESaIS2_EES0_IS4_SaIS4_EEE5emptyEv:
     #####:  185:      empty() const
     #####:  186:      { return c.empty(); }
 ------------------
 _ZNKSt5stackISt4pairIPN2rc3gen6detail17GenerationHandlerEmESt6vectorIS6_SaIS6_EEE5emptyEv:
-      117:  185:      empty() const
-      117:  186:      { return c.empty(); }
+      115:  185:      empty() const
+      115:  186:      { return c.empty(); }
 ------------------
         -:  187:
         -:  188:      /**  Returns the number of elements in the %stack.  */
         -:  189:      size_type
-      351:  190:      size() const
-      351:  191:      { return c.size(); }
+      345:  190:      size() const
+      345:  191:      { return c.size(); }
         -:  192:
         -:  193:      /**
         -:  194:       *  Returns a read/write reference to the data at the first
         -:  195:       *  element of the %stack.
         -:  196:       */
         -:  197:      reference
-      351:  198:      top()
+      345:  198:      top()
         -:  199:      {
         -:  200:	__glibcxx_requires_nonempty();
-      351:  201:	return c.back();
+      345:  201:	return c.back();
         -:  202:      }
 ------------------
 _ZNSt5stackISt6vectorIPFvvESaIS2_EES0_IS4_SaIS4_EEE3topEv:
-      117:  198:      top()
+      115:  198:      top()
         -:  199:      {
         -:  200:	__glibcxx_requires_nonempty();
-      117:  201:	return c.back();
+      115:  201:	return c.back();
         -:  202:      }
 ------------------
 _ZNSt5stackISt4pairIPN2rc3gen6detail17GenerationHandlerEmESt6vectorIS6_SaIS6_EEE3topEv:
-      234:  198:      top()
+      230:  198:      top()
         -:  199:      {
         -:  200:	__glibcxx_requires_nonempty();
-      234:  201:	return c.back();
+      230:  201:	return c.back();
         -:  202:      }
 ------------------
         -:  203:
@@ -265,16 +265,16 @@ _ZNSt5stackISt4pairIPN2rc3gen6detail17GenerationHandlerEmESt6vectorIS6_SaIS6_EEE
         -:  227:
         -:  228:#if __cplusplus >= 201103L
         -:  229:      void
-      234:  230:      push(value_type&& __x)
-      234:  231:      { c.push_back(std::move(__x)); }
+      230:  230:      push(value_type&& __x)
+      230:  231:      { c.push_back(std::move(__x)); }
 ------------------
 _ZNSt5stackISt4pairIPN2rc6detail15PropertyContextEmESt6vectorIS5_SaIS5_EEE4pushEOS5_:
-      117:  230:      push(value_type&& __x)
-      117:  231:      { c.push_back(std::move(__x)); }
+      115:  230:      push(value_type&& __x)
+      115:  231:      { c.push_back(std::move(__x)); }
 ------------------
 _ZNSt5stackISt4pairIPN2rc3gen6detail17GenerationHandlerEmESt6vectorIS6_SaIS6_EEE4pushEOS6_:
-      117:  230:      push(value_type&& __x)
-      117:  231:      { c.push_back(std::move(__x)); }
+      115:  230:      push(value_type&& __x)
+      115:  231:      { c.push_back(std::move(__x)); }
 ------------------
         -:  232:
         -:  233:#if __cplusplus > 201402L
@@ -302,25 +302,25 @@ _ZNSt5stackISt4pairIPN2rc3gen6detail17GenerationHandlerEmESt6vectorIS6_SaIS6_EEE
         -:  255:       *  called.
         -:  256:       */
         -:  257:      void
-      234:  258:      pop()
+      230:  258:      pop()
         -:  259:      {
         -:  260:	__glibcxx_requires_nonempty();
-      234:  261:	c.pop_back();
-      234:  262:      }
+      230:  261:	c.pop_back();
+      230:  262:      }
 ------------------
 _ZNSt5stackISt4pairIPN2rc6detail15PropertyContextEmESt6vectorIS5_SaIS5_EEE3popEv:
-      117:  258:      pop()
+      115:  258:      pop()
         -:  259:      {
         -:  260:	__glibcxx_requires_nonempty();
-      117:  261:	c.pop_back();
-      117:  262:      }
+      115:  261:	c.pop_back();
+      115:  262:      }
 ------------------
 _ZNSt5stackISt4pairIPN2rc3gen6detail17GenerationHandlerEmESt6vectorIS6_SaIS6_EEE3popEv:
-      117:  258:      pop()
+      115:  258:      pop()
         -:  259:      {
         -:  260:	__glibcxx_requires_nonempty();
-      117:  261:	c.pop_back();
-      117:  262:      }
+      115:  261:	c.pop_back();
+      115:  262:      }
 ------------------
         -:  263:
         -:  264:#if __cplusplus >= 201103L

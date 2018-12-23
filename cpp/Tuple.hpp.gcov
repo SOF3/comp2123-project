@@ -59,11 +59,11 @@
         -:   54:class TupleShrinkable<rc::detail::IndexSequence<Indexes...>, Ts...> {
         -:   55:public:
         -:   56:  template <typename... Args>
-      114:   57:  explicit TupleShrinkable(Args &&... args)
-      114:   58:      : m_shrinkables(std::forward<Args>(args)...) {}
+      112:   57:  explicit TupleShrinkable(Args &&... args)
+      112:   58:      : m_shrinkables(std::forward<Args>(args)...) {}
         -:   59:
-      118:   60:  std::tuple<Ts...> value() const {
-      118:   61:    return std::make_tuple(std::get<Indexes>(m_shrinkables).value()...);
+      116:   60:  std::tuple<Ts...> value() const {
+      116:   61:    return std::make_tuple(std::get<Indexes>(m_shrinkables).value()...);
         -:   62:  }
         -:   63:
         3:   64:  Seq<Shrinkable<std::tuple<Ts...>>> shrinks() const {
@@ -95,18 +95,18 @@
         1:   90:  explicit TupleGen(Args &&... args)
         1:   91:      : m_gens(std::forward<Args>(args)...) {}
         -:   92:
-      108:   93:  Shrinkable<std::tuple<Ts...>> operator()(const Random &random,
+      106:   93:  Shrinkable<std::tuple<Ts...>> operator()(const Random &random,
         -:   94:                                           int size) const {
-      108:   95:    auto r = random;
-      216:   96:    Random randoms[sizeof...(Ts)];
-      216:   97:    for (std::size_t i = 0; i < sizeof...(Ts); i++) {
-      108:   98:      randoms[i] = r.split();
+      106:   95:    auto r = random;
+      212:   96:    Random randoms[sizeof...(Ts)];
+      212:   97:    for (std::size_t i = 0; i < sizeof...(Ts); i++) {
+      106:   98:      randoms[i] = r.split();
         -:   99:    }
         -:  100:
         -:  101:    using ShrinkableImpl =
         -:  102:        TupleShrinkable<rc::detail::IndexSequence<Indexes...>, Ts...>;
         -:  103:    return makeShrinkable<ShrinkableImpl>(
-      108:  104:        std::get<Indexes>(m_gens)(randoms[Indexes], size)...);
+      106:  104:        std::get<Indexes>(m_gens)(randoms[Indexes], size)...);
         -:  105:  }
         -:  106:
         -:  107:private:

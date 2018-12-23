@@ -25,28 +25,28 @@
         -:   20:using ShrinkablePairs = std::vector<Shrinkable<std::pair<K, V>>>;
         -:   21:
         -:   22:template <typename Container, typename T>
-      118:   23:Container toContainer(const Shrinkables<T> &shrinkables) {
+      116:   23:Container toContainer(const Shrinkables<T> &shrinkables) {
         -:   24:  return Container(makeShrinkValueIterator(begin(shrinkables)),
-      118:   25:                   makeShrinkValueIterator(end(shrinkables)));
+      116:   25:                   makeShrinkValueIterator(end(shrinkables)));
         -:   26:}
         -:   27:
         -:   28:template <typename T, typename Predicate>
-      108:   29:Shrinkables<T> generateShrinkables(const Random &random,
+      106:   29:Shrinkables<T> generateShrinkables(const Random &random,
         -:   30:                                   int size,
         -:   31:                                   std::size_t count,
         -:   32:                                   const Gen<T> &gen,
         -:   33:                                   Predicate predicate) {
-      108:   34:  Random r(random);
-      108:   35:  Shrinkables<T> shrinkables;
-      108:   36:  shrinkables.reserve(count);
+      106:   34:  Random r(random);
+      106:   35:  Shrinkables<T> shrinkables;
+      106:   36:  shrinkables.reserve(count);
         -:   37:
-      108:   38:  auto currentSize = size;
-      108:   39:  int tries = 0;
-     2519:   40:  while (shrinkables.size() < count) {
-     4822:   41:    auto shrinkable = gen(r.split(), currentSize);
-     2411:   42:    if (predicate(shrinkable)) {
-     2411:   43:      shrinkables.push_back(std::move(shrinkable));
-     2411:   44:      tries = 0;
+      106:   38:  auto currentSize = size;
+      106:   39:  int tries = 0;
+     2418:   40:  while (shrinkables.size() < count) {
+     4624:   41:    auto shrinkable = gen(r.split(), currentSize);
+     2312:   42:    if (predicate(shrinkable)) {
+     2312:   43:      shrinkables.push_back(std::move(shrinkable));
+     2312:   44:      tries = 0;
         -:   45:    } else {
     #####:   46:      tries++;
     #####:   47:      if (tries >= 100) {
@@ -59,18 +59,18 @@
         -:   54:    }
         -:   55:  }
         -:   56:
-      216:   57:  return shrinkables;
+      212:   57:  return shrinkables;
         -:   58:}
         -:   59:
         -:   60:template <typename Container>
         -:   61:class CollectionStrategy {
         -:   62:public:
         -:   63:  template <typename T>
-      108:   64:  Shrinkables<T> generateElements(const Random &random,
+      106:   64:  Shrinkables<T> generateElements(const Random &random,
         -:   65:                                  int size,
         -:   66:                                  std::size_t count,
         -:   67:                                  const Gen<T> &gen) const {
-      108:   68:    return generateShrinkables(random, size, count, gen, fn::constant(true));
+      106:   68:    return generateShrinkables(random, size, count, gen, fn::constant(true));
         -:   69:  }
         -:   70:
         -:   71:  template <typename T>
@@ -296,21 +296,21 @@
         -:  291:
         -:  292:  template <typename... Ts>
         -:  293:  Shrinkable<Container>
-      108:  294:  generate(const Random &random, int size, const Gen<Ts> &... gens) const {
+      106:  294:  generate(const Random &random, int size, const Gen<Ts> &... gens) const {
         -:  295:    const auto strategy = m_strategy;
-      108:  296:    auto r = random;
-      108:  297:    std::size_t count = r.split().next() % (size + 1);
-      108:  298:    auto shrinkables = strategy.generateElements(r, size, count, gens...);
+      106:  296:    auto r = random;
+      106:  297:    std::size_t count = r.split().next() % (size + 1);
+      106:  298:    auto shrinkables = strategy.generateElements(r, size, count, gens...);
         -:  299:
         -:  300:    using Elements = decltype(shrinkables);
         -:  301:    return shrinkable::map(
-      108:  302:        shrinkable::shrinkRecur(std::move(shrinkables),
+      106:  302:        shrinkable::shrinkRecur(std::move(shrinkables),
         -:  303:                                [=](const Elements &elements) {
         -:  304:                                  return seq::concat(
         -:  305:                                      shrink::removeChunks(elements),
         -:  306:                                      strategy.shrinkElements(elements));
         -:  307:                                }),
-      216:  308:        &toContainer<Container, typename Elements::value_type::ValueType>);
+      212:  308:        &toContainer<Container, typename Elements::value_type::ValueType>);
         -:  309:  }
         -:  310:
         -:  311:  template <typename... Ts>

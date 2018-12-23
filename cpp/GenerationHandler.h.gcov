@@ -33,13 +33,13 @@
         -:   28:  ///         underlying generator.
         -:   29:  virtual rc::detail::Any onGenerate(const Gen<rc::detail::Any> &gen) = 0;
         -:   30:
-     117*:   31:  virtual ~GenerationHandler() = default;
+     115*:   31:  virtual ~GenerationHandler() = default;
 ------------------
 _ZN2rc3gen6detail17GenerationHandlerD0Ev:
     #####:   31:  virtual ~GenerationHandler() = default;
 ------------------
 _ZN2rc3gen6detail17GenerationHandlerD2Ev:
-      117:   31:  virtual ~GenerationHandler() = default;
+      115:   31:  virtual ~GenerationHandler() = default;
 ------------------
         -:   32:};
         -:   33:

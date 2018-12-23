@@ -417,10 +417,10 @@
         -:  412:  template<typename _Tp, typename _Up>
         -:  413:    inline _GLIBCXX_CONSTEXPR
         -:  414:    typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
-     2404:  415:    pow(_Tp __x, _Up __y)
+     2304:  415:    pow(_Tp __x, _Up __y)
         -:  416:    {
         -:  417:      typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
-     2404:  418:      return pow(__type(__x), __type(__y));
+     2304:  418:      return pow(__type(__x), __type(__y));
         -:  419:    }
         -:  420:
         -:  421:  using ::sin;

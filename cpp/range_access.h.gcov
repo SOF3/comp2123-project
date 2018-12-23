@@ -60,16 +60,16 @@
         -:   55:   */
         -:   56:  template<typename _Container>
         -:   57:    inline _GLIBCXX17_CONSTEXPR auto
-      119:   58:    begin(const _Container& __cont) -> decltype(__cont.begin())
-      119:   59:    { return __cont.begin(); }
+      117:   58:    begin(const _Container& __cont) -> decltype(__cont.begin())
+      117:   59:    { return __cont.begin(); }
 ------------------
 _ZSt5beginISt6vectorIdSaIdEEEDTcldtfp_5beginEERKT_:
         1:   58:    begin(const _Container& __cont) -> decltype(__cont.begin())
         1:   59:    { return __cont.begin(); }
 ------------------
 _ZSt5beginISt6vectorIN2rc10ShrinkableIdEESaIS3_EEEDTcldtfp_5beginEERKT_:
-      118:   58:    begin(const _Container& __cont) -> decltype(__cont.begin())
-      118:   59:    { return __cont.begin(); }
+      116:   58:    begin(const _Container& __cont) -> decltype(__cont.begin())
+      116:   59:    { return __cont.begin(); }
 ------------------
         -:   60:
         -:   61:  /**
@@ -89,16 +89,16 @@ _ZSt5beginISt6vectorIN2rc10ShrinkableIdEESaIS3_EEEDTcldtfp_5beginEERKT_:
         -:   75:   */
         -:   76:  template<typename _Container>
         -:   77:    inline _GLIBCXX17_CONSTEXPR auto
-      119:   78:    end(const _Container& __cont) -> decltype(__cont.end())
-      119:   79:    { return __cont.end(); }
+      117:   78:    end(const _Container& __cont) -> decltype(__cont.end())
+      117:   79:    { return __cont.end(); }
 ------------------
 _ZSt3endISt6vectorIdSaIdEEEDTcldtfp_3endEERKT_:
         1:   78:    end(const _Container& __cont) -> decltype(__cont.end())
         1:   79:    { return __cont.end(); }
 ------------------
 _ZSt3endISt6vectorIN2rc10ShrinkableIdEESaIS3_EEEDTcldtfp_3endEERKT_:
-      118:   78:    end(const _Container& __cont) -> decltype(__cont.end())
-      118:   79:    { return __cont.end(); }
+      116:   78:    end(const _Container& __cont) -> decltype(__cont.end())
+      116:   79:    { return __cont.end(); }
 ------------------
         -:   80:
         -:   81:  /**

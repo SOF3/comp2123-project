@@ -96,16 +96,16 @@
         -:   91:      destroy(_Alloc& __a, _Ptr __p)
         -:   92:      { _Base_type::destroy(__a, std::__to_address(__p)); }
         -:   93:
-     948*:   94:    static _Alloc _S_select_on_copy(const _Alloc& __a)
-     948*:   95:    { return _Base_type::select_on_container_copy_construction(__a); }
+     932*:   94:    static _Alloc _S_select_on_copy(const _Alloc& __a)
+     932*:   95:    { return _Base_type::select_on_container_copy_construction(__a); }
 ------------------
 _ZN9__gnu_cxx14__alloc_traitsISaIN2rc10ShrinkableIdEEES3_E17_S_select_on_copyERKS4_:
-      128:   94:    static _Alloc _S_select_on_copy(const _Alloc& __a)
-      128:   95:    { return _Base_type::select_on_container_copy_construction(__a); }
+      126:   94:    static _Alloc _S_select_on_copy(const _Alloc& __a)
+      126:   95:    { return _Base_type::select_on_container_copy_construction(__a); }
 ------------------
 _ZN9__gnu_cxx14__alloc_traitsISaIN2rc3gen6detail6Recipe10IngredientEES5_E17_S_select_on_copyERKS6_:
-      820:   94:    static _Alloc _S_select_on_copy(const _Alloc& __a)
-      820:   95:    { return _Base_type::select_on_container_copy_construction(__a); }
+      806:   94:    static _Alloc _S_select_on_copy(const _Alloc& __a)
+      806:   95:    { return _Base_type::select_on_container_copy_construction(__a); }
 ------------------
 _ZN9__gnu_cxx14__alloc_traitsISaIcEcE17_S_select_on_copyERKS1_:
     #####:   94:    static _Alloc _S_select_on_copy(const _Alloc& __a)

@@ -20,18 +20,18 @@
         -:   15:public:
         -:   16:  using T = typename std::iterator_traits<Iterator>::value_type::ValueType;
         -:   17:
-      236:   18:  ShrinkValueIterator(Iterator it)
-      236:   19:      : m_it(it) {}
+      232:   18:  ShrinkValueIterator(Iterator it)
+      232:   19:      : m_it(it) {}
         -:   20:
-     2536:   21:  bool operator==(const ShrinkValueIterator &rhs) const {
-     2536:   22:    return m_it == rhs.m_it;
+     2435:   21:  bool operator==(const ShrinkValueIterator &rhs) const {
+     2435:   22:    return m_it == rhs.m_it;
         -:   23:  }
         -:   24:
-     2418:   25:  T operator*() const { return m_it->value(); }
+     2319:   25:  T operator*() const { return m_it->value(); }
         -:   26:
-     2418:   27:  ShrinkValueIterator &operator++() {
-     2418:   28:    ++m_it;
-     2418:   29:    return *this;
+     2319:   27:  ShrinkValueIterator &operator++() {
+     2319:   28:    ++m_it;
+     2319:   29:    return *this;
         -:   30:  }
         -:   31:
         -:   32:  ShrinkValueIterator operator++(int) {
@@ -45,14 +45,14 @@
         -:   40:};
         -:   41:
         -:   42:template <typename Iterator>
-     2536:   43:bool operator!=(const ShrinkValueIterator<Iterator> &lhs,
+     2435:   43:bool operator!=(const ShrinkValueIterator<Iterator> &lhs,
         -:   44:                const ShrinkValueIterator<Iterator> &rhs) {
-     2536:   45:  return !(lhs == rhs);
+     2435:   45:  return !(lhs == rhs);
         -:   46:}
         -:   47:
         -:   48:template <typename Iterator>
-      236:   49:ShrinkValueIterator<Iterator> makeShrinkValueIterator(Iterator it) {
-      236:   50:  return ShrinkValueIterator<Iterator>(it);
+      232:   49:ShrinkValueIterator<Iterator> makeShrinkValueIterator(Iterator it) {
+      232:   50:  return ShrinkValueIterator<Iterator>(it);
         -:   51:}
         -:   52:
         -:   53:} // namespace detail

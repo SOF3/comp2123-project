@@ -52,20 +52,22 @@ BDD defines the behaviour of a function using some specific terms or keywords. E
 The following is an example BDD of Cucumber:
 
 \begin{lstlisting}
-Scenario Outline: eating
-  Given there are <start> cucumbers
-  When I eat <eat> cucumbers
-  Then I should have <left> cucumbers
+\textbf{Feature}: Is it Friday yet?
+  Everybody wants to know when it's Friday
 
-  Examples:
-    | start | eat | left |
-    |    12 |   5 |    7 |
-    |    20 |   5 |   15 |
+  \textbf{Scenario}: Sunday isn't Friday        # hellocucumber/is_it_friday_yet.feature:4
+    \textbf{Given} today is Sunday              # null
+    \textbf{When} I ask whether it's Friday yet # null
+    \textbf{Then} I should be told "Nope"       # null
 \end{lstlisting}
 
-\paragraph{Scenario Outline}
+\paragraph{Feature}
 
-Describes a situation where that the software should be able to handle properly, defines the behavior of the program for a certain situation. 
+Describes a feature that the software should provide on the high-level, with some description
+
+\paragraph{Scenario}
+
+Describes a situation (similar to example) where that the software should be able to handle properly, defines the behavior of the program for a certain (more specific) situation. 
 
 \paragraph{Given}
 
@@ -79,7 +81,15 @@ Similar to natural English, "When" implies that the following statement should b
 
 Describes the expected output of the program after the preceeding "when" statement is fulfilled. 
 
-The code above are extracted from the official Cucumber Documentation, which you can access at \url{https://docs.cucumber.io/gherkin/reference/}
+Why is such grammar important? As a software developer, we may often find it difficult to translate requirements given by product designers/users into code. By having the product designers write their requirements in such a fashion which is both "human readable" and "machine prasable", it is possible to translate those requirements in to unit tests \textbf{automatically}. For example, in Cucumber, the following can be generated automatically from the above BDD, which can be further manipulated to contain actual machine-runnable tests:
+
+\java{cucumber_unit_test.java}
+
+If you are interested to learn more, head over to \url{http://docs.cucumber.io/guides/10-minute-tutorial/} to get started with the Cucumber framework!
+
+\subsection{Summary: TDD vs BDD}
+
+As you can see, the description of the program behavior in BDD is more "high level" compared to TDD. The person writing BDDs ususally writes them from a user's perspective, where they might not have full knowledge on the internals of the software. On the other hand, TDDs focus more on the internal working on the software, and whether each part functions correctly. 
 
 This framework also subclassifies a task into multiple components to identify the exact source of error.
 
@@ -90,5 +100,3 @@ This framework also subclassifies a task into multiple components to identify th
 \subsection{Dependency mocking}
 \rem{https://enterprisecraftsmanship.com/2016/06/09/styles-of-unit-testing/ provides some insight on why mocking is bad}
 \rem{Consider moving this to the part about coupling}
-
-
