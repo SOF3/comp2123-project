@@ -11,25 +11,15 @@ public:
 	SciNotation(int digits, int exp) :
 		digits(digits), exp(exp) {}
 
-	bool operator==(const SciNotation &that) const {
-		return digits == that.digits && exp == that.exp;
-	}
+	bool operator==(const SciNotation &that) const;
 
-	double toDouble() {
-		return digits * pow(10, exp);
-	}
+	double toDouble() const;
 
-	int getDigits() {
-		return digits;
-	}
+	int getDigits() const;
 
-	int getExp() {
-		return exp;
-	}
+	int getExp() const;
 };
 
-std::string operator+(std::string s, SciNotation n) {
-	return s + std::to_string(n.getDigits()) + "e" + std::to_string(n.getExp());
-}
+std::string operator+(const std::string &s, const SciNotation &n);
 
 #endif
