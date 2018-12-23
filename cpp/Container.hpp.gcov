@@ -22,9 +22,9 @@
         -:   20:using ShrinkablePairs = std::vector<Shrinkable<std::pair<K, V>>>;
         -:   21:
         -:   22:template <typename Container, typename T>
-      114:   23:Container toContainer(const Shrinkables<T> &shrinkables) {
+      111:   23:Container toContainer(const Shrinkables<T> &shrinkables) {
         -:   24:  return Container(makeShrinkValueIterator(begin(shrinkables)),
-      114:   25:                   makeShrinkValueIterator(end(shrinkables)));
+      111:   25:                   makeShrinkValueIterator(end(shrinkables)));
         -:   26:}
         -:   27:
         -:   28:template <typename T, typename Predicate>
@@ -39,11 +39,11 @@
         -:   37:
       105:   38:  auto currentSize = size;
       105:   39:  int tries = 0;
-     2710:   40:  while (shrinkables.size() < count) {
-     5210:   41:    auto shrinkable = gen(r.split(), currentSize);
-     2605:   42:    if (predicate(shrinkable)) {
-     2605:   43:      shrinkables.push_back(std::move(shrinkable));
-     2605:   44:      tries = 0;
+     2746:   40:  while (shrinkables.size() < count) {
+     5282:   41:    auto shrinkable = gen(r.split(), currentSize);
+     2641:   42:    if (predicate(shrinkable)) {
+     2641:   43:      shrinkables.push_back(std::move(shrinkable));
+     2641:   44:      tries = 0;
         -:   45:    } else {
     #####:   46:      tries++;
     #####:   47:      if (tries >= 100) {
@@ -71,9 +71,9 @@
         -:   69:  }
         -:   70:
         -:   71:  template <typename T>
-        3:   72:  Seq<Shrinkables<T>> shrinkElements(const Shrinkables<T> &shrinkables) const {
+        2:   72:  Seq<Shrinkables<T>> shrinkElements(const Shrinkables<T> &shrinkables) const {
         -:   73:    return shrink::eachElement(
-        3:   74:        shrinkables, [](const Shrinkable<T> &s) { return s.shrinks(); });
+        2:   74:        shrinkables, [](const Shrinkable<T> &s) { return s.shrinks(); });
         -:   75:  }
         -:   76:};
         -:   77:

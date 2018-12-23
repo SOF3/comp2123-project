@@ -27,24 +27,24 @@
         -:   25:  using T = typename std::tuple_element<I, Tuple>::type;
         -:   26:
         -:   27:  template <typename... Args>
-        3:   28:  explicit TupleShrinkSeq(Args &&... args)
+        2:   28:  explicit TupleShrinkSeq(Args &&... args)
         -:   29:      : m_original(std::forward<Args>(args)...)
-        3:   30:      , m_shrinks(std::get<I>(m_original).shrinks()) {}
+        2:   30:      , m_shrinks(std::get<I>(m_original).shrinks()) {}
         -:   31:
-        6:   32:  Maybe<Shrinkable<Tuple>> operator()() {
-       12:   33:    auto value = m_shrinks.next();
-        6:   34:    if (!value) {
+        4:   32:  Maybe<Shrinkable<Tuple>> operator()() {
+        8:   33:    auto value = m_shrinks.next();
+        4:   34:    if (!value) {
         1:   35:      m_shrinks = Seq<Shrinkable<T>>();
         1:   36:      return Nothing;
         -:   37:    }
         -:   38:
-       10:   39:    auto shrink = m_original;
-        5:   40:    std::get<I>(shrink) = std::move(*value);
+        6:   39:    auto shrink = m_original;
+        3:   40:    std::get<I>(shrink) = std::move(*value);
         -:   41:    using IndexSeq = rc::detail::MakeIndexSequence<sizeof...(Ts)>;
         -:   42:    using ShrinkableImpl = TupleShrinkable<IndexSeq, Ts...>;
-       10:   43:    auto shrinkable =
-        5:   44:        makeShrinkable<ShrinkableImpl>(std::move(std::get<Indexes>(shrink))...);
-        5:   45:    return shrinkable;
+        6:   43:    auto shrinkable =
+        3:   44:        makeShrinkable<ShrinkableImpl>(std::move(std::get<Indexes>(shrink))...);
+        3:   45:    return shrinkable;
         -:   46:  }
         -:   47:
         -:   48:private:
@@ -56,17 +56,17 @@
         -:   54:class TupleShrinkable<rc::detail::IndexSequence<Indexes...>, Ts...> {
         -:   55:public:
         -:   56:  template <typename... Args>
-      110:   57:  explicit TupleShrinkable(Args &&... args)
-      110:   58:      : m_shrinkables(std::forward<Args>(args)...) {}
+      108:   57:  explicit TupleShrinkable(Args &&... args)
+      108:   58:      : m_shrinkables(std::forward<Args>(args)...) {}
         -:   59:
-      114:   60:  std::tuple<Ts...> value() const {
-      114:   61:    return std::make_tuple(std::get<Indexes>(m_shrinkables).value()...);
+      111:   60:  std::tuple<Ts...> value() const {
+      111:   61:    return std::make_tuple(std::get<Indexes>(m_shrinkables).value()...);
         -:   62:  }
         -:   63:
-        3:   64:  Seq<Shrinkable<std::tuple<Ts...>>> shrinks() const {
+        2:   64:  Seq<Shrinkable<std::tuple<Ts...>>> shrinks() const {
         -:   65:    using IndexSeq = rc::detail::IndexSequence<Indexes...>;
         -:   66:    return seq::concat(makeSeq<TupleShrinkSeq<Indexes, IndexSeq, Ts...>>(
-        3:   67:        std::get<Indexes>(m_shrinkables)...)...);
+        2:   67:        std::get<Indexes>(m_shrinkables)...)...);
         -:   68:  }
         -:   69:
         -:   70:private:

@@ -418,20 +418,20 @@
         -:  416:  // remove the move_iterator wrapper.
         -:  417:  template<typename _Iterator>
         -:  418:    inline _Iterator
-    2178*:  419:    __miter_base(_Iterator __it)
-    2178*:  420:    { return __it; }
+    2112*:  419:    __miter_base(_Iterator __it)
+    2112*:  420:    { return __it; }
 ------------------
 _ZSt12__miter_baseIN9__gnu_cxx17__normal_iteratorIPN2rc10ShrinkableIdEESt6vectorIS4_SaIS4_EEEEET_SA_:
-        2:  419:    __miter_base(_Iterator __it)
-        2:  420:    { return __it; }
+    #####:  419:    __miter_base(_Iterator __it)
+    #####:  420:    { return __it; }
 ------------------
 _ZSt12__miter_baseIPN2rc10ShrinkableIdEEET_S4_:
     #####:  419:    __miter_base(_Iterator __it)
     #####:  420:    { return __it; }
 ------------------
 _ZSt12__miter_baseIPdET_S1_:
-     2176:  419:    __miter_base(_Iterator __it)
-     2176:  420:    { return __it; }
+     2112:  419:    __miter_base(_Iterator __it)
+     2112:  420:    { return __it; }
 ------------------
 _ZSt12__miter_baseIPPFvvEET_S3_:
     #####:  419:    __miter_base(_Iterator __it)

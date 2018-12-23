@@ -47,8 +47,8 @@
         -:   45:   */
         -:   46:  template<typename _Container>
         -:   47:    inline _GLIBCXX17_CONSTEXPR auto
-        4:   48:    begin(_Container& __cont) -> decltype(__cont.begin())
-        4:   49:    { return __cont.begin(); }
+        2:   48:    begin(_Container& __cont) -> decltype(__cont.begin())
+        2:   49:    { return __cont.begin(); }
         -:   50:
         -:   51:  /**
         -:   52:   *  @brief  Return an iterator pointing to the first element of
@@ -57,16 +57,16 @@
         -:   55:   */
         -:   56:  template<typename _Container>
         -:   57:    inline _GLIBCXX17_CONSTEXPR auto
-      115:   58:    begin(const _Container& __cont) -> decltype(__cont.begin())
-      115:   59:    { return __cont.begin(); }
+      112:   58:    begin(const _Container& __cont) -> decltype(__cont.begin())
+      112:   59:    { return __cont.begin(); }
 ------------------
 _ZSt5beginISt6vectorIdSaIdEEEDTcldtfp_5beginEERKT_:
         1:   58:    begin(const _Container& __cont) -> decltype(__cont.begin())
         1:   59:    { return __cont.begin(); }
 ------------------
 _ZSt5beginISt6vectorIN2rc10ShrinkableIdEESaIS3_EEEDTcldtfp_5beginEERKT_:
-      114:   58:    begin(const _Container& __cont) -> decltype(__cont.begin())
-      114:   59:    { return __cont.begin(); }
+      111:   58:    begin(const _Container& __cont) -> decltype(__cont.begin())
+      111:   59:    { return __cont.begin(); }
 ------------------
         -:   60:
         -:   61:  /**
@@ -76,8 +76,8 @@ _ZSt5beginISt6vectorIN2rc10ShrinkableIdEESaIS3_EEEDTcldtfp_5beginEERKT_:
         -:   65:   */
         -:   66:  template<typename _Container>
         -:   67:    inline _GLIBCXX17_CONSTEXPR auto
-       12:   68:    end(_Container& __cont) -> decltype(__cont.end())
-       12:   69:    { return __cont.end(); }
+        6:   68:    end(_Container& __cont) -> decltype(__cont.end())
+        6:   69:    { return __cont.end(); }
         -:   70:
         -:   71:  /**
         -:   72:   *  @brief  Return an iterator pointing to one past the last element of
@@ -86,16 +86,16 @@ _ZSt5beginISt6vectorIN2rc10ShrinkableIdEESaIS3_EEEDTcldtfp_5beginEERKT_:
         -:   75:   */
         -:   76:  template<typename _Container>
         -:   77:    inline _GLIBCXX17_CONSTEXPR auto
-      115:   78:    end(const _Container& __cont) -> decltype(__cont.end())
-      115:   79:    { return __cont.end(); }
+      112:   78:    end(const _Container& __cont) -> decltype(__cont.end())
+      112:   79:    { return __cont.end(); }
 ------------------
 _ZSt3endISt6vectorIdSaIdEEEDTcldtfp_3endEERKT_:
         1:   78:    end(const _Container& __cont) -> decltype(__cont.end())
         1:   79:    { return __cont.end(); }
 ------------------
 _ZSt3endISt6vectorIN2rc10ShrinkableIdEESaIS3_EEEDTcldtfp_3endEERKT_:
-      114:   78:    end(const _Container& __cont) -> decltype(__cont.end())
-      114:   79:    { return __cont.end(); }
+      111:   78:    end(const _Container& __cont) -> decltype(__cont.end())
+      111:   79:    { return __cont.end(); }
 ------------------
         -:   80:
         -:   81:  /**

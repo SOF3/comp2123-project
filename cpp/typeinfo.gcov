@@ -119,11 +119,11 @@
         -:  117:	? __name < __arg.__name
         -:  118:	: __builtin_strcmp (__name, __arg.__name) < 0; }
         -:  119:
-      113:  120:    bool operator==(const type_info& __arg) const _GLIBCXX_NOEXCEPT
+      110:  120:    bool operator==(const type_info& __arg) const _GLIBCXX_NOEXCEPT
         -:  121:    {
-      113:  122:      return ((__name == __arg.__name)
-     113*:  123:	      || (__name[0] != '*' &&
-     113*:  124:		  __builtin_strcmp (__name, __arg.__name) == 0));
+      110:  122:      return ((__name == __arg.__name)
+     110*:  123:	      || (__name[0] != '*' &&
+     110*:  124:		  __builtin_strcmp (__name, __arg.__name) == 0));
         -:  125:    }
         -:  126:  #else
         -:  127:    // On some targets we can rely on type_info's NTBS being unique,
