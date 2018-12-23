@@ -1,8 +1,5 @@
         -:    0:Source:/usr/include/c++/8/ext/string_conversions.h
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:// String Conversions -*- C++ -*-
         -:    2:
         -:    3:// Copyright (C) 2008-2018 Free Software Foundation, Inc.

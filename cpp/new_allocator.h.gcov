@@ -1,8 +1,5 @@
         -:    0:Source:/usr/include/c++/8/ext/new_allocator.h
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:// Allocator that wraps operator new -*- C++ -*-
         -:    2:
         -:    3:// Copyright (C) 2001-2018 Free Software Foundation, Inc.
@@ -81,13 +78,25 @@
         -:   76:      typedef std::true_type propagate_on_container_move_assignment;
         -:   77:#endif
         -:   78:
-     336*:   79:      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+     333*:   79:      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+------------------
+_ZN9__gnu_cxx13new_allocatorIcEC2Ev:
+    #####:   79:      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+------------------
+_ZN9__gnu_cxx13new_allocatorIcEC2Ev:
+    #####:   79:      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+------------------
+_ZN9__gnu_cxx13new_allocatorIcEC2Ev:
+    #####:   79:      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+------------------
+_ZN9__gnu_cxx13new_allocatorIcEC2Ev:
+    #####:   79:      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIN2rc10ShrinkableIdEEEC2Ev:
-      111:   79:      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+      110:   79:      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIdEC2Ev:
-      118:   79:      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+      117:   79:      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
 ------------------
 _ZN9__gnu_cxx13new_allocatorISt4pairIPN2rc6detail15PropertyContextEmEEC2Ev:
         1:   79:      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
@@ -96,25 +105,25 @@ _ZN9__gnu_cxx13new_allocatorISt4pairIPN2rc3gen6detail17GenerationHandlerEmEEC2Ev
         1:   79:      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIN2rc3gen6detail6Recipe10IngredientEEC2Ev:
-      105:   79:      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+      104:   79:      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIcEC2Ev:
     #####:   79:      new_allocator() _GLIBCXX_USE_NOEXCEPT { }
 ------------------
         -:   80:
-    3263*:   81:      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
+    3235*:   81:      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIN2rc10ShrinkableIdEEEC2ERKS4_:
-      494:   81:      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
+      490:   81:      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIdEC2ERKS1_:
-      465:   81:      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
+      461:   81:      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
 ------------------
 _ZN9__gnu_cxx13new_allocatorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEC2ERKS7_:
-      339:   81:      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
+      336:   81:      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIN2rc3gen6detail6Recipe10IngredientEEC2ERKS6_:
-     1965:   81:      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
+     1948:   81:      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIcEC2ERKS1_:
     #####:   81:      new_allocator(const new_allocator&) _GLIBCXX_USE_NOEXCEPT { }
@@ -123,10 +132,22 @@ _ZN9__gnu_cxx13new_allocatorIcEC2ERKS1_:
         -:   83:      template<typename _Tp1>
         -:   84:	new_allocator(const new_allocator<_Tp1>&) _GLIBCXX_USE_NOEXCEPT { }
         -:   85:
-    4081*:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+    4046*:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+------------------
+_ZN9__gnu_cxx13new_allocatorIcED2Ev:
+    #####:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+------------------
+_ZN9__gnu_cxx13new_allocatorIcED2Ev:
+    #####:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+------------------
+_ZN9__gnu_cxx13new_allocatorIcED2Ev:
+    #####:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+------------------
+_ZN9__gnu_cxx13new_allocatorIcED2Ev:
+    #####:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIN2rc10ShrinkableIdEEED2Ev:
-      605:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+      600:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
 ------------------
 _ZN9__gnu_cxx13new_allocatorISt4pairIPN2rc6detail15PropertyContextEmEED2Ev:
         1:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
@@ -135,10 +156,10 @@ _ZN9__gnu_cxx13new_allocatorISt4pairIPN2rc3gen6detail17GenerationHandlerEmEED2Ev
         1:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIdED2Ev:
-      583:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+      578:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
 ------------------
 _ZN9__gnu_cxx13new_allocatorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED2Ev:
-      796:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+      789:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
 ------------------
 _ZN9__gnu_cxx13new_allocatorISt4pairINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_EED2Ev:
         9:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
@@ -147,7 +168,7 @@ _ZN9__gnu_cxx13new_allocatorImED2Ev:
        12:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIN2rc3gen6detail6Recipe10IngredientEED2Ev:
-     2070:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
+     2052:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
 ------------------
 _ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS9_EEiEEED2Ev:
         4:   86:      ~new_allocator() _GLIBCXX_USE_NOEXCEPT { }
@@ -167,9 +188,9 @@ _ZN9__gnu_cxx13new_allocatorIcED2Ev:
         -:   96:      // NB: __n is permitted to be 0.  The C++ standard says nothing
         -:   97:      // about what the return value is when __n == 0.
         -:   98:      pointer
-    1223*:   99:      allocate(size_type __n, const void* = static_cast<const void*>(0))
+    1243*:   99:      allocate(size_type __n, const void* = static_cast<const void*>(0))
         -:  100:      {
-    1223*:  101:	if (__n > this->max_size())
+    1243*:  101:	if (__n > this->max_size())
     #####:  102:	  std::__throw_bad_alloc();
         -:  103:
         -:  104:#if __cpp_aligned_new
@@ -179,13 +200,13 @@ _ZN9__gnu_cxx13new_allocatorIcED2Ev:
         -:  108:	    return static_cast<_Tp*>(::operator new(__n * sizeof(_Tp), __al));
         -:  109:	  }
         -:  110:#endif
-    1223*:  111:	return static_cast<_Tp*>(::operator new(__n * sizeof(_Tp)));
+    1243*:  111:	return static_cast<_Tp*>(::operator new(__n * sizeof(_Tp)));
         -:  112:      }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIdE8allocateEmPKv:
-      520:   99:      allocate(size_type __n, const void* = static_cast<const void*>(0))
+      534:   99:      allocate(size_type __n, const void* = static_cast<const void*>(0))
         -:  100:      {
-      520:  101:	if (__n > this->max_size())
+      534:  101:	if (__n > this->max_size())
     #####:  102:	  std::__throw_bad_alloc();
         -:  103:
         -:  104:#if __cpp_aligned_new
@@ -195,13 +216,13 @@ _ZN9__gnu_cxx13new_allocatorIdE8allocateEmPKv:
         -:  108:	    return static_cast<_Tp*>(::operator new(__n * sizeof(_Tp), __al));
         -:  109:	  }
         -:  110:#endif
-      520:  111:	return static_cast<_Tp*>(::operator new(__n * sizeof(_Tp)));
+      534:  111:	return static_cast<_Tp*>(::operator new(__n * sizeof(_Tp)));
         -:  112:      }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIN2rc10ShrinkableIdEEE8allocateEmPKv:
-      211:   99:      allocate(size_type __n, const void* = static_cast<const void*>(0))
+      221:   99:      allocate(size_type __n, const void* = static_cast<const void*>(0))
         -:  100:      {
-      211:  101:	if (__n > this->max_size())
+      221:  101:	if (__n > this->max_size())
     #####:  102:	  std::__throw_bad_alloc();
         -:  103:
         -:  104:#if __cpp_aligned_new
@@ -211,7 +232,7 @@ _ZN9__gnu_cxx13new_allocatorIN2rc10ShrinkableIdEEE8allocateEmPKv:
         -:  108:	    return static_cast<_Tp*>(::operator new(__n * sizeof(_Tp), __al));
         -:  109:	  }
         -:  110:#endif
-      211:  111:	return static_cast<_Tp*>(::operator new(__n * sizeof(_Tp)));
+      221:  111:	return static_cast<_Tp*>(::operator new(__n * sizeof(_Tp)));
         -:  112:      }
 ------------------
 _ZN9__gnu_cxx13new_allocatorISt4pairIPN2rc6detail15PropertyContextEmEE8allocateEmPKv:
@@ -263,9 +284,9 @@ _ZN9__gnu_cxx13new_allocatorISt4pairIPN2rc3gen6detail17GenerationHandlerEmEE8all
         -:  112:      }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIN2rc3gen6detail6Recipe10IngredientEE8allocateEmPKv:
-      490:   99:      allocate(size_type __n, const void* = static_cast<const void*>(0))
+      486:   99:      allocate(size_type __n, const void* = static_cast<const void*>(0))
         -:  100:      {
-      490:  101:	if (__n > this->max_size())
+      486:  101:	if (__n > this->max_size())
     #####:  102:	  std::__throw_bad_alloc();
         -:  103:
         -:  104:#if __cpp_aligned_new
@@ -275,13 +296,13 @@ _ZN9__gnu_cxx13new_allocatorIN2rc3gen6detail6Recipe10IngredientEE8allocateEmPKv:
         -:  108:	    return static_cast<_Tp*>(::operator new(__n * sizeof(_Tp), __al));
         -:  109:	  }
         -:  110:#endif
-      490:  111:	return static_cast<_Tp*>(::operator new(__n * sizeof(_Tp)));
+      486:  111:	return static_cast<_Tp*>(::operator new(__n * sizeof(_Tp)));
         -:  112:      }
 ------------------
         -:  113:
         -:  114:      // __p is not permitted to be a null pointer.
         -:  115:      void
-    1346*:  116:      deallocate(pointer __p, size_type)
+    1365*:  116:      deallocate(pointer __p, size_type)
         -:  117:      {
         -:  118:#if __cpp_aligned_new
         -:  119:	if (alignof(_Tp) > __STDCPP_DEFAULT_NEW_ALIGNMENT__)
@@ -290,11 +311,11 @@ _ZN9__gnu_cxx13new_allocatorIN2rc3gen6detail6Recipe10IngredientEE8allocateEmPKv:
         -:  122:	    return;
         -:  123:	  }
         -:  124:#endif
-    1346*:  125:	::operator delete(__p);
-    1346*:  126:      }
+    1365*:  125:	::operator delete(__p);
+    1365*:  126:      }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIN2rc10ShrinkableIdEEE10deallocateEPS3_m:
-      211:  116:      deallocate(pointer __p, size_type)
+      221:  116:      deallocate(pointer __p, size_type)
         -:  117:      {
         -:  118:#if __cpp_aligned_new
         -:  119:	if (alignof(_Tp) > __STDCPP_DEFAULT_NEW_ALIGNMENT__)
@@ -303,8 +324,8 @@ _ZN9__gnu_cxx13new_allocatorIN2rc10ShrinkableIdEEE10deallocateEPS3_m:
         -:  122:	    return;
         -:  123:	  }
         -:  124:#endif
-      211:  125:	::operator delete(__p);
-      211:  126:      }
+      221:  125:	::operator delete(__p);
+      221:  126:      }
 ------------------
 _ZN9__gnu_cxx13new_allocatorISt4pairIPN2rc6detail15PropertyContextEmEE10deallocateEPS6_m:
         1:  116:      deallocate(pointer __p, size_type)
@@ -346,7 +367,7 @@ _ZN9__gnu_cxx13new_allocatorISt4pairIPN2rc3gen6detail17GenerationHandlerEmEE10de
         1:  126:      }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIdE10deallocateEPdm:
-      520:  116:      deallocate(pointer __p, size_type)
+      534:  116:      deallocate(pointer __p, size_type)
         -:  117:      {
         -:  118:#if __cpp_aligned_new
         -:  119:	if (alignof(_Tp) > __STDCPP_DEFAULT_NEW_ALIGNMENT__)
@@ -355,8 +376,8 @@ _ZN9__gnu_cxx13new_allocatorIdE10deallocateEPdm:
         -:  122:	    return;
         -:  123:	  }
         -:  124:#endif
-      520:  125:	::operator delete(__p);
-      520:  126:      }
+      534:  125:	::operator delete(__p);
+      534:  126:      }
 ------------------
 _ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS9_EEiEEE10deallocateEPSE_m:
     #####:  116:      deallocate(pointer __p, size_type)
@@ -372,7 +393,7 @@ _ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKSt6vectorINSt7__cxx1112b
     #####:  126:      }
 ------------------
 _ZN9__gnu_cxx13new_allocatorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE10deallocateEPS6_m:
-      115:  116:      deallocate(pointer __p, size_type)
+      114:  116:      deallocate(pointer __p, size_type)
         -:  117:      {
         -:  118:#if __cpp_aligned_new
         -:  119:	if (alignof(_Tp) > __STDCPP_DEFAULT_NEW_ALIGNMENT__)
@@ -381,8 +402,8 @@ _ZN9__gnu_cxx13new_allocatorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE
         -:  122:	    return;
         -:  123:	  }
         -:  124:#endif
-      115:  125:	::operator delete(__p);
-      115:  126:      }
+      114:  125:	::operator delete(__p);
+      114:  126:      }
 ------------------
 _ZN9__gnu_cxx13new_allocatorISt4pairINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES7_EE10deallocateEPS8_m:
         3:  116:      deallocate(pointer __p, size_type)
@@ -411,7 +432,7 @@ _ZN9__gnu_cxx13new_allocatorImE10deallocateEPmm:
         5:  126:      }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIN2rc3gen6detail6Recipe10IngredientEE10deallocateEPS5_m:
-      490:  116:      deallocate(pointer __p, size_type)
+      486:  116:      deallocate(pointer __p, size_type)
         -:  117:      {
         -:  118:#if __cpp_aligned_new
         -:  119:	if (alignof(_Tp) > __STDCPP_DEFAULT_NEW_ALIGNMENT__)
@@ -420,21 +441,21 @@ _ZN9__gnu_cxx13new_allocatorIN2rc3gen6detail6Recipe10IngredientEE10deallocateEPS
         -:  122:	    return;
         -:  123:	  }
         -:  124:#endif
-      490:  125:	::operator delete(__p);
-      490:  126:      }
+      486:  125:	::operator delete(__p);
+      486:  126:      }
 ------------------
         -:  127:
         -:  128:      size_type
-    2588*:  129:      max_size() const _GLIBCXX_USE_NOEXCEPT
-    2588*:  130:      { return size_t(-1) / sizeof(_Tp); }
+    2633*:  129:      max_size() const _GLIBCXX_USE_NOEXCEPT
+    2633*:  130:      { return size_t(-1) / sizeof(_Tp); }
 ------------------
 _ZNK9__gnu_cxx13new_allocatorIdE8max_sizeEv:
-     1558:  129:      max_size() const _GLIBCXX_USE_NOEXCEPT
-     1558:  130:      { return size_t(-1) / sizeof(_Tp); }
+     1600:  129:      max_size() const _GLIBCXX_USE_NOEXCEPT
+     1600:  130:      { return size_t(-1) / sizeof(_Tp); }
 ------------------
 _ZNK9__gnu_cxx13new_allocatorIN2rc10ShrinkableIdEEE8max_sizeEv:
-      322:  129:      max_size() const _GLIBCXX_USE_NOEXCEPT
-      322:  130:      { return size_t(-1) / sizeof(_Tp); }
+      331:  129:      max_size() const _GLIBCXX_USE_NOEXCEPT
+      331:  130:      { return size_t(-1) / sizeof(_Tp); }
 ------------------
 _ZNK9__gnu_cxx13new_allocatorISt4pairIPN2rc6detail15PropertyContextEmEE8max_sizeEv:
         3:  129:      max_size() const _GLIBCXX_USE_NOEXCEPT
@@ -449,40 +470,40 @@ _ZNK9__gnu_cxx13new_allocatorISt4pairIPN2rc3gen6detail17GenerationHandlerEmEE8ma
         3:  130:      { return size_t(-1) / sizeof(_Tp); }
 ------------------
 _ZNK9__gnu_cxx13new_allocatorIN2rc3gen6detail6Recipe10IngredientEE8max_sizeEv:
-      702:  129:      max_size() const _GLIBCXX_USE_NOEXCEPT
-      702:  130:      { return size_t(-1) / sizeof(_Tp); }
+      696:  129:      max_size() const _GLIBCXX_USE_NOEXCEPT
+      696:  130:      { return size_t(-1) / sizeof(_Tp); }
 ------------------
         -:  131:
         -:  132:#if __cplusplus >= 201103L
         -:  133:      template<typename _Up, typename... _Args>
         -:  134:	void
-    4863*:  135:	construct(_Up* __p, _Args&&... __args)
-    4863*:  136:	{ ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
+    5365*:  135:	construct(_Up* __p, _Args&&... __args)
+    5365*:  136:	{ ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIdE9constructIdJdEEEvPT_DpOT0_:
-     2321:  135:	construct(_Up* __p, _Args&&... __args)
-     2321:  136:	{ ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
+     2573:  135:	construct(_Up* __p, _Args&&... __args)
+     2573:  136:	{ ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIN2rc10ShrinkableIdEEE9constructIS3_JS3_EEEvPT_DpOT0_:
-     2312:  135:	construct(_Up* __p, _Args&&... __args)
-     2312:  136:	{ ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
+     2564:  135:	construct(_Up* __p, _Args&&... __args)
+     2564:  136:	{ ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
 ------------------
 _ZN9__gnu_cxx13new_allocatorISt4pairIPN2rc6detail15PropertyContextEmEE9constructIS6_JS6_EEEvPT_DpOT0_:
-      115:  135:	construct(_Up* __p, _Args&&... __args)
-      115:  136:	{ ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
+      114:  135:	construct(_Up* __p, _Args&&... __args)
+      114:  136:	{ ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIPFvvEE9constructIS2_JS2_EEEvPT_DpOT0_:
     #####:  135:	construct(_Up* __p, _Args&&... __args)
     #####:  136:	{ ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
 ------------------
 _ZN9__gnu_cxx13new_allocatorISt4pairIPN2rc3gen6detail17GenerationHandlerEmEE9constructIS7_JS7_EEEvPT_DpOT0_:
-      115:  135:	construct(_Up* __p, _Args&&... __args)
-      115:  136:	{ ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
+      114:  135:	construct(_Up* __p, _Args&&... __args)
+      114:  136:	{ ::new((void *)__p) _Up(std::forward<_Args>(__args)...); }
 ------------------
         -:  137:
         -:  138:      template<typename _Up>
         -:  139:	void
-     230*:  140:	destroy(_Up* __p) { __p->~_Up(); }
+     228*:  140:	destroy(_Up* __p) { __p->~_Up(); }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIdE7destroyIdEEvPT_:
     #####:  140:	destroy(_Up* __p) { __p->~_Up(); }
@@ -491,13 +512,13 @@ _ZN9__gnu_cxx13new_allocatorIN2rc10ShrinkableIdEEE7destroyIS3_EEvPT_:
     #####:  140:	destroy(_Up* __p) { __p->~_Up(); }
 ------------------
 _ZN9__gnu_cxx13new_allocatorISt4pairIPN2rc6detail15PropertyContextEmEE7destroyIS6_EEvPT_:
-      115:  140:	destroy(_Up* __p) { __p->~_Up(); }
+      114:  140:	destroy(_Up* __p) { __p->~_Up(); }
 ------------------
 _ZN9__gnu_cxx13new_allocatorIPFvvEE7destroyIS2_EEvPT_:
     #####:  140:	destroy(_Up* __p) { __p->~_Up(); }
 ------------------
 _ZN9__gnu_cxx13new_allocatorISt4pairIPN2rc3gen6detail17GenerationHandlerEmEE7destroyIS7_EEvPT_:
-      115:  140:	destroy(_Up* __p) { __p->~_Up(); }
+      114:  140:	destroy(_Up* __p) { __p->~_Up(); }
 ------------------
 _ZN9__gnu_cxx13new_allocatorISt13_Rb_tree_nodeISt4pairIKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS9_EEiEEE7destroyISD_EEvPT_:
     #####:  140:	destroy(_Up* __p) { __p->~_Up(); }

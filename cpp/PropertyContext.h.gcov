@@ -1,8 +1,5 @@
         -:    0:Source:libs/rapidcheck/include/rapidcheck/detail/PropertyContext.h
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:#pragma once
         -:    2:
         -:    3:#include <string>
@@ -31,13 +28,13 @@
         -:   26:  /// Adds a tag to the current scope.
         -:   27:  virtual void addTag(std::string str) = 0;
         -:   28:
-     115*:   29:  virtual ~PropertyContext() = default;
+     114*:   29:  virtual ~PropertyContext() = default;
 ------------------
 _ZN2rc6detail15PropertyContextD0Ev:
     #####:   29:  virtual ~PropertyContext() = default;
 ------------------
 _ZN2rc6detail15PropertyContextD2Ev:
-      115:   29:  virtual ~PropertyContext() = default;
+      114:   29:  virtual ~PropertyContext() = default;
 ------------------
         -:   30:};
         -:   31:

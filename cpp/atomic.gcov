@@ -1,8 +1,5 @@
         -:    0:Source:/usr/include/c++/8/atomic
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:// -*- C++ -*- header.
         -:    2:
         -:    3:// Copyright (C) 2008-2018 Free Software Foundation, Inc.
@@ -720,7 +717,7 @@
         -:  715:      atomic& operator=(const atomic&) = delete;
         -:  716:      atomic& operator=(const atomic&) volatile = delete;
         -:  717:
-     3105:  718:      constexpr atomic(__integral_type __i) noexcept : __base_type(__i) { }
+     3350:  718:      constexpr atomic(__integral_type __i) noexcept : __base_type(__i) { }
         -:  719:
         -:  720:      using __base_type::operator __integral_type;
         -:  721:      using __base_type::operator=;

@@ -1,8 +1,5 @@
         -:    0:Source:/usr/include/c++/8/bits/char_traits.h
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:// Character Traits for use by standard string and iostream -*- C++ -*-
         -:    2:
         -:    3:// Copyright (C) 1997-2018 Free Software Foundation, Inc.
@@ -324,6 +321,57 @@
         -:  319:#endif
     #####:  320:	return __builtin_strlen(__s);
         -:  321:      }
+------------------
+_ZNSt11char_traitsIcE6lengthEPKc:
+    #####:  314:      length(const char_type* __s)
+        -:  315:      {
+        -:  316:#if __cplusplus > 201402
+        -:  317:	if (__constant_string_p(__s))
+        -:  318:	  return __gnu_cxx::char_traits<char_type>::length(__s);
+        -:  319:#endif
+    #####:  320:	return __builtin_strlen(__s);
+        -:  321:      }
+------------------
+_ZNSt11char_traitsIcE6lengthEPKc:
+    #####:  314:      length(const char_type* __s)
+        -:  315:      {
+        -:  316:#if __cplusplus > 201402
+        -:  317:	if (__constant_string_p(__s))
+        -:  318:	  return __gnu_cxx::char_traits<char_type>::length(__s);
+        -:  319:#endif
+    #####:  320:	return __builtin_strlen(__s);
+        -:  321:      }
+------------------
+_ZNSt11char_traitsIcE6lengthEPKc:
+    #####:  314:      length(const char_type* __s)
+        -:  315:      {
+        -:  316:#if __cplusplus > 201402
+        -:  317:	if (__constant_string_p(__s))
+        -:  318:	  return __gnu_cxx::char_traits<char_type>::length(__s);
+        -:  319:#endif
+    #####:  320:	return __builtin_strlen(__s);
+        -:  321:      }
+------------------
+_ZNSt11char_traitsIcE6lengthEPKc:
+    #####:  314:      length(const char_type* __s)
+        -:  315:      {
+        -:  316:#if __cplusplus > 201402
+        -:  317:	if (__constant_string_p(__s))
+        -:  318:	  return __gnu_cxx::char_traits<char_type>::length(__s);
+        -:  319:#endif
+    #####:  320:	return __builtin_strlen(__s);
+        -:  321:      }
+------------------
+_ZNSt11char_traitsIcE6lengthEPKc:
+    #####:  314:      length(const char_type* __s)
+        -:  315:      {
+        -:  316:#if __cplusplus > 201402
+        -:  317:	if (__constant_string_p(__s))
+        -:  318:	  return __gnu_cxx::char_traits<char_type>::length(__s);
+        -:  319:#endif
+    #####:  320:	return __builtin_strlen(__s);
+        -:  321:      }
+------------------
         -:  322:
         -:  323:      static _GLIBCXX17_CONSTEXPR const char_type*
         -:  324:      find(const char_type* __s, size_t __n, const char_type& __a)

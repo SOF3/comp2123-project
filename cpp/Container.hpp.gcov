@@ -1,8 +1,5 @@
         -:    0:Source:libs/rapidcheck/include/rapidcheck/gen/Container.hpp
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:#pragma once
         -:    2:
         -:    3:#include "rapidcheck/gen/Arbitrary.h"
@@ -25,28 +22,28 @@
         -:   20:using ShrinkablePairs = std::vector<Shrinkable<std::pair<K, V>>>;
         -:   21:
         -:   22:template <typename Container, typename T>
-      116:   23:Container toContainer(const Shrinkables<T> &shrinkables) {
+      115:   23:Container toContainer(const Shrinkables<T> &shrinkables) {
         -:   24:  return Container(makeShrinkValueIterator(begin(shrinkables)),
-      116:   25:                   makeShrinkValueIterator(end(shrinkables)));
+      115:   25:                   makeShrinkValueIterator(end(shrinkables)));
         -:   26:}
         -:   27:
         -:   28:template <typename T, typename Predicate>
-      106:   29:Shrinkables<T> generateShrinkables(const Random &random,
+      105:   29:Shrinkables<T> generateShrinkables(const Random &random,
         -:   30:                                   int size,
         -:   31:                                   std::size_t count,
         -:   32:                                   const Gen<T> &gen,
         -:   33:                                   Predicate predicate) {
-      106:   34:  Random r(random);
-      106:   35:  Shrinkables<T> shrinkables;
-      106:   36:  shrinkables.reserve(count);
+      105:   34:  Random r(random);
+      105:   35:  Shrinkables<T> shrinkables;
+      105:   36:  shrinkables.reserve(count);
         -:   37:
-      106:   38:  auto currentSize = size;
-      106:   39:  int tries = 0;
-     2418:   40:  while (shrinkables.size() < count) {
-     4624:   41:    auto shrinkable = gen(r.split(), currentSize);
-     2312:   42:    if (predicate(shrinkable)) {
-     2312:   43:      shrinkables.push_back(std::move(shrinkable));
-     2312:   44:      tries = 0;
+      105:   38:  auto currentSize = size;
+      105:   39:  int tries = 0;
+     2669:   40:  while (shrinkables.size() < count) {
+     5128:   41:    auto shrinkable = gen(r.split(), currentSize);
+     2564:   42:    if (predicate(shrinkable)) {
+     2564:   43:      shrinkables.push_back(std::move(shrinkable));
+     2564:   44:      tries = 0;
         -:   45:    } else {
     #####:   46:      tries++;
     #####:   47:      if (tries >= 100) {
@@ -59,18 +56,18 @@
         -:   54:    }
         -:   55:  }
         -:   56:
-      212:   57:  return shrinkables;
+      210:   57:  return shrinkables;
         -:   58:}
         -:   59:
         -:   60:template <typename Container>
         -:   61:class CollectionStrategy {
         -:   62:public:
         -:   63:  template <typename T>
-      106:   64:  Shrinkables<T> generateElements(const Random &random,
+      105:   64:  Shrinkables<T> generateElements(const Random &random,
         -:   65:                                  int size,
         -:   66:                                  std::size_t count,
         -:   67:                                  const Gen<T> &gen) const {
-      106:   68:    return generateShrinkables(random, size, count, gen, fn::constant(true));
+      105:   68:    return generateShrinkables(random, size, count, gen, fn::constant(true));
         -:   69:  }
         -:   70:
         -:   71:  template <typename T>
@@ -296,21 +293,21 @@
         -:  291:
         -:  292:  template <typename... Ts>
         -:  293:  Shrinkable<Container>
-      106:  294:  generate(const Random &random, int size, const Gen<Ts> &... gens) const {
+      105:  294:  generate(const Random &random, int size, const Gen<Ts> &... gens) const {
         -:  295:    const auto strategy = m_strategy;
-      106:  296:    auto r = random;
-      106:  297:    std::size_t count = r.split().next() % (size + 1);
-      106:  298:    auto shrinkables = strategy.generateElements(r, size, count, gens...);
+      105:  296:    auto r = random;
+      105:  297:    std::size_t count = r.split().next() % (size + 1);
+      105:  298:    auto shrinkables = strategy.generateElements(r, size, count, gens...);
         -:  299:
         -:  300:    using Elements = decltype(shrinkables);
         -:  301:    return shrinkable::map(
-      106:  302:        shrinkable::shrinkRecur(std::move(shrinkables),
+      105:  302:        shrinkable::shrinkRecur(std::move(shrinkables),
         -:  303:                                [=](const Elements &elements) {
         -:  304:                                  return seq::concat(
         -:  305:                                      shrink::removeChunks(elements),
         -:  306:                                      strategy.shrinkElements(elements));
         -:  307:                                }),
-      212:  308:        &toContainer<Container, typename Elements::value_type::ValueType>);
+      210:  308:        &toContainer<Container, typename Elements::value_type::ValueType>);
         -:  309:  }
         -:  310:
         -:  311:  template <typename... Ts>

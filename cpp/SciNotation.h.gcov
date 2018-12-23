@@ -1,8 +1,5 @@
         -:    0:Source:SciNotation.h
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:#ifndef SCI_NOTATION_H
         -:    2:#define SCI_NOTATION_H
         -:    3:
@@ -13,8 +10,8 @@
         -:    8:	int digits;
         -:    9:	int exp;
         -:   10:public:
-     2314:   11:	SciNotation(int digits, int exp) :
-     2314:   12:		digits(digits), exp(exp) {}
+     2568:   11:	SciNotation(int digits, int exp) :
+     2568:   12:		digits(digits), exp(exp) {}
         -:   13:
         -:   14:	bool operator==(const SciNotation &that) const;
         -:   15:

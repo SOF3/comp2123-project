@@ -1,8 +1,5 @@
         -:    0:Source:/usr/include/c++/8/bits/basic_string.h
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:// Components for manipulating sequences of characters -*- C++ -*-
         -:    2:
         -:    3:// Copyright (C) 1997-2018 Free Software Foundation, Inc.
@@ -241,6 +238,38 @@
       20*:  236:          _M_construct(__beg, __end, _Tag());
       20*:  237:	}
 ------------------
+_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE16_M_construct_auxIPKcEEvT_S8_St12__false_type:
+    #####:  232:        _M_construct_aux(_InIterator __beg, _InIterator __end,
+        -:  233:			 std::__false_type)
+        -:  234:	{
+        -:  235:          typedef typename iterator_traits<_InIterator>::iterator_category _Tag;
+    #####:  236:          _M_construct(__beg, __end, _Tag());
+    #####:  237:	}
+------------------
+_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE16_M_construct_auxIPKcEEvT_S8_St12__false_type:
+    #####:  232:        _M_construct_aux(_InIterator __beg, _InIterator __end,
+        -:  233:			 std::__false_type)
+        -:  234:	{
+        -:  235:          typedef typename iterator_traits<_InIterator>::iterator_category _Tag;
+    #####:  236:          _M_construct(__beg, __end, _Tag());
+    #####:  237:	}
+------------------
+_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE16_M_construct_auxIPKcEEvT_S8_St12__false_type:
+    #####:  232:        _M_construct_aux(_InIterator __beg, _InIterator __end,
+        -:  233:			 std::__false_type)
+        -:  234:	{
+        -:  235:          typedef typename iterator_traits<_InIterator>::iterator_category _Tag;
+    #####:  236:          _M_construct(__beg, __end, _Tag());
+    #####:  237:	}
+------------------
+_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE16_M_construct_auxIPKcEEvT_S8_St12__false_type:
+    #####:  232:        _M_construct_aux(_InIterator __beg, _InIterator __end,
+        -:  233:			 std::__false_type)
+        -:  234:	{
+        -:  235:          typedef typename iterator_traits<_InIterator>::iterator_category _Tag;
+    #####:  236:          _M_construct(__beg, __end, _Tag());
+    #####:  237:	}
+------------------
 _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE16_M_construct_auxIPcEEvT_S7_St12__false_type:
        20:  232:        _M_construct_aux(_InIterator __beg, _InIterator __end,
         -:  233:			 std::__false_type)
@@ -276,6 +305,34 @@ _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE16_M_construct_auxIPKcEEvT_
         -:  254:	  typedef typename std::__is_integer<_InIterator>::__type _Integral;
       20*:  255:	  _M_construct_aux(__beg, __end, _Integral());
       20*:  256:        }
+------------------
+_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_:
+    #####:  252:        _M_construct(_InIterator __beg, _InIterator __end)
+        -:  253:	{
+        -:  254:	  typedef typename std::__is_integer<_InIterator>::__type _Integral;
+    #####:  255:	  _M_construct_aux(__beg, __end, _Integral());
+    #####:  256:        }
+------------------
+_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_:
+    #####:  252:        _M_construct(_InIterator __beg, _InIterator __end)
+        -:  253:	{
+        -:  254:	  typedef typename std::__is_integer<_InIterator>::__type _Integral;
+    #####:  255:	  _M_construct_aux(__beg, __end, _Integral());
+    #####:  256:        }
+------------------
+_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_:
+    #####:  252:        _M_construct(_InIterator __beg, _InIterator __end)
+        -:  253:	{
+        -:  254:	  typedef typename std::__is_integer<_InIterator>::__type _Integral;
+    #####:  255:	  _M_construct_aux(__beg, __end, _Integral());
+    #####:  256:        }
+------------------
+_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_:
+    #####:  252:        _M_construct(_InIterator __beg, _InIterator __end)
+        -:  253:	{
+        -:  254:	  typedef typename std::__is_integer<_InIterator>::__type _Integral;
+    #####:  255:	  _M_construct_aux(__beg, __end, _Integral());
+    #####:  256:        }
 ------------------
 _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPcEEvT_S7_:
        20:  252:        _M_construct(_InIterator __beg, _InIterator __end)
@@ -6017,9 +6074,9 @@ _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_:
         -: 5980:#if __cplusplus >= 201103L
         -: 5981:  template<typename _CharT, typename _Traits, typename _Alloc>
         -: 5982:    inline basic_string<_CharT, _Traits, _Alloc>
-        -: 5983:    operator+(basic_string<_CharT, _Traits, _Alloc>&& __lhs,
+        1: 5983:    operator+(basic_string<_CharT, _Traits, _Alloc>&& __lhs,
         -: 5984:	      const basic_string<_CharT, _Traits, _Alloc>& __rhs)
-        -: 5985:    { return std::move(__lhs.append(__rhs)); }
+        1: 5985:    { return std::move(__lhs.append(__rhs)); }
         -: 5986:
         -: 5987:  template<typename _CharT, typename _Traits, typename _Alloc>
         -: 5988:    inline basic_string<_CharT, _Traits, _Alloc>
@@ -6053,9 +6110,30 @@ _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_:
         -: 6016:
         -: 6017:  template<typename _CharT, typename _Traits, typename _Alloc>
         -: 6018:    inline basic_string<_CharT, _Traits, _Alloc>
+       18: 6019:    operator+(basic_string<_CharT, _Traits, _Alloc>&& __lhs,
+        -: 6020:	      const _CharT* __rhs)
+       18: 6021:    { return std::move(__lhs.append(__rhs)); }
+------------------
+_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EEOS8_PKS5_:
+        4: 6019:    operator+(basic_string<_CharT, _Traits, _Alloc>&& __lhs,
+        -: 6020:	      const _CharT* __rhs)
+        4: 6021:    { return std::move(__lhs.append(__rhs)); }
+------------------
+_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EEOS8_PKS5_:
+        4: 6019:    operator+(basic_string<_CharT, _Traits, _Alloc>&& __lhs,
+        -: 6020:	      const _CharT* __rhs)
+        4: 6021:    { return std::move(__lhs.append(__rhs)); }
+------------------
+_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EEOS8_PKS5_:
+        2: 6019:    operator+(basic_string<_CharT, _Traits, _Alloc>&& __lhs,
+        -: 6020:	      const _CharT* __rhs)
+        2: 6021:    { return std::move(__lhs.append(__rhs)); }
+------------------
+_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EEOS8_PKS5_:
         8: 6019:    operator+(basic_string<_CharT, _Traits, _Alloc>&& __lhs,
         -: 6020:	      const _CharT* __rhs)
         8: 6021:    { return std::move(__lhs.append(__rhs)); }
+------------------
         -: 6022:
         -: 6023:  template<typename _CharT, typename _Traits, typename _Alloc>
         -: 6024:    inline basic_string<_CharT, _Traits, _Alloc>
@@ -6107,9 +6185,9 @@ _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE12_M_constructIPKcEEvT_S8_:
         -: 6070:   */
         -: 6071:  template<typename _CharT, typename _Traits, typename _Alloc>
         -: 6072:    inline bool
-        -: 6073:    operator==(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+        1: 6073:    operator==(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
         -: 6074:	       const _CharT* __rhs)
-        -: 6075:    { return __lhs.compare(__rhs) == 0; }
+        1: 6075:    { return __lhs.compare(__rhs) == 0; }
         -: 6076:
         -: 6077:  // operator !=
         -: 6078:  /**

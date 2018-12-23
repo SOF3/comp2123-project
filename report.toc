@@ -11,17 +11,16 @@
 \contentsline {subsubsection}{\numberline {3.3.3}Reimplement algorithm by brute-force}{4}{subsubsection.3.3.3}
 \contentsline {subsubsection}{\numberline {3.3.4}Testing for edge cases}{5}{subsubsection.3.3.4}
 \contentsline {section}{\numberline {4}Unit testing techniques}{5}{section.4}
-\contentsline {subsection}{\numberline {4.1}Test coverage}{5}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Test-driven development (TDD)}{5}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Behaviour-driven development (BDD)}{6}{subsection.4.3}
-\contentsline {paragraph}{Feature}{6}{section*.2}
-\contentsline {paragraph}{Scenario}{6}{section*.3}
-\contentsline {paragraph}{Given}{6}{section*.4}
-\contentsline {paragraph}{When}{6}{section*.5}
-\contentsline {paragraph}{Then}{7}{section*.6}
-\contentsline {subsection}{\numberline {4.4}Summary: TDD vs BDD}{7}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Dependency mocking}{7}{subsection.4.5}
-\contentsline {section}{\numberline {5}Difficulties}{7}{section.5}
-\contentsline {subsection}{\numberline {5.1}Coupling}{7}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Test case selection}{8}{subsection.5.2}
-\contentsline {section}{\numberline {6}Continuous integration}{8}{section.6}
+\contentsline {subsection}{\numberline {4.1}Code coverage}{5}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Test-driven development (TDD)}{6}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Behaviour-driven development (BDD)}{7}{subsection.4.3}
+\contentsline {paragraph}{Feature}{8}{section*.2}
+\contentsline {paragraph}{Scenario}{8}{section*.3}
+\contentsline {paragraph}{Given}{8}{section*.4}
+\contentsline {paragraph}{When}{8}{section*.5}
+\contentsline {paragraph}{Then}{8}{section*.6}
+\contentsline {subsection}{\numberline {4.4}Summary: TDD vs BDD}{8}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Dependency mocking}{9}{subsection.4.5}
+\contentsline {section}{\numberline {5}Difficulties}{10}{section.5}
+\contentsline {subsection}{\numberline {5.1}Coupling}{10}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Test case selection}{11}{subsection.5.2}

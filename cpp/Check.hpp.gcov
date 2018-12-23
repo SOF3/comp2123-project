@@ -1,8 +1,5 @@
         -:    0:Source:libs/rapidcheck/include/rapidcheck/Check.hpp
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:#pragma once
         -:    2:
         -:    3:#include <iostream>

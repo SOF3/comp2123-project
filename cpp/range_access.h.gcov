@@ -1,8 +1,5 @@
         -:    0:Source:/usr/include/c++/8/bits/range_access.h
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:// <range_access.h> -*- C++ -*-
         -:    2:
         -:    3:// Copyright (C) 2010-2018 Free Software Foundation, Inc.
@@ -60,16 +57,16 @@
         -:   55:   */
         -:   56:  template<typename _Container>
         -:   57:    inline _GLIBCXX17_CONSTEXPR auto
-      117:   58:    begin(const _Container& __cont) -> decltype(__cont.begin())
-      117:   59:    { return __cont.begin(); }
+      116:   58:    begin(const _Container& __cont) -> decltype(__cont.begin())
+      116:   59:    { return __cont.begin(); }
 ------------------
 _ZSt5beginISt6vectorIdSaIdEEEDTcldtfp_5beginEERKT_:
         1:   58:    begin(const _Container& __cont) -> decltype(__cont.begin())
         1:   59:    { return __cont.begin(); }
 ------------------
 _ZSt5beginISt6vectorIN2rc10ShrinkableIdEESaIS3_EEEDTcldtfp_5beginEERKT_:
-      116:   58:    begin(const _Container& __cont) -> decltype(__cont.begin())
-      116:   59:    { return __cont.begin(); }
+      115:   58:    begin(const _Container& __cont) -> decltype(__cont.begin())
+      115:   59:    { return __cont.begin(); }
 ------------------
         -:   60:
         -:   61:  /**
@@ -89,16 +86,16 @@ _ZSt5beginISt6vectorIN2rc10ShrinkableIdEESaIS3_EEEDTcldtfp_5beginEERKT_:
         -:   75:   */
         -:   76:  template<typename _Container>
         -:   77:    inline _GLIBCXX17_CONSTEXPR auto
-      117:   78:    end(const _Container& __cont) -> decltype(__cont.end())
-      117:   79:    { return __cont.end(); }
+      116:   78:    end(const _Container& __cont) -> decltype(__cont.end())
+      116:   79:    { return __cont.end(); }
 ------------------
 _ZSt3endISt6vectorIdSaIdEEEDTcldtfp_3endEERKT_:
         1:   78:    end(const _Container& __cont) -> decltype(__cont.end())
         1:   79:    { return __cont.end(); }
 ------------------
 _ZSt3endISt6vectorIN2rc10ShrinkableIdEESaIS3_EEEDTcldtfp_3endEERKT_:
-      116:   78:    end(const _Container& __cont) -> decltype(__cont.end())
-      116:   79:    { return __cont.end(); }
+      115:   78:    end(const _Container& __cont) -> decltype(__cont.end())
+      115:   79:    { return __cont.end(); }
 ------------------
         -:   80:
         -:   81:  /**

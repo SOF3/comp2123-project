@@ -1,6 +1,7 @@
 #include <string>
 #include <sstream>
-#include "calculator.h"
+#include "Calculator.h"
+using namespace std;
 
 int add(string numbers){
 	stringstream ss (numbers); int current, ans = 0;

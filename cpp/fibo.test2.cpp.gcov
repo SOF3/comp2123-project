@@ -1,0 +1,10 @@
+        -:    0:Source:fibo.test2.cpp
+        -:    0:Programs:6
+        -:    1:#include "assert.h"
+        -:    2:#include "assert_int.h"
+        -:    3:#include "fibo.h"
+        -:    4:
+        1:    5:void testFibo() {
+       1*:    6:	ASSERT_EQUAL(fibo(2), 1)
+       1*:    7:	ASSERT_EQUAL(fibo(3), 2)
+        1:    8:}

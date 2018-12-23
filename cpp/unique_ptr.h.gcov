@@ -1,8 +1,5 @@
         -:    0:Source:/usr/include/c++/8/bits/unique_ptr.h
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:// unique_ptr implementation -*- C++ -*-
         -:    2:
         -:    3:// Copyright (C) 2008-2018 Free Software Foundation, Inc.
@@ -77,14 +74,14 @@
         -:   72:
         -:   73:      /// Calls @c delete @p __ptr
         -:   74:      void
-      151:   75:      operator()(_Tp* __ptr) const
+      150:   75:      operator()(_Tp* __ptr) const
         -:   76:      {
         -:   77:	static_assert(!is_void<_Tp>::value,
         -:   78:		      "can't delete pointer to incomplete type");
         -:   79:	static_assert(sizeof(_Tp)>0,
         -:   80:		      "can't delete pointer to incomplete type");
-      151:   81:	delete __ptr;
-      151:   82:      }
+      150:   81:	delete __ptr;
+      150:   82:      }
 ------------------
 _ZNKSt14default_deleteIN2rc3SeqINS0_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE8ISeqImplEEclEPSA_:
         6:   75:      operator()(_Tp* __ptr) const
@@ -167,14 +164,14 @@ _ZNKSt14default_deleteIN2rc3SeqINS0_10ShrinkableINS0_6detail3AnyEEEE8ISeqImplEEc
         3:   82:      }
 ------------------
 _ZNKSt14default_deleteIN2rc6detail3Any8IAnyImplEEclEPS3_:
-      116:   75:      operator()(_Tp* __ptr) const
+      115:   75:      operator()(_Tp* __ptr) const
         -:   76:      {
         -:   77:	static_assert(!is_void<_Tp>::value,
         -:   78:		      "can't delete pointer to incomplete type");
         -:   79:	static_assert(sizeof(_Tp)>0,
         -:   80:		      "can't delete pointer to incomplete type");
-      116:   81:	delete __ptr;
-      116:   82:      }
+      115:   81:	delete __ptr;
+      115:   82:      }
 ------------------
         -:   83:    };
         -:   84:
@@ -305,7 +302,7 @@ _ZNSt15__uniq_ptr_implIN2rc3SeqINS0_3gen6detail6RecipeEE8ISeqImplESt14default_de
         6:  147:	: _M_t(__p, std::forward<_Del>(__d)) { }
 ------------------
         -:  148:
-      450:  149:      pointer&   _M_ptr() { return std::get<0>(_M_t); }
+      448:  149:      pointer&   _M_ptr() { return std::get<0>(_M_t); }
 ------------------
 _ZNSt15__uniq_ptr_implIN2rc3SeqINS0_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE8ISeqImplESt14default_deleteISA_EE6_M_ptrEv:
        39:  149:      pointer&   _M_ptr() { return std::get<0>(_M_t); }
@@ -332,9 +329,9 @@ _ZNSt15__uniq_ptr_implIN2rc3SeqINS0_10ShrinkableINS0_6detail3AnyEEEE8ISeqImplESt
        21:  149:      pointer&   _M_ptr() { return std::get<0>(_M_t); }
 ------------------
 _ZNSt15__uniq_ptr_implIN2rc6detail3Any8IAnyImplESt14default_deleteIS3_EE6_M_ptrEv:
-      232:  149:      pointer&   _M_ptr() { return std::get<0>(_M_t); }
+      230:  149:      pointer&   _M_ptr() { return std::get<0>(_M_t); }
 ------------------
-      527:  150:      pointer    _M_ptr() const { return std::get<0>(_M_t); }
+      524:  150:      pointer    _M_ptr() const { return std::get<0>(_M_t); }
 ------------------
 _ZNKSt15__uniq_ptr_implIN2rc3SeqINS0_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE8ISeqImplESt14default_deleteISA_EE6_M_ptrEv:
        41:  150:      pointer    _M_ptr() const { return std::get<0>(_M_t); }
@@ -355,9 +352,9 @@ _ZNKSt15__uniq_ptr_implIN2rc3SeqINS0_3gen6detail6RecipeEE8ISeqImplESt14default_d
        42:  150:      pointer    _M_ptr() const { return std::get<0>(_M_t); }
 ------------------
 _ZNKSt15__uniq_ptr_implIN2rc6detail3Any8IAnyImplESt14default_deleteIS3_EE6_M_ptrEv:
-      349:  150:      pointer    _M_ptr() const { return std::get<0>(_M_t); }
+      346:  150:      pointer    _M_ptr() const { return std::get<0>(_M_t); }
 ------------------
-      231:  151:      _Dp&       _M_deleter() { return std::get<1>(_M_t); }
+      230:  151:      _Dp&       _M_deleter() { return std::get<1>(_M_t); }
 ------------------
 _ZNSt15__uniq_ptr_implIN2rc3SeqINS0_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE8ISeqImplESt14default_deleteISA_EE10_M_deleterEv:
        20:  151:      _Dp&       _M_deleter() { return std::get<1>(_M_t); }
@@ -384,7 +381,7 @@ _ZNSt15__uniq_ptr_implIN2rc3SeqINS0_10ShrinkableINS0_6detail3AnyEEEE8ISeqImplESt
        11:  151:      _Dp&       _M_deleter() { return std::get<1>(_M_t); }
 ------------------
 _ZNSt15__uniq_ptr_implIN2rc6detail3Any8IAnyImplESt14default_deleteIS3_EE10_M_deleterEv:
-      116:  151:      _Dp&       _M_deleter() { return std::get<1>(_M_t); }
+      115:  151:      _Dp&       _M_deleter() { return std::get<1>(_M_t); }
 ------------------
         -:  152:      const _Dp& _M_deleter() const { return std::get<1>(_M_t); }
         -:  153:
@@ -610,13 +607,13 @@ _ZNSt10unique_ptrIN2rc3SeqINS0_3gen6detail6RecipeEE8ISeqImplESt14default_deleteI
         -:  267:#endif
         -:  268:
         -:  269:      /// Destructor, invokes the deleter if the stored pointer is not null.
-      219:  270:      ~unique_ptr() noexcept
+      218:  270:      ~unique_ptr() noexcept
         -:  271:      {
-      219:  272:	auto& __ptr = _M_t._M_ptr();
-      219:  273:	if (__ptr != nullptr)
-      143:  274:	  get_deleter()(__ptr);
-      219:  275:	__ptr = pointer();
-      219:  276:      }
+      218:  272:	auto& __ptr = _M_t._M_ptr();
+      218:  273:	if (__ptr != nullptr)
+      142:  274:	  get_deleter()(__ptr);
+      218:  275:	__ptr = pointer();
+      218:  276:      }
 ------------------
 _ZNSt10unique_ptrIN2rc3SeqINS0_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE8ISeqImplESt14default_deleteISA_EED2Ev:
        19:  270:      ~unique_ptr() noexcept
@@ -691,13 +688,13 @@ _ZNSt10unique_ptrIN2rc3SeqINS0_10ShrinkableINS0_6detail3AnyEEEE8ISeqImplESt14def
        10:  276:      }
 ------------------
 _ZNSt10unique_ptrIN2rc6detail3Any8IAnyImplESt14default_deleteIS3_EED2Ev:
-      116:  270:      ~unique_ptr() noexcept
+      115:  270:      ~unique_ptr() noexcept
         -:  271:      {
-      116:  272:	auto& __ptr = _M_t._M_ptr();
-      116:  273:	if (__ptr != nullptr)
-      116:  274:	  get_deleter()(__ptr);
-      116:  275:	__ptr = pointer();
-      116:  276:      }
+      115:  272:	auto& __ptr = _M_t._M_ptr();
+      115:  273:	if (__ptr != nullptr)
+      115:  274:	  get_deleter()(__ptr);
+      115:  275:	__ptr = pointer();
+      115:  276:      }
 ------------------
         -:  277:
         -:  278:      // Assignment.
@@ -805,10 +802,10 @@ _ZNSt10unique_ptrIN2rc3SeqISt6vectorINS0_10ShrinkableIdEESaIS4_EEE8ISeqImplESt14
         -:  331:
         -:  332:      /// Return the stored pointer.
         -:  333:      pointer
-      292:  334:      operator->() const noexcept
+      290:  334:      operator->() const noexcept
         -:  335:      {
         -:  336:	_GLIBCXX_DEBUG_PEDASSERT(get() != pointer());
-      292:  337:	return get();
+      290:  337:	return get();
         -:  338:      }
 ------------------
 _ZNKSt10unique_ptrIN2rc3SeqINS0_10ShrinkableISt6vectorIdSaIdEEEEE8ISeqImplESt14default_deleteIS8_EEptEv:
@@ -854,17 +851,17 @@ _ZNKSt10unique_ptrIN2rc3SeqISt6vectorINS0_10ShrinkableIdEESaIS4_EEE8ISeqImplESt1
         -:  338:      }
 ------------------
 _ZNKSt10unique_ptrIN2rc6detail3Any8IAnyImplESt14default_deleteIS3_EEptEv:
-      232:  334:      operator->() const noexcept
+      230:  334:      operator->() const noexcept
         -:  335:      {
         -:  336:	_GLIBCXX_DEBUG_PEDASSERT(get() != pointer());
-      232:  337:	return get();
+      230:  337:	return get();
         -:  338:      }
 ------------------
         -:  339:
         -:  340:      /// Return the stored pointer.
         -:  341:      pointer
-      527:  342:      get() const noexcept
-      527:  343:      { return _M_t._M_ptr(); }
+      524:  342:      get() const noexcept
+      524:  343:      { return _M_t._M_ptr(); }
 ------------------
 _ZNKSt10unique_ptrIN2rc3SeqINS0_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE8ISeqImplESt14default_deleteISA_EE3getEv:
        41:  342:      get() const noexcept
@@ -891,14 +888,14 @@ _ZNKSt10unique_ptrIN2rc3SeqINS0_3gen6detail6RecipeEE8ISeqImplESt14default_delete
        42:  343:      { return _M_t._M_ptr(); }
 ------------------
 _ZNKSt10unique_ptrIN2rc6detail3Any8IAnyImplESt14default_deleteIS3_EE3getEv:
-      349:  342:      get() const noexcept
-      349:  343:      { return _M_t._M_ptr(); }
+      346:  342:      get() const noexcept
+      346:  343:      { return _M_t._M_ptr(); }
 ------------------
         -:  344:
         -:  345:      /// Return a reference to the stored deleter.
         -:  346:      deleter_type&
-      231:  347:      get_deleter() noexcept
-      231:  348:      { return _M_t._M_deleter(); }
+      230:  347:      get_deleter() noexcept
+      230:  348:      { return _M_t._M_deleter(); }
 ------------------
 _ZNSt10unique_ptrIN2rc3SeqINS0_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE8ISeqImplESt14default_deleteISA_EE11get_deleterEv:
        20:  347:      get_deleter() noexcept
@@ -933,8 +930,8 @@ _ZNSt10unique_ptrIN2rc3SeqINS0_10ShrinkableINS0_6detail3AnyEEEE8ISeqImplESt14def
        11:  348:      { return _M_t._M_deleter(); }
 ------------------
 _ZNSt10unique_ptrIN2rc6detail3Any8IAnyImplESt14default_deleteIS3_EE11get_deleterEv:
-      116:  347:      get_deleter() noexcept
-      116:  348:      { return _M_t._M_deleter(); }
+      115:  347:      get_deleter() noexcept
+      115:  348:      { return _M_t._M_deleter(); }
 ------------------
         -:  349:
         -:  350:      /// Return a reference to the stored deleter.
@@ -943,8 +940,8 @@ _ZNSt10unique_ptrIN2rc6detail3Any8IAnyImplESt14default_deleteIS3_EE11get_deleter
         -:  353:      { return _M_t._M_deleter(); }
         -:  354:
         -:  355:      /// Return @c true if the stored pointer is not null.
-      182:  356:      explicit operator bool() const noexcept
-      182:  357:      { return get() == pointer() ? false : true; }
+      181:  356:      explicit operator bool() const noexcept
+      181:  357:      { return get() == pointer() ? false : true; }
 ------------------
 _ZNKSt10unique_ptrIN2rc3SeqINS0_10ShrinkableISt6vectorIdSaIdEEEEE8ISeqImplESt14default_deleteIS8_EEcvbEv:
         7:  356:      explicit operator bool() const noexcept
@@ -971,8 +968,8 @@ _ZNKSt10unique_ptrIN2rc3SeqISt6vectorINS0_10ShrinkableIdEESaIS4_EEE8ISeqImplESt1
        16:  357:      { return get() == pointer() ? false : true; }
 ------------------
 _ZNKSt10unique_ptrIN2rc6detail3Any8IAnyImplESt14default_deleteIS3_EEcvbEv:
-      117:  356:      explicit operator bool() const noexcept
-      117:  357:      { return get() == pointer() ? false : true; }
+      116:  356:      explicit operator bool() const noexcept
+      116:  357:      { return get() == pointer() ? false : true; }
 ------------------
         -:  358:
         -:  359:      // Modifiers.
@@ -1042,13 +1039,13 @@ _ZNSt10unique_ptrIN2rc3SeqINS0_3gen6detail6RecipeEE8ISeqImplESt14default_deleteI
         -:  374:       * The deleter will be invoked if a pointer is already owned.
         -:  375:       */
         -:  376:      void
-      164:  377:      reset(pointer __p = pointer()) noexcept
+      163:  377:      reset(pointer __p = pointer()) noexcept
         -:  378:      {
         -:  379:	using std::swap;
-      164:  380:	swap(_M_t._M_ptr(), __p);
-      164:  381:	if (__p != pointer())
+      163:  380:	swap(_M_t._M_ptr(), __p);
+      163:  381:	if (__p != pointer())
        8*:  382:	  get_deleter()(__p);
-      164:  383:      }
+      163:  383:      }
 ------------------
 _ZNSt10unique_ptrIN2rc3SeqINS0_10ShrinkableINS0_6detail3AnyEEEE8ISeqImplESt14default_deleteIS7_EE5resetEPS7_:
         4:  377:      reset(pointer __p = pointer()) noexcept
@@ -1114,13 +1111,13 @@ _ZNSt10unique_ptrIN2rc3SeqISt6vectorINS0_10ShrinkableIdEESaIS4_EEE8ISeqImplESt14
        10:  383:      }
 ------------------
 _ZNSt10unique_ptrIN2rc6detail3Any8IAnyImplESt14default_deleteIS3_EE5resetEPS3_:
-      116:  377:      reset(pointer __p = pointer()) noexcept
+      115:  377:      reset(pointer __p = pointer()) noexcept
         -:  378:      {
         -:  379:	using std::swap;
-      116:  380:	swap(_M_t._M_ptr(), __p);
-      116:  381:	if (__p != pointer())
+      115:  380:	swap(_M_t._M_ptr(), __p);
+      115:  381:	if (__p != pointer())
     #####:  382:	  get_deleter()(__p);
-      116:  383:      }
+      115:  383:      }
 ------------------
 _ZNSt10unique_ptrIN2rc3SeqINS0_10ShrinkableISt4pairINS0_6detail12TaggedResultENS0_3gen6detail6RecipeEEEEE8ISeqImplESt14default_deleteISC_EE5resetEPSC_:
         4:  377:      reset(pointer __p = pointer()) noexcept

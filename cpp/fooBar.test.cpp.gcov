@@ -1,8 +1,5 @@
         -:    0:Source:fooBar.test.cpp
-        -:    0:Graph:fooBar.gcno
-        -:    0:Data:fooBar.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:#include "fooBar.cpp"
         -:    2:#include "assert.h"
         -:    3:

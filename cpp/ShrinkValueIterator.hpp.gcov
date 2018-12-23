@@ -1,8 +1,5 @@
         -:    0:Source:libs/rapidcheck/include/rapidcheck/gen/detail/ShrinkValueIterator.hpp
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:#pragma once
         -:    2:
         -:    3:namespace rc {
@@ -20,18 +17,18 @@
         -:   15:public:
         -:   16:  using T = typename std::iterator_traits<Iterator>::value_type::ValueType;
         -:   17:
-      232:   18:  ShrinkValueIterator(Iterator it)
-      232:   19:      : m_it(it) {}
+      230:   18:  ShrinkValueIterator(Iterator it)
+      230:   19:      : m_it(it) {}
         -:   20:
-     2435:   21:  bool operator==(const ShrinkValueIterator &rhs) const {
-     2435:   22:    return m_it == rhs.m_it;
+     2686:   21:  bool operator==(const ShrinkValueIterator &rhs) const {
+     2686:   22:    return m_it == rhs.m_it;
         -:   23:  }
         -:   24:
-     2319:   25:  T operator*() const { return m_it->value(); }
+     2571:   25:  T operator*() const { return m_it->value(); }
         -:   26:
-     2319:   27:  ShrinkValueIterator &operator++() {
-     2319:   28:    ++m_it;
-     2319:   29:    return *this;
+     2571:   27:  ShrinkValueIterator &operator++() {
+     2571:   28:    ++m_it;
+     2571:   29:    return *this;
         -:   30:  }
         -:   31:
         -:   32:  ShrinkValueIterator operator++(int) {
@@ -45,14 +42,14 @@
         -:   40:};
         -:   41:
         -:   42:template <typename Iterator>
-     2435:   43:bool operator!=(const ShrinkValueIterator<Iterator> &lhs,
+     2686:   43:bool operator!=(const ShrinkValueIterator<Iterator> &lhs,
         -:   44:                const ShrinkValueIterator<Iterator> &rhs) {
-     2435:   45:  return !(lhs == rhs);
+     2686:   45:  return !(lhs == rhs);
         -:   46:}
         -:   47:
         -:   48:template <typename Iterator>
-      232:   49:ShrinkValueIterator<Iterator> makeShrinkValueIterator(Iterator it) {
-      232:   50:  return ShrinkValueIterator<Iterator>(it);
+      230:   49:ShrinkValueIterator<Iterator> makeShrinkValueIterator(Iterator it) {
+      230:   50:  return ShrinkValueIterator<Iterator>(it);
         -:   51:}
         -:   52:
         -:   53:} // namespace detail

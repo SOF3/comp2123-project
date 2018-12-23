@@ -1,8 +1,5 @@
         -:    0:Source:/usr/include/c++/8/bits/stl_iterator_base_funcs.h
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:// Functions used by iterators -*- C++ -*-
         -:    2:
         -:    3:// Copyright (C) 2001-2018 Free Software Foundation, Inc.
@@ -100,13 +97,53 @@
         -:   95:  template<typename _RandomAccessIterator>
         -:   96:    inline _GLIBCXX14_CONSTEXPR
         -:   97:    typename iterator_traits<_RandomAccessIterator>::difference_type
-    1142*:   98:    __distance(_RandomAccessIterator __first, _RandomAccessIterator __last,
+    1133*:   98:    __distance(_RandomAccessIterator __first, _RandomAccessIterator __last,
         -:   99:               random_access_iterator_tag)
         -:  100:    {
         -:  101:      // concept requirements
         -:  102:      __glibcxx_function_requires(_RandomAccessIteratorConcept<
         -:  103:				  _RandomAccessIterator>)
-    1142*:  104:      return __last - __first;
+    1133*:  104:      return __last - __first;
+        -:  105:    }
+------------------
+_ZSt10__distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_St26random_access_iterator_tag:
+    #####:   98:    __distance(_RandomAccessIterator __first, _RandomAccessIterator __last,
+        -:   99:               random_access_iterator_tag)
+        -:  100:    {
+        -:  101:      // concept requirements
+        -:  102:      __glibcxx_function_requires(_RandomAccessIteratorConcept<
+        -:  103:				  _RandomAccessIterator>)
+    #####:  104:      return __last - __first;
+        -:  105:    }
+------------------
+_ZSt10__distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_St26random_access_iterator_tag:
+    #####:   98:    __distance(_RandomAccessIterator __first, _RandomAccessIterator __last,
+        -:   99:               random_access_iterator_tag)
+        -:  100:    {
+        -:  101:      // concept requirements
+        -:  102:      __glibcxx_function_requires(_RandomAccessIteratorConcept<
+        -:  103:				  _RandomAccessIterator>)
+    #####:  104:      return __last - __first;
+        -:  105:    }
+------------------
+_ZSt10__distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_St26random_access_iterator_tag:
+    #####:   98:    __distance(_RandomAccessIterator __first, _RandomAccessIterator __last,
+        -:   99:               random_access_iterator_tag)
+        -:  100:    {
+        -:  101:      // concept requirements
+        -:  102:      __glibcxx_function_requires(_RandomAccessIteratorConcept<
+        -:  103:				  _RandomAccessIterator>)
+    #####:  104:      return __last - __first;
+        -:  105:    }
+------------------
+_ZSt10__distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_St26random_access_iterator_tag:
+    #####:   98:    __distance(_RandomAccessIterator __first, _RandomAccessIterator __last,
+        -:   99:               random_access_iterator_tag)
+        -:  100:    {
+        -:  101:      // concept requirements
+        -:  102:      __glibcxx_function_requires(_RandomAccessIteratorConcept<
+        -:  103:				  _RandomAccessIterator>)
+    #####:  104:      return __last - __first;
         -:  105:    }
 ------------------
 _ZSt10__distanceIN9__gnu_cxx17__normal_iteratorIPN2rc10ShrinkableIdEESt6vectorIS4_SaIS4_EEEEENSt15iterator_traitsIT_E15difference_typeESB_SB_St26random_access_iterator_tag:
@@ -120,13 +157,13 @@ _ZSt10__distanceIN9__gnu_cxx17__normal_iteratorIPN2rc10ShrinkableIdEESt6vectorIS
         -:  105:    }
 ------------------
 _ZSt10__distanceIPcENSt15iterator_traitsIT_E15difference_typeES2_S2_St26random_access_iterator_tag:
-     1140:   98:    __distance(_RandomAccessIterator __first, _RandomAccessIterator __last,
+     1131:   98:    __distance(_RandomAccessIterator __first, _RandomAccessIterator __last,
         -:   99:               random_access_iterator_tag)
         -:  100:    {
         -:  101:      // concept requirements
         -:  102:      __glibcxx_function_requires(_RandomAccessIteratorConcept<
         -:  103:				  _RandomAccessIterator>)
-     1140:  104:      return __last - __first;
+     1131:  104:      return __last - __first;
         -:  105:    }
 ------------------
 _ZSt10__distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_St26random_access_iterator_tag:
@@ -171,11 +208,43 @@ _ZSt10__distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_St26random_
         -:  135:  template<typename _InputIterator>
         -:  136:    inline _GLIBCXX17_CONSTEXPR
         -:  137:    typename iterator_traits<_InputIterator>::difference_type
-    1142*:  138:    distance(_InputIterator __first, _InputIterator __last)
+    1133*:  138:    distance(_InputIterator __first, _InputIterator __last)
         -:  139:    {
         -:  140:      // concept requirements -- taken care of in __distance
-    1142*:  141:      return std::__distance(__first, __last,
-    2284*:  142:			     std::__iterator_category(__first));
+    1133*:  141:      return std::__distance(__first, __last,
+    2266*:  142:			     std::__iterator_category(__first));
+        -:  143:    }
+------------------
+_ZSt8distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_:
+    #####:  138:    distance(_InputIterator __first, _InputIterator __last)
+        -:  139:    {
+        -:  140:      // concept requirements -- taken care of in __distance
+    #####:  141:      return std::__distance(__first, __last,
+    #####:  142:			     std::__iterator_category(__first));
+        -:  143:    }
+------------------
+_ZSt8distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_:
+    #####:  138:    distance(_InputIterator __first, _InputIterator __last)
+        -:  139:    {
+        -:  140:      // concept requirements -- taken care of in __distance
+    #####:  141:      return std::__distance(__first, __last,
+    #####:  142:			     std::__iterator_category(__first));
+        -:  143:    }
+------------------
+_ZSt8distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_:
+    #####:  138:    distance(_InputIterator __first, _InputIterator __last)
+        -:  139:    {
+        -:  140:      // concept requirements -- taken care of in __distance
+    #####:  141:      return std::__distance(__first, __last,
+    #####:  142:			     std::__iterator_category(__first));
+        -:  143:    }
+------------------
+_ZSt8distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_:
+    #####:  138:    distance(_InputIterator __first, _InputIterator __last)
+        -:  139:    {
+        -:  140:      // concept requirements -- taken care of in __distance
+    #####:  141:      return std::__distance(__first, __last,
+    #####:  142:			     std::__iterator_category(__first));
         -:  143:    }
 ------------------
 _ZSt8distanceIN9__gnu_cxx17__normal_iteratorIPN2rc10ShrinkableIdEESt6vectorIS4_SaIS4_EEEEENSt15iterator_traitsIT_E15difference_typeESB_SB_:
@@ -187,11 +256,11 @@ _ZSt8distanceIN9__gnu_cxx17__normal_iteratorIPN2rc10ShrinkableIdEESt6vectorIS4_S
         -:  143:    }
 ------------------
 _ZSt8distanceIPcENSt15iterator_traitsIT_E15difference_typeES2_S2_:
-     1140:  138:    distance(_InputIterator __first, _InputIterator __last)
+     1131:  138:    distance(_InputIterator __first, _InputIterator __last)
         -:  139:    {
         -:  140:      // concept requirements -- taken care of in __distance
-     1140:  141:      return std::__distance(__first, __last,
-     2280:  142:			     std::__iterator_category(__first));
+     1131:  141:      return std::__distance(__first, __last,
+     2262:  142:			     std::__iterator_category(__first));
         -:  143:    }
 ------------------
 _ZSt8distanceIPKcENSt15iterator_traitsIT_E15difference_typeES3_S3_:

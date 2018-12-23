@@ -1,8 +1,5 @@
         -:    0:Source:libs/rapidcheck/include/rapidcheck/gen/Transform.hpp
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:#pragma once
         -:    2:
         -:    3:#include "rapidcheck/shrinkable/Transform.h"
@@ -21,12 +18,12 @@
         -:   16:  using U = Decay<typename std::result_of<Mapper(T)>::type>;
         -:   17:
         -:   18:  template <typename MapperArg>
-      115:   19:  MapGen(Gen<T> gen, MapperArg &&mapper)
-      115:   20:      : m_mapper(std::forward<MapperArg>(mapper))
-      115:   21:      , m_gen(std::move(gen)) {}
+      114:   19:  MapGen(Gen<T> gen, MapperArg &&mapper)
+      114:   20:      : m_mapper(std::forward<MapperArg>(mapper))
+      114:   21:      , m_gen(std::move(gen)) {}
         -:   22:
-      106:   23:  Shrinkable<U> operator()(const Random &random, int size) const {
-      106:   24:    return shrinkable::map(m_gen(random, size), m_mapper);
+      105:   23:  Shrinkable<U> operator()(const Random &random, int size) const {
+      105:   24:    return shrinkable::map(m_gen(random, size), m_mapper);
         -:   25:  }
         -:   26:
         -:   27:private:
@@ -78,10 +75,10 @@
         -:   73:} // namespace detail
         -:   74:
         -:   75:template <typename T, typename Mapper>
-      115:   76:Gen<Decay<typename std::result_of<Mapper(T)>::type>> map(Gen<T> gen,
+      114:   76:Gen<Decay<typename std::result_of<Mapper(T)>::type>> map(Gen<T> gen,
         -:   77:                                                         Mapper &&mapper) {
-      115:   78:  return detail::MapGen<T, Decay<Mapper>>(std::move(gen),
-      230:   79:                                          std::forward<Mapper>(mapper));
+      114:   78:  return detail::MapGen<T, Decay<Mapper>>(std::move(gen),
+      228:   79:                                          std::forward<Mapper>(mapper));
         -:   80:}
         -:   81:
         -:   82:template <typename T, typename Mapper>

@@ -1,0 +1,3 @@
+Executing test testFibo
+Successful: fibo(2) = 1
+Successful: fibo(3) = 2

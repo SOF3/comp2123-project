@@ -130,7 +130,8 @@ light-weightedness is one of the core concepts of unit testing.
 Some common special cases should be included in the test data set explicitly, since they are common sources of error:
 
 \begin{itemize}
-	\item Empty strings, multi-line strings, strings with Unicode, strings woth emoji
+	\item Empty strings, multi-line strings, strings with Unicode, strings woth emoji (The emoji issue actually caused
+		\href{http://mentalfloss.com/article/544039/how-get-past-iphone-crashing-death-emoji}{major bugs in iOS} for several times)
 	\item Small numbers: $0, 1, 2, -1, -2, 0.5, -0.5$
 	\item Large numbers: $2^{31}-1$, $2^{32}-1$, $2^{63}-1$, $2^{64}-1$
 	\item Special floats: \texttt{1/0} ($+\infty$), \texttt{-1/0} ($-\infty$), \texttt{0/0} (\texttt{NaN})

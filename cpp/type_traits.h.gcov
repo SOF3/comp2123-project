@@ -1,8 +1,5 @@
         -:    0:Source:/usr/include/c++/8/ext/type_traits.h
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:// -*- C++ -*-
         -:    2:
         -:    3:// Copyright (C) 2005-2018 Free Software Foundation, Inc.
@@ -154,12 +151,28 @@
         -:  149:  // For use in string and vstring.
         -:  150:  template<typename _Type>
         -:  151:    inline bool
-    1140*:  152:    __is_null_pointer(_Type* __ptr)
-    1140*:  153:    { return __ptr == 0; }
+    1131*:  152:    __is_null_pointer(_Type* __ptr)
+    1131*:  153:    { return __ptr == 0; }
+------------------
+_ZN9__gnu_cxx17__is_null_pointerIKcEEbPT_:
+    #####:  152:    __is_null_pointer(_Type* __ptr)
+    #####:  153:    { return __ptr == 0; }
+------------------
+_ZN9__gnu_cxx17__is_null_pointerIKcEEbPT_:
+    #####:  152:    __is_null_pointer(_Type* __ptr)
+    #####:  153:    { return __ptr == 0; }
+------------------
+_ZN9__gnu_cxx17__is_null_pointerIKcEEbPT_:
+    #####:  152:    __is_null_pointer(_Type* __ptr)
+    #####:  153:    { return __ptr == 0; }
+------------------
+_ZN9__gnu_cxx17__is_null_pointerIKcEEbPT_:
+    #####:  152:    __is_null_pointer(_Type* __ptr)
+    #####:  153:    { return __ptr == 0; }
 ------------------
 _ZN9__gnu_cxx17__is_null_pointerIcEEbPT_:
-     1140:  152:    __is_null_pointer(_Type* __ptr)
-     1140:  153:    { return __ptr == 0; }
+     1131:  152:    __is_null_pointer(_Type* __ptr)
+     1131:  153:    { return __ptr == 0; }
 ------------------
 _ZN9__gnu_cxx17__is_null_pointerIKcEEbPT_:
     #####:  152:    __is_null_pointer(_Type* __ptr)

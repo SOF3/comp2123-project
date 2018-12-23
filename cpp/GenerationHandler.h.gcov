@@ -1,8 +1,5 @@
         -:    0:Source:libs/rapidcheck/include/rapidcheck/gen/detail/GenerationHandler.h
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:#pragma once
         -:    2:
         -:    3:namespace rc {
@@ -33,13 +30,13 @@
         -:   28:  ///         underlying generator.
         -:   29:  virtual rc::detail::Any onGenerate(const Gen<rc::detail::Any> &gen) = 0;
         -:   30:
-     115*:   31:  virtual ~GenerationHandler() = default;
+     114*:   31:  virtual ~GenerationHandler() = default;
 ------------------
 _ZN2rc3gen6detail17GenerationHandlerD0Ev:
     #####:   31:  virtual ~GenerationHandler() = default;
 ------------------
 _ZN2rc3gen6detail17GenerationHandlerD2Ev:
-      115:   31:  virtual ~GenerationHandler() = default;
+      114:   31:  virtual ~GenerationHandler() = default;
 ------------------
         -:   32:};
         -:   33:

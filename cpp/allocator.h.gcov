@@ -1,8 +1,5 @@
         -:    0:Source:/usr/include/c++/8/bits/allocator.h
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:// Allocators -*- C++ -*-
         -:    2:
         -:    3:// Copyright (C) 2001-2018 Free Software Foundation, Inc.
@@ -133,13 +130,13 @@
         -:  128:      typedef true_type is_always_equal;
         -:  129:#endif
         -:  130:
-      336:  131:      allocator() throw() { }
+      333:  131:      allocator() throw() { }
 ------------------
 _ZNSaIN2rc10ShrinkableIdEEEC2Ev:
-      111:  131:      allocator() throw() { }
+      110:  131:      allocator() throw() { }
 ------------------
 _ZNSaIdEC2Ev:
-      118:  131:      allocator() throw() { }
+      117:  131:      allocator() throw() { }
 ------------------
 _ZNSaISt4pairIPN2rc6detail15PropertyContextEmEEC2Ev:
         1:  131:      allocator() throw() { }
@@ -148,36 +145,36 @@ _ZNSaISt4pairIPN2rc3gen6detail17GenerationHandlerEmEEC2Ev:
         1:  131:      allocator() throw() { }
 ------------------
 _ZNSaIN2rc3gen6detail6Recipe10IngredientEEC2Ev:
-      105:  131:      allocator() throw() { }
+      104:  131:      allocator() throw() { }
 ------------------
         -:  132:
-     3263:  133:      allocator(const allocator& __a) throw()
-     3263:  134:      : __allocator_base<_Tp>(__a) { }
+     3235:  133:      allocator(const allocator& __a) throw()
+     3235:  134:      : __allocator_base<_Tp>(__a) { }
 ------------------
 _ZNSaIN2rc10ShrinkableIdEEEC2ERKS2_:
-      494:  133:      allocator(const allocator& __a) throw()
-      494:  134:      : __allocator_base<_Tp>(__a) { }
+      490:  133:      allocator(const allocator& __a) throw()
+      490:  134:      : __allocator_base<_Tp>(__a) { }
 ------------------
 _ZNSaIdEC2ERKS_:
-      465:  133:      allocator(const allocator& __a) throw()
-      465:  134:      : __allocator_base<_Tp>(__a) { }
+      461:  133:      allocator(const allocator& __a) throw()
+      461:  134:      : __allocator_base<_Tp>(__a) { }
 ------------------
 _ZNSaINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEC2ERKS5_:
-      339:  133:      allocator(const allocator& __a) throw()
-      339:  134:      : __allocator_base<_Tp>(__a) { }
+      336:  133:      allocator(const allocator& __a) throw()
+      336:  134:      : __allocator_base<_Tp>(__a) { }
 ------------------
 _ZNSaIN2rc3gen6detail6Recipe10IngredientEEC2ERKS4_:
-     1965:  133:      allocator(const allocator& __a) throw()
-     1965:  134:      : __allocator_base<_Tp>(__a) { }
+     1948:  133:      allocator(const allocator& __a) throw()
+     1948:  134:      : __allocator_base<_Tp>(__a) { }
 ------------------
         -:  135:
         -:  136:      template<typename _Tp1>
         -:  137:	allocator(const allocator<_Tp1>&) throw() { }
         -:  138:
-     4081:  139:      ~allocator() throw() { }
+     4046:  139:      ~allocator() throw() { }
 ------------------
 _ZNSaIN2rc10ShrinkableIdEEED2Ev:
-      605:  139:      ~allocator() throw() { }
+      600:  139:      ~allocator() throw() { }
 ------------------
 _ZNSaISt4pairIPN2rc6detail15PropertyContextEmEED2Ev:
         1:  139:      ~allocator() throw() { }
@@ -186,10 +183,10 @@ _ZNSaISt4pairIPN2rc3gen6detail17GenerationHandlerEmEED2Ev:
         1:  139:      ~allocator() throw() { }
 ------------------
 _ZNSaIdED2Ev:
-      583:  139:      ~allocator() throw() { }
+      578:  139:      ~allocator() throw() { }
 ------------------
 _ZNSaINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEED2Ev:
-      796:  139:      ~allocator() throw() { }
+      789:  139:      ~allocator() throw() { }
 ------------------
 _ZNSaISt4pairINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEES5_EED2Ev:
         9:  139:      ~allocator() throw() { }
@@ -198,7 +195,7 @@ _ZNSaImED2Ev:
        12:  139:      ~allocator() throw() { }
 ------------------
 _ZNSaIN2rc3gen6detail6Recipe10IngredientEED2Ev:
-     2070:  139:      ~allocator() throw() { }
+     2052:  139:      ~allocator() throw() { }
 ------------------
 _ZNSaISt13_Rb_tree_nodeISt4pairIKSt6vectorINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaIS7_EEiEEED2Ev:
         4:  139:      ~allocator() throw() { }

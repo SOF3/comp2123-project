@@ -1,8 +1,5 @@
         -:    0:Source:/usr/include/c++/8/bits/exception_ptr.h
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:// Exception Handling support header (exception_ptr class) for -*- C++ -*-
         -:    2:
         -:    3:// Copyright (C) 2008-2018 Free Software Foundation, Inc.

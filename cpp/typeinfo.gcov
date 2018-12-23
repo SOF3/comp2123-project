@@ -1,8 +1,5 @@
         -:    0:Source:/usr/include/c++/8/typeinfo
-        -:    0:Graph:sciNot5.gcno
-        -:    0:Data:sciNot5.gcda
-        -:    0:Runs:1
-        -:    0:Programs:1
+        -:    0:Programs:6
         -:    1:// RTTI support for -*- C++ -*-
         -:    2:// Copyright (C) 1994-2018 Free Software Foundation, Inc.
         -:    3://
@@ -122,11 +119,11 @@
         -:  117:	? __name < __arg.__name
         -:  118:	: __builtin_strcmp (__name, __arg.__name) < 0; }
         -:  119:
-      115:  120:    bool operator==(const type_info& __arg) const _GLIBCXX_NOEXCEPT
+      114:  120:    bool operator==(const type_info& __arg) const _GLIBCXX_NOEXCEPT
         -:  121:    {
-      115:  122:      return ((__name == __arg.__name)
-     115*:  123:	      || (__name[0] != '*' &&
-     115*:  124:		  __builtin_strcmp (__name, __arg.__name) == 0));
+      114:  122:      return ((__name == __arg.__name)
+     114*:  123:	      || (__name[0] != '*' &&
+     114*:  124:		  __builtin_strcmp (__name, __arg.__name) == 0));
         -:  125:    }
         -:  126:  #else
         -:  127:    // On some targets we can rely on type_info's NTBS being unique,
