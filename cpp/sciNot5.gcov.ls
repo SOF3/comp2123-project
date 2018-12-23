@@ -20,11 +20,6 @@ Create.hpp.gcov
 exception_ptr.h.gcov
 ExecHandler.h.gcov
 ExecRaw.hpp.gcov
-fibo.cpp.gcov
-fibo.test1.cpp.gcov
-fibo.test2.cpp.gcov
-fooBar.cpp.gcov
-fooBar.test.cpp.gcov
 GenerationFailure.h.gcov
 GenerationHandler.h.gcov
 Gen.hpp.gcov
@@ -42,7 +37,6 @@ Recipe.h.gcov
 Results.h.gcov
 sciNot5.cpp.gcov
 sciNot5.test.cpp.gcov
-SciNotation.cpp.gcov
 SciNotation.h.gcov
 Seq.h.gcov
 Seq.hpp.gcov

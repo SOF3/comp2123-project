@@ -32,13 +32,17 @@ sciNot5.a: sciNot5.test.cpp sciNot5.cpp SciNotation.h ; g++ -c $(covFlags) -Ilib
 assert_int.a: assert_int.cpp assert_int.h ; g++ -c -o $@ $<
 
 mainFibo.a: main.cpp ; g++ -c -DTEST_FN=testFibo $^ -o $@
-fibo.a: fibo.cpp fibo.h ; g++ -c $(covFlags) -o $@ $<
-fibo1: fibo.a mainFibo.a fibo.test1.a assert_int.a ; g++ $(covFlags) $^ -o $@
-fibo2: fibo.a mainFibo.a fibo.test2.a assert_int.a ; g++ $(covFlags) $^ -o $@
-fibo.test1.a: fibo.test1.cpp fibo.h ; g++ -c $(covFlags) $< -o $@
-fibo.test2.a: fibo.test2.cpp fibo.h ; g++ -c $(covFlags) $< -o $@
+fibo1.a: fibo1.cpp fibo1.h ; g++ -c $(covFlags) -o $@ $<
+fibo2.a: fibo2.cpp fibo2.h ; g++ -c $(covFlags) -o $@ $<
+fibo1: fibo1.a mainFibo.a fibo.test1.a assert_int.a ; g++ $(covFlags) $^ -o $@
+fibo2: fibo2.a mainFibo.a fibo.test2.a assert_int.a ; g++ $(covFlags) $^ -o $@
+fibo.test1.a: fibo.test1.cpp fibo1.h ; g++ -c $(covFlags) $< -o $@
+fibo.test2.a: fibo.test2.cpp fibo2.h ; g++ -c $(covFlags) $< -o $@
 
 libs/librapidcheck.a: libs/rapidcheck/Makefile
 	cd libs/rapidcheck && make && mv librapidcheck.a ../librapidcheck.a
 libs/rapidcheck/Makefile:
 	cd libs/rapidcheck && cmake .
+
+clean:
+	rm *.gcno *.gcov *.gcda *.a *.o

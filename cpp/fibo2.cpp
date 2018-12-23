@@ -1,5 +1,5 @@
 #include <string>
-#include "fibo.h"
+#include "fibo2.h"
 
 int fibo(int times) {
 	int a = 1, b = 1;

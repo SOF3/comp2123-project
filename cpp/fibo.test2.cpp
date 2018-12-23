@@ -1,6 +1,6 @@
 #include "assert.h"
 #include "assert_int.h"
-#include "fibo.h"
+#include "fibo2.h"
 
 void testFibo() {
 	ASSERT_EQUAL(fibo(2), 1)
