@@ -2,6 +2,7 @@
 #define SCI_NOTATION_H
 
 #include <string>
+#include <cmath>
 
 class SciNotation {
 	int digits;
@@ -14,11 +15,21 @@ public:
 		return digits == that.digits && exp == that.exp;
 	}
 
-	friend std::string operator+(std::string s, SciNotation n);
+	double toDouble() {
+		return digits * pow(10, exp);
+	}
+
+	int getDigits() {
+		return digits;
+	}
+
+	int getExp() {
+		return exp;
+	}
 };
 
 std::string operator+(std::string s, SciNotation n) {
-	return s + std::to_string(n.digits) + "e" + std::to_string(n.exp);
+	return s + std::to_string(n.getDigits()) + "e" + std::to_string(n.getExp());
 }
 
 #endif

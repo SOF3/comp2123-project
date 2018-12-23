@@ -6,6 +6,8 @@
 [._]*.sw[a-p]
 output
 /cpp/*
+!/cpp/libs
 !/cpp/*.*
+*.[ao]
 /cpp/*.log
 !/cpp/Makefile
