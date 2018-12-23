@@ -17,8 +17,8 @@
         -:   15:struct ApplyTupleImpl<std::tuple<Ts...>, Callable, IndexSequence<Indexes...>> {
         -:   16:  using ReturnType = typename std::result_of<Callable(Ts &&...)>::type;
         -:   17:
-      113:   18:  static ReturnType apply(std::tuple<Ts...> &&tuple, Callable &&callable) {
-      113:   19:    return callable(std::move(std::get<Indexes>(tuple))...);
+      109:   18:  static ReturnType apply(std::tuple<Ts...> &&tuple, Callable &&callable) {
+      109:   19:    return callable(std::move(std::get<Indexes>(tuple))...);
         -:   20:  }
 ------------------
 _ZN2rc6detail14ApplyTupleImplISt5tupleIJSt6vectorIdSaIdEEEERKNS0_15PropertyAdapterIZ10testSciNotvEUlRKS5_E0_FvS9_EEENS0_11IntSequenceImJLm0EEEEE5applyEOS6_SE_:
@@ -27,8 +27,8 @@ _ZN2rc6detail14ApplyTupleImplISt5tupleIJSt6vectorIdSaIdEEEERKNS0_15PropertyAdapt
         -:   20:  }
 ------------------
 _ZN2rc6detail14ApplyTupleImplISt5tupleIJSt6vectorIdSaIdEEEERKNS0_15PropertyAdapterIZ10testSciNotvEUlRKS5_E_FvS9_EEENS0_11IntSequenceImJLm0EEEEE5applyEOS6_SE_:
-       13:   18:  static ReturnType apply(std::tuple<Ts...> &&tuple, Callable &&callable) {
-       13:   19:    return callable(std::move(std::get<Indexes>(tuple))...);
+        9:   18:  static ReturnType apply(std::tuple<Ts...> &&tuple, Callable &&callable) {
+        9:   19:    return callable(std::move(std::get<Indexes>(tuple))...);
         -:   20:  }
 ------------------
         -:   21:};
@@ -58,9 +58,9 @@ _ZN2rc6detail14ApplyTupleImplISt5tupleIJSt6vectorIdSaIdEEEERKNS0_15PropertyAdapt
         -:   45:/// Applies the given tuple as arguments to the given callable.
         -:   46:template <typename TupleT, typename Callable>
         -:   47:typename ApplyTupleImpl<TupleT, Callable>::ReturnType
-      113:   48:applyTuple(TupleT &&tuple, Callable &&callable) {
+      109:   48:applyTuple(TupleT &&tuple, Callable &&callable) {
         -:   49:  return ApplyTupleImpl<TupleT, Callable>::apply(
-      113:   50:      std::forward<TupleT>(tuple), std::forward<Callable>(callable));
+      109:   50:      std::forward<TupleT>(tuple), std::forward<Callable>(callable));
         -:   51:}
         -:   52:
         -:   53:} // namespace detail

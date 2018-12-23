@@ -7,7 +7,7 @@
         -:    5:namespace rc {
         -:    6:
         -:    7:template <typename T>
-       19:    8:Maybe<T>::Maybe() noexcept : m_initialized(false) {}
+       18:    8:Maybe<T>::Maybe() noexcept : m_initialized(false) {}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableINS_6detail3AnyEEEEC2Ev:
         1:    8:Maybe<T>::Maybe() noexcept : m_initialized(false) {}
@@ -19,7 +19,7 @@ _ZN2rc5MaybeINS_10ShrinkableISt6vectorIdSaIdEEEEEC2Ev:
         1:    8:Maybe<T>::Maybe() noexcept : m_initialized(false) {}
 ------------------
 _ZN2rc5MaybeINS_3gen6detail6RecipeEEC2Ev:
-        5:    8:Maybe<T>::Maybe() noexcept : m_initialized(false) {}
+        4:    8:Maybe<T>::Maybe() noexcept : m_initialized(false) {}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableIdEEEC2Ev:
         4:    8:Maybe<T>::Maybe() noexcept : m_initialized(false) {}
@@ -35,7 +35,7 @@ _ZN2rc5MaybeINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEEC2Ev:
 ------------------
         -:    9:
         -:   10:template <typename T>
-       19:   11:Maybe<T>::Maybe(NothingType) noexcept : Maybe() {}
+       18:   11:Maybe<T>::Maybe(NothingType) noexcept : Maybe() {}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableINS_6detail3AnyEEEEC2ENS_11NothingTypeE:
         1:   11:Maybe<T>::Maybe(NothingType) noexcept : Maybe() {}
@@ -47,7 +47,7 @@ _ZN2rc5MaybeINS_10ShrinkableISt6vectorIdSaIdEEEEEC2ENS_11NothingTypeE:
         1:   11:Maybe<T>::Maybe(NothingType) noexcept : Maybe() {}
 ------------------
 _ZN2rc5MaybeINS_3gen6detail6RecipeEEC2ENS_11NothingTypeE:
-        5:   11:Maybe<T>::Maybe(NothingType) noexcept : Maybe() {}
+        4:   11:Maybe<T>::Maybe(NothingType) noexcept : Maybe() {}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableIdEEEC2ENS_11NothingTypeE:
         4:   11:Maybe<T>::Maybe(NothingType) noexcept : Maybe() {}
@@ -69,46 +69,46 @@ _ZN2rc5MaybeINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEEC2ENS_11NothingTypeE:
         -:   17:}
         -:   18:
         -:   19:template <typename T>
-       36:   20:Maybe<T>::Maybe(T &&value)
-       36:   21:    : m_initialized(false) {
-       36:   22:  init(std::move(value));
-       36:   23:}
+       18:   20:Maybe<T>::Maybe(T &&value)
+       18:   21:    : m_initialized(false) {
+       18:   22:  init(std::move(value));
+       18:   23:}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEEC2EOS7_:
-        6:   20:Maybe<T>::Maybe(T &&value)
-        6:   21:    : m_initialized(false) {
-        6:   22:  init(std::move(value));
-        6:   23:}
+        3:   20:Maybe<T>::Maybe(T &&value)
+        3:   21:    : m_initialized(false) {
+        3:   22:  init(std::move(value));
+        3:   23:}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableINS_6detail3AnyEEEEC2EOS4_:
-        6:   20:Maybe<T>::Maybe(T &&value)
-        6:   21:    : m_initialized(false) {
-        6:   22:  init(std::move(value));
-        6:   23:}
+        3:   20:Maybe<T>::Maybe(T &&value)
+        3:   21:    : m_initialized(false) {
+        3:   22:  init(std::move(value));
+        3:   23:}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableISt6vectorIdSaIdEEEEEC2EOS5_:
-        6:   20:Maybe<T>::Maybe(T &&value)
-        6:   21:    : m_initialized(false) {
-        6:   22:  init(std::move(value));
-        6:   23:}
+        3:   20:Maybe<T>::Maybe(T &&value)
+        3:   21:    : m_initialized(false) {
+        3:   22:  init(std::move(value));
+        3:   23:}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEEEEC2EOS9_:
-        6:   20:Maybe<T>::Maybe(T &&value)
-        6:   21:    : m_initialized(false) {
-        6:   22:  init(std::move(value));
-        6:   23:}
+        3:   20:Maybe<T>::Maybe(T &&value)
+        3:   21:    : m_initialized(false) {
+        3:   22:  init(std::move(value));
+        3:   23:}
 ------------------
 _ZN2rc5MaybeISt6vectorINS_10ShrinkableIdEESaIS3_EEEC2EOS5_:
-        6:   20:Maybe<T>::Maybe(T &&value)
-        6:   21:    : m_initialized(false) {
-        6:   22:  init(std::move(value));
-        6:   23:}
+        3:   20:Maybe<T>::Maybe(T &&value)
+        3:   21:    : m_initialized(false) {
+        3:   22:  init(std::move(value));
+        3:   23:}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEEC2EOS6_:
-        6:   20:Maybe<T>::Maybe(T &&value)
-        6:   21:    : m_initialized(false) {
-        6:   22:  init(std::move(value));
-        6:   23:}
+        3:   20:Maybe<T>::Maybe(T &&value)
+        3:   21:    : m_initialized(false) {
+        3:   22:  init(std::move(value));
+        3:   23:}
 ------------------
         -:   24:
         -:   25:template <typename T>
@@ -139,32 +139,32 @@ _ZN2rc5MaybeINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEEC2EOS6_:
         -:   50:
         -:   51:template <typename T>
         -:   52:template <typename... Args>
-       50:   53:void Maybe<T>::init(Args &&... args) {
-       50:   54:  reset();
-       50:   55:  new (&m_storage) T(std::forward<Args>(args)...);
-       50:   56:  m_initialized = true;
-       50:   57:}
+       26:   53:void Maybe<T>::init(Args &&... args) {
+       26:   54:  reset();
+       26:   55:  new (&m_storage) T(std::forward<Args>(args)...);
+       26:   56:  m_initialized = true;
+       26:   57:}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableINS_6detail3AnyEEEE4initIJS4_EEEvDpOT_:
-        6:   53:void Maybe<T>::init(Args &&... args) {
-        6:   54:  reset();
-        6:   55:  new (&m_storage) T(std::forward<Args>(args)...);
-        6:   56:  m_initialized = true;
-        6:   57:}
+        3:   53:void Maybe<T>::init(Args &&... args) {
+        3:   54:  reset();
+        3:   55:  new (&m_storage) T(std::forward<Args>(args)...);
+        3:   56:  m_initialized = true;
+        3:   57:}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE4initIJS7_EEEvDpOT_:
-       12:   53:void Maybe<T>::init(Args &&... args) {
-       12:   54:  reset();
-       12:   55:  new (&m_storage) T(std::forward<Args>(args)...);
-       12:   56:  m_initialized = true;
-       12:   57:}
-------------------
-_ZN2rc5MaybeINS_10ShrinkableISt6vectorIdSaIdEEEEE4initIJS5_EEEvDpOT_:
         6:   53:void Maybe<T>::init(Args &&... args) {
         6:   54:  reset();
         6:   55:  new (&m_storage) T(std::forward<Args>(args)...);
         6:   56:  m_initialized = true;
         6:   57:}
+------------------
+_ZN2rc5MaybeINS_10ShrinkableISt6vectorIdSaIdEEEEE4initIJS5_EEEvDpOT_:
+        3:   53:void Maybe<T>::init(Args &&... args) {
+        3:   54:  reset();
+        3:   55:  new (&m_storage) T(std::forward<Args>(args)...);
+        3:   56:  m_initialized = true;
+        3:   57:}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableIdEEE4initIJS2_EEEvDpOT_:
         2:   53:void Maybe<T>::init(Args &&... args) {
@@ -174,58 +174,58 @@ _ZN2rc5MaybeINS_10ShrinkableIdEEE4initIJS2_EEEvDpOT_:
         2:   57:}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEEEE4initIJS9_EEEvDpOT_:
-        6:   53:void Maybe<T>::init(Args &&... args) {
-        6:   54:  reset();
-        6:   55:  new (&m_storage) T(std::forward<Args>(args)...);
-        6:   56:  m_initialized = true;
-        6:   57:}
+        3:   53:void Maybe<T>::init(Args &&... args) {
+        3:   54:  reset();
+        3:   55:  new (&m_storage) T(std::forward<Args>(args)...);
+        3:   56:  m_initialized = true;
+        3:   57:}
 ------------------
 _ZN2rc5MaybeISt6vectorINS_10ShrinkableIdEESaIS3_EEE4initIJS5_EEEvDpOT_:
-       12:   53:void Maybe<T>::init(Args &&... args) {
-       12:   54:  reset();
-       12:   55:  new (&m_storage) T(std::forward<Args>(args)...);
-       12:   56:  m_initialized = true;
-       12:   57:}
-------------------
-_ZN2rc5MaybeINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEE4initIJS6_EEEvDpOT_:
         6:   53:void Maybe<T>::init(Args &&... args) {
         6:   54:  reset();
         6:   55:  new (&m_storage) T(std::forward<Args>(args)...);
         6:   56:  m_initialized = true;
         6:   57:}
+------------------
+_ZN2rc5MaybeINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEE4initIJS6_EEEvDpOT_:
+        3:   53:void Maybe<T>::init(Args &&... args) {
+        3:   54:  reset();
+        3:   55:  new (&m_storage) T(std::forward<Args>(args)...);
+        3:   56:  m_initialized = true;
+        3:   57:}
 ------------------
         -:   58:
         -:   59:template <typename T>
-       50:   60:void Maybe<T>::reset() {
-       50:   61:  if (m_initialized) {
+       26:   60:void Maybe<T>::reset() {
+       26:   61:  if (m_initialized) {
     #####:   62:    m_initialized = false;
     #####:   63:    (**this).~T();
         -:   64:  }
-       50:   65:}
+       26:   65:}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableINS_6detail3AnyEEEE5resetEv:
-        6:   60:void Maybe<T>::reset() {
-        6:   61:  if (m_initialized) {
+        3:   60:void Maybe<T>::reset() {
+        3:   61:  if (m_initialized) {
     #####:   62:    m_initialized = false;
     #####:   63:    (**this).~T();
         -:   64:  }
-        6:   65:}
+        3:   65:}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEE5resetEv:
-       12:   60:void Maybe<T>::reset() {
-       12:   61:  if (m_initialized) {
-    #####:   62:    m_initialized = false;
-    #####:   63:    (**this).~T();
-        -:   64:  }
-       12:   65:}
-------------------
-_ZN2rc5MaybeINS_10ShrinkableISt6vectorIdSaIdEEEEE5resetEv:
         6:   60:void Maybe<T>::reset() {
         6:   61:  if (m_initialized) {
     #####:   62:    m_initialized = false;
     #####:   63:    (**this).~T();
         -:   64:  }
         6:   65:}
+------------------
+_ZN2rc5MaybeINS_10ShrinkableISt6vectorIdSaIdEEEEE5resetEv:
+        3:   60:void Maybe<T>::reset() {
+        3:   61:  if (m_initialized) {
+    #####:   62:    m_initialized = false;
+    #####:   63:    (**this).~T();
+        -:   64:  }
+        3:   65:}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableIdEEE5resetEv:
         2:   60:void Maybe<T>::reset() {
@@ -236,58 +236,58 @@ _ZN2rc5MaybeINS_10ShrinkableIdEEE5resetEv:
         2:   65:}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEEEE5resetEv:
-        6:   60:void Maybe<T>::reset() {
-        6:   61:  if (m_initialized) {
+        3:   60:void Maybe<T>::reset() {
+        3:   61:  if (m_initialized) {
     #####:   62:    m_initialized = false;
     #####:   63:    (**this).~T();
         -:   64:  }
-        6:   65:}
+        3:   65:}
 ------------------
 _ZN2rc5MaybeISt6vectorINS_10ShrinkableIdEESaIS3_EEE5resetEv:
-       12:   60:void Maybe<T>::reset() {
-       12:   61:  if (m_initialized) {
-    #####:   62:    m_initialized = false;
-    #####:   63:    (**this).~T();
-        -:   64:  }
-       12:   65:}
-------------------
-_ZN2rc5MaybeINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEE5resetEv:
         6:   60:void Maybe<T>::reset() {
         6:   61:  if (m_initialized) {
     #####:   62:    m_initialized = false;
     #####:   63:    (**this).~T();
         -:   64:  }
         6:   65:}
+------------------
+_ZN2rc5MaybeINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEE5resetEv:
+        3:   60:void Maybe<T>::reset() {
+        3:   61:  if (m_initialized) {
+    #####:   62:    m_initialized = false;
+    #####:   63:    (**this).~T();
+        -:   64:  }
+        3:   65:}
 ------------------
         -:   66:
         -:   67:template <typename T>
-      124:   68:T &Maybe<T>::operator*() & {
-      124:   69:  return *reinterpret_cast<T *>(&m_storage);
+       64:   68:T &Maybe<T>::operator*() & {
+       64:   69:  return *reinterpret_cast<T *>(&m_storage);
         -:   70:}
 ------------------
 _ZNR2rc5MaybeINS_10ShrinkableINS_6detail3AnyEEEEdeEv:
-       12:   68:T &Maybe<T>::operator*() & {
-       12:   69:  return *reinterpret_cast<T *>(&m_storage);
+        6:   68:T &Maybe<T>::operator*() & {
+        6:   69:  return *reinterpret_cast<T *>(&m_storage);
         -:   70:}
 ------------------
 _ZNR2rc5MaybeINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEEdeEv:
-       24:   68:T &Maybe<T>::operator*() & {
-       24:   69:  return *reinterpret_cast<T *>(&m_storage);
+       12:   68:T &Maybe<T>::operator*() & {
+       12:   69:  return *reinterpret_cast<T *>(&m_storage);
         -:   70:}
 ------------------
 _ZNR2rc5MaybeINS_10ShrinkableISt6vectorIdSaIdEEEEEdeEv:
-       12:   68:T &Maybe<T>::operator*() & {
-       12:   69:  return *reinterpret_cast<T *>(&m_storage);
+        6:   68:T &Maybe<T>::operator*() & {
+        6:   69:  return *reinterpret_cast<T *>(&m_storage);
         -:   70:}
 ------------------
 _ZNR2rc5MaybeINS_10ShrinkableISt4pairINS_6detail12TaggedResultENS_3gen6detail6RecipeEEEEEdeEv:
-       12:   68:T &Maybe<T>::operator*() & {
-       12:   69:  return *reinterpret_cast<T *>(&m_storage);
+        6:   68:T &Maybe<T>::operator*() & {
+        6:   69:  return *reinterpret_cast<T *>(&m_storage);
         -:   70:}
 ------------------
 _ZNR2rc5MaybeINS_3gen6detail6RecipeEEdeEv:
-       24:   68:T &Maybe<T>::operator*() & {
-       24:   69:  return *reinterpret_cast<T *>(&m_storage);
+       12:   68:T &Maybe<T>::operator*() & {
+       12:   69:  return *reinterpret_cast<T *>(&m_storage);
         -:   70:}
 ------------------
 _ZNR2rc5MaybeINS_10ShrinkableIdEEEdeEv:
@@ -296,13 +296,13 @@ _ZNR2rc5MaybeINS_10ShrinkableIdEEEdeEv:
         -:   70:}
 ------------------
 _ZNR2rc5MaybeINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEEdeEv:
-       12:   68:T &Maybe<T>::operator*() & {
-       12:   69:  return *reinterpret_cast<T *>(&m_storage);
+        6:   68:T &Maybe<T>::operator*() & {
+        6:   69:  return *reinterpret_cast<T *>(&m_storage);
         -:   70:}
 ------------------
 _ZNR2rc5MaybeISt6vectorINS_10ShrinkableIdEESaIS3_EEEdeEv:
-       24:   68:T &Maybe<T>::operator*() & {
-       24:   69:  return *reinterpret_cast<T *>(&m_storage);
+       12:   68:T &Maybe<T>::operator*() & {
+       12:   69:  return *reinterpret_cast<T *>(&m_storage);
         -:   70:}
 ------------------
         -:   71:
@@ -327,28 +327,28 @@ _ZNR2rc5MaybeISt6vectorINS_10ShrinkableIdEESaIS3_EEEdeEv:
         -:   90:}
         -:   91:
         -:   92:template <typename T>
-       67:   93:Maybe<T>::operator bool() const {
-       67:   94:  return m_initialized;
+       42:   93:Maybe<T>::operator bool() const {
+       42:   94:  return m_initialized;
         -:   95:}
 ------------------
 _ZNK2rc5MaybeINS_10ShrinkableISt6vectorIdSaIdEEEEEcvbEv:
-        7:   93:Maybe<T>::operator bool() const {
-        7:   94:  return m_initialized;
+        4:   93:Maybe<T>::operator bool() const {
+        4:   94:  return m_initialized;
         -:   95:}
 ------------------
 _ZNK2rc5MaybeINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEEcvbEv:
-       14:   93:Maybe<T>::operator bool() const {
-       14:   94:  return m_initialized;
+        8:   93:Maybe<T>::operator bool() const {
+        8:   94:  return m_initialized;
         -:   95:}
 ------------------
 _ZNK2rc5MaybeINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEEcvbEv:
-        7:   93:Maybe<T>::operator bool() const {
-        7:   94:  return m_initialized;
+        4:   93:Maybe<T>::operator bool() const {
+        4:   94:  return m_initialized;
         -:   95:}
 ------------------
 _ZNK2rc5MaybeINS_3gen6detail6RecipeEEcvbEv:
-       17:   93:Maybe<T>::operator bool() const {
-       17:   94:  return m_initialized;
+       10:   93:Maybe<T>::operator bool() const {
+       10:   94:  return m_initialized;
         -:   95:}
 ------------------
 _ZNK2rc5MaybeINS_10ShrinkableIdEEEcvbEv:
@@ -357,8 +357,8 @@ _ZNK2rc5MaybeINS_10ShrinkableIdEEEcvbEv:
         -:   95:}
 ------------------
 _ZNK2rc5MaybeISt6vectorINS_10ShrinkableIdEESaIS3_EEEcvbEv:
-       16:   93:Maybe<T>::operator bool() const {
-       16:   94:  return m_initialized;
+       10:   93:Maybe<T>::operator bool() const {
+       10:   94:  return m_initialized;
         -:   95:}
 ------------------
         -:   96:
@@ -385,22 +385,22 @@ _ZNK2rc5MaybeISt6vectorINS_10ShrinkableIdEESaIS3_EEEcvbEv:
         -:  117:}
         -:  118:
         -:  119:template <typename T>
-       13:  120:Maybe<T>::Maybe(Maybe &&other) noexcept(
+        7:  120:Maybe<T>::Maybe(Maybe &&other) noexcept(
         -:  121:    std::is_nothrow_move_constructible<T>::value)
-       13:  122:    : m_initialized(false) {
-       13:  123:  if (other.m_initialized) {
-       13:  124:    init(std::move(*other));
+        7:  122:    : m_initialized(false) {
+        7:  123:  if (other.m_initialized) {
+        7:  124:    init(std::move(*other));
         -:  125:  }
-       13:  126:}
+        7:  126:}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEEC2EOS8_:
-        6:  120:Maybe<T>::Maybe(Maybe &&other) noexcept(
+        3:  120:Maybe<T>::Maybe(Maybe &&other) noexcept(
         -:  121:    std::is_nothrow_move_constructible<T>::value)
-        6:  122:    : m_initialized(false) {
-        6:  123:  if (other.m_initialized) {
-        6:  124:    init(std::move(*other));
+        3:  122:    : m_initialized(false) {
+        3:  123:  if (other.m_initialized) {
+        3:  124:    init(std::move(*other));
         -:  125:  }
-        6:  126:}
+        3:  126:}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableIdEEEC2EOS3_:
         1:  120:Maybe<T>::Maybe(Maybe &&other) noexcept(
@@ -412,13 +412,13 @@ _ZN2rc5MaybeINS_10ShrinkableIdEEEC2EOS3_:
         1:  126:}
 ------------------
 _ZN2rc5MaybeISt6vectorINS_10ShrinkableIdEESaIS3_EEEC2EOS6_:
-        6:  120:Maybe<T>::Maybe(Maybe &&other) noexcept(
+        3:  120:Maybe<T>::Maybe(Maybe &&other) noexcept(
         -:  121:    std::is_nothrow_move_constructible<T>::value)
-        6:  122:    : m_initialized(false) {
-        6:  123:  if (other.m_initialized) {
-        6:  124:    init(std::move(*other));
+        3:  122:    : m_initialized(false) {
+        3:  123:  if (other.m_initialized) {
+        3:  124:    init(std::move(*other));
         -:  125:  }
-        6:  126:}
+        3:  126:}
 ------------------
         -:  127:
         -:  128:template <typename T>
@@ -435,32 +435,32 @@ _ZN2rc5MaybeISt6vectorINS_10ShrinkableIdEESaIS3_EEEC2EOS6_:
         -:  139:}
         -:  140:
         -:  141:template <typename T>
-       67:  142:Maybe<T>::~Maybe() {
-       67:  143:  if (m_initialized) {
-       50:  144:    (**this).~T();
+       42:  142:Maybe<T>::~Maybe() {
+       42:  143:  if (m_initialized) {
+       26:  144:    (**this).~T();
         -:  145:  }
-       67:  146:}
+       42:  146:}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEED2Ev:
-       14:  142:Maybe<T>::~Maybe() {
-       14:  143:  if (m_initialized) {
-       12:  144:    (**this).~T();
-        -:  145:  }
-       14:  146:}
-------------------
-_ZN2rc5MaybeINS_10ShrinkableISt6vectorIdSaIdEEEEED2Ev:
-        7:  142:Maybe<T>::~Maybe() {
-        7:  143:  if (m_initialized) {
+        8:  142:Maybe<T>::~Maybe() {
+        8:  143:  if (m_initialized) {
         6:  144:    (**this).~T();
         -:  145:  }
-        7:  146:}
+        8:  146:}
+------------------
+_ZN2rc5MaybeINS_10ShrinkableISt6vectorIdSaIdEEEEED2Ev:
+        4:  142:Maybe<T>::~Maybe() {
+        4:  143:  if (m_initialized) {
+        3:  144:    (**this).~T();
+        -:  145:  }
+        4:  146:}
 ------------------
 _ZN2rc5MaybeINS_3gen6detail6RecipeEED2Ev:
-       17:  142:Maybe<T>::~Maybe() {
-       17:  143:  if (m_initialized) {
-       12:  144:    (**this).~T();
+       10:  142:Maybe<T>::~Maybe() {
+       10:  143:  if (m_initialized) {
+        6:  144:    (**this).~T();
         -:  145:  }
-       17:  146:}
+       10:  146:}
 ------------------
 _ZN2rc5MaybeINS_10ShrinkableIdEEED2Ev:
         6:  142:Maybe<T>::~Maybe() {
@@ -470,18 +470,18 @@ _ZN2rc5MaybeINS_10ShrinkableIdEEED2Ev:
         6:  146:}
 ------------------
 _ZN2rc5MaybeISt6vectorINS_10ShrinkableIdEESaIS3_EEED2Ev:
-       16:  142:Maybe<T>::~Maybe() {
-       16:  143:  if (m_initialized) {
-       12:  144:    (**this).~T();
-        -:  145:  }
-       16:  146:}
-------------------
-_ZN2rc5MaybeINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEED2Ev:
-        7:  142:Maybe<T>::~Maybe() {
-        7:  143:  if (m_initialized) {
+       10:  142:Maybe<T>::~Maybe() {
+       10:  143:  if (m_initialized) {
         6:  144:    (**this).~T();
         -:  145:  }
-        7:  146:}
+       10:  146:}
+------------------
+_ZN2rc5MaybeINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEED2Ev:
+        4:  142:Maybe<T>::~Maybe() {
+        4:  143:  if (m_initialized) {
+        3:  144:    (**this).~T();
+        -:  145:  }
+        4:  146:}
 ------------------
         -:  147:
         -:  148:template <typename T, typename U>

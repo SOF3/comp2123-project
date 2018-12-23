@@ -255,7 +255,7 @@
         -:  253:      __atomic_base& operator=(const __atomic_base&) volatile = delete;
         -:  254:
         -:  255:      // Requires __int_type convertible to _M_i.
-     3395:  256:      constexpr __atomic_base(__int_type __i) noexcept : _M_i (__i) { }
+     3363:  256:      constexpr __atomic_base(__int_type __i) noexcept : _M_i (__i) { }
         -:  257:
         -:  258:      operator __int_type() const noexcept
         -:  259:      { return load(); }
@@ -513,7 +513,7 @@
         -:  511:      _GLIBCXX_ALWAYS_INLINE __int_type
         -:  512:      fetch_add(__int_type __i,
         -:  513:		memory_order __m = memory_order_seq_cst) noexcept
-     729*:  514:      { return __atomic_fetch_add(&_M_i, __i, __m); }
+     683*:  514:      { return __atomic_fetch_add(&_M_i, __i, __m); }
         -:  515:
         -:  516:      _GLIBCXX_ALWAYS_INLINE __int_type
         -:  517:      fetch_add(__int_type __i,
@@ -523,7 +523,7 @@
         -:  521:      _GLIBCXX_ALWAYS_INLINE __int_type
         -:  522:      fetch_sub(__int_type __i,
         -:  523:		memory_order __m = memory_order_seq_cst) noexcept
-    1396*:  524:      { return __atomic_fetch_sub(&_M_i, __i, __m); }
+    1331*:  524:      { return __atomic_fetch_sub(&_M_i, __i, __m); }
         -:  525:
         -:  526:      _GLIBCXX_ALWAYS_INLINE __int_type
         -:  527:      fetch_sub(__int_type __i,

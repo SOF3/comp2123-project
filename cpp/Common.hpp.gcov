@@ -11,8 +11,8 @@
         -:    9:  template <typename Arg,
         -:   10:            typename = typename std::enable_if<
         -:   11:                !std::is_same<Decay<Arg>, Constant>::value>::type>
-     214*:   12:  explicit Constant(Arg &&arg)
-     214*:   13:      : m_value(std::forward<Arg>(arg)) {}
+     211*:   12:  explicit Constant(Arg &&arg)
+     211*:   13:      : m_value(std::forward<Arg>(arg)) {}
 ------------------
 _ZN2rc2fn8ConstantINS_3SeqINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEEEEC2ISA_vEEOT_:
     #####:   12:  explicit Constant(Arg &&arg)
@@ -27,8 +27,8 @@ _ZN2rc2fn8ConstantINS_3SeqINS_10ShrinkableIdEEEEEC2IS5_vEEOT_:
     #####:   13:      : m_value(std::forward<Arg>(arg)) {}
 ------------------
 _ZN2rc2fn8ConstantISt6vectorINS_10ShrinkableIdEESaIS4_EEEC2IS6_vEEOT_:
-      110:   12:  explicit Constant(Arg &&arg)
-      110:   13:      : m_value(std::forward<Arg>(arg)) {}
+      107:   12:  explicit Constant(Arg &&arg)
+      107:   13:      : m_value(std::forward<Arg>(arg)) {}
 ------------------
 _ZN2rc2fn8ConstantIbEC2IbvEEOT_:
       104:   12:  explicit Constant(Arg &&arg)
@@ -36,8 +36,8 @@ _ZN2rc2fn8ConstantIbEC2IbvEEOT_:
 ------------------
         -:   14:
         -:   15:  template <typename... Args>
-    2733*:   16:  T operator()(Args &&... /*args*/) const {
-    2733*:   17:    return m_value;
+    2718*:   16:  T operator()(Args &&... /*args*/) const {
+    2718*:   17:    return m_value;
         -:   18:  }
 ------------------
 _ZNK2rc2fn8ConstantINS_3SeqINS_10ShrinkableISt6vectorIdSaIdEEEEEEEclIJEEES8_DpOT_:
@@ -51,8 +51,8 @@ _ZNK2rc2fn8ConstantINS_3SeqINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEEEEcl
         -:   18:  }
 ------------------
 _ZNK2rc2fn8ConstantISt6vectorINS_10ShrinkableIdEESaIS4_EEEclIJEEES6_DpOT_:
-      117:   16:  T operator()(Args &&... /*args*/) const {
-      117:   17:    return m_value;
+      112:   16:  T operator()(Args &&... /*args*/) const {
+      112:   17:    return m_value;
         -:   18:  }
 ------------------
 _ZNK2rc2fn8ConstantINS_3SeqINS_10ShrinkableIdEEEEEclIJEEES5_DpOT_:
@@ -61,8 +61,8 @@ _ZNK2rc2fn8ConstantINS_3SeqINS_10ShrinkableIdEEEEEclIJEEES5_DpOT_:
         -:   18:  }
 ------------------
 _ZNK2rc2fn8ConstantIbEclIJRNS_10ShrinkableIdEEEEEbDpOT_:
-     2616:   16:  T operator()(Args &&... /*args*/) const {
-     2616:   17:    return m_value;
+     2606:   16:  T operator()(Args &&... /*args*/) const {
+     2606:   17:    return m_value;
         -:   18:  }
 ------------------
         -:   19:
@@ -71,8 +71,8 @@ _ZNK2rc2fn8ConstantIbEclIJRNS_10ShrinkableIdEEEEEbDpOT_:
         -:   22:};
         -:   23:
         -:   24:template <typename T>
-     214*:   25:Constant<Decay<T>> constant(T &&value) {
-     214*:   26:  return Constant<Decay<T>>(std::forward<T>(value));
+     211*:   25:Constant<Decay<T>> constant(T &&value) {
+     211*:   26:  return Constant<Decay<T>>(std::forward<T>(value));
         -:   27:}
         -:   28:
         -:   29:} // namespace fn

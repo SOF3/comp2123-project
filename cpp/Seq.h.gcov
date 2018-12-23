@@ -32,7 +32,7 @@
         -:   30:/// you should just use the provided combinators in the `rc::seq` namespace to
         -:   31:/// construct your `Seq`s.
         -:   32:template <typename T>
-       11:   33:class Seq {
+       10:   33:class Seq {
 ------------------
 _ZN2rc3SeqINS_10ShrinkableISt6vectorIdSaIdEEEEEaSEOS6_:
         1:   33:class Seq {
@@ -47,7 +47,7 @@ _ZN2rc3SeqINS_10ShrinkableIdEEEaSEOS3_:
         2:   33:class Seq {
 ------------------
 _ZN2rc3SeqINS_3gen6detail6RecipeEEaSEOS4_:
-        5:   33:class Seq {
+        4:   33:class Seq {
 ------------------
 _ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEEaSEOS6_:
         1:   33:class Seq {
@@ -63,7 +63,7 @@ _ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEEaSEOS6_:
         -:   42:  using ValueType = T;
         -:   43:
         -:   44:  /// Constructs an empty `Seq` that has no values.
-       12:   45:  Seq() noexcept = default;
+       10:   45:  Seq() noexcept = default;
 ------------------
 _ZN2rc3SeqINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEEC2Ev:
         1:   45:  Seq() noexcept = default;
@@ -72,13 +72,13 @@ _ZN2rc3SeqINS_10ShrinkableISt6vectorIdSaIdEEEEEC2Ev:
         1:   45:  Seq() noexcept = default;
 ------------------
 _ZN2rc3SeqINS_3gen6detail6RecipeEEC2Ev:
-        5:   45:  Seq() noexcept = default;
+        4:   45:  Seq() noexcept = default;
 ------------------
 _ZN2rc3SeqINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEEC2Ev:
         1:   45:  Seq() noexcept = default;
 ------------------
 _ZN2rc3SeqINS_10ShrinkableIdEEEC2Ev:
-        3:   45:  Seq() noexcept = default;
+        2:   45:  Seq() noexcept = default;
 ------------------
 _ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEEC2Ev:
         1:   45:  Seq() noexcept = default;
@@ -98,25 +98,25 @@ _ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEEC2Ev:
         -:   58:
         -:   59:  Seq(const Seq &other);
         -:   60:  Seq &operator=(const Seq &rhs);
-      42*:   61:  Seq(Seq &&other) noexcept = default;
+      28*:   61:  Seq(Seq &&other) noexcept = default;
 ------------------
 _ZN2rc3SeqINS_10ShrinkableISt5tupleIJSt6vectorIdSaIdEEEEEEEC2EOS8_:
-       12:   61:  Seq(Seq &&other) noexcept = default;
+        8:   61:  Seq(Seq &&other) noexcept = default;
 ------------------
 _ZN2rc3SeqINS_10ShrinkableISt6vectorIdSaIdEEEEEC2EOS6_:
     #####:   61:  Seq(Seq &&other) noexcept = default;
 ------------------
 _ZN2rc3SeqINS_10ShrinkableISt6vectorINS1_IdEESaIS3_EEEEEC2EOS7_:
-        6:   61:  Seq(Seq &&other) noexcept = default;
+        4:   61:  Seq(Seq &&other) noexcept = default;
 ------------------
 _ZN2rc3SeqINS_10ShrinkableIdEEEC2EOS3_:
     #####:   61:  Seq(Seq &&other) noexcept = default;
 ------------------
 _ZN2rc3SeqISt6vectorINS_10ShrinkableIdEESaIS3_EEEC2EOS6_:
-       18:   61:  Seq(Seq &&other) noexcept = default;
+       12:   61:  Seq(Seq &&other) noexcept = default;
 ------------------
 _ZN2rc3SeqINS_3gen6detail6RecipeEEC2EOS4_:
-        6:   61:  Seq(Seq &&other) noexcept = default;
+        4:   61:  Seq(Seq &&other) noexcept = default;
 ------------------
         -:   62:  Seq &operator=(Seq &&rhs) noexcept = default;
         -:   63:

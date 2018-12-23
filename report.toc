@@ -13,7 +13,7 @@
 \contentsline {section}{\numberline {4}Unit testing techniques}{5}{section.4}
 \contentsline {subsection}{\numberline {4.1}Code coverage}{5}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Test-driven development (TDD)}{6}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Behaviour-driven development (BDD)}{7}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.3}Behaviour-driven development (BDD)}{8}{subsection.4.3}
 \contentsline {paragraph}{Feature}{8}{section*.2}
 \contentsline {paragraph}{Scenario}{8}{section*.3}
 \contentsline {paragraph}{Given}{8}{section*.4}

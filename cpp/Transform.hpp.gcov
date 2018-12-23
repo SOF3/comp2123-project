@@ -18,9 +18,9 @@
         -:   16:  using U = Decay<typename std::result_of<Mapper(T)>::type>;
         -:   17:
         -:   18:  template <typename MapperArg>
-      113:   19:  MapGen(Gen<T> gen, MapperArg &&mapper)
-      113:   20:      : m_mapper(std::forward<MapperArg>(mapper))
-      113:   21:      , m_gen(std::move(gen)) {}
+      109:   19:  MapGen(Gen<T> gen, MapperArg &&mapper)
+      109:   20:      : m_mapper(std::forward<MapperArg>(mapper))
+      109:   21:      , m_gen(std::move(gen)) {}
         -:   22:
       104:   23:  Shrinkable<U> operator()(const Random &random, int size) const {
       104:   24:    return shrinkable::map(m_gen(random, size), m_mapper);
@@ -75,10 +75,10 @@
         -:   73:} // namespace detail
         -:   74:
         -:   75:template <typename T, typename Mapper>
-      113:   76:Gen<Decay<typename std::result_of<Mapper(T)>::type>> map(Gen<T> gen,
+      109:   76:Gen<Decay<typename std::result_of<Mapper(T)>::type>> map(Gen<T> gen,
         -:   77:                                                         Mapper &&mapper) {
-      113:   78:  return detail::MapGen<T, Decay<Mapper>>(std::move(gen),
-      226:   79:                                          std::forward<Mapper>(mapper));
+      109:   78:  return detail::MapGen<T, Decay<Mapper>>(std::move(gen),
+      218:   79:                                          std::forward<Mapper>(mapper));
         -:   80:}
         -:   81:
         -:   82:template <typename T, typename Mapper>

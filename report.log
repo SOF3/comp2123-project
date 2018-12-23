@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.21)  23 DEC 2018 15:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.21)  23 DEC 2018 15:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -552,7 +552,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (./cpp/sciNot1.cpp) (./cpp/sciNot1.test.cpp) (./cpp/sciNot1.log)
 (./cpp/sciNot2.test.cpp) (./cpp/sciNot2.log) (./cpp/sciNot3.cpp [2])
 (./cpp/sciNot3.log) (./cpp/sciNot5.test.cpp [3]) (./cpp/sciNot5.log)
-Overfull \hbox (63.8502pt too wide) in paragraph at lines 19--94
+Overfull \hbox (59.05016pt too wide) in paragraph at lines 19--94
 [][] 
  []
 
@@ -563,21 +563,21 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-(./cpp/sciNot5.gcov.ls) (./cpp/sciNot5.cpp.gcov [5]) (./cpp/fibo.cpp)
-(./cpp/fibo.test1.cpp) (./cpp/fibo.cpp.gcov) [6] (./cpp/sum.test.cpp)
+(./cpp/sciNot5.gcov.ls) (./cpp/sciNot5.cpp.gcov [5]) (./cpp/fibo1.cpp)
+(./cpp/fibo.test1.cpp) (./cpp/fibo1.cpp.gcov) [6] (./cpp/sum.test.cpp)
 (./cpp/calculator1.cpp) (./cpp/sum.test.txt) [7]
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-(./cpp/cucumber_unit_test.java)
+(./cpp/cucumber_unit_test.java) [8]
 Overfull \hbox (49.38982pt too wide) in paragraph at lines 121--122
 []\T1/cmr/m/n/10 If you are in-ter-ested to learn more, head over to [][]$\T1/S
 ourceCodePro-TLF/m/n/10 http : / / docs . cucumber . io / guides / 10-[]minute-
 []tutorial/$[][]
  []
 
-[8] (./cpp/calculator2.cpp) (./cpp/calculator3.cpp) [9]
-(./cpp/Fake_BigInteger.h)) (./difficulties.tex [10])
+(./cpp/calculator2.cpp) (./cpp/calculator3.cpp [9]) (./cpp/Fake_BigInteger.h))
+(./difficulties.tex [10])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 41.
  [11]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 41.
@@ -589,10 +589,10 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 41.
  ) 
 Here is how much of TeX's memory you used:
- 9915 strings out of 494586
- 143489 string characters out of 6177801
- 459703 words of memory out of 5000000
- 12976 multiletter control sequences out of 15000+600000
+ 9917 strings out of 494586
+ 143513 string characters out of 6177801
+ 460235 words of memory out of 5000000
+ 12978 multiletter control sequences out of 15000+600000
  18481 words of font info for 40 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  52i,6n,101p,1018b,1935s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -613,10 +613,10 @@ public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 ts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
 b>
-Output written on report.pdf (14 pages, 213226 bytes).
+Output written on report.pdf (14 pages, 213337 bytes).
 PDF statistics:
- 950 PDF objects out of 1000 (max. 8388607)
- 623 compressed objects within 7 object streams
+ 952 PDF objects out of 1000 (max. 8388607)
+ 625 compressed objects within 7 object streams
  364 named destinations out of 1000 (max. 500000)
  169 words of extra memory for PDF output out of 10000 (max. 10000000)
 
