@@ -51,7 +51,7 @@ BDD defines the behaviour of a function using some specific terms or keywords. E
 
 The following is an example BDD of Cucumber:
 
-\texttt{
+\begin{lstlisting}
 Scenario Outline: eating
   Given there are <start> cucumbers
   When I eat <eat> cucumbers
@@ -61,7 +61,7 @@ Scenario Outline: eating
     | start | eat | left |
     |    12 |   5 |    7 |
     |    20 |   5 |   15 |
-}
+\end{lstlisting}
 
 \paragraph{Scenario Outline}
 
@@ -78,8 +78,6 @@ Similar to natural English, "When" implies that the following statement should b
 \paragraph{Then}
 
 Describes the expected output of the program after the preceeding "when" statement is fulfilled. 
-
-\usepackage{hyperref}
 
 The code above are extracted from the official Cucumber Documentation, which you can access at \url{https://docs.cucumber.io/gherkin/reference/}
 
