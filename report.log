@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.21)  23 DEC 2018 08:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.21)  23 DEC 2018 09:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -552,15 +552,11 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (./cpp/sciNot1.cpp) (./cpp/sciNot1.test.cpp) (./cpp/sciNot1.log)
 (./cpp/sciNot2.test.cpp) (./cpp/sciNot2.log) (./cpp/sciNot3.cpp) [2]
 (./cpp/sciNot3.log) (./cpp/sciNot5.test.cpp [3]) (./cpp/sciNot5.log)
-Overfull \hbox (63.8502pt too wide) in paragraph at lines 19--94
-[][][][] 
+Overfull \hbox (59.05016pt too wide) in paragraph at lines 19--94
+[][] 
  []
 
-(./cpp/sciNot4.test.cpp) (./cpp/sciNot4.log [4])
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 103.
-) (./techniques.tex [5])
-(./difficulties.tex) (./ci.tex)
+) (./techniques.tex [4]) (./difficulties.tex [5]) (./ci.tex)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 43.
  [6]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 43.
@@ -568,17 +564,17 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 43.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 43.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 43.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 46C52A1EA3082F6045383E9967234BFF;1547.
+(rerunfilecheck)             Checksum: BE2075BF41EFDB39F69B83AB3A7C18EB;1476.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 43.
  ) 
 Here is how much of TeX's memory you used:
- 9473 strings out of 494586
- 137283 string characters out of 6177801
- 424349 words of memory out of 5000000
- 12735 multiletter control sequences out of 15000+600000
- 19393 words of font info for 43 fonts, out of 8000000 for 9000
+ 9381 strings out of 494586
+ 136273 string characters out of 6177801
+ 350347 words of memory out of 5000000
+ 12692 multiletter control sequences out of 15000+600000
+ 18481 words of font info for 40 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 61i,6n,124p,248b,1943s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 52i,6n,101p,287b,1935s stack positions out of 5000i,500n,10000p,200000b,80000s
  </root/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </
 root/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0500.600pk>{/usr/sh
 are/texlive/texmf-dist/fonts/enc/dvips/sourcecodepro/a_ind2fo.enc} </root/.texl
@@ -593,14 +589,13 @@ knappen/ec/ecrm0900.600pk></usr/share/texlive/texmf-dist/fonts/type1/adobe/sour
 cecodepro/SourceCodePro-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (9 pages, 204726 bytes).
+ts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
+b>
+Output written on report.pdf (9 pages, 187903 bytes).
 PDF statistics:
- 735 PDF objects out of 1000 (max. 8388607)
- 415 compressed objects within 5 object streams
- 196 named destinations out of 1000 (max. 500000)
- 177 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 674 PDF objects out of 1000 (max. 8388607)
+ 357 compressed objects within 4 object streams
+ 156 named destinations out of 1000 (max. 500000)
+ 169 words of extra memory for PDF output out of 10000 (max. 10000000)
 

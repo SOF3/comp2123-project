@@ -8,9 +8,8 @@
 \contentsline {subsection}{\numberline {3.3}Generating test cases randomly}{3}{subsection.3.3}
 \contentsline {subsubsection}{\numberline {3.3.1}Random output, inverse-evaluated input}{3}{subsubsection.3.3.1}
 \contentsline {subsubsection}{\numberline {3.3.2}Property-based testing}{3}{subsubsection.3.3.2}
-\contentsline {subsubsection}{\numberline {3.3.3}Reimplement algorithm in NP}{4}{subsubsection.3.3.3}
-\contentsline {subsubsection}{\numberline {3.3.4}Filtering test cases}{4}{subsubsection.3.3.4}
-\contentsline {subsubsection}{\numberline {3.3.5}Testing for edge cases}{5}{subsubsection.3.3.5}
+\contentsline {subsubsection}{\numberline {3.3.3}Reimplement algorithm by brute-force}{4}{subsubsection.3.3.3}
+\contentsline {subsubsection}{\numberline {3.3.4}Testing for edge cases}{5}{subsubsection.3.3.4}
 \contentsline {section}{\numberline {4}Unit testing techniques}{5}{section.4}
 \contentsline {subsection}{\numberline {4.1}Test coverage}{5}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Test-driven development (TDD)}{5}{subsection.4.2}
@@ -19,7 +18,7 @@
 \contentsline {paragraph}{Given}{5}{section*.3}
 \contentsline {paragraph}{When}{5}{section*.4}
 \contentsline {paragraph}{Then}{5}{section*.5}
-\contentsline {subsection}{\numberline {4.4}Dependency mocking}{6}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.4}Dependency mocking}{5}{subsection.4.4}
 \contentsline {section}{\numberline {5}Difficulties}{6}{section.5}
 \contentsline {subsection}{\numberline {5.1}Coupling}{6}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}Test case selection}{6}{subsection.5.2}

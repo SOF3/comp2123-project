@@ -41,18 +41,18 @@ Suppose we want to test a function that converts a number to scientific notation
 Testing the simple case of rounding $1235$ to $124\times10^1$ is successful:
 
 \cpp{sciNot1.test.cpp}
-\cpp{sciNot1.log}
+\cod{sciNot1.log}
 
 However, adding more test parameters, such as negative inputs, would turn out that the function does not always function as expected:
 
 \cpp{sciNot2.test.cpp}
-\cpp{sciNot2.log}
+\cod{sciNot2.log}
 
 From this, we can identify that a negative input results in a negative value, apparently because of the \texttt{log10} function call.
 So a simple workaround of fixing the input to a positive number can be made:
 
 \cpp{sciNot3.cpp}
-\cpp{sciNot3.log}
+\cod{sciNot3.log}
 
 \subsection{Generating test cases randomly}
 Since a larger test size is more likely to catch bugs, it is a good idea to generate a large sample of test cases.
@@ -91,16 +91,35 @@ The \nth{1} requirement is defined through the function prototype,
 and the \nth{2} and \nth{3} requirements can be specified by the following test:
 
 \cpp{sciNot5.test.cpp}
-\cpp{sciNot5.log}
+\cod{sciNot5.log}
 
-\subsubsection{Reimplement algorithm in NP}
+\subsubsection{Reimplement algorithm by brute-force}
+Even though the test only expresses the software specification, it may still be difficult to implement.
+Suppose the following function is specified:
 
-\subsubsection{Filtering test cases}
+\begin{itemize}
+	\item Parameter \texttt{int n}: the number of nodes
+	\item Parameter \texttt{vector<pair<int, int>> edges}: each pair is two numbers indicating two node IDs of a directed edge.
+	\item Node IDs are integers in the range $[0, n)$.
+	\item If a Hamiltonian circuit is present, return any possible \texttt{vector<int> *} such that
+		the node IDs in the vector represent a Hamiltonian circuit for the graph.
+	\item If a Hamiltonian circuit is not present, return \texttt{NULL}.
+\end{itemize}
 
-\cpp{sciNot4.test.cpp}
-\cpp{sciNot4.log}
+Assume the function is implemented in a certain polynomial-time algorithm
+(which is possible given more specifications on the graph,
+but it is omitted as Hamiltonian circuit algorithm is not the focus of this project).
 
-\rem{Need to filter test parameters because $087=87< 100$}
+While it is simple to test for the correctness for returned vectors, it is very difficult to test if returning \texttt{NULL} is correct.
+The specification "Hamiltonian circuit is not present" is very well-defined, but it is still not possible to validate.
+In this case, a brute-force approach can be used to test for the correctness.
+
+Although the function was implemented in an efficient polynomial-time algorithm, tests do not strictly require a high performance.
+It is therefore appropriate to test the new algorithm
+with a potentially less error-prone and more reliable algorithm using brute-force, i.e. NP time.
+This is because unit tests do not have to be tolerant of large data;
+light-weightedness is one of the core concepts of unit testing.
+(Stress testing is another topic not related to unit testing)
 
 \subsubsection{Testing for edge cases}
 \rem{E.g. test for empty strings, Float.INFINITY, 0, etc.}
