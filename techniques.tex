@@ -31,11 +31,11 @@ is flagged for coverage reporting. The file \texttt{sciNot5.cpp.gcov} might be o
 All lines in \texttt{sciNot(double)} got called 2629 times, and the file has been tested with full coverage.
 While this is obvious, coverage may be more useful when the file has multiple conditions, loops or even error conditions:
 
-\cpp{fibo.cpp}
+\cpp{fibo1.cpp}
 \cpp{fibo.test1.cpp}
-\cpp{fibo.cpp.gcov}
+\cpp{fibo1.cpp.gcov}
 
-Apparently, the error condition is never run.
+Apparently, the error condition is never run. The init condition is run once, and the loop is only looped once.
 
 \subsection{Test-driven development (TDD)}
 As a consequence of unit testing, development flow becomes more fluent if each development subtask is based on certain test cases. By using TDD, it ensures that every part of the program can be tested properly, as nearly all code is writen based on pre-written test cases. It also prevents writing duplicated code in large collaborative projects, and TDD can avoid waste of time for implmenting already done features/requirements. 

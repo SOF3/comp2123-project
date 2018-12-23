@@ -20,6 +20,12 @@ Create.hpp.gcov
 exception_ptr.h.gcov
 ExecHandler.h.gcov
 ExecRaw.hpp.gcov
+fibo1.cpp.gcov
+fibo2.cpp.gcov
+fibo.test1.cpp.gcov
+fibo.test2.cpp.gcov
+fooBar.cpp.gcov
+fooBar.test.cpp.gcov
 GenerationFailure.h.gcov
 GenerationHandler.h.gcov
 Gen.hpp.gcov
