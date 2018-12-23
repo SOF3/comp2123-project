@@ -3,7 +3,7 @@ test: run.sh fooBar sciNot1 sciNot2 sciNot3 sciNot4 sciNot5 fibo1 fibo2
 	echo $^ | tr " " "\n" | ./run.sh
 	gcov sciNot5.cpp
 	ls *.gcov > sciNot5.gcov.ls
-	gcov fooBar.cpp
+	gcov *.gcno
 
 covFlags = -fprofile-arcs -ftest-coverage -lgcov
 
