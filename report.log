@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.21)  23 DEC 2018 10:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.21)  23 DEC 2018 11:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -551,12 +551,8 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 
 (./cpp/sciNot1.cpp) (./cpp/sciNot1.test.cpp) (./cpp/sciNot1.log)
 (./cpp/sciNot2.test.cpp) (./cpp/sciNot2.log) (./cpp/sciNot3.cpp) [2]
-(./cpp/sciNot3.log) (./cpp/sciNot5.test.cpp [3]) (./cpp/sciNot5.log)
-Overfull \hbox (63.8502pt too wide) in paragraph at lines 19--94
-[][] 
- []
-
-[4]) (./techniques.tex [5]) (./difficulties.tex) (./ci.tex)
+(./cpp/sciNot3.log) (./cpp/sciNot5.test.cpp [3]) (./cpp/sciNot5.log) [4])
+(./techniques.tex [5]) (./difficulties.tex) (./ci.tex)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 43.
  [6]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 43.
@@ -568,13 +564,13 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 43.
  ) 
 Here is how much of TeX's memory you used:
- 9381 strings out of 494586
- 136277 string characters out of 6177801
+ 9385 strings out of 494586
+ 136289 string characters out of 6177801
  350347 words of memory out of 5000000
- 12692 multiletter control sequences out of 15000+600000
+ 12696 multiletter control sequences out of 15000+600000
  18481 words of font info for 40 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 52i,6n,101p,289b,1935s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 52i,6n,101p,248b,1935s stack positions out of 5000i,500n,10000p,200000b,80000s
  </root/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </
 root/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0500.600pk>{/usr/sh
 are/texlive/texmf-dist/fonts/enc/dvips/sourcecodepro/a_ind2fo.enc} </root/.texl
@@ -592,7 +588,7 @@ public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 ts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
 b>
-Output written on report.pdf (9 pages, 190109 bytes).
+Output written on report.pdf (9 pages, 189964 bytes).
 PDF statistics:
  675 PDF objects out of 1000 (max. 8388607)
  357 compressed objects within 4 object streams
