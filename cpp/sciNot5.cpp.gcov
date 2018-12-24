@@ -3,11 +3,11 @@
         -:    1:#include <cmath>
         -:    2:#include "SciNotation.h"
         -:    3:
-     2644:    4:SciNotation sciNot(double number) {
-     2644:    5:	int sign = number >= 0 ? 1 : -1;
-     2644:    6:	number *= sign;
-     2644:    7:	int exp = (int) floor(log10(number)) - 2;
-     2644:    8:	int digits = (int) round(number * pow(10.0, -exp));
-     2644:    9:	return SciNotation{digits * sign, exp};
+     2522:    4:SciNotation sciNot(double number) {
+     2522:    5:	int sign = number >= 0 ? 1 : -1;
+     2522:    6:	number *= sign;
+     2522:    7:	int exp = (int) floor(log10(number)) - 2;
+     2522:    8:	int digits = (int) round(number * pow(10.0, -exp));
+     2522:    9:	return SciNotation{digits * sign, exp};
         -:   10:}
         -:   11:

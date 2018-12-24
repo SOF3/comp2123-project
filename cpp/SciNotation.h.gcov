@@ -10,8 +10,8 @@
         -:    8:	int digits;
         -:    9:	int exp;
         -:   10:public:
-     2644:   11:	SciNotation(int digits, int exp) :
-     2644:   12:		digits(digits), exp(exp) {}
+     2522:   11:	SciNotation(int digits, int exp) :
+     2522:   12:		digits(digits), exp(exp) {}
         -:   13:
         -:   14:	bool operator==(const SciNotation &that) const;
         -:   15:

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.21)  23 DEC 2018 16:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2018.12.21)  24 DEC 2018 06:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -578,7 +578,12 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
  (./cpp/sciNot1.cpp)
 (./cpp/sciNot1.test.cpp) (./cpp/sciNot1.log) (./cpp/sciNot2.test.cpp)
 (./cpp/sciNot2.log) (./cpp/sciNot3.cpp [2]) (./cpp/sciNot3.log)
-(./cpp/sciNot5.test.cpp [3]) (./cpp/sciNot5.log) [4]
+(./cpp/sciNot5.test.cpp [3]) (./cpp/sciNot5.log)
+Overfull \hbox (63.8502pt too wide) in paragraph at lines 19--94
+[][] 
+ []
+
+[4]
 LaTeX Font Info:    Font shape `T1/SourceCodePro-TLF/b/n' will be
 (Font)              scaled to size 10.0pt on input line 142.
 ) (./techniques.tex
@@ -621,10 +626,10 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 44.
  ) 
 Here is how much of TeX's memory you used:
- 10323 strings out of 494586
- 149761 string characters out of 6177801
+ 10317 strings out of 494586
+ 149743 string characters out of 6177801
  479989 words of memory out of 5000000
- 13308 multiletter control sequences out of 15000+600000
+ 13302 multiletter control sequences out of 15000+600000
  19099 words of font info for 42 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  52i,6n,101p,1018b,1935s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -646,7 +651,7 @@ be/sourcecodepro/SourceCodePro-Regular.pfb></usr/share/texlive/texmf-dist/fonts
 /amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy10.pfb>
-Output written on report.pdf (14 pages, 271166 bytes).
+Output written on report.pdf (14 pages, 271132 bytes).
 PDF statistics:
  1004 PDF objects out of 1200 (max. 8388607)
  682 compressed objects within 7 object streams

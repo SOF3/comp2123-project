@@ -46,11 +46,11 @@
         -:   44:};
         -:   45:
         -:   46:template <typename T>
-        5:   47:void showValue(T value,
+        7:   47:void showValue(T value,
         -:   48:               typename std::enable_if<std::is_same<T, bool>::value,
         -:   49:                                       std::ostream>::type &os) {
-       5*:   50:  os << (value ? "true" : "false");
-        5:   51:}
+       7*:   50:  os << (value ? "true" : "false");
+        7:   51:}
         -:   52:
         -:   53:template <typename T>
         -:   54:void showValue(T value,
@@ -198,7 +198,7 @@
         -:  196:
         -:  197:template <typename T, bool X>
         -:  198:struct ShowDefault<T, true, X> {
-        7:  199:  static void show(const T &value, std::ostream &os) { showValue(value, os); }
+        9:  199:  static void show(const T &value, std::ostream &os) { showValue(value, os); }
 ------------------
 _ZN2rc6detail11ShowDefaultISt6vectorIdSaIdEELb1ELb0EE4showERKS4_RSo:
         1:  199:  static void show(const T &value, std::ostream &os) { showValue(value, os); }
@@ -207,28 +207,28 @@ _ZN2rc6detail11ShowDefaultISt5tupleIJSt6vectorIdSaIdEEEELb1ELb0EE4showERKS6_RSo:
         1:  199:  static void show(const T &value, std::ostream &os) { showValue(value, os); }
 ------------------
 _ZN2rc6detail11ShowDefaultIbLb1ELb1EE4showERKbRSo:
-        5:  199:  static void show(const T &value, std::ostream &os) { showValue(value, os); }
+        7:  199:  static void show(const T &value, std::ostream &os) { showValue(value, os); }
 ------------------
         -:  200:};
         -:  201:
         -:  202:template <typename T>
         -:  203:struct ShowDefault<T, false, true> {
-       11:  204:  static void show(const T &value, std::ostream &os) { os << value; }
+       15:  204:  static void show(const T &value, std::ostream &os) { os << value; }
 ------------------
 _ZN2rc6detail11ShowDefaultIdLb0ELb1EE4showERKdRSo:
         1:  204:  static void show(const T &value, std::ostream &os) { os << value; }
 ------------------
 _ZN2rc6detail11ShowDefaultIiLb0ELb1EE4showERKiRSo:
-       10:  204:  static void show(const T &value, std::ostream &os) { os << value; }
+       14:  204:  static void show(const T &value, std::ostream &os) { os << value; }
 ------------------
         -:  205:};
         -:  206:
         -:  207:} // namespace detail
         -:  208:
         -:  209:template <typename T>
-       18:  210:void show(const T &value, std::ostream &os) {
-       18:  211:  detail::ShowDefault<T>::show(value, os);
-       18:  212:}
+       24:  210:void show(const T &value, std::ostream &os) {
+       24:  211:  detail::ShowDefault<T>::show(value, os);
+       24:  212:}
 ------------------
 _ZN2rc4showISt6vectorIdSaIdEEEEvRKT_RSo:
         1:  210:void show(const T &value, std::ostream &os) {
@@ -246,14 +246,14 @@ _ZN2rc4showIdEEvRKT_RSo:
         1:  212:}
 ------------------
 _ZN2rc4showIiEEvRKT_RSo:
-       10:  210:void show(const T &value, std::ostream &os) {
-       10:  211:  detail::ShowDefault<T>::show(value, os);
-       10:  212:}
+       14:  210:void show(const T &value, std::ostream &os) {
+       14:  211:  detail::ShowDefault<T>::show(value, os);
+       14:  212:}
 ------------------
 _ZN2rc4showIbEEvRKT_RSo:
-        5:  210:void show(const T &value, std::ostream &os) {
-        5:  211:  detail::ShowDefault<T>::show(value, os);
-        5:  212:}
+        7:  210:void show(const T &value, std::ostream &os) {
+        7:  211:  detail::ShowDefault<T>::show(value, os);
+        7:  212:}
 ------------------
         -:  213:
         -:  214:template <typename T>

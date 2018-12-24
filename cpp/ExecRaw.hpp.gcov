@@ -18,9 +18,9 @@
         -:   16:
         -:   17:template <typename Callable, typename... Args>
         -:   18:rc::detail::ReturnType<Callable>
-      110:   19:execWithArguments(const Callable &callable, rc::detail::TypeList<Args...>) {
+      116:   19:execWithArguments(const Callable &callable, rc::detail::TypeList<Args...>) {
         -:   20:  return rc::detail::applyTuple(*gen::arbitrary<std::tuple<Decay<Args>...>>(),
-      110:   21:                                callable);
+      116:   21:                                callable);
         -:   22:}
 ------------------
 _ZN2rc3gen6detail17execWithArgumentsINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvS9_EEEJS9_EEENS3_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeERKSF_NS3_8TypeListIJDpT0_EEE:
@@ -30,22 +30,22 @@ _ZN2rc3gen6detail17execWithArgumentsINS_6detail15PropertyAdapterIZ10testSciNotvE
         -:   22:}
 ------------------
 _ZN2rc3gen6detail17execWithArgumentsINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvS9_EEEJS9_EEENS3_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeERKSF_NS3_8TypeListIJDpT0_EEE:
-       10:   19:execWithArguments(const Callable &callable, rc::detail::TypeList<Args...>) {
+       16:   19:execWithArguments(const Callable &callable, rc::detail::TypeList<Args...>) {
         -:   20:  return rc::detail::applyTuple(*gen::arbitrary<std::tuple<Decay<Args>...>>(),
-       10:   21:                                callable);
+       16:   21:                                callable);
         -:   22:}
 ------------------
         -:   23:
         -:   24:template <typename Callable>
         -:   25:std::pair<rc::detail::ReturnType<Callable>, Recipe>
-      110:   26:execWithRecipe(Callable callable, Recipe recipe) {
+      116:   26:execWithRecipe(Callable callable, Recipe recipe) {
         -:   27:  using namespace rc::detail;
-      220:   28:  Recipe resultRecipe(recipe);
-      220:   29:  ExecHandler handler(resultRecipe);
-      110:   30:  ImplicitParam<param::CurrentHandler> letHandler(&handler);
+      232:   28:  Recipe resultRecipe(recipe);
+      232:   29:  ExecHandler handler(resultRecipe);
+      116:   30:  ImplicitParam<param::CurrentHandler> letHandler(&handler);
         -:   31:
         -:   32:  return std::make_pair(execWithArguments(callable, ArgTypes<Callable>()),
-      220:   33:                        std::move(resultRecipe));
+      232:   33:                        std::move(resultRecipe));
         -:   34:}
 ------------------
 _ZN2rc3gen6detail14execWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvS9_EEEEESt4pairINS3_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS1_6RecipeEESG_SL_:
@@ -60,24 +60,24 @@ _ZN2rc3gen6detail14execWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlR
         -:   34:}
 ------------------
 _ZN2rc3gen6detail14execWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvS9_EEEEESt4pairINS3_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS1_6RecipeEESG_SL_:
-       10:   26:execWithRecipe(Callable callable, Recipe recipe) {
+       16:   26:execWithRecipe(Callable callable, Recipe recipe) {
         -:   27:  using namespace rc::detail;
-       20:   28:  Recipe resultRecipe(recipe);
-       20:   29:  ExecHandler handler(resultRecipe);
-       10:   30:  ImplicitParam<param::CurrentHandler> letHandler(&handler);
+       32:   28:  Recipe resultRecipe(recipe);
+       32:   29:  ExecHandler handler(resultRecipe);
+       16:   30:  ImplicitParam<param::CurrentHandler> letHandler(&handler);
         -:   31:
         -:   32:  return std::make_pair(execWithArguments(callable, ArgTypes<Callable>()),
-       20:   33:                        std::move(resultRecipe));
+       32:   33:                        std::move(resultRecipe));
         -:   34:}
 ------------------
         -:   35:
         -:   36:template <typename Callable>
         -:   37:Seq<Shrinkable<std::pair<rc::detail::ReturnType<Callable>, Recipe>>>
-       2*:   38:shrinksOfRecipe(Callable callable, Recipe recipe) {
-       2*:   39:  return seq::map(shrinkRecipe(std::move(recipe)),
+       3*:   38:shrinksOfRecipe(Callable callable, Recipe recipe) {
+       3*:   39:  return seq::map(shrinkRecipe(std::move(recipe)),
         -:   40:                  [=](Recipe &&shrunkRecipe) {
         -:   41:                    return shrinkableWithRecipe(callable, shrunkRecipe);
-       2*:   42:                  });
+       3*:   42:                  });
         -:   43:}
 ------------------
 _ZN2rc3gen6detail15shrinksOfRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvS9_EEEEENS_3SeqINS_10ShrinkableISt4pairINS3_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS1_6RecipeEEEEEESI_SN_:
@@ -89,23 +89,23 @@ _ZN2rc3gen6detail15shrinksOfRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUl
         -:   43:}
 ------------------
 _ZN2rc3gen6detail15shrinksOfRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvS9_EEEEENS_3SeqINS_10ShrinkableISt4pairINS3_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS1_6RecipeEEEEEESI_SN_:
-        2:   38:shrinksOfRecipe(Callable callable, Recipe recipe) {
-        2:   39:  return seq::map(shrinkRecipe(std::move(recipe)),
+        3:   38:shrinksOfRecipe(Callable callable, Recipe recipe) {
+        3:   39:  return seq::map(shrinkRecipe(std::move(recipe)),
         -:   40:                  [=](Recipe &&shrunkRecipe) {
         -:   41:                    return shrinkableWithRecipe(callable, shrunkRecipe);
-        2:   42:                  });
+        3:   42:                  });
         -:   43:}
 ------------------
         -:   44:
         -:   45:template <typename Callable>
         -:   46:Shrinkable<std::pair<rc::detail::ReturnType<Callable>, Recipe>>
-      107:   47:shrinkableWithRecipe(Callable callable, Recipe recipe) {
+      112:   47:shrinkableWithRecipe(Callable callable, Recipe recipe) {
         -:   48:  using T = rc::detail::ReturnType<Callable>;
         -:   49:  return shrinkable::shrink([=] { return execWithRecipe(callable, recipe); },
         -:   50:                            [=](std::pair<T, Recipe> &&p) {
         -:   51:                              return shrinksOfRecipe(callable,
         -:   52:                                                     std::move(p.second));
-      107:   53:                            });
+      112:   53:                            });
         -:   54:}
 ------------------
 _ZN2rc3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE0_FvS9_EEEEENS_10ShrinkableISt4pairINS3_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS1_6RecipeEEEESH_SM_:
@@ -119,13 +119,13 @@ _ZN2rc3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNo
         -:   54:}
 ------------------
 _ZN2rc3gen6detail20shrinkableWithRecipeINS_6detail15PropertyAdapterIZ10testSciNotvEUlRKSt6vectorIdSaIdEEE_FvS9_EEEEENS_10ShrinkableISt4pairINS3_18FunctionTraitsImplINSt5decayIT_E4typeEE10ReturnTypeENS1_6RecipeEEEESH_SM_:
-        7:   47:shrinkableWithRecipe(Callable callable, Recipe recipe) {
+       12:   47:shrinkableWithRecipe(Callable callable, Recipe recipe) {
         -:   48:  using T = rc::detail::ReturnType<Callable>;
         -:   49:  return shrinkable::shrink([=] { return execWithRecipe(callable, recipe); },
         -:   50:                            [=](std::pair<T, Recipe> &&p) {
         -:   51:                              return shrinksOfRecipe(callable,
         -:   52:                                                     std::move(p.second));
-        7:   53:                            });
+       12:   53:                            });
         -:   54:}
 ------------------
         -:   55:

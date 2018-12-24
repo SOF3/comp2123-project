@@ -717,7 +717,7 @@
         -:  715:      atomic& operator=(const atomic&) = delete;
         -:  716:      atomic& operator=(const atomic&) volatile = delete;
         -:  717:
-     3405:  718:      constexpr atomic(__integral_type __i) noexcept : __base_type(__i) { }
+     3323:  718:      constexpr atomic(__integral_type __i) noexcept : __base_type(__i) { }
         -:  719:
         -:  720:      using __base_type::operator __integral_type;
         -:  721:      using __base_type::operator=;
